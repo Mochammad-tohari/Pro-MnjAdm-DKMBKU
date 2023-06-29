@@ -19,7 +19,9 @@ class uji_controller extends Controller
         uji_model diambil dari folder model
         latest()->paginate(5); membatasi 5 data baru yang tampil 
         */
-        $data_uji = uji_model::get();
+        $data_uji = uji_model::orderBy('Nama', 'asc')
+                                -> paginate(4);
+                                
         /* 
         compact ('data_uji', diambil dari variabel $data_uji
         */

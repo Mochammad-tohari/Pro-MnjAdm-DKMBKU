@@ -38,10 +38,10 @@
               <!-- Menampilkan data table dari database -->
               <tbody>
                 <tr>
-                    @foreach ($data_uji as $row)
+                    @foreach ($data_uji as $index_uji => $row)
                     <tr>
                       <!-- daftar nomor urut -->
-                      <td>{{$loop -> iteration}}</td>
+                      <td>{{$index_uji + $data_uji->firstItem() }}</td>
 
                       <th scope="row">{{$row->Kode}}</th>
                       <td>{{$row->Nama}}</td>
@@ -74,6 +74,8 @@
                 
               </tbody>
             </table>
+            <!-- syntax pembatsan menu pagination -->
+            {{ $data_uji->links() }}
         </div>
     </div>
 

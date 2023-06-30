@@ -12,8 +12,23 @@ use Illuminate\View\View;
 
 class uji_controller extends Controller
 {
-    public function index_uji() 
+    public function index_uji(Request $request) 
     {
+
+        //syntax search data
+        $searchQuery = $request->input('search');
+
+        if ($request->has('search')) {
+            $data_uji = uji_model::where('Nama', 'LIKE', '%' . $searchQuery . '%')->paginate(4);
+        } else {
+            $data_uji = uji_model::orderBy('Nama', 'asc')->paginate(4);
+        }
+    
+        return view('data_uji', [
+            'data_uji' => $data_uji,
+            'searchQuery' => $searchQuery,
+        ]);
+        
         /* 
         $data_uji pernyataan variabel 
         uji_model diambil dari folder model

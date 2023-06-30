@@ -12,6 +12,14 @@
     <div class="container">
     <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
 
+    <div class="row g-3 d-flex flex-row-reverse">
+      <div class="col-auto">
+        <form action="/data_uji" method="GET">
+        <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-right">
+        </form>
+      </div>
+    </div>
+
     <!-- syntax pemberitahuan bahwa data telah dimasukan -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success" role="alert">
@@ -19,7 +27,7 @@
     </div>
     @endif
     
-        <div class="row">
+        <div class="row mt-2">
             <table class="table">
              <thead>
                 <tr>

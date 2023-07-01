@@ -73,7 +73,7 @@
     
                       <td>
                         <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
-                        <a href="/delete_data_uji/{{$row->id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Hapus</a>
+                        <a href="#" class="btn btn-danger delete" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
                       </td>
     
                     </tr>
@@ -88,5 +88,42 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <!-- memanggil script sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- memanggil script jquery cdn slim -->
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+
   </body>
+
+<!-- memberi fungsi delete dengan sweet alert -->
+  <script>
+
+    $('.delete').click(function(){
+
+      var ujiid = $(this).attr('data-id');
+      var ujikode = $(this).attr('data-kode');
+      var ujinama = $(this).attr('data-nama');
+
+      swal({
+          title: "Apakah anda yakin ?",
+          text: "Data yang akan dihapus kode "+ujikode+" Nama "+ujinama+"  ",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            window.location = "/delete_data_uji/"+ujiid+""
+            swal("Data berhasil dihapus", {
+              icon: "success",
+            });
+          } else {
+            swal("Data tidak dihapus");
+          }
+        });
+    })
+  
+   
+  </script>
 </html>

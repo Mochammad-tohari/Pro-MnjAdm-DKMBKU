@@ -74,11 +74,13 @@
                     <div class="form-group">
                         <label for="Foto1" class="form-label">Foto 1</label>
                         <input  type="file" class="form-control" id="" name="Foto1" value="{{$data_uji->Foto1}}"/>
+                        <div name="" class="form-text">Kosongkan input jika tidak ada foto baru yang ingin di unggah</div>
                     </div>
 
                     <div class="form-group">
                         <label for="Foto2" class="form-label">Foto 2</label>
                         <input  type="file" class="form-control" id="" name="Foto2" value="{{$data_uji->Foto2}}"/>
+                        <div name="" class="form-text">Kosongkan input jika tidak ada foto baru yang ingin di unggah</div>
                     </div>
      
                    <!-- /.card-body -->

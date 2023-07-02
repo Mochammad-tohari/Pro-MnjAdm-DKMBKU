@@ -18,6 +18,12 @@
         <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-right">
         </form>
       </div>
+
+      <div class="col-auto">
+        <form action="/data_uji" method="GET">
+          <a href="/exportpdf" class="btn btn-primary">Export PDF</button> </a>
+        </form>
+      </div>
     </div>
 
     <!-- syntax pemberitahuan bahwa data telah dimasukan -->

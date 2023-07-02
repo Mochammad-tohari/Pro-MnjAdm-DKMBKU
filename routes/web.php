@@ -54,3 +54,7 @@ Route::post('/update_data_uji/{id}', [uji_controller::class,'update_data_uji'])-
         {id} -> parameter yg menjadi acuan dalam hal edit
     */
 Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->name('delete_data_uji');
+
+    /*  Export Pdf
+    */
+Route::get('/exportpdf', [uji_controller::class,'exportpdf'])->name('exportpdf');

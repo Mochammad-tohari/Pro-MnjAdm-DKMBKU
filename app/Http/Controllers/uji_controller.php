@@ -10,32 +10,37 @@ use App\Models\uji_model;
 //return type View
 use Illuminate\View\View;
 
+//import method export PDF
+use PDF;
+
 class uji_controller extends Controller
 {
     public function index_uji(Request $request) 
     {
-
-        //syntax search data
-        $searchQuery = $request->input('search');
-
-        if ($request->has('search')) {
-            $data_uji = uji_model::where('Nama', 'LIKE', '%' . $searchQuery . '%')->paginate(4);
-        } else {
-            $data_uji = uji_model::orderBy('Nama', 'asc')->paginate(4);
-        }
-    
-        return view('data_uji', [
-            'data_uji' => $data_uji,
-            'searchQuery' => $searchQuery,
-        ]);
-        
         /* 
         $data_uji pernyataan variabel 
         uji_model diambil dari folder model
         latest()->paginate(5); membatasi 5 data baru yang tampil 
         */
         $data_uji = uji_model::orderBy('Nama', 'asc')
-                                -> paginate(4);
+                                -> paginate(5);
+
+        //syntax search data
+        $searchQuery = $request->input('search');
+
+        if ($request->has('search')) {
+            $data_uji = uji_model::where(function ($query) use ($searchQuery) {
+                $query->where('Nama', 'LIKE', '%' . $searchQuery . '%')
+                      ->orWhere('Kode', 'LIKE', '%' . $searchQuery . '%');
+            })->paginate(5);
+        } else {
+            $data_uji = uji_model::orderBy('Nama', 'asc')->paginate(5);
+        }
+    
+        return view('data_uji', [
+            'data_uji' => $data_uji,
+            'searchQuery' => $searchQuery,
+        ]);
                                 
         /* 
         compact ('data_uji', diambil dari variabel $data_uji
@@ -132,6 +137,17 @@ class uji_controller extends Controller
         return redirect()->route('index_uji')->with('success', 'Data Berhasil Diperbarui');
 
 
+    }
+
+    public function exportpdf() 
+    {
+        $data_uji = uji_model::all();
+        
+        view()->share('data_uji', $data_uji);
+        $pdf_uji = PDF::loadview('data_uji-pdf');
+        return $pdf_uji->download('data_uji.pdf');
+
+        
     }
 
 }

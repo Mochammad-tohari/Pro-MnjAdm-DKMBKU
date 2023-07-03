@@ -46,6 +46,7 @@
                     <th scope="col">Foto1</th>
                     <th scope="col">Foto2</th>
                     <th scope="col">Tanggal Data Dibuat</th>
+                    <th scope="col">Action</th>
                 </tr>
               </thead>
 
@@ -78,8 +79,9 @@
                       <td>{{$row->created_at->format('D,d M Y')}}</td>                      
     
                       <td>
-                        <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                        <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                        <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm"><i class="fas fa-pen"></i>Lihat</a>
+                        <a href="#" class="btn btn-danger btn-sm delete" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
                       </td>
     
                     </tr>

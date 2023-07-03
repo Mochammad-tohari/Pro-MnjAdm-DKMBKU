@@ -139,6 +139,16 @@ class uji_controller extends Controller
 
     }
 
+    public function lihat_data_uji($id)
+    {
+
+    $data_uji = uji_model::find($id);
+    return view('lihat_data_uji', compact('data_uji'));
+    
+    }
+
+
+
     public function exportpdf() 
     {
         $data_uji = uji_model::orderBy('Nama', 'asc')->get();
@@ -149,5 +159,7 @@ class uji_controller extends Controller
 
         
     }
+
+    
 
 }

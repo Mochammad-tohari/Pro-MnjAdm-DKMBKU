@@ -58,3 +58,7 @@ Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->
     /*  Export Pdf
     */
 Route::get('/exportpdf', [uji_controller::class,'exportpdf'])->name('exportpdf');
+
+    /*  Melihat satu data uji 
+    */
+Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji');

@@ -91,7 +91,7 @@ class uji_controller extends Controller
 
         $data_uji = uji_model::find($id);
         $data_uji->delete();
-        return redirect()->route('index_uji')->with('success','Data Berhasil Dihapus');
+        return redirect()->route('index_uji')->with('success_delete','Data Berhasil Dihapus');
     }
 
     public function edit_data_uji($id)

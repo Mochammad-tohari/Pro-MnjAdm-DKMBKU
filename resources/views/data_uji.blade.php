@@ -19,20 +19,20 @@
         </form>
       </div>
 
+          {{-- <!-- syntax pemberitahuan bahwa data telah dimasukan -->
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+         {{$message}}
+    </div>
+    @endif --}}
+
       <div class="col-auto">
         <form action="/data_uji" method="GET">
           <a href="/exportpdf" class="btn btn-primary">Export PDF</button> </a>
         </form>
       </div>
     </div>
-
-    <!-- syntax pemberitahuan bahwa data telah dimasukan -->
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-         {{$message}}
-    </div>
-    @endif
-    
+  
         <div class="row mt-2">
             <table class="table">
              <thead>
@@ -99,9 +99,13 @@
     
     <!-- memanggil script sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- memanggil script jquery cdn slim -->
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
-
+    <!-- memanggil script jquery cdn minified -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- memanggil script toastr cdn js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- memanggil script toastr cdn css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
   </body>
 
 <!-- memberi fungsi delete dengan sweet alert -->
@@ -124,14 +128,25 @@
           if (willDelete) {
             window.location = "/delete_data_uji/"+ujiid+""
             swal("Data berhasil dihapus", {
-              icon: "success",
+              icon: "success_delete",
             });
           } else {
             swal("Data tidak dihapus");
           }
         });
     })
-  
    
+  </script>
+
+<!-- syntax pemberitahuan bahwa data telah dimasukan -->
+  <script>
+
+    @if (Session::has('success'))
+
+        // Set a success toast, with a title
+        toastr.success('Data Sudah Disimpan!', 'Selamat');
+
+    @endif
+
   </script>
 </html>

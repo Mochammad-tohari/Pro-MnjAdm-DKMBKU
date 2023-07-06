@@ -15,6 +15,8 @@ use PDF;
 
 class uji_controller extends Controller
 {
+
+// untuk index data uji berfungsi untuk menampilkan data    
     public function index_uji(Request $request) 
     {
         /* 
@@ -42,13 +44,14 @@ class uji_controller extends Controller
             'searchQuery' => $searchQuery,
         ]);
                                 
-        /* 
-        compact ('data_uji', diambil dari variabel $data_uji
-        */
+ /* 
+ compact ('data_uji', diambil dari variabel $data_uji
+*/
         return view('data_uji',compact ('data_uji'));
         
     }
 
+// untuk create dan insert data uji berfungsi untuk memasukan data
     public function create_data_uji()
     {
 
@@ -85,7 +88,7 @@ class uji_controller extends Controller
                 return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
         
     }    
-
+// untuk delete data uji berfungsi untuk menghapus data
     public function delete_data_uji($id)
     {
 
@@ -94,6 +97,8 @@ class uji_controller extends Controller
         return redirect()->route('index_uji')->with('success_delete','Data Berhasil Dihapus');
     }
 
+
+// untuk edit dan update data uji berfungsi untuk mengubah data
     public function edit_data_uji($id)
     {
 
@@ -139,6 +144,7 @@ class uji_controller extends Controller
 
     }
 
+// untuk lihat data uji berfungsi untuk melihat 1 data
     public function lihat_data_uji($id)
     {
 
@@ -147,8 +153,7 @@ class uji_controller extends Controller
     
     }
 
-
-
+// untuk export_pdf_uji data uji berfungsi untuk mengesport data ke file PDF
     public function export_pdf_uji() 
     {
         $data_uji = uji_model::orderBy('Nama', 'asc')->get();

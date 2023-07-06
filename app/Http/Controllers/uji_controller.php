@@ -149,12 +149,12 @@ class uji_controller extends Controller
 
 
 
-    public function exportpdf() 
+    public function export_pdf_uji() 
     {
         $data_uji = uji_model::orderBy('Nama', 'asc')->get();
         
         view()->share('data_uji', $data_uji);
-        $pdf_uji = PDF::loadview('data_uji-pdf');
+        $pdf_uji = PDF::loadview('export_uji-pdf');
         return $pdf_uji->download('data_uji.pdf');
 
         

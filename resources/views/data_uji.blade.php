@@ -28,7 +28,7 @@
 
       <div class="col-auto">
         <form action="/data_uji" method="GET">
-          <a href="/exportpdf" class="btn btn-primary">Export PDF</button> </a>
+          <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
         </form>
       </div>
     </div>

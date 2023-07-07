@@ -31,6 +31,13 @@
           <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
         </form>
       </div>
+
+      <div class="col-auto">
+        <form action="/data_uji" method="GET">
+          <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
+        </form>
+      </div>
+
     </div>
   
         <div class="row mt-2">

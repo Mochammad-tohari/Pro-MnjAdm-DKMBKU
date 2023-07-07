@@ -160,6 +160,8 @@ return [
          * Package Service Providers...
          */
 
+         Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -189,6 +191,8 @@ return [
 
         //import class export PDF
         'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

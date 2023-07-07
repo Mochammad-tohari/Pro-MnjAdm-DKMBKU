@@ -20,8 +20,8 @@ return new class extends Migration
             $table->text('Password');
             $table->date('Tanggal_masuk');
             $table->enum('Status', ['Aktif', 'Tidak_Aktif']);
-            $table->binary('Foto1');
-            $table->binary('Foto2');
+            $table->binary('Foto1')->nullable();
+            $table->binary('Foto2')->nullable();
             $table->timestamps();
         });
     }

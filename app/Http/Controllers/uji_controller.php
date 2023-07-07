@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use PDF;
 
 //import Model "uji_model" dari folder models
 use App\Models\uji_model;
@@ -11,7 +11,14 @@ use App\Models\uji_model;
 use Illuminate\View\View;
 
 //import method export PDF
-use PDF;
+use Illuminate\Http\Request;
+
+//import method export Excel
+use Maatwebsite\Excel\Facades\Excel;
+
+//import method export Excel di folder Exports
+use App\Exports\export_excel_uji;
+
 
 class uji_controller extends Controller
 {
@@ -163,6 +170,14 @@ class uji_controller extends Controller
         return $pdf_uji->download('data_uji.pdf');
 
         
+    }
+
+// untuk export_pdf_uji data uji berfungsi untuk mengesport data ke file PDF
+    public function export_excel_uji() 
+    {
+
+        return Excel::download(new export_excel_uji, 'data_uji.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
     }
 
     

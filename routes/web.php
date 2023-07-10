@@ -63,6 +63,10 @@ Route::get('/export_pdf_uji', [uji_controller::class,'export_pdf_uji'])->name('e
     */
 Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->name('export_excel_uji');
 
+    /*  import Excel
+    */
+Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import');
+
     /*  Melihat satu data uji 
     */
 Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji');

@@ -19,6 +19,8 @@ use Maatwebsite\Excel\Facades\Excel;
 //import method export Excel di folder Exports
 use App\Exports\export_excel_uji;
 
+//import method import Excel di folder Imports
+use App\Imports\uji_excel_import;
 
 class uji_controller extends Controller
 {
@@ -172,11 +174,26 @@ class uji_controller extends Controller
         
     }
 
-// untuk export_pdf_uji data uji berfungsi untuk mengesport data ke file PDF
+// untuk export_excel_uji berfungsi untuk mengesport data ke file excel
     public function export_excel_uji() 
     {
 
         return Excel::download(new export_excel_uji, 'data_uji.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
+    }
+
+// untuk uji_excel_import berfungsi untuk import file excel
+    public function uji_excel_import(Request $request) 
+    {
+
+        $data_uji = $request->file('file_uji');
+
+        $filename = $data_uji->getClientOriginalName();
+        $data_uji->move('Uji_Data', $filename);
+
+        Excel::import(new uji_excel_import, \public_path('/Uji_Data/'.$filename));
+        return \redirect()->back();
+
 
     }
 

@@ -9,34 +9,74 @@
   <body>
     <h1>Data Uji</h1>
 
-    <div class="container">
+  <div class="container">
     <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
 
     <div class="row g-3 d-flex flex-row-reverse">
-      <div class="col-auto">
-        <form action="/data_uji" method="GET">
-        <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-right">
-        </form>
-      </div>
+          <div class="col-auto">
+            <form action="/data_uji" method="GET">
+            <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-right">
+            </form>
+          </div>
 
-          {{-- <!-- syntax pemberitahuan bahwa data telah dimasukan -->
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-         {{$message}}
-    </div>
-    @endif --}}
+              {{-- <!-- syntax pemberitahuan bahwa data telah dimasukan -->
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success" role="alert">
+            {{$message}}
+        </div>
+        @endif --}}
 
-      <div class="col-auto">
-        <form action="/data_uji" method="GET">
-          <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
-        </form>
-      </div>
+          <div class="col-auto">
+            <form action="/data_uji" method="GET">
+              <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
+            </form>
+          </div>
 
-      <div class="col-auto">
-        <form action="/data_uji" method="GET">
-          <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
-        </form>
-      </div>
+          <div class="col-auto">
+            <form action="/data_uji" method="GET">
+              <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
+            </form>
+          </div>
+
+          <!-- Button trigger modal -->
+
+          <div class="col-auto">
+            <form action="" method="">
+              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Import Excel
+              </button>
+            </form>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Import Excel Data uji</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="uji_excel_import" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="modal-body">
+                   <div class="form-group">
+                      <input type="file" name="file_uji" required>
+                      <p>
+                        Harap perhatikan file excel dan array field didalamnya
+                      </p>
+                   </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+
+                </form>
+               
+              </div>
+            </div>
+          </div>
 
     </div>
   

@@ -4,22 +4,22 @@
 <html>
 <head>
 <style>
-#customers {
+#uji {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#customers td, #customers th {
+#uji td, #uji th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#uji tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
+#uji tr:hover {background-color: #ddd;}
 
-#customers th {
+#uji th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -32,7 +32,7 @@
 
 <h1>Tabel Data Uji</h1>
 
-<table id="customers">
+<table id="uji">
   <tr>
     <th>Nomor</th>
     <th>Kode</th>

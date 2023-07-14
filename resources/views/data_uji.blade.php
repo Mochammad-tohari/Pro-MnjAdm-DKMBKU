@@ -1,21 +1,41 @@
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Data Uji</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Data Uji</h1>
+@extends('layout.admin')
 
-  <div class="container">
-    <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
+@section('content')
 
-    <div class="row g-3 d-flex flex-row-reverse">
+<title>Data Uji</title>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Data Uji</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Data Uji</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+  <div class="col-auto">
+    <div class="card col-auto">
+      <div class="card-header col-auto">
+        <h3 class="card-title text-center">Daftar Data Uji</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body col-auto">
+        
+        <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
+
+        <div class="row g-3 d-flex flex-row-reverse">
           <div class="col-auto">
             <form action="/data_uji" method="GET">
-            <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-right">
+            <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-left">
             </form>
           </div>
 
@@ -73,74 +93,73 @@
                   </div>
 
                 </form>
-               
               </div>
             </div>
           </div>
+        
+        <table class="table table-bordered mt-3">
+          <thead>
+            <tr>
+              <th scope="col">Nomor</th>
+              <th scope="col">Kode</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Password</th>
+              <th scope="col">Tanggal_masuk</th>
+              <th scope="col">Status</th>
+              <th scope="col">Foto1</th>
+              <th scope="col">Foto2</th>
+              <th scope="col">Tanggal Data Dibuat</th>
+              <th scope="col">Action</th>
+          </tr>
+          </thead>
 
+          <tbody>
+            <tr>
+              @foreach ($data_uji as $index_uji => $row)
+              <tr>
+                <!-- daftar nomor urut -->
+                <td>{{$index_uji + $data_uji->firstItem() }}</td>
+
+                <th scope="row">{{$row->Kode}}</th>
+                <td>{{$row->Nama}}</td>
+                <td>{{$row->Password}}</td>
+                <td>{{$row->Tanggal_masuk}}</td>
+                <td>{{$row->Status}}</td>
+
+                <td>
+                  @if ($row->Foto1)
+                      <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;">
+                  @endif
+               </td>
+              
+                <td>
+                  @if ($row->Foto2)
+                      <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
+                  @endif
+                </td>
+
+                <td>{{$row->created_at->format('D,d M Y')}}</td>                      
+
+                <td>
+                  <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                  <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                  <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                </td>
+
+              </tr>
+              @endforeach
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- /.card-body -->
+      <div class="card-footer col-auto">
+          <!-- syntax pembatsan menu pagination -->
+          {{ $data_uji->links() }}
+      </div>
     </div>
-  
-        <div class="row mt-2">
-            <table class="table">
-             <thead>
-                <tr>
-                    <th scope="col">Nomor</th>
-                    <th scope="col">Kode</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Tanggal_masuk</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Foto1</th>
-                    <th scope="col">Foto2</th>
-                    <th scope="col">Tanggal Data Dibuat</th>
-                    <th scope="col">Action</th>
-                </tr>
-              </thead>
-
-              <!-- Menampilkan data table dari database -->
-              <tbody>
-                <tr>
-                    @foreach ($data_uji as $index_uji => $row)
-                    <tr>
-                      <!-- daftar nomor urut -->
-                      <td>{{$index_uji + $data_uji->firstItem() }}</td>
-
-                      <th scope="row">{{$row->Kode}}</th>
-                      <td>{{$row->Nama}}</td>
-                      <td>{{$row->Password}}</td>
-                      <td>{{$row->Tanggal_masuk}}</td>
-                      <td>{{$row->Status}}</td>
-
-                      <td>
-                        @if ($row->Foto1)
-                            <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;">
-                        @endif
-                     </td>
-                    
-                      <td>
-                        @if ($row->Foto2)
-                            <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
-                        @endif
-                      </td>
-
-                      <td>{{$row->created_at->format('D,d M Y')}}</td>                      
-    
-                      <td>
-                        <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
-                        <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm"><i class="fas fa-pen"></i>Lihat</a>
-                        <a href="#" class="btn btn-danger btn-sm delete" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
-                      </td>
-    
-                    </tr>
-                    @endforeach
-                  </tr>
-                
-              </tbody>
-            </table>
-            <!-- syntax pembatsan menu pagination -->
-            {{ $data_uji->links() }}
-        </div>
-    </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     
@@ -153,9 +172,8 @@
     <!-- memanggil script toastr cdn css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-  </body>
 
-<!-- memberi fungsi delete dengan sweet alert -->
+  <!-- memberi fungsi delete dengan sweet alert -->
   <script>
 
     $('.delete').click(function(){
@@ -196,4 +214,7 @@
     @endif
 
   </script>
-</html>
+
+</div>
+    
+@endsection

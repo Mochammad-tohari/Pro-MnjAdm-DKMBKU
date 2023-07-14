@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('uji', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('Kode')->unique('kode');
+            $table->text('Kode')->unique('Kode');
             $table->text('Nama');
             $table->text('Password');
             $table->date('Tanggal_masuk');
             $table->enum('Status', ['Aktif', 'Tidak_Aktif']);
-            $table->binary('Foto1')->nullable();
-            $table->binary('Foto2')->nullable();
+            $table->mediumText('Foto1')->nullable();
+            $table->mediumText('Foto2')->nullable();
             $table->timestamps();
         });
     }

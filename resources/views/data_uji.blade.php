@@ -78,6 +78,55 @@
             </div>
           </div>
 
+<<<<<<< Updated upstream
+=======
+          <tbody>
+            <tr>
+              @foreach ($data_uji as $index_uji => $row)
+              <tr>
+                    <!-- daftar nomor urut -->
+                    <td>{{$index_uji + $data_uji->firstItem() }}</td>
+
+                    <th scope="row">{{$row->Kode}}</th>
+                    <td>{{$row->Nama}}</td>
+                    <td>{{$row->Password}}</td>
+                    <td>{{$row->Tanggal_masuk}}</td>
+                    <td>{{$row->Status}}</td>
+
+                    <td>
+                      @if ($row->Foto1)
+                          <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;">
+                      @endif
+                  </td>
+                  
+                    <td>
+                      @if ($row->Foto2)
+                          <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
+                      @endif
+                    </td>
+
+                    <td>{{$row->created_at->format('D,d M Y')}}</td>                      
+
+                    
+                    <td>
+                      <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>              
+                      <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                      <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                    </td>
+
+              </tr>
+              @endforeach
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- /.card-body -->
+      <div class="card-footer col-auto">
+          <!-- syntax pembatsan menu pagination -->
+          {{ $data_uji->links() }}
+      </div>
+>>>>>>> Stashed changes
     </div>
   
         <div class="row mt-2">

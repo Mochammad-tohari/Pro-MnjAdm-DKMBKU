@@ -9,15 +9,9 @@
 
   </head>
 
-<<<<<<< Updated upstream
   <body>
   
     <h1 class="text-center">Tambah Data Uji</h1>
-=======
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
->>>>>>> Stashed changes
 
         <div class="row justify-content-center">
 
@@ -82,7 +76,6 @@
                             <input type="file" class="form-control" placeholder="" id="" name="Foto1">
                        </div>
 
-<<<<<<< Updated upstream
                        <div class="form-group mb-3">
                             <label for="Foto2" class="form-label">Foto Uji 2</label>
                             <input type="file" class="form-control" placeholder="" id="" name="Foto2">
@@ -98,56 +91,6 @@
              </div>
             </div>
            
-=======
-                   {{-- <div class="form-group mb-3">
-                        <label for="Foto1" class="form-label">Foto Uji 1 </label>
-                        <input type="file" class="form-control" placeholder="" id="" name="Foto1">
-                   </div> --}}
-
-                  <div class="form-group mb-3">
-                    <label for="Foto1" class="form-label">Foto Uji 1</label>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="Foto1" name="Foto1">
-                      <label class="custom-file-label" for="exampleInputFile">Pilih Foto 1</label>
-                    </div>
-                  </div>
-                  <script>
-                    $('#Foto1').on('change', function () {
-                      // Get the file name
-                      var fileName = $(this).val();
-                      // Remove "C:\fakepath\" from the file path
-                      fileName = fileName.replace("C:\\fakepath\\", "");
-                      // Replace the "Choose a file" label
-                      $(this).next('.custom-file-label').html(fileName);
-                    });
-                  </script>
-
-                  <div class="form-group mb-3">
-                    <label for="Foto1" class="form-label">Foto Uji 2</label>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="Foto2" name="Foto2">
-                      <label class="custom-file-label" for="exampleInputFile">Pilih Foto 2</label>
-                   </div>
-                  </div>
-                  <script>
-                    $('#Foto2').on('change', function () {
-                      // Get the file name
-                      var fileName = $(this).val();
-                      // Remove "C:\fakepath\" from the file path
-                      fileName = fileName.replace("C:\\fakepath\\", "");
-                      // Replace the "Choose a file" label
-                      $(this).next('.custom-file-label').html(fileName);
-                    });
-                  </script>
-   
-                 <!-- /.card-body -->
-   
-                 <div class="card-footer mb-3">
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                 </div>
-               </form>
-          </div>
->>>>>>> Stashed changes
         </div>
     </div>
 

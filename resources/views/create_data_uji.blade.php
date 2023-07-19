@@ -46,27 +46,27 @@
                <!-- form start -->
                <form>
                  <div class="card-body mb-3">
-   
+
                    <div class="form-group mb-3">
                        <label for="kode" class="form-label">Kode</label>
-                       <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal--> 
+                       <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal-->
                        <?php
                            $tgl = date ('ymdGis');
                        ?>
                           <input type="text" class="form-control" placeholder=""  value="MRD<?php echo $tgl ?>" id="" name="Kode" readonly>
                        <div name="" class="form-text">Otomatis Terisi</div>
                    </div>
-   
+
                    <div class="form-group mb-3">
                        <label for="Nama" class="form-label">Nama</label>
                        <input type="text" class="form-control" placeholder="" id="" name="Nama">
                    </div>
-                   
+
                    <div class="form-group mb-3">
                        <label for="Password" class="form-label">Password</label>
                        <input type="password" class="form-control" placeholder="" id="" name="Password">
                    </div>
-   
+
                    <div class="form-group mb-3">
                        <label for="Tanggal_masuk" class="form-label">Tanggal Masuk</label>
                        <input  class="form-control" type="date" id="" name="Tanggal_masuk" />
@@ -130,9 +130,9 @@
                       $(this).next('.custom-file-label').html(fileName);
                     });
                   </script>
-   
+
                  <!-- /.card-body -->
-   
+
                  <div class="card-footer mb-3">
                    <button type="submit" class="btn btn-primary">Submit</button>
                  </div>

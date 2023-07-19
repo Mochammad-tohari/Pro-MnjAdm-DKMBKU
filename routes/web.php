@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-//memanggil file uji_controller yg ada di folder controller
+//memanggil file uji_controller yg ada di folder Controllers
 use App\Http\Controllers\uji_controller;
 
+//memanggil file uji_model yg ada di folder Models
+use App\Models\uji_model;
 
 
 /*
@@ -19,7 +21,24 @@ use App\Http\Controllers\uji_controller;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+        // Count total records
+        $data_uji_jumlah = uji_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_uji_kondisi = [
+            'data_uji_jumlah' => $data_uji_jumlah,
+            // Count 'Aktif' status records
+            'aktif_count' => uji_model::where('Status', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'tidak_aktif_count' => uji_model::where('Status', 'Tidak_Aktif')->count(),
+            // Add more variables here if needed
+        ];
+
+        return view('welcome',
+        $data_uji_kondisi
+
+    );
 });
 
 //tabel uji
@@ -67,6 +86,6 @@ Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->nam
     */
 Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import');
 
-    /*  Melihat satu data uji 
+    /*  Melihat satu data uji
     */
 Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji');

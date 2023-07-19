@@ -26,19 +26,20 @@
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
+        <div class="col-auto">
+            <a href="/data_uji" class="nav-link"> <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fa fa-clipboard"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
+              <span class="info-box-text">Jumlah Data Uji</span>
               <span class="info-box-number">
-                10
-                <small>%</small>
+                    <p>Total Jumlah : {{ $data_uji_jumlah }}</p>
+                    <p>Aktif : {{ $aktif_count }}</p>
+                    <p>Tidak Aktif : {{ $tidak_aktif_count }}</p>
+                {{-- <small>Data</small> --}}
               </span>
             </div>
             <!-- /.info-box-content -->
-          </div>
+          </div> </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->

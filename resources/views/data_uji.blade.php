@@ -29,7 +29,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body col-auto">
-        
+
         <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
 
         <div class="row g-3 d-flex flex-row-reverse">
@@ -96,7 +96,7 @@
               </div>
             </div>
           </div>
-        
+
         <table class="table table-bordered mt-3">
           <thead>
             <tr>
@@ -131,14 +131,14 @@
                       <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;">
                   @endif
                </td>
-              
+
                 <td>
                   @if ($row->Foto2)
                       <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
                   @endif
                 </td>
 
-                <td>{{$row->created_at->format('D,d M Y')}}</td>                      
+                <td>{{$row->created_at->format('D,d M Y')}}</td>
 
                 <td>
                   <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
@@ -162,7 +162,7 @@
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    
+
     <!-- memanggil script sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- memanggil script jquery cdn minified -->
@@ -171,7 +171,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- memanggil script toastr cdn css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
 
   <!-- memberi fungsi delete dengan sweet alert -->
   <script>
@@ -200,7 +200,7 @@
           }
         });
     })
-   
+
   </script>
 
 <!-- syntax pemberitahuan bahwa data telah dimasukan -->
@@ -209,12 +209,24 @@
     @if (Session::has('success'))
 
         // Set a success toast, with a title
-        toastr.success('Data Sudah Disimpan!', 'Selamat');
+        toastr.success('Data Sudah Disimpan!', 'Berhasil');
+
+    @endif
+
+  </script>
+
+  <!-- syntax pemberitahuan bahwa data telah dimasukan -->
+  <script>
+
+    @if (Session::has('success_edit'))
+
+        // Set a success toast, with a title
+        toastr.success('Data Sudah Diubah!', 'Berhasil');
 
     @endif
 
   </script>
 
 </div>
-    
+
 @endsection

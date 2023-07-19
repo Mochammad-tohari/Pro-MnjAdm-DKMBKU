@@ -25,13 +25,13 @@ use App\Imports\uji_excel_import;
 class uji_controller extends Controller
 {
 
-// untuk index data uji berfungsi untuk menampilkan data    
-    public function index_uji(Request $request) 
+// untuk index data uji berfungsi untuk menampilkan data
+    public function index_uji(Request $request)
     {
-        /* 
-        $data_uji pernyataan variabel 
+        /*
+        $data_uji pernyataan variabel
         uji_model diambil dari folder model
-        latest()->paginate(5); membatasi 5 data baru yang tampil 
+        latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $data_uji = uji_model::orderBy('Nama', 'asc')
                                 -> paginate(5);
@@ -47,17 +47,17 @@ class uji_controller extends Controller
         } else {
             $data_uji = uji_model::orderBy('Nama', 'asc')->paginate(5);
         }
-    
+
         return view('data_uji', [
             'data_uji' => $data_uji,
             'searchQuery' => $searchQuery,
         ]);
-                                
- /* 
+
+ /*
  compact ('data_uji', diambil dari variabel $data_uji
 */
         return view('data_uji',compact ('data_uji'));
-        
+
     }
 
 // untuk create dan insert data uji berfungsi untuk memasukan data
@@ -95,8 +95,8 @@ class uji_controller extends Controller
                 $data_uji->save();
 
                 return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
-        
-    }    
+
+    }
 // untuk delete data uji berfungsi untuk menghapus data
     public function delete_data_uji($id)
     {
@@ -148,7 +148,7 @@ class uji_controller extends Controller
 
         $data_uji->save();
 
-        return redirect()->route('index_uji')->with('success', 'Data Berhasil Diperbarui');
+        return redirect()->route('index_uji')->with('success_edit', 'Data Berhasil Diperbarui');
 
 
     }
@@ -159,23 +159,23 @@ class uji_controller extends Controller
 
     $data_uji = uji_model::find($id);
     return view('lihat_data_uji', compact('data_uji'));
-    
+
     }
 
 // untuk export_pdf_uji data uji berfungsi untuk mengesport data ke file PDF
-    public function export_pdf_uji() 
+    public function export_pdf_uji()
     {
         $data_uji = uji_model::orderBy('Nama', 'asc')->get();
-        
+
         view()->share('data_uji', $data_uji);
         $pdf_uji = PDF::loadview('export_uji-pdf');
         return $pdf_uji->download('data_uji.pdf');
 
-        
+
     }
 
 // untuk export_excel_uji berfungsi untuk mengesport data ke file excel
-    public function export_excel_uji() 
+    public function export_excel_uji()
     {
 
         return Excel::download(new export_excel_uji, 'data_uji.xlsx', \Maatwebsite\Excel\Excel::XLSX);
@@ -183,7 +183,7 @@ class uji_controller extends Controller
     }
 
 // untuk uji_excel_import berfungsi untuk import file excel
-    public function uji_excel_import(Request $request) 
+    public function uji_excel_import(Request $request)
     {
 
         $data_uji = $request->file('file_uji');
@@ -197,6 +197,6 @@ class uji_controller extends Controller
 
     }
 
-    
+
 
 }

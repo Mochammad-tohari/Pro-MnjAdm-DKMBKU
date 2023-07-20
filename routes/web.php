@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+//memanggil file login_controller yg ada di folder Controllers
+use App\Http\Controllers\login_controller;
+
 //memanggil file uji_controller yg ada di folder Controllers
 use App\Http\Controllers\uji_controller;
 
@@ -36,21 +39,44 @@ Route::get('/', function () {
         ];
 
         return view('welcome',
+
         $data_uji_kondisi
 
     );
-});
+})->middleware('auth');
+
+
+    /*  Route Register
+    */
+Route::get('/register', [login_controller::class,'register'])->name('register');
+
+    /*  Route Register_user
+    */
+Route::post('/register_user', [login_controller::class,'register_user'])->name('register_user');
+
+    /*  Route login
+    */
+Route::get('/login', [login_controller::class,'login'])->name('login');
+
+    /*  Route login_user
+    */
+Route::post('/login_user', [login_controller::class,'login_user'])->name('login_user');
+
+    /*  Route logout
+    */
+Route::get('/logout', [login_controller::class,'logout'])->name('logout');
 
 //tabel uji
     /*  memanggil file 'uji_controller' yg ada di folder controller
         /data_uji ->file data_uji.blade.php & 'index_uji' -> fungsi 'index_uji' yg ada di file uji_controller
+        tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
     */
-    Route::get('/data_uji', [uji_controller::class,'index_uji'])->name('index_uji');
+Route::get('/data_uji', [uji_controller::class,'index_uji'])->name('index_uji')->middleware('auth');
 
     /*  memanggil file 'uji_controller' yg ada di folder controller
         /create_data_uji ->file create_data_uji.blade.php & 'create_data_uji' -> fungsi 'create_data_uji' yg ada di file uji_controller
     */
-Route::get('/create_data_uji', [uji_controller::class,'create_data_uji'])->name('create_data_uji');
+Route::get('/create_data_uji', [uji_controller::class,'create_data_uji'])->name('create_data_uji')->middleware('auth');
 
     /*  memanggil file 'uji_controller' yg ada di folder controller
         'insert_data_uji' -> fungsi 'insert_data_uji' yg ada di file uji_controller
@@ -60,7 +86,7 @@ Route::post('/insert_data_uji', [uji_controller::class,'insert_data_uji'])->name
     /*  memanggil file 'uji_controller' yg ada di folder controller
         /edit_data_uji ->file edit_data_uji.blade.php & 'edit_data_uji' -> fungsi 'edit_data_uji' yg ada di file uji_controller
     */
-Route::get('/edit_data_uji/{id}', [uji_controller::class,'edit_data_uji'])->name('edit_data_uji');
+Route::get('/edit_data_uji/{id}', [uji_controller::class,'edit_data_uji'])->name('edit_data_uji')->middleware('auth');
 
      /*  memanggil file 'uji_controller' yg ada di folder controller
         'update_data_uji' -> fungsi 'update_data_uji' yg ada di file uji_controller

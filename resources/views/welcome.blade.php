@@ -26,8 +26,37 @@
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
+
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <span class="info-box-text">
+                    <h4> Jumlah Data Uji </h4>
+                  </span>
+
+                  <span class="info-box-number">
+                    <h5>Status Data</h5>
+                    <p>Total Jumlah : {{ $data_uji_jumlah }}</p>
+                    <p>Aktif : {{ $aktif_count }}</p>
+                    <p>Tidak Aktif : {{ $tidak_aktif_count }}</p>
+                    {{-- <small>Data</small> --}}
+                 </span>
+
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="/data_uji" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+
         <div class="col-auto">
-            <a href="/data_uji" class="nav-link"> <div class="info-box">
+        <a href="/data_uji" class="nav-link">
+            <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fa fa-clipboard"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Jumlah Data Uji</span>
@@ -39,9 +68,12 @@
               </span>
             </div>
             <!-- /.info-box-content -->
-          </div> </a>
+          </div>
+        </a>
           <!-- /.info-box -->
         </div>
+
+
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
@@ -88,6 +120,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+
 
       <div class="row">
         <div class="col-md-12">

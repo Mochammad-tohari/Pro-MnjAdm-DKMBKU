@@ -36,7 +36,7 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-    
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -176,7 +176,7 @@
           <img src="{{ asset('Tema_LTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -197,7 +197,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
+
           {{-- <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -229,7 +229,7 @@
           </li> --}}
 
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/" class="nav-link active">
               <i class="nav-icon far fa-compass"></i>
               <p>
                 Dashboard
@@ -237,17 +237,55 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Daftar Tabel
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="pages/tables/data.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>DataTables</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pages/tables/jsgrid.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>jsGrid</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/data_uji" class="nav-link">
+                  <i class="nav-icon fa fa-columns"></i>
+                  <p>
+                    Data Uji
+                  </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
 
           <li class="nav-item">
-            <a href="/data_uji" class="nav-link">
-              <i class="nav-icon fa fa-columns"></i>
+            <a href="/logout" class="nav-link active">
+              <i class="nav-icon fas fa-times-circle"></i>
               <p>
-                Data Uji
+                Keluar
               </p>
             </a>
           </li>
 
-{{--           
+
+
+{{--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

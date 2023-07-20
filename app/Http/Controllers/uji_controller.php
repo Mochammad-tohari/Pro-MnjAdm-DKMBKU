@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
-use PDF;
 
 //import Model "uji_model" dari folder models
 use App\Models\uji_model;
@@ -11,7 +11,7 @@ use App\Models\uji_model;
 use Illuminate\View\View;
 
 //import method export PDF
-use Illuminate\Http\Request;
+use PDF;
 
 //import method export Excel
 use Maatwebsite\Excel\Facades\Excel;

@@ -81,7 +81,7 @@ Route::get('/create_data_uji', [uji_controller::class,'create_data_uji'])->name(
     /*  memanggil file 'uji_controller' yg ada di folder controller
         'insert_data_uji' -> fungsi 'insert_data_uji' yg ada di file uji_controller
     */
-Route::post('/insert_data_uji', [uji_controller::class,'insert_data_uji'])->name('insert_data_uji');
+Route::post('/insert_data_uji', [uji_controller::class,'insert_data_uji'])->name('insert_data_uji')->middleware('auth');
 
     /*  memanggil file 'uji_controller' yg ada di folder controller
         /edit_data_uji ->file edit_data_uji.blade.php & 'edit_data_uji' -> fungsi 'edit_data_uji' yg ada di file uji_controller
@@ -92,25 +92,26 @@ Route::get('/edit_data_uji/{id}', [uji_controller::class,'edit_data_uji'])->name
         'update_data_uji' -> fungsi 'update_data_uji' yg ada di file uji_controller
         {id} -> parameter yg menjadi acuan dalam hal edit
     */
-Route::post('/update_data_uji/{id}', [uji_controller::class,'update_data_uji'])->name('update_data_uji');
+Route::post('/update_data_uji/{id}', [uji_controller::class,'update_data_uji'])->name('update_data_uji')->middleware('auth');
+
 
     /*  memanggil file 'uji_controller' yg ada di folder controller
         'delete_data_uji' -> fungsi 'delete_data_uji' yg ada di file uji_controller
         {id} -> parameter yg menjadi acuan dalam hal edit
     */
-Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->name('delete_data_uji');
+Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->name('delete_data_uji')->middleware('auth');
 
     /*  Export Pdf
     */
-Route::get('/export_pdf_uji', [uji_controller::class,'export_pdf_uji'])->name('export_pdf_uji');
+Route::get('/export_pdf_uji', [uji_controller::class,'export_pdf_uji'])->name('export_pdf_uji')->middleware('auth');
 
     /*  Export Excel
     */
-Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->name('export_excel_uji');
+Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->name('export_excel_uji')->middleware('auth');
 
     /*  import Excel
     */
-Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import');
+Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import')->middleware('auth');
 
     /*  Melihat satu data uji
     */

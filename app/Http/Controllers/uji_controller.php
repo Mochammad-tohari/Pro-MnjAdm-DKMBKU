@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
+//import method export PDF
+use PDF;
 
 
 //import Model "uji_model" dari folder models
@@ -10,17 +12,20 @@ use App\Models\uji_model;
 //return type View
 use Illuminate\View\View;
 
-//import method export PDF
-use PDF;
+
+use Illuminate\Http\Request;
 
 //import method export Excel
-use Maatwebsite\Excel\Facades\Excel;
-
-//import method export Excel di folder Exports
 use App\Exports\export_excel_uji;
 
-//import method import Excel di folder Imports
+//import method export Excel di folder Exports
 use App\Imports\uji_excel_import;
+
+//import method import Excel di folder Imports
+use Maatwebsite\Excel\Facades\Excel;
+
+//import class Session
+use Illuminate\Support\Facades\Session;
 
 class uji_controller extends Controller
 {
@@ -44,8 +49,10 @@ class uji_controller extends Controller
                 $query->where('Nama', 'LIKE', '%' . $searchQuery . '%')
                       ->orWhere('Kode', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
+            Session::put('page_url', request()->fullUrl());
         } else {
             $data_uji = uji_model::orderBy('Nama', 'asc')->paginate(5);
+            Session::put('page_url', request()->fullUrl());
         }
 
         return view('data_uji', [
@@ -53,9 +60,9 @@ class uji_controller extends Controller
             'searchQuery' => $searchQuery,
         ]);
 
- /*
- compact ('data_uji', diambil dari variabel $data_uji
-*/
+        /*
+        view 'data_uji' diambil dari data_uji.blade.php, compact 'data_uji', diambil dari variabel $data_uji
+        */
         return view('data_uji',compact ('data_uji'));
 
     }
@@ -148,9 +155,24 @@ class uji_controller extends Controller
 
         $data_uji->save();
 
-        return redirect()->route('index_uji')->with('success_edit', 'Data Berhasil Diperbarui');
+        if(session('page_url')){
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('index_uji')->with('success_edit', 'Data Berhasil Diubah');
 
 
+    }
+
+    public function show($kode)
+    {
+        $data = uji_model::where('Kode', $kode)->first();
+
+        if ($data) {
+            return view('data.show', ['data' => $data]);
+        } else {
+            return redirect()->route('index_uji')->with('error', 'Data not found.');
+        }
     }
 
 // untuk lihat data uji berfungsi untuk melihat 1 data

@@ -34,11 +34,10 @@
               <div class="small-box bg-info">
                 <div class="inner">
                   <span class="info-box-text">
-                    <h4> Jumlah Data Uji </h4>
+                    <h4>Indeks Data Uji</h4>
                   </span>
 
-                  <span class="info-box-number">
-                    <h5>Status Data</h5>
+                  <span class="info-box-number mb-1">
                     <p>Total Jumlah : {{ $data_uji_jumlah }}</p>
                     <p>Aktif : {{ $aktif_count }}</p>
                     <p>Tidak Aktif : {{ $tidak_aktif_count }}</p>

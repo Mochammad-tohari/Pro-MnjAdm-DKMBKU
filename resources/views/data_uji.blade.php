@@ -32,6 +32,8 @@
 
         <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
 
+        {{-- {{ Session::get('page_url') }} --}}
+
         <div class="row g-3 d-flex flex-row-reverse">
           <div class="col-auto">
             <form action="/data_uji" method="GET">
@@ -215,7 +217,7 @@
 
   </script>
 
-  <!-- syntax pemberitahuan bahwa data telah dimasukan -->
+  <!-- syntax pemberitahuan bahwa data telah diubah -->
   <script>
 
     @if (Session::has('success_edit'))

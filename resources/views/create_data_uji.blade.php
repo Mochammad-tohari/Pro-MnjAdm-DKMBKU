@@ -133,9 +133,12 @@
 
                  <!-- /.card-body -->
 
-                 <div class="card-footer mb-3">
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                 </div>
+                 <div class="card-footer mb-6">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/data_uji" class="ml-2">
+                     <button type="button" class="btn btn-danger">Batal</button>
+                    </a>
+                  </div>
                </form>
           </div>
         </div>

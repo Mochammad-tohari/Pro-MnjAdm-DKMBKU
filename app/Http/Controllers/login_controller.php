@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+
+//import class "Str"
 use Illuminate\Support\Str;
 
 //import Model "User" dari folder models

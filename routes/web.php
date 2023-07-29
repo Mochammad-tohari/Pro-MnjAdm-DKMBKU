@@ -11,6 +11,12 @@ use App\Http\Controllers\uji_controller;
 //memanggil file uji_model yg ada di folder Models
 use App\Models\uji_model;
 
+//memanggil file gedung_controller yg ada di folder Controllers
+use App\Http\Controllers\gedung_controller;
+
+//memanggil file gedung_model yg ada di folder Models
+use App\Models\gedung_model;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +48,8 @@ Route::get('/', function () {
 
         $data_uji_kondisi
 
-    );
-})->middleware('auth');
+        );
+    })->middleware('auth');
 
 
     /*  Route Register
@@ -116,3 +122,13 @@ Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->na
     /*  Melihat satu data uji
     */
 Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji');
+
+
+//tabel gedung
+Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index')->middleware('auth');
+
+Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create')->middleware('auth');
+Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert')->middleware('auth');
+
+Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit')->middleware('auth');
+Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update')->middleware('auth');

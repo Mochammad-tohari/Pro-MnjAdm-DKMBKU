@@ -35,9 +35,9 @@
               <!-- small box 1 -->
               <div class="small-box bg-info info-box-1">
                 <div class="inner">
-                  <h4><strong>Indeks Data Uji</strong></h4>
+                  <h4><strong>Indeks Data Baru</strong></h4>
                   <span class="info-box-number-1 mb-3">
-                    <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
+                    <p>Jumlah Data: {{ $data_uji_jumlah }}</p>
                     <p>Aktif: {{ $aktif_count }}</p>
                     <p>Tidak Aktif: {{ $tidak_aktif_count }}</p>
                     {{-- <small>Data</small> --}}
@@ -55,7 +55,7 @@
               <!-- small box 2 -->
               <div class="small-box bg-info info-box-1">
                 <div class="inner">
-                  <h4><strong>Indeks Data Uji</strong></h4>
+                  <h4><strong>Indeks Data Baru</strong></h4>
                   <span class="info-box-number-1 mb-3">
                     <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
                     <p>Aktif: {{ $aktif_count }}</p>
@@ -75,7 +75,7 @@
               <!-- small box 3 -->
               <div class="small-box bg-info info-box-1">
                 <div class="inner">
-                  <h4><strong>Indeks Data Uji</strong></h4>
+                  <h4><strong>Indeks Data Baru</strong></h4>
                   <span class="info-box-number-1 mb-3">
                     <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
                     <p>Aktif: {{ $aktif_count }}</p>
@@ -95,7 +95,7 @@
               <!-- small box 3 -->
               <div class="small-box bg-info info-box-1">
                 <div class="inner">
-                  <h4><strong>Indeks Data Uji</strong></h4>
+                  <h4><strong>Indeks Data Baru</strong></h4>
                   <span class="info-box-number-1 mb-3">
                     <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
                     <p>Aktif: {{ $aktif_count }}</p>
@@ -117,7 +117,7 @@
                   <div class="inner">
                     <h4><strong>Indeks Data Uji</strong></h4>
                     <span class="info-box-uji mb-3">
-                      <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
+                      <p>Jumlah Data: {{ $data_uji_jumlah }}</p>
                       <p>Aktif: {{ $aktif_count }}</p>
                       <p>Tidak Aktif: {{ $tidak_aktif_count }}</p>
                       {{-- <small>Data</small> --}}

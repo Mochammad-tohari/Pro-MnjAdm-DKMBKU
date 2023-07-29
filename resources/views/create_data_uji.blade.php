@@ -53,7 +53,7 @@
                        <?php
                            $tgl = date ('ymdGis');
                        ?>
-                          <input type="text" class="form-control" placeholder=""  value="MRD<?php echo $tgl ?>" id="" name="Kode" readonly>
+                          <input type="text" class="form-control" placeholder=""  value="UJD<?php echo $tgl ?>" id="" name="Kode" readonly>
                        <div name="" class="form-text">Otomatis Terisi</div>
                    </div>
 

@@ -109,4 +109,17 @@ class gedung_controller extends Controller
 
 
     }
+
+    public function gedung_export_pdf()
+    {
+        $gedung_data = gedung_model::orderBy('Nama_Gedung', 'asc')->get();
+
+        view()->share('gedung_data', $gedung_data);
+        $gedung_pdf = PDF::loadview('gedung_export-pdf');
+        return $gedung_pdf->download('data_gedung.pdf');
+
+
+    }
+
+
 }

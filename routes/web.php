@@ -44,9 +44,25 @@ Route::get('/', function () {
             // Add more variables here if needed
         ];
 
+         // Count total records
+        $data_gedung_jumlah = gedung_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_gedung_kondisi = [
+            'data_gedung_jumlah' => $data_gedung_jumlah,
+            // Count 'Aktif' status records
+            'gedung_aktif_count' => gedung_model::where('Status_Gedung', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'gedung_tidak_aktif_count' => gedung_model::where('Status_Gedung', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'gedung_lainya_count' => gedung_model::where('Status_Gedung', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
         return view('welcome',
 
-        $data_uji_kondisi
+        $data_uji_kondisi,
+        $data_gedung_kondisi
 
         );
     })->middleware('auth');
@@ -125,10 +141,17 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->na
 
 
 //tabel gedung
-Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index')->middleware('auth');
 
-Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create')->middleware('auth');
-Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert')->middleware('auth');
+//tampil data
+    Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index')->middleware('auth');
 
-Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit')->middleware('auth');
-Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update')->middleware('auth');
+//insert data
+    Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create')->middleware('auth');
+    Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert')->middleware('auth');
+
+//edit data
+    Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit')->middleware('auth');
+    Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update')->middleware('auth');
+
+//export PDF
+    Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');

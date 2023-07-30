@@ -49,8 +49,8 @@
         @endif --}}
 
           <div class="col-auto">
-            <form action="/data_uji" method="GET">
-              <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
+            <form action="/gedung_data" method="GET">
+              <a href="/gedung_export_pdf" class="btn btn-primary">Export PDF</button> </a>
             </form>
           </div>
 

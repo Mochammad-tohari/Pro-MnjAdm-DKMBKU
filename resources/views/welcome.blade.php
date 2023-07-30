@@ -33,20 +33,21 @@
             <!-- Small boxes (Stat box) -->
             <div class="col-lg-3 col-6">
               <!-- small box 1 -->
-              <div class="small-box bg-info info-box-1">
+              <div class="small-box bg-info info-box-gedung">
                 <div class="inner">
-                  <h4><strong>Indeks Data Baru</strong></h4>
+                  <h4><strong>Indeks Data Gedung</strong></h4>
                   <span class="info-box-number-1 mb-3">
-                    <p>Jumlah Data: {{ $data_uji_jumlah }}</p>
-                    <p>Aktif: {{ $aktif_count }}</p>
-                    <p>Tidak Aktif: {{ $tidak_aktif_count }}</p>
+                    <p>Jumlah Data: {{ $data_gedung_jumlah }}</p>
+                    <p>Aktif: {{ $gedung_aktif_count }}</p>
+                    <p>Tidak Aktif: {{ $gedung_tidak_aktif_count }}</p>
+                    <p>Lainya: {{ $gedung_lainya_count }}</p>
                     {{-- <small>Data</small> --}}
                   </span>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
-                <a href="/data_uji" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/gedung_data" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
 
@@ -126,7 +127,7 @@
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="/data_uji" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="/data_uji" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
 

@@ -272,6 +272,15 @@
               </li>
 
               <li class="nav-item">
+                <a href="/ruangan_data" class="nav-link">
+                  <i class="nav-icon fa fa-columns"></i>
+                  <p>
+                    Data Ruangan
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a href="/data_uji" class="nav-link">
                   <i class="nav-icon fa fa-columns"></i>
                   <p>

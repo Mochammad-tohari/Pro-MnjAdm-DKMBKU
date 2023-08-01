@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('ruangan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Kode_Gedung')->index('Kode_Gedung');
-            $table->text('Nama_Gedung');
             $table->string('Kode_Ruangan')->unique('Kode_Ruangan');
+            $table->string('Gedung_Kode')->index('Gedung_id');
             $table->text('Nama_Ruangan');
             $table->text('Luas_Ruangan');
             $table->date('Tanggal_Operasional_Ruangan');

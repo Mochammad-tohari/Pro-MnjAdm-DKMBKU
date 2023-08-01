@@ -18,6 +18,13 @@ use App\Http\Controllers\gedung_controller;
 use App\Models\gedung_model;
 
 
+//memanggil file ruangan_controller yg ada di folder Controllers
+use App\Http\Controllers\ruangan_controller;
+
+//memanggil file ruangan_model yg ada di folder Models
+use App\Models\ruangan_model;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -155,3 +162,13 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->na
 
 //export PDF
     Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');
+
+
+//tabel ruangan
+
+//tampil data
+Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
+
+//insert data
+    Route::get('/ruangan_create', [ruangan_controller::class,'ruangan_create'])->name('ruangan_create')->middleware('auth');
+    Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert')->middleware('auth');

@@ -14,14 +14,14 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
-//import method export Excel
-use App\Exports\export_excel_uji;
+// //import method export Excel
+// use App\Exports\export_excel_uji;
 
-//import method export Excel di folder Exports
-use App\Imports\uji_excel_import;
+// //import method export Excel di folder Exports
+// use App\Imports\uji_excel_import;
 
-//import method import Excel di folder Imports
-use Maatwebsite\Excel\Facades\Excel;
+// //import method import Excel di folder Imports
+// use Maatwebsite\Excel\Facades\Excel;
 
 //import class Session
 use Illuminate\Support\Facades\Session;

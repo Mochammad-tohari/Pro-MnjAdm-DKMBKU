@@ -36,7 +36,7 @@
 
         <div class="row g-3 d-flex flex-row-reverse">
           <div class="col-auto">
-            <form action="/gedung_data" method="GET">
+            <form action="/ruangan_data" method="GET">
             <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..." class="form-control text-left">
             </form>
           </div>
@@ -141,7 +141,7 @@
                 <td>{{$row->created_at->format('D,d M Y')}}</td>
 
                 <td>
-                  <a href="/gedung_edit/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                  <a href="/ruangan_edit/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                   <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                   {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                 </td>

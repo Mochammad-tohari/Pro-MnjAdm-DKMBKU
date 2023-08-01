@@ -103,5 +103,37 @@ class ruangan_controller extends Controller
 
     }
 
+    public function ruangan_edit($id)
+    {
+
+        // $gedungOptions
+        // gedung_model::pluck('Nama_Gedung', 'Kode_Gedung'); = mengambil nama gedung berdasarkan kode gedung yang ada di table gedung
+
+        $ruangan_data = ruangan_model::findOrFail($id);
+
+        $gedungOptions = gedung_model::pluck('Nama_Gedung', 'Kode_Gedung');
+
+        return view('ruangan_edit', compact('ruangan_data', 'gedungOptions'));
+
+    }
+
+    public function ruangan_update(Request $request, $id)
+    {
+        $ruangan_data = ruangan_model::findOrFail($id);
+        $ruangan_data->Gedung_Kode = $request->input('Gedung_Kode');
+
+        $ruangan_data->update($request->all());
+        // Update other fields in the $ruangan model as per your form data
+        $ruangan_data->save();
+
+
+        // Redirect or return response as needed
+        if(session('page_url')){
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('ruangan_index')->with('success_edit', 'Data Berhasil Diubah');
+    }
+
 
 }

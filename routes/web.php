@@ -167,8 +167,12 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->na
 //tabel ruangan
 
 //tampil data
-Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
+    Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
 
 //insert data
     Route::get('/ruangan_create', [ruangan_controller::class,'ruangan_create'])->name('ruangan_create')->middleware('auth');
     Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert')->middleware('auth');
+
+//edit data
+    Route::get('/ruangan_edit/{id}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit')->middleware('auth');
+    Route::post('/ruangan_update/{id}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update')->middleware('auth');

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('uji', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('Kode')->unique('kode');
+            $table->string('Kode', 25)->unique('Kode');
             $table->text('Nama');
             $table->text('Password');
             $table->date('Tanggal_masuk');

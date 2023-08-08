@@ -66,11 +66,11 @@
           </div>
 
           {{-- modal passcode --}}
-          <div class="modal fade" id="passcodeModal" tabindex="-1" role="dialog" aria-labelledby="passcodeModalLabel" aria-hidden="true">
+          <div class="modal fade" id="passcodeModal" tabindex="-1" role="dialog" aria-labelledby="passcodeModalLabel" aria-hidden="true" name="passcodeModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="passcodeModalLabel">Enter Admin Passcode</h5>
+                        <h5 class="modal-title" id="passcodeModalLabel">Masukan Admin Passcode</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePasscodeModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -114,6 +114,7 @@
   <!-- /.card -->
 </div>
 <!-- /.register-box -->
+
 
 <!-- jQuery -->
 <script src="{{ asset ('Tema_LTE/plugins/jquery/jquery.min.js') }}"></script>

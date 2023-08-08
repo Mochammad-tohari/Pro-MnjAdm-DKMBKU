@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     aksesSelect.addEventListener('change', () => {
-        if (aksesSelect.value === 'admin') {
+        if (aksesSelect.value === 'Admin') {
             passcodeModal.show();
             disableSubmitButton(); // Hide and disable submit button when 'admin' is selected
         } else {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     checkPasscodeBtn.addEventListener('click', () => {
-        if (passcodeInput.value === '!00ManajemendkMbKU99?') { // Replace with the actual passcode
+        if (passcodeInput.value === '!00ManA__@jem3_ndkMbKU99?') { // Replace with the actual passcode
             enableSubmitButton();
             passcodeModal.hide();
         } else {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     passcodeInput.addEventListener('input', () => {
-        if (aksesSelect.value === 'admin' && passcodeInput.value === '!00ManajemendkMbKU99?') { // Replace with the actual passcode
+        if (aksesSelect.value === 'Admin' && passcodeInput.value === '!00ManA__@jem3_ndkMbKU99?') { // Replace with the actual passcode
             enableSubmitButton();
         } else {
             disableSubmitButton();

@@ -30,7 +30,10 @@
       <!-- /.card-header -->
       <div class="card-body col-auto">
 
+        {{-- @if(auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
+        @if(auth()->user()->akses === 'Admin')
         <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
+        @endif
 
         {{-- {{ Session::get('page_url') }} --}}
 
@@ -61,7 +64,7 @@
           </div>
 
           <!-- Button trigger modal -->
-
+          @if(auth()->user()->akses === 'Admin')
           <div class="col-auto">
             <form action="" method="">
               <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -69,6 +72,7 @@
               </button>
             </form>
           </div>
+          @endif
 
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,7 +113,11 @@
               <th scope="col">Tanggal_masuk</th>
               <th scope="col">Status</th>
               <th scope="col">Foto1</th>
+
+              @if(auth()->user()->akses === 'Admin')
               <th scope="col">Foto2</th>
+              @endif
+
               <th scope="col">Tanggal Data Dibuat</th>
               <th scope="col">Action</th>
           </tr>
@@ -134,18 +142,27 @@
                   @endif
                </td>
 
+               @if(auth()->user()->akses === 'Admin')
                 <td>
                   @if ($row->Foto2)
                       <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
                   @endif
                 </td>
+                @endif
 
                 <td>{{$row->created_at->format('D,d M Y')}}</td>
 
                 <td>
+                @if(auth()->user()->akses === 'Admin')
                   <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                @endif
+
                   <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+
+                @if(auth()->user()->akses === 'Admin')
                   <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                @endif
+
                 </td>
 
               </tr>

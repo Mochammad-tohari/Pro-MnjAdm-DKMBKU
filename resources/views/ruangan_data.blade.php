@@ -30,7 +30,9 @@
       <!-- /.card-header -->
       <div class="card-body col-auto">
 
+        @if(auth()->user()->akses === 'Admin')
         <a button type="button" class="btn btn-success" href="/ruangan_create">Tambah +</button> </a>
+        @endif
 
         {{-- {{ Session::get('page_url') }} --}}
 
@@ -141,7 +143,9 @@
                 <td>{{$row->created_at->format('D,d M Y')}}</td>
 
                 <td>
+                @if(auth()->user()->akses === 'Admin')
                   <a href="/ruangan_edit/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                @endif
                   <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                   {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                 </td>

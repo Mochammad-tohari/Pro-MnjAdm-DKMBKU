@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="#" class="h1">Manajemen DKMBKU</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
@@ -35,6 +35,8 @@
               </div>
             </div>
           </div>
+
+
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Password" name="password">
             <div class="input-group-append">
@@ -43,6 +45,15 @@
               </div>
             </div>
           </div>
+
+          <div class="input-group mb-3">
+            <select class="custom-select rounded-0" id="akses" name="akses">
+                <option disabled selected value="">Masuk Sebagai</option>
+                <option value="Admin">Admin</option>
+                <option value="Tamu">Tamu</option>
+            </select>
+        </div>
+
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
@@ -52,8 +63,9 @@
                 </label>
               </div>
             </div>
+
             <!-- /.col -->
-            <div class="col-4">
+            <div class="input-group mb-3">
               <button type="submit" class="btn btn-primary btn-block">Masuk</button>
             </div>
             <!-- /.col -->
@@ -78,5 +90,25 @@
 <script src="{{ asset('Tema_LTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('Tema_LTE/dist/js/adminlte.min.js') }}"></script>
+
+{{-- Client-side validation using JavaScript --}}
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+
+        const emailInput = document.querySelector('input[name="email"]');
+        const passwordInput = document.querySelector('input[name="password"]');
+        const selectedOption = document.getElementById('akses').value;
+
+        if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
+            event.preventDefault();
+            alert('Please enter both email and password.');
+        } else if (selectedOption === '') {
+            event.preventDefault();
+            alert('Please select a valid role.');
+        }
+
+    });
+</script>
+
 </body>
 </html>

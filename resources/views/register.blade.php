@@ -20,7 +20,9 @@
   <!-- /.register -logo -->
   <div class="card card-outline card-success">
     <div class="card-header text-center col-auto">
-      <a href="../../index2.html" class="h1"><b>Manajemen</b>DKMBKU</a>
+      <a href="#" class="h1">Manajemen
+        <p>DKMBKU</p>
+      </a>
     </div>
     <div class="card-body col-auto">
       <p class="login-box-msg">Register in to start your session</p>
@@ -58,8 +60,8 @@
           <div class="input-group mb-3">
             <select class="custom-select rounded-0" id="akses" name="akses">
                 <option selected disabled>Daftar Sebagai</option>
-                <option value="admin">Admin</option>
-                <option value="tamu">Tamu</option>
+                <option value="Admin">Admin</option>
+                <option value="Tamu">Tamu</option>
             </select>
           </div>
 

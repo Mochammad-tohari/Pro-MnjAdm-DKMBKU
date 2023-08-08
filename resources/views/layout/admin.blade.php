@@ -177,6 +177,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block">{{ Auth::user()->akses }}</a>
         </div>
       </div>
 

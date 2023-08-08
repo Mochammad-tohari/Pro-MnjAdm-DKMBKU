@@ -95,84 +95,121 @@ Route::post('/login_user', [login_controller::class,'login_user'])->name('login_
     */
 Route::get('/logout', [login_controller::class,'logout'])->name('logout');
 
-//tabel uji
-    /*  memanggil file 'uji_controller' yg ada di folder controller
-        /data_uji ->file data_uji.blade.php & 'index_uji' -> fungsi 'index_uji' yg ada di file uji_controller
-        tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
-    */
-Route::get('/data_uji', [uji_controller::class,'index_uji'])->name('index_uji')->middleware('auth');
+/*
+fungsi table yang berada di luar row bisa di akses oleh "Admin" dan "Tamu"
+Pembatasan hak akses dibatasi di file blade.php masing2 table
+*/
+    //table uji
 
-    /*  memanggil file 'uji_controller' yg ada di folder controller
-        /create_data_uji ->file create_data_uji.blade.php & 'create_data_uji' -> fungsi 'create_data_uji' yg ada di file uji_controller
-    */
-Route::get('/create_data_uji', [uji_controller::class,'create_data_uji'])->name('create_data_uji')->middleware('auth');
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                /data_uji ->file data_uji.blade.php & 'index_uji' -> fungsi 'index_uji' yg ada di file uji_controller
+                tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
+            */
+            Route::get('/data_uji', [uji_controller::class,'index_uji'])->name('index_uji')->middleware('auth');
 
-    /*  memanggil file 'uji_controller' yg ada di folder controller
-        'insert_data_uji' -> fungsi 'insert_data_uji' yg ada di file uji_controller
-    */
-Route::post('/insert_data_uji', [uji_controller::class,'insert_data_uji'])->name('insert_data_uji')->middleware('auth');
+            /*  Pdf Export
+            */
+            Route::get('/export_pdf_uji', [uji_controller::class,'export_pdf_uji'])->name('export_pdf_uji')->middleware('auth');
 
-    /*  memanggil file 'uji_controller' yg ada di folder controller
-        /edit_data_uji ->file edit_data_uji.blade.php & 'edit_data_uji' -> fungsi 'edit_data_uji' yg ada di file uji_controller
-    */
-Route::get('/edit_data_uji/{id}', [uji_controller::class,'edit_data_uji'])->name('edit_data_uji')->middleware('auth');
+            /*  Excel Export
+            */
+                Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->name('export_excel_uji')->middleware('auth');
 
-     /*  memanggil file 'uji_controller' yg ada di folder controller
-        'update_data_uji' -> fungsi 'update_data_uji' yg ada di file uji_controller
-        {id} -> parameter yg menjadi acuan dalam hal edit
-    */
-Route::post('/update_data_uji/{id}', [uji_controller::class,'update_data_uji'])->name('update_data_uji')->middleware('auth');
+            /*  Lihat 1 data
+            */
+            Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji')->middleware('auth');
 
 
-    /*  memanggil file 'uji_controller' yg ada di folder controller
-        'delete_data_uji' -> fungsi 'delete_data_uji' yg ada di file uji_controller
-        {id} -> parameter yg menjadi acuan dalam hal edit
-    */
-Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->name('delete_data_uji')->middleware('auth');
+    //tabel gedung
 
-    /*  Export Pdf
-    */
-Route::get('/export_pdf_uji', [uji_controller::class,'export_pdf_uji'])->name('export_pdf_uji')->middleware('auth');
+            //tampil data
+            Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index');
 
-    /*  Export Excel
-    */
-Route::get('/export_excel_uji', [uji_controller::class,'export_excel_uji'])->name('export_excel_uji')->middleware('auth');
-
-    /*  import Excel
-    */
-Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import')->middleware('auth');
-
-    /*  Melihat satu data uji
-    */
-Route::get('/lihat_data_uji/{id}', [uji_controller::class,'lihat_data_uji'])->name('lihat_data_uji');
+            //export PDF
+            Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf');
 
 
-//tabel gedung
-
-//tampil data
-    Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index')->middleware('auth');
-
-//insert data
-    Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create')->middleware('auth');
-    Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert')->middleware('auth');
-
-//edit data
-    Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit')->middleware('auth');
-    Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update')->middleware('auth');
-
-//export PDF
-    Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');
+    //tabel ruangan
+            //tampil data
+            Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index');
 
 
-//tabel ruangan
 
-//tampil data
-    Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
+//Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
+    Route::middleware(['role:Admin'])->group(function () {
 
-//insert data
-    Route::get('/ruangan_create', [ruangan_controller::class,'ruangan_create'])->name('ruangan_create')->middleware('auth');
-    Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert')->middleware('auth');
+        //tabel uji
 
-//edit data
-    Route::get('/ruangan_edit/{id}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit')->middleware('auth');
-    Route::post('/ruangan_update/{id}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update')->middleware('auth');
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                /create_data_uji ->file create_data_uji.blade.php & 'create_data_uji' -> fungsi 'create_data_uji' yg ada di file uji_controller
+            */
+                //Route::get('/create_data_uji', [AdminController::class, 'create_data_uji'])->name('create_data_uji');
+                Route::get('/create_data_uji', [uji_controller::class, 'create_data_uji'])->name('create_data_uji');
+
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                'insert_data_uji' -> fungsi 'insert_data_uji' yg ada di file uji_controller
+            */
+                Route::post('/insert_data_uji', [uji_controller::class,'insert_data_uji'])->name('insert_data_uji');
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                /edit_data_uji ->file edit_data_uji.blade.php & 'edit_data_uji' -> fungsi 'edit_data_uji' yg ada di file uji_controller
+            */
+                Route::get('/edit_data_uji/{id}', [uji_controller::class,'edit_data_uji'])->name('edit_data_uji');
+
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                'update_data_uji' -> fungsi 'update_data_uji' yg ada di file uji_controller
+                {id} -> parameter yg menjadi acuan dalam hal edit
+            */
+                Route::post('/update_data_uji/{id}', [uji_controller::class,'update_data_uji'])->name('update_data_uji');
+
+            /*  memanggil file 'uji_controller' yg ada di folder controller
+                'delete_data_uji' -> fungsi 'delete_data_uji' yg ada di file uji_controller
+                {id} -> parameter yg menjadi acuan dalam hal edit
+            */
+                Route::get('/delete_data_uji/{id}', [uji_controller::class,'delete_data_uji'])->name('delete_data_uji');
+
+            /*  Excel import
+            */
+                Route::post('/uji_excel_import', [uji_controller::class,'uji_excel_import'])->name('uji_excel_import');
+
+
+
+        //tabel gedung
+
+            //insert data
+                Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create');
+                Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert');
+
+            //edit data
+                Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit');
+                Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update');
+
+
+        //tabel ruangan
+
+            //insert data
+                Route::get('/ruangan_create', [ruangan_controller::class,'ruangan_create'])->name('ruangan_create');
+                Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert');
+
+            //edit data
+                Route::get('/ruangan_edit/{id}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit');
+                Route::post('/ruangan_update/{id}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update');
+
+    });
+
+
+//Route::middleware(['role:Tamu'])->group(function () {} hak akses untuk tamu
+    Route::middleware(['role:Tamu'])->group(function () {
+
+        //table uji
+                //Route::get('/create_data_uji', [TamuController::class, 'create_data_uji'])->name('create_data_uji');
+
+                //Route::get('/data_uji', [uji_controller::class,'index_uji'])->name('index_uji');
+
+
+    });
+
+
+
+
+
+

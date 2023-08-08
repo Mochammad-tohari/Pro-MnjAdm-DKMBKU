@@ -55,6 +55,35 @@
             </div>
           </div>
 
+          <div class="input-group mb-3">
+            <select class="custom-select rounded-0" id="akses" name="akses">
+                <option selected disabled>Daftar Sebagai</option>
+                <option value="admin">Admin</option>
+                <option value="tamu">Tamu</option>
+            </select>
+          </div>
+
+          {{-- modal passcode --}}
+          <div class="modal fade" id="passcodeModal" tabindex="-1" role="dialog" aria-labelledby="passcodeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="passcodeModalLabel">Enter Admin Passcode</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closePasscodeModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="password" class="form-control" placeholder="Passcode" id="passcodeInput">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModalButton">Close</button>
+                        <button type="button" class="btn btn-primary" id="checkPasscodeBtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
@@ -66,8 +95,8 @@
             </div>
 
             <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-success btn-block">Daftar</button>
+            <div class="input-group mb-3">
+                <button type="submit" class="btn btn-success btn-block" id="submitBtn" disabled>Daftar</button>
             </div>
 
             <!-- /.col -->
@@ -90,5 +119,11 @@
 <script src="{{ asset ('Tema_LTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset ('Tema_LTE/dist/js/adminlte.min.js') }}"></script>
+<!-- syntax passcode-->
+<script src="{{ asset('DKM/passcode-validation.js') }}"></script>
+
+
+
+
 </body>
 </html>

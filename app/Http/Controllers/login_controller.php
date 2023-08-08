@@ -28,7 +28,7 @@ class login_controller extends Controller
 
     public function login_user(Request $request){
 
-        if(Auth::attempt($request->only('email','password'))){
+        if(Auth::attempt($request->only('email','password','akses'))){
             return redirect('/');
         }
 
@@ -51,6 +51,7 @@ class login_controller extends Controller
 
             'name' => $request->name,
             'email' => $request->email,
+            'akses' => $request->akses,
 
             // tag bcrypt untuk merubah text menjadi crypt data di field password
             'password' => bcrypt($request->password),

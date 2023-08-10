@@ -28,8 +28,18 @@ class login_controller extends Controller
 
     public function login_user(Request $request){
 
-        if(Auth::attempt($request->only('email','password','akses'))){
-            return redirect('/');
+        // if(Auth::attempt($request->only('email','password','akses'))){
+        //     return redirect('/');
+        // }
+
+        $credentials = $request->only('email', 'password','akses');
+
+        if (Auth::attempt($credentials)) {
+            // Successful login
+            return redirect()->intended('/')->with('success_login', 'Login Berhasil');
+        } else {
+            // Failed login
+            return back()->with('error_login', 'Data yang dimasukan salah, Silahkan coba lagi.');
         }
 
         return redirect('/login');
@@ -60,7 +70,7 @@ class login_controller extends Controller
 
         ]);
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Akun Sudah Dibuat');
 
     }
 

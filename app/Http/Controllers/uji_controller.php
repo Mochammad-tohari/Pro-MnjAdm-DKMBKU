@@ -77,26 +77,46 @@ class uji_controller extends Controller
     {
         //dd($request->all());
 
+        //memasukan gambar dengan storage link
                 //syntax dari if dan dilamnya berguna untuk memeriksa dan mengambil file foto untuk disimpan
-                $filename1 = null;
-                $filename2 = null;
+                // $filename1 = null;
+                // $filename2 = null;
+
+                // if ($request->hasFile('Foto1')) {
+                //     $foto1 = $request->file('Foto1');
+                //     $filename1 = date('Y-m-d') . '_' . $foto1->getClientOriginalName();
+                //     $foto1->storeAs('public/folder_foto1', $filename1);
+                // }
+
+                // if ($request->hasFile('Foto2')) {
+                //     $foto2 = $request->file('Foto2');
+                //     $filename2 = date('Y-m-d') . '_' . $foto2->getClientOriginalName();
+                //     $foto2->storeAs('public/folder_foto2', $filename2);
+                // }
+
+                // $data_uji = uji_model::create($request->all());
+
+                // $data_uji->foto1 = $filename1;
+                // $data_uji->foto2 = $filename2;
+                // $data_uji->save();
+
+                // return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
+
+        //memasukan gambar tanpa storage link
+                $data_uji = uji_model::create($request->all());
 
                 if ($request->hasFile('Foto1')) {
-                    $foto1 = $request->file('Foto1');
-                    $filename1 = date('Y-m-d') . '_' . $foto1->getClientOriginalName();
-                    $foto1->storeAs('public/folder_foto1', $filename1);
+                    $filename1 = date('Y-m-d') . '_' . $request->file('Foto1')->getClientOriginalName();
+                    $request->file('Foto1')->move(public_path('uji_foto/Foto1'), $filename1);
+                    $data_uji->foto1 = $filename1;
                 }
 
                 if ($request->hasFile('Foto2')) {
-                    $foto2 = $request->file('Foto2');
-                    $filename2 = date('Y-m-d') . '_' . $foto2->getClientOriginalName();
-                    $foto2->storeAs('public/folder_foto2', $filename2);
+                    $filename2 = date('Y-m-d') . '_' . $request->file('Foto2')->getClientOriginalName();
+                    $request->file('Foto2')->move(public_path('uji_foto/Foto2'), $filename2);
+                    $data_uji->Foto2 = $filename2;
                 }
 
-                $data_uji = uji_model::create($request->all());
-
-                $data_uji->foto1 = $filename1;
-                $data_uji->foto2 = $filename2;
                 $data_uji->save();
 
                 return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
@@ -123,31 +143,52 @@ class uji_controller extends Controller
 
     public function update_data_uji(Request $request, $id)
     {
+    //edit gambar dengan storage link
+        // $filename1 = null;
+        // $filename2 = null;
 
-        $filename1 = null;
-        $filename2 = null;
+        // if ($request->hasFile('Foto1')) {
+        //     $foto1 = $request->file('Foto1');
+        //     $filename1 = date('Y-m-d') . '_' . $foto1->getClientOriginalName();
+        //     $foto1->storeAs('public/folder_foto1', $filename1);
+        // }
+
+        // if ($request->hasFile('Foto2')) {
+        //     $foto2 = $request->file('Foto2');
+        //     $filename2 = date('Y-m-d') . '_' . $foto2->getClientOriginalName();
+        //     $foto2->storeAs('public/folder_foto2', $filename2);
+        // }
+
+        // $data_uji = uji_model::findOrFail($id); // Assuming you have the ID of the row you want to update
+
+        // $data_uji->update($request->all());
+
+        // if ($filename1) {
+        //     $data_uji->foto1 = $filename1;
+        // }
+
+        // if ($filename2) {
+        //     $data_uji->foto2 = $filename2;
+        // }
+
+        // $data_uji->save();
+
+    //edit gambar tanpa storage link
+        // Retrieve the existing data to be updated
+        $data_uji = uji_model::findOrFail($id);
+
+        // Update the data with new values from the request
+        $data_uji->fill($request->all());
 
         if ($request->hasFile('Foto1')) {
-            $foto1 = $request->file('Foto1');
-            $filename1 = date('Y-m-d') . '_' . $foto1->getClientOriginalName();
-            $foto1->storeAs('public/folder_foto1', $filename1);
-        }
-
-        if ($request->hasFile('Foto2')) {
-            $foto2 = $request->file('Foto2');
-            $filename2 = date('Y-m-d') . '_' . $foto2->getClientOriginalName();
-            $foto2->storeAs('public/folder_foto2', $filename2);
-        }
-
-        $data_uji = uji_model::findOrFail($id); // Assuming you have the ID of the row you want to update
-
-        $data_uji->update($request->all());
-
-        if ($filename1) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto1')->getClientOriginalName();
+            $request->file('Foto1')->move(public_path('uji_foto/Foto1'), $filename1);
             $data_uji->foto1 = $filename1;
         }
 
-        if ($filename2) {
+        if ($request->hasFile('Foto2')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Foto2')->getClientOriginalName();
+            $request->file('Foto2')->move(public_path('uji_foto/Foto2'), $filename2);
             $data_uji->foto2 = $filename2;
         }
 

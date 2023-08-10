@@ -138,14 +138,16 @@
 
                 <td>
                   @if ($row->Foto1)
-                      <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;">
+                      <img src="{{ asset('uji_foto/Foto1/' . $row->Foto1) }}" alt="Foto1" style="width: 40px;">
+                      {{-- <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;"> --}}
                   @endif
-               </td>
+                </td>
 
                @if(auth()->user()->akses === 'Admin')
                 <td>
                   @if ($row->Foto2)
-                      <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;">
+                      <img src="{{ asset('uji_foto/Foto2/' . $row->Foto2) }}" alt="Foto2" style="width: 40px;">
+                      {{-- <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;"> --}}
                   @endif
                 </td>
                 @endif

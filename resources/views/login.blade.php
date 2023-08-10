@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="{{ asset('Tema_LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('Tema_LTE/dist/css/adminlte.min.css') }}">
+
+  <!-- Include SweetAlert and jQuery scripts -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -90,6 +94,11 @@
 <script src="{{ asset('Tema_LTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('Tema_LTE/dist/js/adminlte.min.js') }}"></script>
+<!-- memanggil script toastr cdn js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- memanggil script toastr cdn css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 {{-- Client-side validation using JavaScript --}}
 <script>
@@ -109,6 +118,35 @@
 
     });
 </script>
+
+<!-- syntax pemberitahuan bahwa data telah dimasukan -->
+<script>
+
+    @if (Session::has('success'))
+
+        // Set a success toast, with a title
+        toastr.success('Akun Sudah Dibuat', 'Berhasil');
+
+    @endif
+
+</script>
+
+<!-- resources/views/auth/login.blade.php -->
+@if(session('success_login'))
+<script>
+    $(document).ready(function () {
+        swal("Success", "{{ session('success_login') }}", "success");
+    });
+</script>
+@endif
+
+@if(session('error_login'))
+<script>
+    $(document).ready(function () {
+        swal("Error", "{{ session('error_login') }}", "error");
+    });
+</script>
+@endif
 
 </body>
 </html>

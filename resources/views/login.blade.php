@@ -13,12 +13,14 @@
   <link rel="stylesheet" href="{{ asset('Tema_LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('Tema_LTE/dist/css/adminlte.min.css') }}">
+  <!-- Dark Mode styles -->
+  <link rel="stylesheet" href="{{ asset ('public/Design/register&login.css') }}">
 
   <!-- Include SweetAlert and jQuery scripts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page dark-mode">
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -26,7 +28,7 @@
       <a href="#" class="h1">Manajemen DKMBKU</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Login</p>
 
       <form action="/login_user" method="POST">
         @csrf
@@ -70,7 +72,11 @@
 
             <!-- /.col -->
             <div class="input-group mb-3">
-              <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+              <button type="submit" class="btn btn-success btn-block">Masuk</button>
+            </div>
+
+            <div class="input-group mb-3">
+                <a href="/register" class="btn btn-primary btn-block">Daftar</a>
             </div>
             <!-- /.col -->
           </div>
@@ -78,9 +84,6 @@
 
     <!-- Submit Login -->
 
-      <p class="mb-1">
-        <a href="/register" class="text-center">Daftar Baru</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>
@@ -110,10 +113,10 @@
 
         if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
             event.preventDefault();
-            alert('Please enter both email and password.');
+            alert('Masukan Data Dengan Benar.');
         } else if (selectedOption === '') {
             event.preventDefault();
-            alert('Please select a valid role.');
+            alert('Mohon Pilih Akses Yang Sesuai.');
         }
 
     });

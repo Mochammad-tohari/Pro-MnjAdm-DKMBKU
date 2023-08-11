@@ -13,9 +13,11 @@
   <link rel="stylesheet" href="{{ asset ('Tema_LTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset ('Tema_LTE/dist/css/adminlte.min.css') }}">
+  <!-- Dark Mode styles -->
+  <link rel="stylesheet" href="{{ asset ('public/Design/register&login.css') }}">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page dark-mode">
 <div class="login-box">
   <!-- /.register -logo -->
   <div class="card card-outline card-success">
@@ -25,7 +27,7 @@
       </a>
     </div>
     <div class="card-body col-auto">
-      <p class="login-box-msg">Register in to start your session</p>
+      <p class="login-box-msg">Daftar Akun</p>
 
       <form action="/register_user" method="post">
         @csrf
@@ -101,19 +103,26 @@
                 <button type="submit" class="btn btn-success btn-block" id="submitBtn" disabled>Daftar</button>
             </div>
 
+            <div class="input-group mb-3">
+                <a href="/login" class="btn btn-primary btn-block">Masuk</a>
+            </div>
+
             <!-- /.col -->
           </div>
         </form>
 
-        <p class="mb-1">
-            <a href="/login" class="text-center">Masuk</a>
-        </p>
     </div>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->
 </div>
 <!-- /.register-box -->
+
+<!-- Example Dark Mode Toggle Button -->
+{{-- <button type="button" class="btn btn-outline-light" id="darkModeToggle">Tema</button> --}}
+
+
+<!-- ... Rest of the code ... -->
 
 
 <!-- jQuery -->
@@ -125,7 +134,11 @@
 <!-- syntax passcode-->
 <script src="{{ asset('DKM/passcode-validation.js') }}"></script>
 
-
+<script>
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+</script>
 
 
 </body>

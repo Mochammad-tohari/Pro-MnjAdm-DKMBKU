@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{ asset('Tema_LTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }} ">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('Tema_LTE/dist/css/adminlte.min.css') }} ">
+  {{-- nav colour --}}
+  <link rel="stylesheet" href="{{ asset ('public/Design/admin_layout.css') }}">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -240,65 +242,51 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Daftar Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                    Daftar Data
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
 
             <ul class="nav nav-treeview">
 
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                    <a href="/gedung_data" class="nav-link{{ Request::is('gedung_data') ? ' active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Data Gedung
+                        </p>
+                    </a>
+                </li>
 
-              <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                    <a href="/ruangan_data" class="nav-link{{ Request::is('ruangan_data') ? ' active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Data Ruangan
+                        </p>
+                    </a>
+                </li>
 
-              <li class="nav-item">
-                <a href="/gedung_data" class="nav-link">
-                  <i class="nav-icon fa fa-columns"></i>
-                  <p>
-                    Data Gedung
-                  </p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/ruangan_data" class="nav-link">
-                  <i class="nav-icon fa fa-columns"></i>
-                  <p>
-                    Data Ruangan
-                  </p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/data_uji" class="nav-link">
-                  <i class="nav-icon fa fa-columns"></i>
-                  <p>
-                    Data Uji
-                  </p>
-                </a>
-              </li>
+                <li class="nav-item">
+                    <a href="/data_uji" class="nav-link{{ Request::is('data_uji') ? ' active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Data Uji
+                        </p>
+                    </a>
+                </li>
 
             </ul>
-          </li>
+        </li>
 
-          <li class="nav-item">
+          <li class="nav-item keluar">
             <a href="/logout" class="nav-link active">
-              <i class="nav-icon fas fa-times-circle"></i>
-              <p>
-                Keluar
-              </p>
+                <i class="nav-icon fas fa-times-circle"></i>
+                <p>
+                    Keluar
+                </p>
             </a>
           </li>
 

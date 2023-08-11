@@ -1,0 +1,40 @@
+/* dark-mode.css */
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #212529;
+  }
+  .login-box.dark-mode {
+    background-color: #343a40;
+  }
+  .card-header.dark-mode {
+    background-color: #343a40;
+  }
+  .card-body.dark-mode {
+    background-color: #343a40;
+  }
+  .input-group-text.dark-mode {
+    background-color: #343a40;
+  }
+  .btn.dark-mode {
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+  .btn-primary.dark-mode {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  body.dark-mode,
+  p.dark-mode,
+  label.dark-mode {
+    color: #dcdcdc;
+  }
+  a.dark-mode {
+    color: #007bff;
+  }
+  .input-group.dark-mode {
+    border-color: #6c757d;
+  }
+  .custom-select.dark-mode {
+    border-color: #6c757d;
+  }

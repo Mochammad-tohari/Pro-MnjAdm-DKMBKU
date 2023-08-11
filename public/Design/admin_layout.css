@@ -1,0 +1,5 @@
+/* Add this rule to your CSS */
+.nav-item.keluar a.nav-link:hover i,
+.nav-item.keluar a.nav-link:focus i {
+  color: red;
+}

@@ -84,7 +84,7 @@
                    <div class="form-group mb-3">
                     <label for="exampleSelectRounded0">Status</label>
                     <select class="custom-select rounded-0" id="exampleSelectRounded0" name="Status">
-                      <option selected>--Pilih--</option>
+                      <option selected disabled value>--Pilih--</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak_Aktif">Tidak_Aktif</option>
                     </select>

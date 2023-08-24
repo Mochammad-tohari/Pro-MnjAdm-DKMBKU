@@ -84,7 +84,7 @@
                    <div class="form-group mb-3">
                     <label for="exampleSelectRounded0">Status</label>
                     <select class="custom-select rounded-0" id="exampleSelectRounded0" name="Status">
-                      <option selected>{{$data_uji->Status }}</option>
+                      <option selected disabled value>{{$data_uji->Status }}</option>
                       <option value="1">Aktif</option>
                       <option value="2">Tidak_Aktif</option>
                     </select>

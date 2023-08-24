@@ -37,10 +37,10 @@
                 <div class="inner">
                   <h4><strong>Indeks Data Gedung</strong></h4>
                   <span class="info-box-number-1 mb-3">
-                    <p>Jumlah Data: {{ $data_gedung_jumlah }}</p>
-                    <p>Aktif: {{ $gedung_aktif_count }}</p>
-                    <p>Tidak Aktif: {{ $gedung_tidak_aktif_count }}</p>
-                    <p>Lainya: {{ $gedung_lainya_count }}</p>
+                    <p class="info-box-text-gedung">Jumlah Data: {{ $data_gedung_jumlah }}</p>
+                    <p class="info-box-text-gedung">Aktif: {{ $gedung_aktif_count }}</p>
+                    <p class="info-box-text-gedung">Tidak Aktif: {{ $gedung_tidak_aktif_count }}</p>
+                    <p class="info-box-text-gedung">Lainya: {{ $gedung_lainya_count }}</p>
                     {{-- <small>Data</small> --}}
                   </span>
                 </div>
@@ -118,9 +118,9 @@
                   <div class="inner">
                     <h4><strong>Indeks Data Uji</strong></h4>
                     <span class="info-box-uji mb-3">
-                      <p>Jumlah Data: {{ $data_uji_jumlah }}</p>
-                      <p>Aktif: {{ $aktif_count }}</p>
-                      <p>Tidak Aktif: {{ $tidak_aktif_count }}</p>
+                      <p class="info-box-text-uji">Jumlah Data: {{ $data_uji_jumlah }}</p>
+                      <p class="info-box-text-uji">Aktif: {{ $aktif_count }}</p>
+                      <p class="info-box-text-uji">Tidak Aktif: {{ $tidak_aktif_count }}</p>
                       {{-- <small>Data</small> --}}
                     </span>
                   </div>

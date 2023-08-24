@@ -6,6 +6,10 @@
     /* Add additional styles for the first info box if needed */
 }
 
+.info-box-uji .info-box-text-uji {
+    font-size: 14px; /* You can adjust the value as needed */
+}
+
 /* Add custom styles to create gap after the heading */
 .info-box-uji p:first-child {
     margin-top: 30px;
@@ -18,10 +22,16 @@
   }
 
 
+/* ////// */
+
 .small-box.bg-info.info-box-gedung {
     background-image: url('../box_info_image/masjid_bg.jpg');
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
     /* Add additional styles for the second info box if needed */
+}
+
+.info-box-gedung .info-box-text-gedung {
+    font-size: 14px; /* You can adjust the value as needed */
 }
 
   /* Add custom styles to create gap after the heading */

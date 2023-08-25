@@ -180,8 +180,8 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
                 Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert');
 
             //edit data
-                Route::get('/gedung_edit/{id}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit');
-                Route::post('/gedung_update/{id}', [gedung_controller::class,'gedung_update'])->name('gedung_update');
+                Route::get('/gedung_edit/{id_gedung}', [gedung_controller::class,'gedung_edit'])->name('gedung_edit');
+                Route::post('/gedung_update/{id_gedung}', [gedung_controller::class,'gedung_update'])->name('gedung_update');
 
 
         //tabel ruangan
@@ -191,8 +191,8 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
                 Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert');
 
             //edit data
-                Route::get('/ruangan_edit/{id}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit');
-                Route::post('/ruangan_update/{id}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update');
+                Route::get('/ruangan_edit/{id_ruangan}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit');
+                Route::post('/ruangan_update/{id_ruangan}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update');
 
     });
 

@@ -64,7 +64,7 @@
 
                    <div class="form-group mb-3">
                        <label for="Dimensi_Gedung" class="form-label">Dimensi Gedung</label>
-                       <textarea class="form-control" name="Dimensi_Gedung">  </textarea>
+                       <textarea class="form-control" name="Dimensi_Gedung"></textarea>
                    </div>
 
                    <div class="form-group mb-3">
@@ -74,13 +74,13 @@
 
                    <div class="form-group mb-3">
                        <label for="Keterangan_Gedung" class="form-label">Keterangan Gedung</label>
-                       <textarea class="form-control" name="Keterangan_Gedung">  </textarea>
+                       <textarea class="form-control" name="Keterangan_Gedung"></textarea>
                    </div>
 
                    <div class="form-group mb-3">
                     <label for="Status_Gedung">Status_Gedung</label>
                     <select class="custom-select rounded-0" id="" name="Status_Gedung">
-                      <option selected>--Pilih--</option>
+                      <option selected disabled value>--Pilih--</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak_Aktif">Tidak_Aktif</option>
                       <option value="Lainya">Lainya</option>

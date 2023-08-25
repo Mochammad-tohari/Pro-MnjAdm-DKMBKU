@@ -134,9 +134,9 @@
 
                 <td>
                 @if(auth()->user()->akses === 'Admin')
-                  <a href="/gedung_edit/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                  <a href="/gedung_edit/{{$row->id_gedung}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                 @endif
-                  <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                  <a href="/lihat_data_uji/{{$row->id_gedung}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                   {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                 </td>
 

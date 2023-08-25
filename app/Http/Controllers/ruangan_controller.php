@@ -103,13 +103,13 @@ class ruangan_controller extends Controller
 
     }
 
-    public function ruangan_edit($id)
+    public function ruangan_edit($id_ruangan)
     {
 
         // $gedungOptions
         // gedung_model::pluck('Nama_Gedung', 'Kode_Gedung'); = mengambil nama gedung berdasarkan kode gedung yang ada di table gedung
 
-        $ruangan_data = ruangan_model::findOrFail($id);
+        $ruangan_data = ruangan_model::findOrFail($id_ruangan);
 
         $gedungOptions = gedung_model::pluck('Nama_Gedung', 'Kode_Gedung');
 
@@ -117,9 +117,9 @@ class ruangan_controller extends Controller
 
     }
 
-    public function ruangan_update(Request $request, $id)
+    public function ruangan_update(Request $request, $id_ruangan)
     {
-        $ruangan_data = ruangan_model::findOrFail($id);
+        $ruangan_data = ruangan_model::findOrFail($id_ruangan);
         $ruangan_data->Gedung_Kode = $request->input('Gedung_Kode');
 
         $ruangan_data->update($request->all());

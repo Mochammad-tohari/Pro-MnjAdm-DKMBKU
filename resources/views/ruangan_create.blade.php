@@ -81,7 +81,7 @@
 
                    <div class="form-group mb-3">
                        <label for="Luas_Ruangan" class="form-label">Luas Ruangan</label>
-                       <textarea class="form-control" name="Luas_Ruangan">  </textarea>
+                       <textarea class="form-control" name="Luas_Ruangan"></textarea>
                    </div>
 
                    <div class="form-group mb-3">
@@ -91,13 +91,13 @@
 
                    <div class="form-group mb-3">
                        <label for="Keterangan_Ruangan" class="form-label">Keterangan Ruangan</label>
-                       <textarea class="form-control" name="Keterangan_Ruangan">  </textarea>
+                       <textarea class="form-control" name="Keterangan_Ruangan"></textarea>
                    </div>
 
                    <div class="form-group mb-3">
                     <label for="Status_Ruangan">Status_Ruangan</label>
                     <select class="custom-select rounded-0" id="" name="Status_Ruangan">
-                      <option selected>--Pilih--</option>
+                      <option selected disabled value>--Pilih--</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak_Aktif">Tidak_Aktif</option>
                       <option value="Lainya">Lainya</option>

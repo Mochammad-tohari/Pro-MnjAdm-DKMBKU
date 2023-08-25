@@ -84,18 +84,18 @@ class gedung_controller extends Controller
 
     }
 
-    public function gedung_edit($id)
+    public function gedung_edit($id_gedung)
     {
 
-        $gedung_data = gedung_model::find($id);
+        $gedung_data = gedung_model::find($id_gedung);
 
         return view('gedung_edit', compact('gedung_data'));
     }
 
-    public function gedung_update(Request $request, $id)
+    public function gedung_update(Request $request, $id_gedung)
     {
 
-        $gedung_data = gedung_model::findOrFail($id); // Assuming you have the ID of the row you want to update
+        $gedung_data = gedung_model::findOrFail($id_gedung); // Assuming you have the ID of the row you want to update
 
         $gedung_data->update($request->all());
 

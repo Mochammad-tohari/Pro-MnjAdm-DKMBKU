@@ -31,7 +31,7 @@
         <!-- /.card-header -->
         <div class="card-body col-auto">
           <div class="card-body">
-            <form action="/ruangan_update/{{$ruangan_data->id}}" method="POST" enctype="multipart/form-data">
+            <form action="/ruangan_update/{{$ruangan_data->id_ruangan}}" method="POST" enctype="multipart/form-data">
                 <!-- crsf token berfungsi untuk membuat data di laravel -->
                @csrf
                <div class="row">
@@ -53,15 +53,15 @@
                         <?php
                             $tgl = date ('ymdGis');
                         ?>
-                           <input type="text" class="form-control" placeholder=""  value="RNG<?php echo $tgl ?>" id="" name="Kode_Ruangan" readonly>
-                        <div name="" class="form-text">Otomatis Terisi</div>
+                           <input type="text" class="form-control" placeholder=""  value="{{$ruangan_data->Kode_Ruangan}}" id="" name="Kode_Ruangan" readonly>
+                        <div name="" class="form-text">Tidak bisa diubah</div>
                     </div>
 
 
                    <div class="form-group mb-3">
                        <label for="id" class="form-label">Nama Gedung</label>
                         <select class="custom-select rounded-0" id="" name="Gedung_Kode" >
-                            <option selected>--Pilih--</option>
+                            <option selected disabled value>--Pilih--</option>
                             {{-- memanggil variable $gedungOptions yang ada di ruangan controller
                             mendefinisikan sebagai variable $Kode_Gedung
                             yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
@@ -97,7 +97,7 @@
                    <div class="form-group mb-3">
                     <label for="Status_Ruangan">Status_Ruangan</label>
                     <select class="custom-select rounded-0" id="" name="Status_Ruangan">
-                        <option selected>{{$ruangan_data->Status_Ruangan }}</option>
+                        <option selected disabled value>{{$ruangan_data->Status_Ruangan }}</option>
                       <option value="Aktif">Aktif</option>
                       <option value="Tidak_Aktif">Tidak_Aktif</option>
                       <option value="Lainya">Lainya</option>

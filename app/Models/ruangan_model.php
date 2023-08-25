@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 //import Model "gedung_model" dari folder models
 use App\Models\gedung_model;
 
+// import class uuid
+use Illuminate\Support\Str;
+
 class ruangan_model extends Model
 {
     use HasFactory;
@@ -26,5 +29,22 @@ class ruangan_model extends Model
             public function gedung()
             {
                 return $this->belongsTo(gedung_model::class, 'Gedung_Kode', 'Kode_Gedung');
+            }
+
+            /*$primaryKey = menegaskan field primary key adalah "id"
+            $incrementing = mendisable auto increment
+            */
+            protected $primaryKey = 'id_ruangan';
+            public $incrementing = false;
+
+
+            //sintax utk menerapkan uuid
+            protected static function boot()
+            {
+                parent::boot();
+
+                static::creating(function ($model) {
+                    $model->id_ruangan = Str::uuid(); // Generates a UUID
+                });
             }
 }

@@ -26,13 +26,29 @@ class uji_model extends Model
     public $incrementing = false;
 
 
-    //sintax utk menerapkan uuid
+    //syntax utk menerapkan uuid
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
             $model->id = Str::uuid(); // Generates a UUID
+        });
+    }
+
+    //syntax tracking olah data
+    protected static function booted()
+    {
+        static::creating(function ($uji) {
+            if (auth()->check()) {
+                $uji->inserted_by_email = auth()->user()->email;
+            }
+        });
+
+        static::updating(function ($uji) {
+            if (auth()->check()) {
+                $uji->updated_by_email = auth()->user()->email;
+            }
         });
     }
 }

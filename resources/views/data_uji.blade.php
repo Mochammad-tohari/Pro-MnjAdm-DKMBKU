@@ -103,75 +103,83 @@
             </div>
           </div>
 
-        <table class="table table-bordered mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Nomor</th>
-              <th scope="col">Kode</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Password</th>
-              <th scope="col">Tanggal_masuk</th>
-              <th scope="col">Status</th>
-              <th scope="col">Foto1</th>
-
-              @if(auth()->user()->akses === 'Admin')
-              <th scope="col">Foto2</th>
-              @endif
-
-              <th scope="col">Tanggal Data Dibuat</th>
-              <th scope="col">Action</th>
-          </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              @foreach ($data_uji as $index_uji => $row)
-              <tr>
-                <!-- daftar nomor urut -->
-                <td>{{$index_uji + $data_uji->firstItem() }}</td>
-
-                <th scope="row">{{$row->Kode}}</th>
-                <td>{{$row->Nama}}</td>
-                <td>{{$row->Password}}</td>
-                <td>{{$row->Tanggal_masuk}}</td>
-                <td>{{$row->Status}}</td>
-
-                <td>
-                  @if ($row->Foto1)
-                      <img src="{{ asset('uji_foto/Foto1/' . $row->Foto1) }}" alt="Foto1" style="width: 40px;">
-                      {{-- <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;"> --}}
-                  @endif
-                </td>
-
-               @if(auth()->user()->akses === 'Admin')
-                <td>
-                  @if ($row->Foto2)
-                      <img src="{{ asset('uji_foto/Foto2/' . $row->Foto2) }}" alt="Foto2" style="width: 40px;">
-                      {{-- <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;"> --}}
-                  @endif
-                </td>
-                @endif
-
-                <td>{{$row->created_at->format('D,d M Y')}}</td>
-
-                <td>
-                @if(auth()->user()->akses === 'Admin')
-                  <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
-                @endif
-
-                  <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+          {{-- overflow untuk bisa mengscroll table --}}
+          <div style="overflow-x: auto;">
+            <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                <th scope="col">Nomor</th>
+                <th scope="col">Kode</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Password</th>
+                <th scope="col">Tanggal_masuk</th>
+                <th scope="col">Status</th>
+                <th scope="col">Foto1</th>
 
                 @if(auth()->user()->akses === 'Admin')
-                  <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                <th scope="col">Foto2</th>
+                <th scope="col">Dimasukan Oleh</th>
+                <th scope="col">Diperbaharui Oleh</th>
                 @endif
 
-                </td>
-
-              </tr>
-              @endforeach
+                <th scope="col">Tanggal Data Dibuat</th>
+                <th scope="col">Action</th>
             </tr>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+                <tr>
+                @foreach ($data_uji as $index_uji => $row)
+                <tr>
+                    <!-- daftar nomor urut -->
+                    <td>{{$index_uji + $data_uji->firstItem() }}</td>
+
+                    <th scope="row">{{$row->Kode}}</th>
+                    <td>{{$row->Nama}}</td>
+                    <td>{{$row->Password}}</td>
+                    <td>{{$row->Tanggal_masuk}}</td>
+                    <td>{{$row->Status}}</td>
+
+                    <td>
+                    @if ($row->Foto1)
+                        <img src="{{ asset('uji_foto/Foto1/' . $row->Foto1) }}" alt="Foto1" style="width: 40px;">
+                        {{-- <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;"> --}}
+                    @endif
+                    </td>
+
+                @if(auth()->user()->akses === 'Admin')
+                    <td>
+                    @if ($row->Foto2)
+                        <img src="{{ asset('uji_foto/Foto2/' . $row->Foto2) }}" alt="Foto2" style="width: 40px;">
+                        {{-- <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;"> --}}
+                    @endif
+                    </td>
+                    <td>{{$row->inserted_by_email }}</td>
+                    <td>{{$row->updated_by_email }}</td>
+                @endif
+
+                    <td>{{$row->created_at->format('D,d M Y')}}</td>
+
+                    <td>
+                    @if(auth()->user()->akses === 'Admin')
+                    <a href="/edit_data_uji/{{$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                    @endif
+
+                    <a href="/lihat_data_uji/{{$row->id}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+
+                    @if(auth()->user()->akses === 'Admin')
+                    <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a>
+                    @endif
+
+                    </td>
+
+                </tr>
+                @endforeach
+                </tr>
+            </tbody>
+            </table>
+          </div>
+
       </div>
 
       <!-- /.card-body -->

@@ -101,50 +101,54 @@
             </div>
           </div>
 
-        <table class="table table-bordered mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Nomor</th>
-              <th scope="col">Kode Gedung</th>
-              <th scope="col">Nama Gedung</th>
-              <th scope="col">Dimensi Gedung</th>
-              <th scope="col">Tanggal Operasional Gedung</th>
-              <th scope="col">Keterangan Gedung</th>
-              <th scope="col">Status Gedung</th>
-              <th scope="col">Tanggal Data Dibuat</th>
-              <th scope="col">Action</th>
-          </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              @foreach ($gedung_data as $gedung_index => $row)
-              <tr>
-                <!-- daftar nomor urut -->
-                <td>{{$gedung_index + $gedung_data->firstItem() }}</td>
-
-                <th scope="row">{{$row->Kode_Gedung}}</th>
-                <td>{{$row->Nama_Gedung}}</td>
-                <td>{{$row->Dimensi_Gedung}}</td>
-                <td>{{$row->Tanggal_Operasional_Gedung}}</td>
-                <td>{{$row->Keterangan_Gedung}}</td>
-                <td>{{$row->Status_Gedung}}</td>
-
-                <td>{{$row->created_at->format('D,d M Y')}}</td>
-
-                <td>
-                @if(auth()->user()->akses === 'Admin')
-                  <a href="/gedung_edit/{{$row->id_gedung}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
-                @endif
-                  <a href="/lihat_data_uji/{{$row->id_gedung}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
-                  {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
-                </td>
-
-              </tr>
-              @endforeach
+          {{-- overflow agar bisa mengscroll table --}}
+          <div style="overflow-x: auto;">
+            <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                <th scope="col">Nomor</th>
+                <th scope="col">Kode Gedung</th>
+                <th scope="col">Nama Gedung</th>
+                <th scope="col">Dimensi Gedung</th>
+                <th scope="col">Tanggal Operasional Gedung</th>
+                <th scope="col">Keterangan Gedung</th>
+                <th scope="col">Status Gedung</th>
+                <th scope="col">Tanggal Data Dibuat</th>
+                <th scope="col">Action</th>
             </tr>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+                <tr>
+                @foreach ($gedung_data as $gedung_index => $row)
+                <tr>
+                    <!-- daftar nomor urut -->
+                    <td>{{$gedung_index + $gedung_data->firstItem() }}</td>
+
+                    <th scope="row">{{$row->Kode_Gedung}}</th>
+                    <td>{{$row->Nama_Gedung}}</td>
+                    <td>{{$row->Dimensi_Gedung}}</td>
+                    <td>{{$row->Tanggal_Operasional_Gedung}}</td>
+                    <td>{{$row->Keterangan_Gedung}}</td>
+                    <td>{{$row->Status_Gedung}}</td>
+
+                    <td>{{$row->created_at->format('D,d M Y')}}</td>
+
+                    <td>
+                    @if(auth()->user()->akses === 'Admin')
+                    <a href="/gedung_edit/{{$row->id_gedung}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                    @endif
+                    <a href="/lihat_data_uji/{{$row->id_gedung}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                    {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
+                    </td>
+
+                </tr>
+                @endforeach
+                </tr>
+            </tbody>
+            </table>
+          </div>
+
       </div>
 
       <!-- /.card-body -->

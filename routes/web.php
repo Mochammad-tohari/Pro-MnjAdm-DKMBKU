@@ -24,6 +24,13 @@ use App\Http\Controllers\ruangan_controller;
 //memanggil file ruangan_model yg ada di folder Models
 use App\Models\ruangan_model;
 
+//memanggil file murid_madrasah_controller yg ada di folder Controllers
+use App\Http\Controllers\murid_madrasah_controller;
+
+//memanggil file murid_madrasah_model yg ada di folder Models
+use App\Models\murid_madrasah_model;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -121,19 +128,21 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
 
     //tabel gedung
-
             //tampil data
-            Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index');
+            Route::get('/gedung_data', [gedung_controller::class,'gedung_index'])->name('gedung_index')->middleware('auth');
 
             //export PDF
-            Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf');
+            Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');
 
 
     //tabel ruangan
             //tampil data
-            Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index');
+            Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
 
 
+    //tabel murid madrasah
+            //tampildata
+            Route::get('/murid_madrasah_data', [murid_madrasah_controller::class,'murid_madrasah_index'])->name('murid_madrasah_index')->middleware('auth');
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
     Route::middleware(['role:Admin'])->group(function () {
@@ -174,7 +183,6 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
 
         //tabel gedung
-
             //insert data
                 Route::get('/gedung_create', [gedung_controller::class,'gedung_create'])->name('gedung_create');
                 Route::post('/gedung_insert', [gedung_controller::class,'gedung_insert'])->name('gedung_insert');
@@ -185,7 +193,6 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
 
         //tabel ruangan
-
             //insert data
                 Route::get('/ruangan_create', [ruangan_controller::class,'ruangan_create'])->name('ruangan_create');
                 Route::post('/ruangan_insert', [ruangan_controller::class,'ruangan_insert'])->name('ruangan_insert');
@@ -193,6 +200,17 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //edit data
                 Route::get('/ruangan_edit/{id_ruangan}', [ruangan_controller::class,'ruangan_edit'])->name('ruangan_edit');
                 Route::post('/ruangan_update/{id_ruangan}', [ruangan_controller::class,'ruangan_update'])->name('ruangan_update');
+
+
+        //tabel murid madrasah
+            //insert data
+                Route::get('/murid_madrasah_create', [murid_madrasah_controller::class,'murid_madrasah_create'])->name('murid_madrasah_create');
+                Route::post('/murid_madrasah_insert', [murid_madrasah_controller::class,'murid_madrasah_insert'])->name('murid_madrasah_insert');
+
+            //edit data
+                Route::get('/murid_madrasah_edit/{id_murid}', [murid_madrasah_controller::class,'murid_madrasah_edit'])->name('murid_madrasah_edit');
+                Route::post('/murid_madrasah_update/{id_murid}', [murid_madrasah_controller::class,'murid_madrasah_update'])->name('murid_madrasah_update');
+
 
     });
 

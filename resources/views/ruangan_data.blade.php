@@ -101,60 +101,65 @@
             </div>
           </div>
 
-        <table class="table table-bordered mt-3">
-          <thead>
-            <tr>
-              <th scope="col">Nomor</th>
-              <th scope="col">Lokasi Gedung</th>
-              <th scope="col">Kode Ruangan</th>
-              <th scope="col">Nama Ruangan</th>
-              <th scope="col">Luas Ruangan</th>
-              <th scope="col">Tanggal Operasional Ruangan</th>
-              <th scope="col">Keterangan Ruangan</th>
-              <th scope="col">Status Ruangan</th>
-              <th scope="col">Tanggal Data Dibuat</th>
-              <th scope="col">Action</th>
-          </tr>
-          </thead>
 
-          <tbody>
-            <tr>
-              @foreach ($ruangan_data as $ruangan_index => $row)
-              <tr>
-                <!-- daftar nomor urut -->
-                <td>{{$ruangan_index + $ruangan_data->firstItem() }}</td>
+            {{-- overflow agar bisa mengscroll table --}}
+            <div style="overflow-x: auto;">
+                <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                    <th scope="col">Nomor</th>
+                    <th scope="col">Lokasi Gedung</th>
+                    <th scope="col">Kode Ruangan</th>
+                    <th scope="col">Nama Ruangan</th>
+                    <th scope="col">Luas Ruangan</th>
+                    <th scope="col">Tanggal Operasional Ruangan</th>
+                    <th scope="col">Keterangan Ruangan</th>
+                    <th scope="col">Status Ruangan</th>
+                    <th scope="col">Tanggal Data Dibuat</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                    @foreach ($ruangan_data as $ruangan_index => $row)
+                    <tr>
+                        <!-- daftar nomor urut -->
+                        <td>{{$ruangan_index + $ruangan_data->firstItem() }}</td>
 
 
-                {{-- memanggil dan mengecek kesediaan data Kode gedung
-                yang ditampilkan oleh nama gedung dari table gedung --}}
-                @if ($row->gedung)
-                <th scope="row">{{ $row->gedung->Nama_Gedung }}</th>
-                @else
-                <th scope="row">Unknown Gedung</th>
-                @endif
+                        {{-- memanggil dan mengecek kesediaan data Kode gedung
+                        yang ditampilkan oleh nama gedung dari table gedung --}}
+                        @if ($row->gedung)
+                        <th scope="row">{{ $row->gedung->Nama_Gedung }}</th>
+                        @else
+                        <th scope="row">Unknown Gedung</th>
+                        @endif
 
-                <th scope="row">{{$row->Kode_Ruangan}}</th>
-                <td>{{$row->Nama_Ruangan}}</td>
-                <td>{{$row->Luas_Ruangan}}</td>
-                <td>{{$row->Tanggal_Operasional_Ruangan}}</td>
-                <td>{{$row->Keterangan_Ruangan}}</td>
-                <td>{{$row->Status_Ruangan}}</td>
+                        <th scope="row">{{$row->Kode_Ruangan}}</th>
+                        <td>{{$row->Nama_Ruangan}}</td>
+                        <td>{{$row->Luas_Ruangan}}</td>
+                        <td>{{$row->Tanggal_Operasional_Ruangan}}</td>
+                        <td>{{$row->Keterangan_Ruangan}}</td>
+                        <td>{{$row->Status_Ruangan}}</td>
 
-                <td>{{$row->created_at->format('D,d M Y')}}</td>
+                        <td>{{$row->created_at->format('D,d M Y')}}</td>
 
-                <td>
-                @if(auth()->user()->akses === 'Admin')
-                  <a href="/ruangan_edit/{{$row->id_ruangan}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
-                @endif
-                  <a href="/lihat_data_uji/{{$row->id_ruangan}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
-                  {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
-                </td>
+                        <td>
+                        @if(auth()->user()->akses === 'Admin')
+                        <a href="/ruangan_edit/{{$row->id_ruangan}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                        @endif
+                        <a href="/lihat_data_uji/{{$row->id_ruangan}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                        {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
+                        </td>
 
-              </tr>
-              @endforeach
-            </tr>
-          </tbody>
-        </table>
+                    </tr>
+                    @endforeach
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+
       </div>
 
       <!-- /.card-body -->

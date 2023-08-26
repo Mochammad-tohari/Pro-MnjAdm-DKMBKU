@@ -270,6 +270,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="/murid_madrasah_data" class="nav-link{{ Request::is('murid_madrasah_data') ? ' active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Data Murid Madrasah
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="/data_uji" class="nav-link{{ Request::is('data_uji') ? ' active' : '' }}">
                         <i class="nav-icon fa fa-columns"></i>
                         <p>

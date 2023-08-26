@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('uji', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            //$table->uuid('id')->primary();
             //$table->bigIncrements('id');
+            $table->char('id', 36)->primary();
             $table->string('Kode', 25)->unique('Kode');
             $table->text('Nama');
             $table->text('Password');
@@ -23,6 +24,8 @@ return new class extends Migration
             $table->enum('Status', ['Aktif', 'Tidak_Aktif']);
             $table->binary('Foto1')->nullable();
             $table->binary('Foto2')->nullable();
+            $table->string('inserted_by_email')->nullable()->index('inserted_by_email');
+            $table->string('updated_by_email')->nullable()->index('updated_by_email');
             $table->timestamps();
         });
     }

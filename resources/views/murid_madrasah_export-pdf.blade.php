@@ -40,10 +40,10 @@
 
         <h1>Tabel Data Murid Madrasah</h1>
     <div style="overflow-x: auto;">
-        <table id="murid_madrasah" style="table-layout: A3">
+        <table id="murid_madrasah">
             <tr>
-                <th style="col-auto">Nomor</th>
-                <th style="col-auto">Kode Murid</th>
+                <th style="">Nomor</th>
+                <th style="">Kode Murid</th>
                 <th scope="col">Nama Murid</th>
                 <th scope="col">Tempat Lahir Murid</th>
                 <th scope="col">Tanggal Lahir Murid</th>
@@ -56,7 +56,7 @@
                 <th scope="col">Keterangan Murid</th>
                 <th scope="col">Status Murid</th>
 
-                <th scope="col">Tanggal Data Dibuat</th>
+
             </tr>
 
         @php
@@ -81,7 +81,7 @@
                 <td>{{$row->Keterangan_Murid}}</td>
                 <td>{{$row->Status_Murid}}</td>
 
-                <td>{{$row->created_at->format('D,d M Y')}}</td>
+
             </tr>
 
 

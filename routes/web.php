@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Controller;
+
 //memanggil file login_controller yg ada di folder Controllers
 use App\Http\Controllers\login_controller;
 
@@ -43,61 +45,7 @@ use App\Models\murid_madrasah_model;
 |
 */
 
-Route::get('/', function () {
-
-        // Count total records
-        $data_uji_jumlah = uji_model::count();
-
-        // Define an array of variables to pass to the view
-        $data_uji_kondisi = [
-            'data_uji_jumlah' => $data_uji_jumlah,
-            // Count 'Aktif' status records
-            'aktif_count' => uji_model::where('Status', 'Aktif')->count(),
-            // Count 'Tidak_Aktif' status records
-            'tidak_aktif_count' => uji_model::where('Status', 'Tidak_Aktif')->count(),
-            // Add more variables here if needed
-        ];
-
-        // Count total records
-        $data_gedung_jumlah = gedung_model::count();
-
-        // Define an array of variables to pass to the view
-        $data_gedung_kondisi = [
-            'data_gedung_jumlah' => $data_gedung_jumlah,
-            // Count 'Aktif' status records
-            'gedung_aktif_count' => gedung_model::where('Status_Gedung', 'Aktif')->count(),
-            // Count 'Tidak_Aktif' status records
-            'gedung_tidak_aktif_count' => gedung_model::where('Status_Gedung', 'Tidak_Aktif')->count(),
-            // Count 'Lainya' status records
-            'gedung_lainya_count' => gedung_model::where('Status_Gedung', 'Lainya')->count(),
-            // Add more variables here if needed
-        ];
-
-        // // Count total records
-        // $data_murid_madrasah_jumlah = murid_madrasah_model::count();
-
-        // // Define an array of variables to pass to the view
-        // $murid_madrasah_kondisi = [
-        //     'data_murid_madrasah_jumlah' => $data_murid_madrasah_jumlah,
-        //     // Count 'Aktif' status records
-        //     'murid_madrasah_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'murid_madrasah_tidak_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Tidak_Aktif')->count(),
-        //     // Count 'Lainya' status records
-        //     'murid_madrasah_pindah_count' => murid_madrasah_model::where('Status_Murid', 'Pindah')->count(),
-        //     // Count 'Lainya' status records
-        //     'murid_madrasah_lainya_count' => murid_madrasah_model::where('Status_Murid', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
-
-        return view('welcome',
-
-        $data_uji_kondisi,
-        $data_gedung_kondisi,
-        //$murid_madrasah_kondisi
-
-        );
-    })->middleware('auth');
+Route::get('/', [Controller::class, 'welcome'])->middleware('auth');
 
 
     /*  Route Register

@@ -30,6 +30,8 @@ return new class extends Migration
             $table->text('Tingkat_Murid');
             $table->mediumText('Keterangan_Murid')->nullable();
             $table->enum('Status_Murid', ['Aktif', 'Tidak_Aktif', 'Pindah', 'Lainya']);
+            $table->string('inserted_by')->nullable()->index('inserted_by');
+            $table->string('updated_by')->nullable()->index('updated_by');
             $table->timestamps();
         });
     }

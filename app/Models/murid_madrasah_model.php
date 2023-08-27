@@ -35,4 +35,20 @@ class murid_madrasah_model extends Model
             $model->id_murid = Str::uuid(); // Generates a UUID
         });
     }
+
+    //syntax tracking olah data
+    protected static function booted()
+    {
+        static::creating(function ($uji) {
+            if (auth()->check()) {
+                $uji->inserted_by = auth()->user()->email;
+            }
+        });
+
+        static::updating(function ($uji) {
+            if (auth()->check()) {
+                $uji->updated_by = auth()->user()->email;
+            }
+        });
+    }
 }

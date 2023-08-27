@@ -52,8 +52,8 @@
                 @endif --}}
 
                 <div class="col-auto">
-                    <form action="/data_uji" method="GET">
-                    <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
+                    <form action="/murid_madrasah_data" method="GET">
+                    <a href="/murid_madrasah_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                     </form>
                 </div>
 
@@ -128,6 +128,8 @@
                         <th scope="col">Tingkat Murid</th>
                         <th scope="col">Keterangan Murid</th>
                         <th scope="col">Status Murid</th>
+                        <th scope="col">Dimasukan Oleh</th>
+                        <th scope="col">Diperbaharui Oleh</th>
 
                         <th scope="col">Tanggal Data Dibuat</th>
                         <th scope="col">Action</th>
@@ -180,6 +182,8 @@
                             <td>{{$row->Tingkat_Murid}}</td>
                             <td>{{$row->Keterangan_Murid}}</td>
                             <td>{{$row->Status_Murid}}</td>
+                            <td>{{$row->inserted_by}}</td>
+                            <td>{{$row->updated_by}}</td>
 
                             <td>{{$row->created_at->format('D,d M Y')}}</td>
 

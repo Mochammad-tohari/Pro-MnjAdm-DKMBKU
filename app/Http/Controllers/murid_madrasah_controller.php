@@ -141,5 +141,17 @@ class murid_madrasah_controller extends Controller
     }
 
 
+    public function murid_madrasah_export_pdf()
+    {
+        $murid_madrasah_data = murid_madrasah_model::orderBy('Nama_Murid', 'asc')->get();
+
+        view()->share('murid_madrasah_data', $murid_madrasah_data);
+        $pdf_murid_madrasah = PDF::loadview('murid_madrasah_export-pdf');
+        return $pdf_murid_madrasah->download('murid_madrasah.pdf');
+
+
+    }
+
+
 
 }

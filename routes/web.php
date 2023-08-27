@@ -144,6 +144,9 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //tampildata
             Route::get('/murid_madrasah_data', [murid_madrasah_controller::class,'murid_madrasah_index'])->name('murid_madrasah_index')->middleware('auth');
 
+            //export PDF
+            Route::get('/murid_madrasah_export_pdf', [murid_madrasah_controller::class,'murid_madrasah_export_pdf'])->name('murid_madrasah_export_pdf')->middleware('auth');
+
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
     Route::middleware(['role:Admin'])->group(function () {
 

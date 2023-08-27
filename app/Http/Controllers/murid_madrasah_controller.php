@@ -152,6 +152,24 @@ class murid_madrasah_controller extends Controller
 
     }
 
+    public function show($kode_murid)
+    {
+        $murid_madrasah_data = murid_madrasah_model::where('Kode_Murid', $kode_murid)->first();
 
+        if ($murid_madrasah_data) {
+            return view('murid_madrasah.show', ['murid_madrasah_data' => $murid_madrasah_data]);
+        } else {
+            return redirect()->route('murid_madrasah_index')->with('error', 'Data not found.');
+        }
+    }
+
+    // untuk lihat data uji berfungsi untuk melihat 1 data
+    public function murid_madrasah_view($id_murid)
+    {
+
+    $murid_madrasah_data = murid_madrasah_model::find($id_murid);
+    return view('murid_madrasah_view', compact('murid_madrasah_data'));
+
+    }
 
 }

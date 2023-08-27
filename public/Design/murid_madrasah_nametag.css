@@ -1,0 +1,72 @@
+/* background image */
+
+.card-uji {
+    background-image: url('../name_tag/name_tag_murid.jpg');
+    background-size: cover;
+    width: 105mm;
+    height: 148mm;
+    /* Center the content vertically and horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.card-body {
+    /* Make the card body transparent so that the background image of the card is visible through it */
+    background-color: transparent;
+}
+
+/* content */
+
+.Foto_Murid {
+    /* Adjust the top and bottom margins to move the div up or down */
+    position: fixed;
+    margin-top: -142px; /* Increase this value to move the div down */
+    margin-bottom: 115px; /* Increase this value to move the div up */
+    margin-left: 150px; /* Increase this value to move the div to the right */
+    margin-right: 5px; /* Increase this value to move the div to the left */
+
+       /* Float the .Foto1 div to the left */
+    float: left;
+
+    /* You can also use text-align to control the positioning of the image within the div */
+    text-align: center; /* This will center the image horizontally within the div */
+}
+
+.Foto_Murid img {
+    /* Apply styles to the image if needed */
+    width: 110px;
+    /* Additional styles for the image */
+}
+
+#name_tag th {
+    text-align: center; /* Center the header "Nama" */
+    font-size: 16px; /* Set the font size for the header */
+    font-weight: bold; /* Make the header bold */
+    padding: 50px 0; /* Add padding to the header cell (top and bottom) */
+    color:#1705B0
+}
+
+#name_tag {
+    position: fixed;
+    margin-top: -70px; /* Increase this value to move the div down */
+    margin-bottom: 70px; /* Increase this value to move the div up */
+    margin-left: 110px; /* Increase this value to move the div to the right */
+    margin-right: 5px; /* Increase this value to move the div to the left */
+    color:#2e2e2e
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

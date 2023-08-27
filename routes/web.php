@@ -58,7 +58,7 @@ Route::get('/', function () {
             // Add more variables here if needed
         ];
 
-         // Count total records
+        // Count total records
         $data_gedung_jumlah = gedung_model::count();
 
         // Define an array of variables to pass to the view
@@ -73,10 +73,28 @@ Route::get('/', function () {
             // Add more variables here if needed
         ];
 
+        // // Count total records
+        // $data_murid_madrasah_jumlah = murid_madrasah_model::count();
+
+        // // Define an array of variables to pass to the view
+        // $murid_madrasah_kondisi = [
+        //     'data_murid_madrasah_jumlah' => $data_murid_madrasah_jumlah,
+        //     // Count 'Aktif' status records
+        //     'murid_madrasah_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Aktif')->count(),
+        //     // Count 'Tidak_Aktif' status records
+        //     'murid_madrasah_tidak_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Tidak_Aktif')->count(),
+        //     // Count 'Lainya' status records
+        //     'murid_madrasah_pindah_count' => murid_madrasah_model::where('Status_Murid', 'Pindah')->count(),
+        //     // Count 'Lainya' status records
+        //     'murid_madrasah_lainya_count' => murid_madrasah_model::where('Status_Murid', 'Lainya')->count(),
+        //     // Add more variables here if needed
+        // ];
+
         return view('welcome',
 
         $data_uji_kondisi,
-        $data_gedung_kondisi
+        $data_gedung_kondisi,
+        //$murid_madrasah_kondisi
 
         );
     })->middleware('auth');
@@ -146,6 +164,12 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
             //export PDF
             Route::get('/murid_madrasah_export_pdf', [murid_madrasah_controller::class,'murid_madrasah_export_pdf'])->name('murid_madrasah_export_pdf')->middleware('auth');
+
+            //lihat 1 data
+            Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class,'murid_madrasah_view'])->name('murid_madrasah_view')->middleware('auth');
+
+
+
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
     Route::middleware(['role:Admin'])->group(function () {

@@ -71,25 +71,27 @@
               </div>
             </div>
 
-            <!-- Small boxes (Stat box) -->
+            {{-- <!-- Small boxes (Stat box) -->
             <div class="col-lg-3 col-6">
               <!-- small box 3 -->
-              <div class="small-box bg-info info-box-1">
+              <div class="small-box bg-info info-box-madrasah">
                 <div class="inner">
-                  <h4><strong>Indeks Data Baru</strong></h4>
+                  <h4><strong>Indeks Murid Madrasah</strong></h4>
                   <span class="info-box-number-1 mb-3">
-                    <p>Total Jumlah: {{ $data_uji_jumlah }}</p>
-                    <p>Aktif: {{ $aktif_count }}</p>
-                    <p>Tidak Aktif: {{ $tidak_aktif_count }}</p>
+                    <p class="info-box-text-madrasah">Total Jumlah: {{ $data_murid_madrasah_jumlah }}</p>
+                    <p class="info-box-text-madrasah">Aktif: {{ $murid_madrasah_aktif_count }}</p>
+                    <p class="info-box-text-madrasah">Tidak Aktif: {{ $murid_madrasah_tidak_aktif_count }}</p>
+                    <p class="info-box-text-madrasah">Pindah: {{ $murid_madrasah_pindah_count }}</p>
+                    <p class="info-box-text-madrasah">Lainya: {{ $murid_madrasah_lainya_count }}</p>
                     {{-- <small>Data</small> --}}
-                  </span>
+                  {{-- </span>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
                 <a href="/data_uji" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
-            </div>
+            </div> --}}
 
             <!-- Small boxes (Stat box) -->
             <div class="col-lg-3 col-6">

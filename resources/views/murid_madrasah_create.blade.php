@@ -165,6 +165,7 @@
                     <div class="form-group mb-3">
                         <label for="Keterangan_Murid" class="form-label">Keterangan Murid</label>
                         <textarea class="form-control" name="Keterangan_Murid"></textarea>
+                        <div name="" class="form-text">Memberikan kejelasan tentang status/kondisi murid</div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -173,7 +174,7 @@
                         <option selected disabled value>--Pilih--</option>
                         <option value="Aktif">Aktif</option>
                         <option value="Tidak_Aktif">Tidak_Aktif</option>
-                        <option value="Pindah">Pindah</option>
+                        {{-- <option value="Pindah">Pindah</option> --}}
                         <option value="Lainya">Lainya</option>
                         </select>
                         <div name="" class="form-text">Pilih Aktif Jika Baru Mendaftar</div>

@@ -84,7 +84,7 @@
                         <p class="info-box-text-madrasah">Jumlah Data murid: {{ $data_murid_kondisi['data_murid_jumlah'] }}</p>
                         <p class="info-box-text-aktif">Murid Aktif: {{ $data_murid_kondisi['murid_aktif_count'] }}</p>
                         <p class="info-box-text-tidak-aktif">Murid Tidak Aktif: {{ $data_murid_kondisi['murid_tidak_aktif_count'] }}</p>
-                        <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p>
+                        {{-- <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p> --}}
                         <p class="info-box-text-lainya">Murid Lainya: {{ $data_murid_kondisi['murid_lainya_count'] }}</p>
                       {{-- <small>Data</small> --}}
                     </span>

@@ -71,7 +71,7 @@
                             </option>
                             @endforeach
                         </select>
-                       <div name="" class="form-text">Pilih data yang sesuai</div>
+                        <div name="" class="form-text">Pilih data yang sesuai, Jika tidak ada isi data ini <a href="/gedung_create">Gedung</a></div>
                    </div>
 
                    <div class="form-group mb-3">
@@ -108,7 +108,7 @@
 
                  <div class="card-footer mb-6">
                     <button type="submit" class="btn btn-primary">Submit</button>
-
+                    <button type="reset" class="btn btn-warning ml-2">Reset</button>
                     <a href="/gedung_data" class="ml-2">
                      <button type="button" class="btn btn-danger">Batal</button>
                     </a>

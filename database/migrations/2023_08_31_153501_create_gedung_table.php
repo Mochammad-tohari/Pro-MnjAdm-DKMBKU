@@ -19,8 +19,10 @@ return new class extends Migration
             $table->text('Nama_Gedung');
             $table->text('Dimensi_Gedung');
             $table->date('Tanggal_Operasional_Gedung');
-            $table->mediumText('Keterangan_Gedung');
+            $table->mediumText('Keterangan_Gedung')->nullable();
             $table->enum('Status_Gedung', ['Aktif', 'Tidak_Aktif', 'Lainya']);
+            $table->string('inserted_by')->nullable()->index('inserted_by');
+            $table->string('updated_by')->nullable()->index('updated_by');
             $table->timestamps();
         });
     }

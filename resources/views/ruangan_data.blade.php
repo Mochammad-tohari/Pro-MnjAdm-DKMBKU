@@ -115,6 +115,10 @@
                     <th scope="col">Tanggal Operasional Ruangan</th>
                     <th scope="col">Keterangan Ruangan</th>
                     <th scope="col">Status Ruangan</th>
+
+                    <th scope="col">Dimasukan Oleh</th>
+                    <th scope="col">Diperbaharui Oleh</th>
+
                     <th scope="col">Tanggal Data Dibuat</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -142,6 +146,9 @@
                         <td>{{$row->Tanggal_Operasional_Ruangan}}</td>
                         <td>{{$row->Keterangan_Ruangan}}</td>
                         <td>{{$row->Status_Ruangan}}</td>
+
+                        <td>{{$row->inserted_by}}</td>
+                        <td>{{$row->updated_by}}</td>
 
                         <td>{{$row->created_at->format('D,d M Y')}}</td>
 

@@ -44,4 +44,20 @@ class gedung_model extends Model
                 $model->id_gedung = Str::uuid(); // Generates a UUID
             });
         }
+
+        //syntax tracking olah data
+        protected static function booted()
+        {
+            static::creating(function ($gedung) {
+                if (auth()->check()) {
+                    $gedung->inserted_by = auth()->user()->email;
+                }
+            });
+
+            static::updating(function ($gedung) {
+                if (auth()->check()) {
+                    $gedung->updated_by = auth()->user()->email;
+                }
+            });
+        }
 }

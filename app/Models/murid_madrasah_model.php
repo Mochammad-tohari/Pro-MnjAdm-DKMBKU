@@ -39,15 +39,15 @@ class murid_madrasah_model extends Model
     //syntax tracking olah data
     protected static function booted()
     {
-        static::creating(function ($uji) {
+        static::creating(function ($murid_madrasah) {
             if (auth()->check()) {
-                $uji->inserted_by = auth()->user()->email;
+                $murid_madrasah->inserted_by = auth()->user()->email;
             }
         });
 
-        static::updating(function ($uji) {
+        static::updating(function ($murid_madrasah) {
             if (auth()->check()) {
-                $uji->updated_by = auth()->user()->email;
+                $murid_madrasah->updated_by = auth()->user()->email;
             }
         });
     }

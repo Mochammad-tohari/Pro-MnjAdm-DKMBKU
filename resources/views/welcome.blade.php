@@ -3,6 +3,7 @@
 @section('content')
 <head>
 <link rel="stylesheet" href="Design/box_info_data.css">
+<title>Dashboard Manajemen DKMBKU</title>
 </head>
 
 <!-- Content Wrapper. Contains page content -->
@@ -102,7 +103,7 @@
               <!-- small box 3 -->
               <div class="small-box bg-info info-box-uji">
                 <div class="inner">
-                  <h4><strong>Indeks Data Baru</strong></h4>
+                  <h4><strong>Indeks Data Uji</strong></h4>
                   <span class="info-box-number-1 mb-3">
                     <p class="info-box-text-uji">Jumlah Data Uji: {{ $data_uji_kondisi['data_uji_jumlah'] }}</p>
                     <p class="info-box-text-uji">Aktif: {{ $data_uji_kondisi['aktif_count'] }}</p>

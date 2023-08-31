@@ -47,4 +47,21 @@ class ruangan_model extends Model
                     $model->id_ruangan = Str::uuid(); // Generates a UUID
                 });
             }
+
+
+            //syntax tracking olah data
+            protected static function booted()
+            {
+                static::creating(function ($ruangan) {
+                    if (auth()->check()) {
+                        $ruangan->inserted_by = auth()->user()->email;
+                    }
+                });
+
+                static::updating(function ($ruangan) {
+                    if (auth()->check()) {
+                        $ruangan->updated_by = auth()->user()->email;
+                    }
+                });
+            }
 }

@@ -113,6 +113,10 @@
                 <th scope="col">Tanggal Operasional Gedung</th>
                 <th scope="col">Keterangan Gedung</th>
                 <th scope="col">Status Gedung</th>
+
+                <th scope="col">Dimasukan Oleh</th>
+                <th scope="col">Diperbaharui Oleh</th>
+
                 <th scope="col">Tanggal Data Dibuat</th>
                 <th scope="col">Action</th>
             </tr>
@@ -131,6 +135,9 @@
                     <td>{{$row->Tanggal_Operasional_Gedung}}</td>
                     <td>{{$row->Keterangan_Gedung}}</td>
                     <td>{{$row->Status_Gedung}}</td>
+
+                    <td>{{$row->inserted_by}}</td>
+                    <td>{{$row->updated_by}}</td>
 
                     <td>{{$row->created_at->format('D,d M Y')}}</td>
 

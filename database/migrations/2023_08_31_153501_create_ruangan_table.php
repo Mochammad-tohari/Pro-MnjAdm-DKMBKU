@@ -20,8 +20,10 @@ return new class extends Migration
             $table->text('Nama_Ruangan');
             $table->text('Luas_Ruangan');
             $table->date('Tanggal_Operasional_Ruangan');
-            $table->mediumText('Keterangan_Ruangan');
+            $table->mediumText('Keterangan_Ruangan')->nullable();
             $table->enum('Status_Ruangan', ['Aktif', 'Tidak_Aktif', 'Lainya']);
+            $table->string('inserted_by')->nullable()->index('inserted_by');
+            $table->string('updated_by')->nullable()->index('updated_by');
             $table->timestamps();
         });
     }

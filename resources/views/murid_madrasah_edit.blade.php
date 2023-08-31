@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="Tempat_Lahir_Murid" class="form-label">Tempat_Lahir_Murid</label>
+                        <label for="Tempat_Lahir_Murid" class="form-label">Tempat Lahir Murid</label>
                         <input type="text" class="form-control" placeholder="" id="" value="{{$murid_madrasah_data->Tempat_Lahir_Murid}}" name="Tempat_Lahir_Murid">
                     </div>
 
@@ -176,7 +176,7 @@
                         <option selected disabled value>{{$murid_madrasah_data->Status_Murid}}</option>
                         <option value="Aktif">Aktif</option>
                         <option value="Tidak_Aktif">Tidak_Aktif</option>
-                        <option value="Pindah">Pindah</option>
+                        {{-- <option value="Pindah">Pindah</option> --}}
                         <option value="Lainya">Lainya</option>
                         </select>
                     </div>

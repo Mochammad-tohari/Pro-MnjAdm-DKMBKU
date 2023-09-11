@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="{{ asset ('Tema_LTE/dist/css/adminlte.min.css') }}">
   <!-- Dark Mode styles -->
   <link rel="stylesheet" href="{{ asset ('public/Design/register&login.css') }}">
+
+  <!-- Web Icon (Favicon) -->
+  <link rel="icon" type="image/x-icon" href="Tema_LTE/dist/img/Logo_Masjid.png">
 </head>
 
 <body class="hold-transition login-page dark-mode">

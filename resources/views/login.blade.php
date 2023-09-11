@@ -16,6 +16,9 @@
   <!-- Dark Mode styles -->
   <link rel="stylesheet" href="{{ asset ('public/Design/register&login.css') }}">
 
+  <!-- Web Icon (Favicon) -->
+  <link rel="icon" type="image/x-icon" href="Tema_LTE/dist/img/Logo_Masjid.png">
+
   <!-- Include SweetAlert and jQuery scripts -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

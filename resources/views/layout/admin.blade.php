@@ -15,13 +15,15 @@
   <link rel="stylesheet" href="{{ asset('Tema_LTE/dist/css/adminlte.min.css') }} ">
   {{-- nav colour --}}
   <link rel="stylesheet" href="{{ asset ('public/Design/admin_layout.css') }}">
+  <!-- Web Icon (Favicon) -->
+  <link rel="icon" type="image/x-icon" href="Tema_LTE/dist/img/Logo_Masjid.png">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
+  <!-- Preloader Mengubah tampilan Loading -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="{{ asset('Tema_LTE/dist/img/AdminLTELogo.png') }} " alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="{{ asset('Tema_LTE/dist/img/Logo_Masjid.png') }} "  alt="AdminLTELogo" height="80" width="80">
   </div>
 
   <!-- Navbar -->
@@ -31,12 +33,14 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -164,22 +168,21 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('Tema_LTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <!-- Brand Logo Mengubah Logo-->
+    <a href="#" class="brand-link">
+      <img src="{{ asset('Tema_LTE/dist/img/Logo_Masjid.png') }}" alt="Logo_Masjid" class="brand-image img-circle elevation-3" style="opacity: .8" height="50" width="50">
       <span class="brand-text font-weight-light">DKMBKU</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+      <!-- Sidebar user panel (optional) Logo user-->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('Tema_LTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('Tema_LTE/dist/img/Logo_Manajemen_MBKU.png') }}" class="img-circle elevation-2" alt="User Image" height="80" width="80">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-          <a href="#" class="d-block">{{ Auth::user()->akses }}</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }} ({{ Auth::user()->akses }}) </a>
         </div>
       </div>
 

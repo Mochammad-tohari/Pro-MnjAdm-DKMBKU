@@ -100,6 +100,9 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //export PDF
             Route::get('/gedung_export_pdf', [gedung_controller::class,'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');
 
+            //lihat 1 data
+            Route::get('/gedung_view/{id_gedung}', [gedung_controller::class,'gedung_view'])->name('gedung_view')->middleware('auth');
+
 
     //tabel ruangan
             //tampil data

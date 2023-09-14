@@ -121,5 +121,23 @@ class gedung_controller extends Controller
 
     }
 
+    public function show($kode_gedung)
+    {
+        $gedung_data = gedung_model::where('Kode_gedung', $kode_gedung)->first();
 
+        if ($gedung_data) {
+            return view('gedung.show', ['gedung_data' => $gedung_data]);
+        } else {
+            return redirect()->route('gedung_index')->with('error', 'Data not found.');
+        }
+    }
+
+    // untuk lihat data uji berfungsi untuk melihat 1 data
+    public function gedung_view($id_gedung)
+    {
+
+    $gedung_data = gedung_model::find($id_gedung);
+    return view('gedung_view', compact('gedung_data'));
+
+    }
 }

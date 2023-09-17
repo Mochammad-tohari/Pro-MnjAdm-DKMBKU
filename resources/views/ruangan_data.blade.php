@@ -51,8 +51,8 @@
         @endif --}}
 
           <div class="col-auto">
-            <form action="/gedung_data" method="GET">
-              <a href="/gedung_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+            <form action="/ruangan_data" method="GET">
+              <a href="/ruangan_export_pdf" class="btn btn-primary">Export PDF</button> </a>
             </form>
           </div>
 

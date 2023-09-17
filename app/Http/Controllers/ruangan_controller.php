@@ -135,5 +135,16 @@ class ruangan_controller extends Controller
         return redirect()->route('ruangan_index')->with('success_edit', 'Data Berhasil Diubah');
     }
 
+    public function ruangan_export_pdf()
+    {
+        $ruangan_data = ruangan_model::orderBy('Nama_Ruangan', 'asc')->get();
+
+        view()->share('ruangan_data', $ruangan_data);
+        $ruangan_pdf = PDF::loadview('ruangan_export-pdf');
+        return $ruangan_pdf->download('data_ruangan.pdf');
+
+
+    }
+
 
 }

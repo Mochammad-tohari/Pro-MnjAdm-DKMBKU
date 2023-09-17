@@ -108,6 +108,9 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //tampil data
             Route::get('/ruangan_data', [ruangan_controller::class,'ruangan_index'])->name('ruangan_index')->middleware('auth');
 
+            //export PDF
+            Route::get('/ruangan_export_pdf', [ruangan_controller::class,'ruangan_export_pdf'])->name('ruangan_export_pdf')->middleware('auth');
+
 
     //tabel murid madrasah
             //tampildata

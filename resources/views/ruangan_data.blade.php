@@ -156,7 +156,7 @@
                         @if(auth()->user()->akses === 'Admin')
                         <a href="/ruangan_edit/{{$row->id_ruangan}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                         @endif
-                        <a href="/ruangan_view/{{$row->id_ruangan}}" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                        <a href="/ruangan_view/{{$row->id_ruangan}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                         {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                         </td>
 

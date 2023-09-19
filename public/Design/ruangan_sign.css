@@ -1,0 +1,65 @@
+/* background image */
+
+.card-ruangan {
+    background-image: url('../tanda_info/Ruangan_Tanda.png');
+    background-size: cover;
+    width: 300mm;
+    height: 150mm;
+    /* Center the content vertically and horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.card-body {
+    /* Make the card body transparent so that the background image of the card is visible through it */
+    background-color: transparent;
+}
+
+/* content */
+
+.ruangan_nama {
+
+    /* Other styles for the text */
+    font-size: 100px;
+    color: #050505;
+
+    /* Editable positioning properties */
+    position: fixed;
+    margin-top: -70px; /* Increase this value to move the div down */
+    margin-bottom: 100px; /* Increase this value to move the div up */
+    margin-left: 110px; /* Increase this value to move the div to the right */
+    margin-right: 5px; /* Increase this value to move the div to the left */
+    color:#2e2e2e
+}
+
+.kode-text {
+    /* Other styles for the text */
+    font-size: 20px;
+    color: #333;
+
+    /* Editable positioning properties */
+    position: fixed;
+    margin-top: 80px; /* Increase this value to move the div down */
+    margin-bottom: 100px; /* Increase this value to move the div up */
+    margin-left: 310px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+    color:#2e2e2e
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

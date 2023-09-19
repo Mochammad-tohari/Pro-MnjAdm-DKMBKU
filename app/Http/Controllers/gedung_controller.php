@@ -123,7 +123,7 @@ class gedung_controller extends Controller
 
     public function show($kode_gedung)
     {
-        $gedung_data = gedung_model::where('Kode_gedung', $kode_gedung)->first();
+        $gedung_data = gedung_model::where('Kode_Gedung', $kode_gedung)->first();
 
         if ($gedung_data) {
             return view('gedung.show', ['gedung_data' => $gedung_data]);

@@ -32,6 +32,12 @@ use App\Http\Controllers\murid_madrasah_controller;
 //memanggil file murid_madrasah_model yg ada di folder Models
 use App\Models\murid_madrasah_model;
 
+//memanggil file bidang_khodim_controller yg ada di folder Controllers
+use App\Http\Controllers\bidang_khodim_controller;
+
+//memanggil file bidang_khodim_model yg ada di folder Models
+use App\Models\bidang_khodim_model;
+
 
 
 /*
@@ -124,6 +130,11 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
             //lihat 1 data
             Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class,'murid_madrasah_view'])->name('murid_madrasah_view')->middleware('auth');
+
+
+    //tabel bidang khodim
+            //tampildata
+            Route::get('/bidang_khodim_data', [bidang_khodim_controller::class,'bidang_khodim_index'])->name('bidang_khodim_index')->middleware('auth');
 
 
 

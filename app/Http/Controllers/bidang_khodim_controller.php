@@ -113,4 +113,16 @@ class bidang_khodim_controller extends Controller
     }
 
 
+    public function bidang_khodim_export_pdf()
+    {
+        $bidang_khodim_data = bidang_khodim_model::orderBy('Nama_Bidang_Khodim', 'asc')->get();
+
+        view()->share('bidang_khodim_data', $bidang_khodim_data);
+        $bidang_khodim_pdf = PDF::loadview('bidang_khodim_export-pdf');
+        return $bidang_khodim_pdf->download('data_bidang_khodim.pdf');
+
+
+    }
+
+
 }

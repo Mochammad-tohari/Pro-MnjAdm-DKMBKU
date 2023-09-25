@@ -136,6 +136,8 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //tampildata
             Route::get('/bidang_khodim_data', [bidang_khodim_controller::class,'bidang_khodim_index'])->name('bidang_khodim_index')->middleware('auth');
 
+            //export PDF
+            Route::get('/bidang_khodim_export_pdf', [bidang_khodim_controller::class,'bidang_khodim_export_pdf'])->name('bidang_khodim_export_pdf')->middleware('auth');
 
 
 

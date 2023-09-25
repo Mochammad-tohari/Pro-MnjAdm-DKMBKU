@@ -6,10 +6,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+//import table model
 use App\Models\uji_model;
 use App\Models\gedung_model;
 use App\Models\ruangan_model;
 use App\Models\murid_madrasah_model;
+use App\Models\bidang_khodim_model;
 
 class Controller extends BaseController
 {
@@ -77,12 +79,28 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
+        // Count total records
+        $data_bidang_khodim_jumlah = bidang_khodim_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_bidang_khodim_kondisi = [
+            'data_bidang_khodim_jumlah' => $data_bidang_khodim_jumlah,
+            // Count 'Aktif' status records
+            'bidang_khodim_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'bidang_khodim_tidak_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'bidang_khodim_lainya_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
         // Pass all the data variables to the view
         return view('welcome', [
             'data_uji_kondisi' => $data_uji_kondisi,
             'data_gedung_kondisi' => $data_gedung_kondisi,
             'data_ruangan_kondisi' => $data_ruangan_kondisi,
             'data_murid_kondisi' => $data_murid_kondisi,
+            'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
         ]);
     }
 }

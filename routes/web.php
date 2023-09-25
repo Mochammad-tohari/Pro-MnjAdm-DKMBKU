@@ -207,6 +207,15 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
                 Route::post('/murid_madrasah_update/{id_murid}', [murid_madrasah_controller::class,'murid_madrasah_update'])->name('murid_madrasah_update');
 
 
+        //tabel bidang_khodim
+            //insert data
+            Route::get('/bidang_khodim_create', [bidang_khodim_controller::class,'bidang_khodim_create'])->name('bidang_khodim_create');
+            Route::post('/bidang_khodim_insert', [bidang_khodim_controller::class,'bidang_khodim_insert'])->name('bidang_khodim_insert');
+
+            //edit data
+            Route::get('/bidang_khodim_edit/{id_bidang_khodim}', [bidang_khodim_controller::class,'bidang_khodim_edit'])->name('bidang_khodim_edit');
+            Route::post('/bidang_khodim_update/{id_bidang_khodim}', [bidang_khodim_controller::class,'bidang_khodim_update'])->name('bidang_khodim_update');
+
     });
 
 

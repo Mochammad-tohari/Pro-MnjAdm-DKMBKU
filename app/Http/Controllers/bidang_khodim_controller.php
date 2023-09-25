@@ -63,4 +63,54 @@ class bidang_khodim_controller extends Controller
         return view('bidang_khodim_data',compact ('bidang_khodim_data'));
 
     }
+
+    public function bidang_khodim_create()
+    {
+
+        return view('bidang_khodim_create');
+
+    }
+
+
+    public function bidang_khodim_insert(Request $request)
+    {
+        //dd($request->all());
+
+
+                $bidang_khodim_data = bidang_khodim_model::create($request->all());
+
+                $bidang_khodim_data->save();
+
+                return redirect()->route('bidang_khodim_index')->with('success', 'Data Berhasil Dimasukan');
+
+    }
+
+    public function bidang_khodim_edit($id_bidang_khodim)
+    {
+
+        $bidang_khodim_data = bidang_khodim_model::find($id_bidang_khodim);
+
+        return view('bidang_khodim_edit', compact('bidang_khodim_data'));
+    }
+
+
+    public function bidang_khodim_update(Request $request, $id_bidang_khodim)
+    {
+
+        $bidang_khodim_data = bidang_khodim_model::findOrFail($id_bidang_khodim); // Assuming you have the ID of the row you want to update
+
+        $bidang_khodim_data->update($request->all());
+
+        $bidang_khodim_data->save();
+
+        if(session('page_url')){
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('bidang_khodim_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+
 }

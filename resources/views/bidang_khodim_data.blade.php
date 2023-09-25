@@ -31,7 +31,7 @@
       <div class="card-body col-auto">
 
         @if(auth()->user()->akses === 'Admin')
-        <a button type="button" class="btn btn-success" href="#">Tambah +</button> </a>
+        <a button type="button" class="btn btn-success" href="/bidang_khodim_create">Tambah +</button> </a>
         @endif
 
         {{-- {{ Session::get('page_url') }} --}}
@@ -139,9 +139,9 @@
 
                     <td>
                     @if(auth()->user()->akses === 'Admin')
-                    <a href="/#/{{$row->id_gedung}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                    <a href="/bidang_khodim_edit/{{$row->id_bidang_khodim}}" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                     @endif
-                    <a href="/#/{{$row->id_gedung}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                    {{-- <a href="/#/{{$row->id_bidang_khodim}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
                     {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                     </td>
 

@@ -114,8 +114,10 @@
                 <th scope="col">Keterangan Gedung</th>
                 <th scope="col">Status Gedung</th>
 
+                @if(auth()->user()->akses === 'Admin')
                 <th scope="col">Dimasukan Oleh</th>
                 <th scope="col">Diperbaharui Oleh</th>
+                @endif
 
                 <th scope="col">Tanggal Data Dibuat</th>
                 <th scope="col">Action</th>
@@ -136,8 +138,10 @@
                     <td>{{$row->Keterangan_Gedung}}</td>
                     <td>{{$row->Status_Gedung}}</td>
 
+                    @if(auth()->user()->akses === 'Admin')
                     <td>{{$row->inserted_by}}</td>
                     <td>{{$row->updated_by}}</td>
+                    @endif
 
                     <td>{{$row->created_at->format('D,d M Y')}}</td>
 

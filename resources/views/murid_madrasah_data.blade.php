@@ -128,8 +128,11 @@
                         <th scope="col">Tingkat Murid</th>
                         <th scope="col">Keterangan Murid</th>
                         <th scope="col">Status Murid</th>
+
+                        @if(auth()->user()->akses === 'Admin')
                         <th scope="col">Dimasukan Oleh</th>
                         <th scope="col">Diperbaharui Oleh</th>
+                        @endif
 
                         <th scope="col">Tanggal Data Dibuat</th>
                         <th scope="col">Action</th>
@@ -182,8 +185,12 @@
                             <td>{{$row->Tingkat_Murid}}</td>
                             <td>{{$row->Keterangan_Murid}}</td>
                             <td>{{$row->Status_Murid}}</td>
+
+
+                            @if(auth()->user()->akses === 'Admin')
                             <td>{{$row->inserted_by}}</td>
                             <td>{{$row->updated_by}}</td>
+                            @endif
 
                             <td>{{$row->created_at->format('D,d M Y')}}</td>
 

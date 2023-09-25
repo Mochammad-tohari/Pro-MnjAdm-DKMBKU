@@ -112,8 +112,10 @@
                 <th scope="col">Keterangan Bidang Khodim</th>
                 <th scope="col">Status Bidang Khodim</th>
 
+                @if(auth()->user()->akses === 'Admin')
                 <th scope="col">Dimasukan Oleh</th>
                 <th scope="col">Diperbaharui Oleh</th>
+                @endif
 
                 <th scope="col">Tanggal Data Dibuat</th>
                 <th scope="col">Action</th>
@@ -132,8 +134,10 @@
                     <td>{{$row->Keterangan_Bidang_Khodim}}</td>
                     <td>{{$row->Status_Bidang_Khodim}}</td>
 
+                    @if(auth()->user()->akses === 'Admin')
                     <td>{{$row->inserted_by}}</td>
                     <td>{{$row->updated_by}}</td>
+                    @endif
 
                     <td>{{$row->created_at->format('D,d M Y')}}</td>
 

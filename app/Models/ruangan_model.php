@@ -26,7 +26,7 @@ class ruangan_model extends Model
             'Gedung_Kode' = field yang ada di table ruangan
             'Kode_Gedung' = field yang diambil dari table gedung
             */
-            public function gedung()
+            public function ambil_kode_gedung()
             {
                 return $this->belongsTo(gedung_model::class, 'Gedung_Kode', 'Kode_Gedung');
             }

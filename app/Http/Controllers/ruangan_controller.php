@@ -43,7 +43,7 @@ class ruangan_controller extends Controller
 
 
         // memanggil data gedung yang ada di table ruangan
-        $ruangan_data = ruangan_model::with('gedung')->paginate(5);
+        $ruangan_data = ruangan_model::with('ambil_kode_gedung')->paginate(5);
 
         //syntax search data
         $searchQuery = $request->input('search');

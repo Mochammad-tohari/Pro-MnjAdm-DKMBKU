@@ -136,8 +136,8 @@
 
                         {{-- memanggil dan mengecek kesediaan data Kode gedung
                         yang ditampilkan oleh nama gedung dari table gedung --}}
-                        @if ($row->gedung)
-                        <th scope="row">{{ $row->gedung->Nama_Gedung }}</th>
+                        @if ($row->ambil_kode_gedung)
+                        <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}</th>
                         @else
                         <th scope="row">Unknown Gedung</th>
                         @endif

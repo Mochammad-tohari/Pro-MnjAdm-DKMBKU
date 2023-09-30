@@ -38,6 +38,12 @@ use App\Http\Controllers\bidang_khodim_controller;
 //memanggil file bidang_khodim_model yg ada di folder Models
 use App\Models\bidang_khodim_model;
 
+//memanggil file khodim_dkm_controller yg ada di folder Controllers
+use App\Http\Controllers\khodim_dkm_controller;
+
+//memanggil file khodim_dkm_model yg ada di folder Models
+use App\Models\khodim_dkm_model;
+
 
 
 /*
@@ -138,6 +144,12 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
 
             //export PDF
             Route::get('/bidang_khodim_export_pdf', [bidang_khodim_controller::class,'bidang_khodim_export_pdf'])->name('bidang_khodim_export_pdf')->middleware('auth');
+
+
+    //tabel khodim dkm
+            //tampildata
+            Route::get('/khodim_dkm_data', [khodim_dkm_controller::class,'khodim_dkm_index'])->name('khodim_dkm_index')->middleware('auth');
+
 
 
 

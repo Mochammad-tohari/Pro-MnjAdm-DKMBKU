@@ -290,6 +290,15 @@
                     </a>
                 </li>
 
+                 <li class="nav-item">
+                    <a href="/khodim_dkm_data" class="nav-link{{ Request::is('khodim_dkm_data') ? ' active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Data Khodim DKM
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="/data_uji" class="nav-link{{ Request::is('data_uji') ? ' active' : '' }}">
                         <i class="nav-icon fa fa-columns"></i>

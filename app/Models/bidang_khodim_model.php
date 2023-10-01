@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//import Model "khodim_dkm_model" dari folder models
+use App\Models\khodim_dkm_model;
 
 // import class uuid
 use Illuminate\Support\Str;
@@ -25,6 +27,12 @@ class bidang_khodim_model extends Model
     protected $primaryKey = 'id_bidang_khodim';
     public $incrementing = false;
 
+
+    //memberi informasi di table khodim dkm
+        public function  khodim_dkm()
+        {
+            return $this->hasMany(khodim_dkm_model::class);
+        }
 
     //syntax utk menerapkan uuid
     protected static function boot()

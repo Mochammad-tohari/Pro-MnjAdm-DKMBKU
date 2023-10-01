@@ -28,7 +28,7 @@ class khodim_dkm_model extends Model
             */
             public function ambil_kode_bidang_khodim()
             {
-                return $this->belongsTo(gedung_model::class, 'Kode_Khodim', 'Kode_Bidang_Khodim ');
+                return $this->belongsTo(bidang_khodim_model::class, 'Jabatan_Khodim', 'Kode_Bidang_Khodim');
             }
 
             /*$primaryKey = menegaskan field primary key adalah "id"

@@ -183,10 +183,10 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/khodim_dkm_edit/{{ $row->id_khodim_dkm }}"
+                                                <a href="/khodim_dkm_edit/{{ $row->id_khodim }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
-                                            <a href="/khodim_dkm_view/{{ $row->id_khodim_dkm }}" target="_blank"
+                                            <a href="/khodim_dkm_view/{{ $row->id_khodim }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                                             {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                                         </td>

@@ -120,4 +120,52 @@ class khodim_dkm_controller extends Controller
     }
 
 
+     public function khodim_dkm_edit($id_khodim)
+    {
+         //dd($id_khodim);
+
+        // $bidang_khodim_option
+        // bidang_Khodim_model::pluck('Nama_bidang_Khodim', 'Kode_bidang_Khodim'); = mengambil nama bidang_Khodim berdasarkan kode bidang_Khodim yang ada di table bidang_Khodim
+        $khodim_dkm_data = khodim_dkm_model::findOrFail($id_khodim);
+
+        $bidang_khodim_option = bidang_Khodim_model::pluck('Nama_Bidang_Khodim', 'Kode_Bidang_Khodim');
+
+        return view('khodim_dkm_edit', compact('khodim_dkm_data', 'bidang_khodim_option'));
+
+    }
+
+    public function khodim_dkm_update(Request $request, $id_khodim)
+    {
+        $khodim_dkm_data = khodim_dkm_model::findOrFail($id_khodim);
+        $khodim_dkm_data->Jabatan_Khodim = $request->input('Jabatan_Khodim');
+
+        // Update the data with new values from the request
+        $khodim_dkm_data->fill($request->all());
+
+        $khodim_dkm_data->update($request->all());
+
+         if ($request->hasFile('Foto_Khodim')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Khodim')->getClientOriginalName();
+            $request->file('Foto_Khodim')->move(public_path('Data_Khodim/Foto_Khodim'), $filename1);
+            $khodim_dkm_data->Foto_Khodim = $filename1;
+        }
+
+        if ($request->hasFile('Identitas_Khodim')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Khodim')->getClientOriginalName();
+            $request->file('Identitas_Khodim')->move(public_path('Data_Khodim/Identitas_Khodim'), $filename2);
+            $khodim_dkm_data->Identitas_Khodim = $filename2;
+        }
+
+        $khodim_dkm_data->save();
+
+
+        // Redirect or return response as needed
+        if(session('page_url')){
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('khodim_dkm_index')->with('success_edit', 'Data Berhasil Diubah');
+    }
+
+
 }

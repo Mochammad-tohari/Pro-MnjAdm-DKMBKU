@@ -235,6 +235,10 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //insert data
             Route::get('/khodim_dkm_create', [khodim_dkm_controller::class,'khodim_dkm_create'])->name('khodim_dkm_create');
             Route::post('/khodim_dkm_insert', [khodim_dkm_controller::class,'khodim_dkm_insert'])->name('khodim_dkm_insert');
+
+            //edit data
+            Route::get('/khodim_dkm_edit/{id_khodim}', [khodim_dkm_controller::class,'khodim_dkm_edit'])->name('khodim_dkm_edit');
+            Route::post('/khodim_dkm_update/{id_khodim}', [khodim_dkm_controller::class,'khodim_dkm_update'])->name('khodim_dkm_update');
     });
 
 

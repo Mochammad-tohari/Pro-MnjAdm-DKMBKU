@@ -5,7 +5,7 @@
 
 
     <style type="text/css">
-        #ruangan {
+        #khodim_dkm {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -14,7 +14,7 @@
             size: 297mm 210mm;
         }
 
-        #ruangan th {
+        #khodim_dkm th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
@@ -22,13 +22,13 @@
             color: white;
         }
 
-        #ruangan td,
-        #ruangan th {
+        #khodim_dkm td,
+        #khodim_dkm th {
             border: 1px solid #ddd;
             padding: 2px;
         }
 
-        #ruangan tr:nth-child(even) {
+        #khodim_dkm tr:nth-child(even) {
             background-color: #f2f2f2;
         }
     </style>
@@ -38,18 +38,19 @@
 
 <body>
 
-    <h1>Tabel Data Ruangan</h1>
+    <h1>Tabel Data Khodim DKM</h1>
     <div style="overflow-x: auto;">
-        <table id="ruangan">
+        <table id="khodim_dkm">
             <tr>
                 <th>Nomor</th>
-                <th>Lokasi Gedung</th>
-                <th>Kode Ruangan</th>
-                <th>Nama Ruangan</th>
-                <th>Luas Ruangan</th>
-                <th>Tanggal Operasional</th>
-                <th>Keterangan Ruangan</th>
-                <th>Status Ruangan</th>
+
+                <th>Kode_Khodim</th>
+                <th>Jabatan_Khodim</th>
+                <th>Nama_Khodim</th>
+                <th>Kontak_Khodim</th>
+                <th>Alamat_Khodim</th>
+                <th>Keterangan_Khodim</th>
+                <th>Status_Khodim</th>
 
                 <th>Tanggal Data Dibuat</th>
             </tr>
@@ -58,17 +59,18 @@
                 $nomor = 1;
             @endphp
 
-            @foreach ($ruangan_data as $row)
+            @foreach ($khodim_dkm_data as $row)
                 <tr>
 
                     <td>{{ $nomor++ }}</td>
-                    <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}</th>
-                    <th scope="row">{{ $row->Kode_Ruangan }}</th>
-                    <td>{{ $row->Nama_Ruangan }}</td>
-                    <td>{{ $row->Luas_Ruangan }}</td>
-                    <td>{{ $row->Tanggal_Operasional_Ruangan }}</td>
-                    <td>{{ $row->Keterangan_Ruangan }}</td>
-                    <td>{{ $row->Status_Ruangan }}</td>
+
+                    <th scope="row">{{ $row->Kode_Khodim }}</th>
+                    <td>{{ $row->ambil_kode_bidang_khodim->Nama_Bidang_Khodim }}</td>
+                    <td>{{ $row->Nama_Khodim }}</td>
+                    <td>{{ $row->Kontak_Khodim }}</td>
+                    <td>{{ $row->Alamat_Khodim }}</td>
+                    <td>{{ $row->Keterangan_Khodim }}</td>
+                    <td>{{ $row->Status_Khodim }}</td>
 
                     <td>{{ $row->created_at->format('D,d M Y') }}</td>
                 </tr>

@@ -150,6 +150,12 @@ Pembatasan hak akses dibatasi di file blade.php masing2 table
             //tampildata
             Route::get('/khodim_dkm_data', [khodim_dkm_controller::class,'khodim_dkm_index'])->name('khodim_dkm_index')->middleware('auth');
 
+            //export PDF
+            Route::get('/khodim_dkm_export_pdf', [khodim_dkm_controller::class,'khodim_dkm_export_pdf'])->name('khodim_dkm_export_pdf')->middleware('auth');
+
+            //lihat 1 data
+            Route::get('/khodim_dkm_view/{id_murid}', [khodim_dkm_controller::class,'khodim_dkm_view'])->name('khodim_dkm_view')->middleware('auth');
+
 
 
 

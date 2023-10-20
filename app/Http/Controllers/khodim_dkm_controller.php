@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
 //import Model "khodim_dkm_model" dari folder models
@@ -38,7 +39,7 @@ class khodim_dkm_controller extends Controller
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $khodim_dkm_data = khodim_dkm_model::orderBy('Nama_Khodim', 'asc')
-                                -> paginate(5);
+            ->paginate(5);
 
 
         // memanggil data gedung yang ada di table khodim_dkm
@@ -50,7 +51,7 @@ class khodim_dkm_controller extends Controller
         if ($request->has('search')) {
             $khodim_dkm_data = khodim_dkm_model::where(function ($query) use ($searchQuery) {
                 $query->where('Nama_Khodim', 'LIKE', '%' . $searchQuery . '%')
-                      ->orWhere('Kode_Khodim', 'LIKE', '%' . $searchQuery . '%');
+                    ->orWhere('Kode_Khodim', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -66,20 +67,18 @@ class khodim_dkm_controller extends Controller
         /*
         view 'khodim_dkm_data' diambil dari khodim_dkm_data.blade.php, compact 'khodim_dkm_data', diambil dari variabel $khodim_dkm_data
         */
-        return view('khodim_dkm_data',compact ('khodim_dkm_data'));
-
+        return view('khodim_dkm_data', compact('khodim_dkm_data'));
     }
 
 
-     public function khodim_dkm_create()
+    public function khodim_dkm_create()
     {
 
         // $bidang_khodim_option
         // bidang_Khodim_model::pluck('Nama_bidang_Khodim', 'Kode_bidang_Khodim'); = mengambil nama bidang_Khodim berdasarkan kode bidang_Khodim yang ada di table bidang_Khodim
 
         $bidang_khodim_option = bidang_Khodim_model::pluck('Nama_Bidang_Khodim', 'Kode_Bidang_Khodim');
-        return view('khodim_dkm_create',compact ('bidang_khodim_option'));
-
+        return view('khodim_dkm_create', compact('bidang_khodim_option'));
     }
 
     public function khodim_dkm_insert(Request $request)
@@ -98,8 +97,8 @@ class khodim_dkm_controller extends Controller
         // ... continue assigning other fields
 
 
-         // Save the $khodim_dkm_data object to the database
-         $khodim_dkm_data = khodim_dkm_model::create($request->all());
+        // Save the $khodim_dkm_data object to the database
+        $khodim_dkm_data = khodim_dkm_model::create($request->all());
 
         if ($request->hasFile('Foto_Khodim')) {
             $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Khodim')->getClientOriginalName();
@@ -120,9 +119,9 @@ class khodim_dkm_controller extends Controller
     }
 
 
-     public function khodim_dkm_edit($id_khodim)
+    public function khodim_dkm_edit($id_khodim)
     {
-         //dd($id_khodim);
+        //dd($id_khodim);
 
         // $bidang_khodim_option
         // bidang_Khodim_model::pluck('Nama_bidang_Khodim', 'Kode_bidang_Khodim'); = mengambil nama bidang_Khodim berdasarkan kode bidang_Khodim yang ada di table bidang_Khodim
@@ -131,7 +130,6 @@ class khodim_dkm_controller extends Controller
         $bidang_khodim_option = bidang_Khodim_model::pluck('Nama_Bidang_Khodim', 'Kode_Bidang_Khodim');
 
         return view('khodim_dkm_edit', compact('khodim_dkm_data', 'bidang_khodim_option'));
-
     }
 
     public function khodim_dkm_update(Request $request, $id_khodim)
@@ -144,7 +142,7 @@ class khodim_dkm_controller extends Controller
 
         $khodim_dkm_data->update($request->all());
 
-         if ($request->hasFile('Foto_Khodim')) {
+        if ($request->hasFile('Foto_Khodim')) {
             $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Khodim')->getClientOriginalName();
             $request->file('Foto_Khodim')->move(public_path('Data_Khodim/Foto_Khodim'), $filename1);
             $khodim_dkm_data->Foto_Khodim = $filename1;
@@ -160,7 +158,7 @@ class khodim_dkm_controller extends Controller
 
 
         // Redirect or return response as needed
-        if(session('page_url')){
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
@@ -174,9 +172,24 @@ class khodim_dkm_controller extends Controller
         view()->share('khodim_dkm_data', $khodim_dkm_data);
         $khodim_dkm_pdf = PDF::loadview('khodim_dkm_export-pdf');
         return $khodim_dkm_pdf->download('data_khodim_dkm.pdf');
-
-
     }
 
+    public function show($kode_khodim)
+    {
+        $khodim_dkm_data = khodim_dkm_model::where('Kode_Khodim', $kode_khodim)->first();
 
+        if ($khodim_dkm_data) {
+            return view('khodim_dkm.show', ['khodim_dkm_data' => $khodim_dkm_data]);
+        } else {
+            return redirect()->route('khodim_dkm_index')->with('error', 'Data not found.');
+        }
+    }
+
+    // untuk lihat data uji berfungsi untuk melihat 1 data
+    public function khodim_dkm_view($id_khodim)
+    {
+
+        $khodim_dkm_data = khodim_dkm_model::find($id_khodim);
+        return view('khodim_dkm_view', compact('khodim_dkm_data'));
+    }
 }

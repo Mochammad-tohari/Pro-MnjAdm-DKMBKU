@@ -1,10 +1,10 @@
 /* background image */
 
-.card-murid {
-    background-image: url("../name_tag/name_tag_murid.jpg");
+.card-khodim-dkm {
+    background-image: url("../name_tag/khodim_name_tag.jpg");
     background-size: cover;
-    width: 105mm;
-    height: 148mm;
+    width: 100mm;
+    height: 150mm;
     /* Center the content vertically and horizontally */
     display: flex;
     align-items: center; /* Center vertically */
@@ -18,13 +18,13 @@
 
 /* content */
 
-.Foto_Murid {
+.Foto_Khodim {
     /* Adjust the top and bottom margins to move the div up or down */
     position: fixed;
-    margin-top: -142px; /* Increase this value to move the div down */
-    margin-bottom: 115px; /* Increase this value to move the div up */
-    margin-left: 150px; /* Increase this value to move the div to the right */
-    margin-right: 5px; /* Increase this value to move the div to the left */
+    margin-top: -95px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 134px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
 
     /* Float the .Foto1 div to the left */
     float: left;
@@ -33,7 +33,7 @@
     text-align: center; /* This will center the image horizontally within the div */
 }
 
-.Foto_Murid img {
+.Foto_Khodim img {
     /* Apply styles to the image if needed */
     width: 110px;
     /* Additional styles for the image */
@@ -49,9 +49,9 @@
 
 #name_tag {
     position: fixed;
-    margin-top: -70px; /* Increase this value to move the div down */
-    margin-bottom: 70px; /* Increase this value to move the div up */
-    margin-left: 110px; /* Increase this value to move the div to the right */
+    margin-top: -10px; /* Increase this value to move the div down */
+    margin-bottom: 50px; /* Increase this value to move the div up */
+    margin-left: 100px; /* Increase this value to move the div to the right */
     margin-right: 5px; /* Increase this value to move the div to the left */
     color: #2e2e2e;
 }

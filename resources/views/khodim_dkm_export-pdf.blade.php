@@ -11,7 +11,7 @@
             width: 100%;
             font-size: 9pt;
             /*A4-sized pages in landscape orientation are 297 mm wide by 210 mm long*/
-            size: 297mm 210mm;
+            size: 420mm 297mm;
         }
 
         #khodim_dkm th {
@@ -44,13 +44,13 @@
             <tr>
                 <th>Nomor</th>
 
-                <th>Kode_Khodim</th>
-                <th>Jabatan_Khodim</th>
-                <th>Nama_Khodim</th>
-                <th>Kontak_Khodim</th>
-                <th>Alamat_Khodim</th>
-                <th>Keterangan_Khodim</th>
-                <th>Status_Khodim</th>
+                <th>Kode Khodim</th>
+                <th>Jabatan Khodim</th>
+                <th>Nama Khodim</th>
+                <th>Kontak Khodim</th>
+                <th>Alamat Khodim</th>
+                <th>Keterangan Khodim</th>
+                <th>Status Khodim</th>
 
                 <th>Tanggal Data Dibuat</th>
             </tr>

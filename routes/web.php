@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+//memanggil file controller yg ada di folder Controllers
 use App\Http\Controllers\Controller;
 
 //memanggil file login_controller yg ada di folder Controllers
@@ -43,6 +44,12 @@ use App\Http\Controllers\khodim_dkm_controller;
 
 //memanggil file khodim_dkm_model yg ada di folder Models
 use App\Models\khodim_dkm_model;
+
+//memanggil file bidang_pengurus_controller yg ada di folder Controllers
+use App\Http\Controllers\bidang_pengurus_controller;
+
+//memanggil file bidang_pengurus_model yg ada di folder Models
+use App\Models\bidang_pengurus_model;
 
 
 
@@ -157,6 +164,9 @@ Route::get('/khodim_dkm_export_pdf', [khodim_dkm_controller::class, 'khodim_dkm_
 Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_view'])->name('khodim_dkm_view')->middleware('auth');
 
 
+//tabel bidang pengurus
+//tampildata
+Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_pengurus_index'])->name('bidang_pengurus_index')->middleware('auth');
 
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin

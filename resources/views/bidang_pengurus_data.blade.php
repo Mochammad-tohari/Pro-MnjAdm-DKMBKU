@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <title>Data Bidang Khodim</title>
+    <title>Data Bidang Pengurus</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Bidang Khodim</h1>
+                        <h1 class="m-0">Data Bidang Pengurus</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Bidang Khodim</li>
+                            <li class="breadcrumb-item active">Data Bidang Pengurus</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,25 +24,25 @@
         <div class="col-auto">
             <div class="card col-auto">
                 <div class="card-header col-auto">
-                    <h3 class="card-title text-center">Daftar Data Bidang Khodim</h3>
+                    <h3 class="card-title text-center">Daftar Data Bidang Pengurus</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body col-auto">
-
 
                     {{-- syntax pembatsan akses untuk admin
                     @if (auth()->user()->akses === 'Admin')
                         konten yang dibatasi
                     @endif --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/bidang_khodim_create">Tambah +</button> </a>
+                        <a button type="button" class="btn btn-success" href="/bidang_pengurus_create">Tambah +</button>
+                        </a>
                     @endif
 
                     {{-- {{ Session::get('page_url') }} --}}
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/bidang_khodim_data" method="GET">
+                            <form action="/bidang_pengurus_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -56,8 +56,8 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/bidang_khodim_data" method="GET">
-                                <a href="/bidang_khodim_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+                            <form action="/bidang_pengurus_data" method="GET">
+                                <a href="/bidang_pengurus_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 
@@ -115,10 +115,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Kode Bidang Khodim</th>
-                                        <th scope="col">Nama Bidang Khodim</th>
-                                        <th scope="col">Keterangan Bidang Khodim</th>
-                                        <th scope="col">Status Bidang Khodim</th>
+                                        <th scope="col">Kode Bidang Pengurus</th>
+                                        <th scope="col">Nama Bidang Pengurus</th>
+                                        <th scope="col">Keterangan Bidang Pengurus</th>
+                                        <th scope="col">Status Bidang Pengurus</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
@@ -132,15 +132,15 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($bidang_khodim_data as $bidang_khodim_index => $row)
+                                        @foreach ($bidang_pengurus_data as $bidang_pengurus_index => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $bidang_khodim_index + $bidang_khodim_data->firstItem() }}</td>
+                                        <td>{{ $bidang_pengurus_index + $bidang_pengurus_data->firstItem() }}</td>
 
-                                        <th scope="row">{{ $row->Kode_Bidang_Khodim }}</th>
-                                        <td>{{ $row->Nama_Bidang_Khodim }}</td>
-                                        <td>{{ $row->Keterangan_Bidang_Khodim }}</td>
-                                        <td>{{ $row->Status_Bidang_Khodim }}</td>
+                                        <th scope="row">{{ $row->Kode_Bidang_Pengurus }}</th>
+                                        <td>{{ $row->Nama_Bidang_Pengurus }}</td>
+                                        <td>{{ $row->Keterangan_Bidang_Pengurus }}</td>
+                                        <td>{{ $row->Status_Bidang_Pengurus }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -151,10 +151,10 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/bidang_khodim_edit/{{ $row->id_bidang_khodim }}"
+                                                <a href="/bidang_pengurus_edit/{{ $row->id_bidang_pengurus }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
-                                            {{-- <a href="/#/{{$row->id_bidang_khodim}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
+                                            {{-- <a href="/#/{{$row->id_bidang_pengurus}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
                                             {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                                         </td>
 
@@ -170,7 +170,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $bidang_khodim_data->links() }}
+                        {{ $bidang_pengurus_data->links() }}
                     </div>
                 </div>
             </div>

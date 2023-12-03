@@ -36,7 +36,7 @@ class bidang_khodim_controller extends Controller
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $bidang_khodim_data = bidang_khodim_model::orderBy('Nama_Bidang_Khodim', 'asc')
-                                -> paginate(5);
+            ->paginate(5);
 
         //syntax search data
         $searchQuery = $request->input('search');
@@ -44,7 +44,7 @@ class bidang_khodim_controller extends Controller
         if ($request->has('search')) {
             $bidang_khodim_data = bidang_khodim_model::where(function ($query) use ($searchQuery) {
                 $query->where('Nama_Bidang_Khodim', 'LIKE', '%' . $searchQuery . '%')
-                      ->orWhere('Kode_Bidang_Khodim', 'LIKE', '%' . $searchQuery . '%');
+                    ->orWhere('Kode_Bidang_Khodim', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -60,7 +60,7 @@ class bidang_khodim_controller extends Controller
         /*
         view 'bidang_khodim_data' diambil dari bidang_khodim_data.blade.php, compact 'bidang_khodim_data', diambil dari variabel $bidang_khodim_data
         */
-        return view('bidang_khodim_data',compact ('bidang_khodim_data'));
+        return view('bidang_khodim_data', compact('bidang_khodim_data'));
 
     }
 
@@ -77,11 +77,11 @@ class bidang_khodim_controller extends Controller
         //dd($request->all());
 
 
-                $bidang_khodim_data = bidang_khodim_model::create($request->all());
+        $bidang_khodim_data = bidang_khodim_model::create($request->all());
 
-                $bidang_khodim_data->save();
+        $bidang_khodim_data->save();
 
-                return redirect()->route('bidang_khodim_index')->with('success', 'Data Berhasil Dimasukan');
+        return redirect()->route('bidang_khodim_index')->with('success', 'Data Berhasil Dimasukan');
 
     }
 
@@ -103,7 +103,7 @@ class bidang_khodim_controller extends Controller
 
         $bidang_khodim_data->save();
 
-        if(session('page_url')){
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 

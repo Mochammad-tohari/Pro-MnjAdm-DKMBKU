@@ -1,149 +1,200 @@
 @extends('layout.admin')
 
 @section('content')
-<head>
-<link rel="stylesheet" href="Design/box_info_data.css">
-<title>Dashboard Manajemen DKMBKU</title>
-</head>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Menu Dashboard</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v2</li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
+    <head>
+        <link rel="stylesheet" href="Design/box_info_data.css">
+        <title>Dashboard Manajemen DKMBKU</title>
+    </head>
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Menu Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v2</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-        <div class="row">
-            <!-- Small boxes (Stat box) -->
-            <div class="col-lg-3 col-6">
-              <!-- small box 1 -->
-              <div class="small-box bg-info info-box-gedung">
-                <div class="inner">
-                  <h4><strong>Indeks Data Gedung</strong></h4>
-                  <span class="info-box-number-1 mb-3">
-                    <p class="info-box-text-gedung">Jumlah Data Gedung: {{ $data_gedung_kondisi['data_gedung_jumlah'] }}</p>
-                    <p class="info-box-text-aktif">Gedung Aktif: {{ $data_gedung_kondisi['gedung_aktif_count'] }}</p>
-                    <p class="info-box-text-tidak-aktif">Gedung Tidak Aktif: {{ $data_gedung_kondisi['gedung_tidak_aktif_count'] }}</p>
-                    <p class="info-box-text-lainya">Gedung Lainya: {{ $data_gedung_kondisi['gedung_lainya_count'] }}</p>
-                    {{-- <small>Data</small> --}}
-                  </span>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-gedung">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Gedung</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-gedung">Jumlah Data Gedung:
+                                        {{ $data_gedung_kondisi['data_gedung_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Gedung Aktif:
+                                        {{ $data_gedung_kondisi['gedung_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Gedung Tidak Aktif:
+                                        {{ $data_gedung_kondisi['gedung_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Gedung Lainya:
+                                        {{ $data_gedung_kondisi['gedung_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/gedung_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-ruangan">
+                            <div class="inner">
+                                <h4><strong>Indeks Data ruangan</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-ruangan">Jumlah Data Ruangan:
+                                        {{ $data_ruangan_kondisi['data_ruangan_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Ruangan Aktif:
+                                        {{ $data_ruangan_kondisi['ruangan_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Ruangan Tidak Aktif:
+                                        {{ $data_ruangan_kondisi['ruangan_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Ruangan Lainya:
+                                        {{ $data_ruangan_kondisi['ruangan_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/ruangan_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-madrasah">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Murid Madrasah</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-madrasah">Jumlah Data murid:
+                                        {{ $data_murid_kondisi['data_murid_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Murid Aktif:
+                                        {{ $data_murid_kondisi['murid_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Murid Tidak Aktif:
+                                        {{ $data_murid_kondisi['murid_tidak_aktif_count'] }}</p>
+                                    {{-- <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p> --}}
+                                    <p class="info-box-text-lainya">Murid Lainya:
+                                        {{ $data_murid_kondisi['murid_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/murid_madrasah_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-bidang_khodim">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Bidang Khodim</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-bidang_khodim">Jumlah Data Bid.Khodim:
+                                        {{ $data_bidang_khodim_kondisi['data_bidang_khodim_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Bid.Khodim Aktif:
+                                        {{ $data_bidang_khodim_kondisi['bidang_khodim_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Bid.Khodim Tidak Aktif:
+                                        {{ $data_bidang_khodim_kondisi['bidang_khodim_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Bid.Khodim Lainya:
+                                        {{ $data_bidang_khodim_kondisi['bidang_khodim_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/bidang_khodim_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-khodim_dkm">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Khodim DKM</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-khodim_dkm">Jumlah Data Khodim:
+                                        {{ $data_khodim_dkm_kondisi['data_khodim_dkm_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Khodim Aktif:
+                                        {{ $data_khodim_dkm_kondisi['khodim_dkm_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Khodim Tidak Aktif:
+                                        {{ $data_khodim_dkm_kondisi['khodim_dkm_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Khodim Lainya:
+                                        {{ $data_khodim_dkm_kondisi['khodim_dkm_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/khodim_dkm_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 3 -->
+                        <div class="small-box bg-info info-box-uji">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Uji</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-uji">Jumlah Data Uji:
+                                        {{ $data_uji_kondisi['data_uji_jumlah'] }}</p>
+                                    <p class="info-box-text-uji">Aktif: {{ $data_uji_kondisi['aktif_count'] }}</p>
+                                    <p class="info-box-text-uji">Tidak Aktif: {{ $data_uji_kondisi['tidak_aktif_count'] }}
+                                    </p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/data_uji" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
                 </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="/gedung_data" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
 
-
-             <!-- Small boxes (Stat box) -->
-             <div class="col-lg-3 col-6">
-                <!-- small box 1 -->
-                <div class="small-box bg-info info-box-ruangan">
-                  <div class="inner">
-                    <h4><strong>Indeks Data ruangan</strong></h4>
-                    <span class="info-box-number-1 mb-3">
-                        <p class="info-box-text-ruangan">Jumlah Data Ruangan: {{ $data_ruangan_kondisi['data_ruangan_jumlah'] }}</p>
-                        <p class="info-box-text-aktif">Ruangan Aktif: {{ $data_ruangan_kondisi['ruangan_aktif_count'] }}</p>
-                        <p class="info-box-text-tidak-aktif">Ruangan Tidak Aktif: {{ $data_ruangan_kondisi['ruangan_tidak_aktif_count'] }}</p>
-                        <p class="info-box-text-lainya">Ruangan Lainya: {{ $data_ruangan_kondisi['ruangan_lainya_count'] }}</p>
-                      {{-- <small>Data</small> --}}
-                    </span>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="/ruangan_data" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-
-
-              <!-- Small boxes (Stat box) -->
-             <div class="col-lg-3 col-6">
-                <!-- small box 1 -->
-                <div class="small-box bg-info info-box-madrasah">
-                  <div class="inner">
-                    <h4><strong>Indeks Data Murid Madrasah</strong></h4>
-                    <span class="info-box-number-1 mb-3">
-                        <p class="info-box-text-madrasah">Jumlah Data murid: {{ $data_murid_kondisi['data_murid_jumlah'] }}</p>
-                        <p class="info-box-text-aktif">Murid Aktif: {{ $data_murid_kondisi['murid_aktif_count'] }}</p>
-                        <p class="info-box-text-tidak-aktif">Murid Tidak Aktif: {{ $data_murid_kondisi['murid_tidak_aktif_count'] }}</p>
-                        {{-- <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p> --}}
-                        <p class="info-box-text-lainya">Murid Lainya: {{ $data_murid_kondisi['murid_lainya_count'] }}</p>
-                      {{-- <small>Data</small> --}}
-                    </span>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="/murid_madrasah_data" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-
-
-              <!-- Small boxes (Stat box) -->
-             <div class="col-lg-3 col-6">
-                <!-- small box 1 -->
-                <div class="small-box bg-info info-box-bidang_khodim">
-                  <div class="inner">
-                    <h4><strong>Indeks Data Bidang Khodim</strong></h4>
-                    <span class="info-box-number-1 mb-3">
-                        <p class="info-box-text-bidang_khodim">Jumlah Data Bid.Khodim: {{ $data_bidang_khodim_kondisi['data_bidang_khodim_jumlah'] }}</p>
-                        <p class="info-box-text-aktif">Bid.Khodim Aktif: {{ $data_bidang_khodim_kondisi['bidang_khodim_aktif_count'] }}</p>
-                        <p class="info-box-text-tidak-aktif">Bid.Khodim Tidak Aktif: {{ $data_bidang_khodim_kondisi['bidang_khodim_tidak_aktif_count'] }}</p>
-                        <p class="info-box-text-lainya">Bid.Khodim Lainya: {{ $data_bidang_khodim_kondisi['bidang_khodim_lainya_count'] }}</p>
-                      {{-- <small>Data</small> --}}
-                    </span>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="/bidang_khodim_data" class="small-box-footer">Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-
-
-            <!-- Small boxes (Stat box) -->
-            <div class="col-lg-3 col-6">
-              <!-- small box 3 -->
-              <div class="small-box bg-info info-box-uji">
-                <div class="inner">
-                  <h4><strong>Indeks Data Uji</strong></h4>
-                  <span class="info-box-number-1 mb-3">
-                    <p class="info-box-text-uji">Jumlah Data Uji: {{ $data_uji_kondisi['data_uji_jumlah'] }}</p>
-                    <p class="info-box-text-uji">Aktif: {{ $data_uji_kondisi['aktif_count'] }}</p>
-                    <p class="info-box-text-uji">Tidak Aktif: {{ $data_uji_kondisi['tidak_aktif_count'] }}</p>
-                    {{-- <small>Data</small> --}}
-                  </span>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="/data_uji" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-
-
-          </div>
-
-        {{-- <div class="row">
+                {{-- <div class="row">
             <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
@@ -189,10 +240,10 @@
             </div>
         <!-- /.col -->
       </div> --}}
-      <!-- /.row -->
+                <!-- /.row -->
 
 
-      {{-- <div class="row">
+                {{-- <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
@@ -326,10 +377,10 @@
         </div>
         <!-- /.col -->
       </div> --}}
-      <!-- /.row -->
+                <!-- /.row -->
 
-      <!-- Main row -->
-      {{-- <div class="row">
+                <!-- Main row -->
+                {{-- <div class="row">
         <!-- Left col -->
         <div class="col-md-8">
           <!-- MAP & BOX PANE -->
@@ -956,10 +1007,10 @@
         </div>
         <!-- /.col -->
       </div> --}}
-      <!-- /.row -->
-    </div><!--/. container-fluid -->
-  </section>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+                <!-- /.row -->
+            </div><!--/. container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 @endsection

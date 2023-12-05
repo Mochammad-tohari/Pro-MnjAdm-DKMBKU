@@ -169,6 +169,8 @@ Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodi
 Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_pengurus_index'])->name('bidang_pengurus_index')->middleware('auth');
 
 
+
+
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
 Route::middleware(['role:Admin'])->group(function () {
 
@@ -255,6 +257,13 @@ Route::middleware(['role:Admin'])->group(function () {
     //edit data
     Route::get('/khodim_dkm_edit/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_edit'])->name('khodim_dkm_edit');
     Route::post('/khodim_dkm_update/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_update'])->name('khodim_dkm_update');
+
+
+    //tabel bidang_pengurus
+    //insert data
+    Route::get('/bidang_pengurus_create', [bidang_pengurus_controller::class, 'bidang_pengurus_create'])->name('bidang_pengurus_create');
+    Route::post('/bidang_pengurus_insert', [bidang_pengurus_controller::class, 'bidang_pengurus_insert'])->name('bidang_pengurus_insert');
+
 });
 
 

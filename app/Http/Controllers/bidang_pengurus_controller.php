@@ -64,4 +64,25 @@ class bidang_pengurus_controller extends Controller
         return view('bidang_pengurus_data', compact('bidang_pengurus_data'));
 
     }
+
+    public function bidang_pengurus_create()
+    {
+
+        return view('bidang_pengurus_create');
+
+    }
+
+
+    public function bidang_pengurus_insert(Request $request)
+    {
+        //dd($request->all());
+
+
+        $bidang_pengurus_data = bidang_pengurus_model::create($request->all());
+
+        $bidang_pengurus_data->save();
+
+        return redirect()->route('bidang_pengurus_index')->with('success', 'Data Berhasil Dimasukan');
+
+    }
 }

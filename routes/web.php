@@ -264,6 +264,11 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/bidang_pengurus_create', [bidang_pengurus_controller::class, 'bidang_pengurus_create'])->name('bidang_pengurus_create');
     Route::post('/bidang_pengurus_insert', [bidang_pengurus_controller::class, 'bidang_pengurus_insert'])->name('bidang_pengurus_insert');
 
+    //edit data
+    Route::get('/bidang_pengurus_edit/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_edit'])->name('bidang_pengurus_edit');
+    Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');
+
+
 });
 
 

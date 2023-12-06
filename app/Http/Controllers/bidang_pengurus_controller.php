@@ -85,4 +85,31 @@ class bidang_pengurus_controller extends Controller
         return redirect()->route('bidang_pengurus_index')->with('success', 'Data Berhasil Dimasukan');
 
     }
+
+    public function bidang_pengurus_edit($id_bidang_pengurus)
+    {
+
+        $bidang_pengurus_data = bidang_pengurus_model::find($id_bidang_pengurus);
+
+        return view('bidang_pengurus_edit', compact('bidang_pengurus_data'));
+    }
+
+
+    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus)
+    {
+
+        $bidang_pengurus_data = bidang_pengurus_model::findOrFail($id_bidang_pengurus); // Assuming you have the ID of the row you want to update
+
+        $bidang_pengurus_data->update($request->all());
+
+        $bidang_pengurus_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('bidang_pengurus_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
 }

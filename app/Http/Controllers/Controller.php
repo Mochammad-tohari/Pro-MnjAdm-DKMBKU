@@ -13,13 +13,12 @@ use App\Models\ruangan_model;
 use App\Models\murid_madrasah_model;
 use App\Models\bidang_khodim_model;
 use App\Models\khodim_dkm_model;
+use App\Models\bidang_pengurus_model;
 
-class Controller extends BaseController
-{
+class Controller extends BaseController {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function welcome()
-    {
+    public function welcome() {
         // Count total records for data_uji
         $data_uji_jumlah = uji_model::count();
 
@@ -110,6 +109,22 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
+
+        // Count total records
+        $data_bidang_pengurus_jumlah = bidang_pengurus_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_bidang_pengurus_kondisi = [
+            'data_bidang_pengurus_jumlah' => $data_bidang_pengurus_jumlah,
+            // Count 'Aktif' status records
+            'bidang_pengurus_aktif_count' => bidang_pengurus_model::where('Status_Bidang_Pengurus', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'bidang_pengurus_tidak_aktif_count' => bidang_pengurus_model::where('Status_Bidang_Pengurus', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'bidang_pengurus_lainya_count' => bidang_pengurus_model::where('Status_Bidang_Pengurus', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
         // Pass all the data variables to the view
         return view('welcome', [
             'data_uji_kondisi' => $data_uji_kondisi,
@@ -118,6 +133,8 @@ class Controller extends BaseController
             'data_murid_kondisi' => $data_murid_kondisi,
             'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
             'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
+            'data_bidang_pengurus_kondisi' => $data_bidang_pengurus_kondisi,
+
         ]);
     }
 }

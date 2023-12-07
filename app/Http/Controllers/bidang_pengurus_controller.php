@@ -27,10 +27,8 @@ use PDF;
 use Illuminate\Support\Facades\Session;
 
 
-class bidang_pengurus_controller extends Controller
-{
-    public function bidang_pengurus_index(Request $request)
-    {
+class bidang_pengurus_controller extends Controller {
+    public function bidang_pengurus_index(Request $request) {
         /*
         $bidang_pengurus_data pernyataan variabel
         bidang_pengurus_model diambil dari folder model
@@ -42,10 +40,10 @@ class bidang_pengurus_controller extends Controller
         //syntax search data
         $searchQuery = $request->input('search');
 
-        if ($request->has('search')) {
+        if($request->has('search')) {
             $bidang_pengurus_data = bidang_pengurus_model::where(function ($query) use ($searchQuery) {
-                $query->where('Nama_Bidang_Pengurus', 'LIKE', '%' . $searchQuery . '%')
-                    ->orWhere('Kode_Bidang_Pengurus', 'LIKE', '%' . $searchQuery . '%');
+                $query->where('Nama_Bidang_Pengurus', 'LIKE', '%'.$searchQuery.'%')
+                    ->orWhere('Kode_Bidang_Pengurus', 'LIKE', '%'.$searchQuery.'%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -65,16 +63,14 @@ class bidang_pengurus_controller extends Controller
 
     }
 
-    public function bidang_pengurus_create()
-    {
+    public function bidang_pengurus_create() {
 
         return view('bidang_pengurus_create');
 
     }
 
 
-    public function bidang_pengurus_insert(Request $request)
-    {
+    public function bidang_pengurus_insert(Request $request) {
         //dd($request->all());
 
 
@@ -86,8 +82,7 @@ class bidang_pengurus_controller extends Controller
 
     }
 
-    public function bidang_pengurus_edit($id_bidang_pengurus)
-    {
+    public function bidang_pengurus_edit($id_bidang_pengurus) {
 
         $bidang_pengurus_data = bidang_pengurus_model::find($id_bidang_pengurus);
 
@@ -95,8 +90,7 @@ class bidang_pengurus_controller extends Controller
     }
 
 
-    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus)
-    {
+    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus) {
 
         $bidang_pengurus_data = bidang_pengurus_model::findOrFail($id_bidang_pengurus); // Assuming you have the ID of the row you want to update
 
@@ -104,11 +98,21 @@ class bidang_pengurus_controller extends Controller
 
         $bidang_pengurus_data->save();
 
-        if (session('page_url')) {
+        if(session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
         return redirect()->route('bidang_pengurus_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+    public function bidang_pengurus_export_pdf() {
+        $bidang_pengurus_data = bidang_pengurus_model::orderBy('Nama_Bidang_Pengurus', 'asc')->get();
+
+        view()->share('bidang_pengurus_data', $bidang_pengurus_data);
+        $bidang_pengurus_pdf = PDF::loadview('bidang_pengurus_export-pdf');
+        return $bidang_pengurus_pdf->download('data_bidang_pengurus.pdf');
 
 
     }

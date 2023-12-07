@@ -135,3 +135,26 @@
     margin: 0;
     line-height: 1.5;
 }
+
+/* ////// */
+
+.small-box.bg-info.info-box-bidang_pengurus {
+    background-image: url("../box_info_image/bidang_pengurus_bg.jpg");
+    background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the second info box if needed */
+}
+
+.info-box-bidang_pengurus .info-box-text-bidang_pengurus {
+    font-size: 14px; /* You can adjust the value as needed */
+}
+
+/* Add custom styles to create gap after the heading */
+.info-box-bidang_pengurus p:first-child {
+    margin-top: 30px;
+}
+
+/* Add custom styles to remove gaps between the lines and make the text regular */
+.info-box-bidang_pengurus p {
+    margin: 0;
+    line-height: 1.5;
+}

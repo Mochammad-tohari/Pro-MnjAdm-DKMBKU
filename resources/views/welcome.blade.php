@@ -168,6 +168,34 @@
                     </div>
 
 
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-bidang_pengurus">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Bidang Pengurus</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-bidang_pengurus">Jumlah Data Bid.Pengurus:
+                                        {{ $data_bidang_pengurus_kondisi['data_bidang_pengurus_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Bid.Pengurus Aktif:
+                                        {{ $data_bidang_pengurus_kondisi['bidang_pengurus_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Bid.Pengurus Tidak Aktif:
+                                        {{ $data_bidang_pengurus_kondisi['bidang_pengurus_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Bid.Pengurus Lainya:
+                                        {{ $data_bidang_pengurus_kondisi['bidang_pengurus_lainya_count'] }}</p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/bidang_pengurus_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
                     <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 3 -->

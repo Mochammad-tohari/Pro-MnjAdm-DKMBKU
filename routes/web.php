@@ -115,10 +115,8 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->n
 //tabel gedung
 //tampil data
 Route::get('/gedung_data', [gedung_controller::class, 'gedung_index'])->name('gedung_index')->middleware('auth');
-
 //export PDF
 Route::get('/gedung_export_pdf', [gedung_controller::class, 'gedung_export_pdf'])->name('gedung_export_pdf')->middleware('auth');
-
 //lihat 1 data
 Route::get('/gedung_view/{id_gedung}', [gedung_controller::class, 'gedung_view'])->name('gedung_view')->middleware('auth');
 
@@ -126,10 +124,8 @@ Route::get('/gedung_view/{id_gedung}', [gedung_controller::class, 'gedung_view']
 //tabel ruangan
 //tampil data
 Route::get('/ruangan_data', [ruangan_controller::class, 'ruangan_index'])->name('ruangan_index')->middleware('auth');
-
 //export PDF
 Route::get('/ruangan_export_pdf', [ruangan_controller::class, 'ruangan_export_pdf'])->name('ruangan_export_pdf')->middleware('auth');
-
 //lihat 1 data
 Route::get('/ruangan_view/{id_ruangan}', [ruangan_controller::class, 'ruangan_view'])->name('ruangan_view')->middleware('auth');
 
@@ -137,10 +133,8 @@ Route::get('/ruangan_view/{id_ruangan}', [ruangan_controller::class, 'ruangan_vi
 //tabel murid madrasah
 //tampildata
 Route::get('/murid_madrasah_data', [murid_madrasah_controller::class, 'murid_madrasah_index'])->name('murid_madrasah_index')->middleware('auth');
-
 //export PDF
 Route::get('/murid_madrasah_export_pdf', [murid_madrasah_controller::class, 'murid_madrasah_export_pdf'])->name('murid_madrasah_export_pdf')->middleware('auth');
-
 //lihat 1 data
 Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_view'])->name('murid_madrasah_view')->middleware('auth');
 
@@ -148,7 +142,6 @@ Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class,
 //tabel bidang khodim
 //tampildata
 Route::get('/bidang_khodim_data', [bidang_khodim_controller::class, 'bidang_khodim_index'])->name('bidang_khodim_index')->middleware('auth');
-
 //export PDF
 Route::get('/bidang_khodim_export_pdf', [bidang_khodim_controller::class, 'bidang_khodim_export_pdf'])->name('bidang_khodim_export_pdf')->middleware('auth');
 
@@ -156,10 +149,8 @@ Route::get('/bidang_khodim_export_pdf', [bidang_khodim_controller::class, 'bidan
 //tabel khodim dkm
 //tampildata
 Route::get('/khodim_dkm_data', [khodim_dkm_controller::class, 'khodim_dkm_index'])->name('khodim_dkm_index')->middleware('auth');
-
 //export PDF
 Route::get('/khodim_dkm_export_pdf', [khodim_dkm_controller::class, 'khodim_dkm_export_pdf'])->name('khodim_dkm_export_pdf')->middleware('auth');
-
 //lihat 1 data
 Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_view'])->name('khodim_dkm_view')->middleware('auth');
 
@@ -167,6 +158,8 @@ Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodi
 //tabel bidang pengurus
 //tampildata
 Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_pengurus_index'])->name('bidang_pengurus_index')->middleware('auth');
+//export PDF
+Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
 
 
 
@@ -213,7 +206,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/gedung_create', [gedung_controller::class, 'gedung_create'])->name('gedung_create');
     Route::post('/gedung_insert', [gedung_controller::class, 'gedung_insert'])->name('gedung_insert');
-
     //edit data
     Route::get('/gedung_edit/{id_gedung}', [gedung_controller::class, 'gedung_edit'])->name('gedung_edit');
     Route::post('/gedung_update/{id_gedung}', [gedung_controller::class, 'gedung_update'])->name('gedung_update');
@@ -223,7 +215,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/ruangan_create', [ruangan_controller::class, 'ruangan_create'])->name('ruangan_create');
     Route::post('/ruangan_insert', [ruangan_controller::class, 'ruangan_insert'])->name('ruangan_insert');
-
     //edit data
     Route::get('/ruangan_edit/{id_ruangan}', [ruangan_controller::class, 'ruangan_edit'])->name('ruangan_edit');
     Route::post('/ruangan_update/{id_ruangan}', [ruangan_controller::class, 'ruangan_update'])->name('ruangan_update');
@@ -233,7 +224,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/murid_madrasah_create', [murid_madrasah_controller::class, 'murid_madrasah_create'])->name('murid_madrasah_create');
     Route::post('/murid_madrasah_insert', [murid_madrasah_controller::class, 'murid_madrasah_insert'])->name('murid_madrasah_insert');
-
     //edit data
     Route::get('/murid_madrasah_edit/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_edit'])->name('murid_madrasah_edit');
     Route::post('/murid_madrasah_update/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_update'])->name('murid_madrasah_update');
@@ -243,7 +233,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/bidang_khodim_create', [bidang_khodim_controller::class, 'bidang_khodim_create'])->name('bidang_khodim_create');
     Route::post('/bidang_khodim_insert', [bidang_khodim_controller::class, 'bidang_khodim_insert'])->name('bidang_khodim_insert');
-
     //edit data
     Route::get('/bidang_khodim_edit/{id_bidang_khodim}', [bidang_khodim_controller::class, 'bidang_khodim_edit'])->name('bidang_khodim_edit');
     Route::post('/bidang_khodim_update/{id_bidang_khodim}', [bidang_khodim_controller::class, 'bidang_khodim_update'])->name('bidang_khodim_update');
@@ -253,7 +242,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/khodim_dkm_create', [khodim_dkm_controller::class, 'khodim_dkm_create'])->name('khodim_dkm_create');
     Route::post('/khodim_dkm_insert', [khodim_dkm_controller::class, 'khodim_dkm_insert'])->name('khodim_dkm_insert');
-
     //edit data
     Route::get('/khodim_dkm_edit/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_edit'])->name('khodim_dkm_edit');
     Route::post('/khodim_dkm_update/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_update'])->name('khodim_dkm_update');
@@ -263,7 +251,6 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/bidang_pengurus_create', [bidang_pengurus_controller::class, 'bidang_pengurus_create'])->name('bidang_pengurus_create');
     Route::post('/bidang_pengurus_insert', [bidang_pengurus_controller::class, 'bidang_pengurus_insert'])->name('bidang_pengurus_insert');
-
     //edit data
     Route::get('/bidang_pengurus_edit/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_edit'])->name('bidang_pengurus_edit');
     Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');

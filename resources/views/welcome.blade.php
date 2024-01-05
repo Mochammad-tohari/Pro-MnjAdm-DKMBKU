@@ -3,6 +3,7 @@
 @section('content')
 
     <head>
+        {{-- memanggil file css box image info --}}
         <link rel="stylesheet" href="Design/box_info_data.css">
         <title>Dashboard Manajemen DKMBKU</title>
     </head>

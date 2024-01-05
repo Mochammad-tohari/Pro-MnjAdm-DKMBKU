@@ -4,50 +4,42 @@ use Illuminate\Support\Facades\Route;
 
 //memanggil file controller yg ada di folder Controllers
 use App\Http\Controllers\Controller;
-
 //memanggil file login_controller yg ada di folder Controllers
 use App\Http\Controllers\login_controller;
 
 //memanggil file uji_controller yg ada di folder Controllers
 use App\Http\Controllers\uji_controller;
-
 //memanggil file uji_model yg ada di folder Models
 use App\Models\uji_model;
 
 //memanggil file gedung_controller yg ada di folder Controllers
 use App\Http\Controllers\gedung_controller;
-
 //memanggil file gedung_model yg ada di folder Models
 use App\Models\gedung_model;
 
 
 //memanggil file ruangan_controller yg ada di folder Controllers
 use App\Http\Controllers\ruangan_controller;
-
 //memanggil file ruangan_model yg ada di folder Models
 use App\Models\ruangan_model;
 
 //memanggil file murid_madrasah_controller yg ada di folder Controllers
 use App\Http\Controllers\murid_madrasah_controller;
-
 //memanggil file murid_madrasah_model yg ada di folder Models
 use App\Models\murid_madrasah_model;
 
 //memanggil file bidang_khodim_controller yg ada di folder Controllers
 use App\Http\Controllers\bidang_khodim_controller;
-
 //memanggil file bidang_khodim_model yg ada di folder Models
 use App\Models\bidang_khodim_model;
 
 //memanggil file khodim_dkm_controller yg ada di folder Controllers
 use App\Http\Controllers\khodim_dkm_controller;
-
 //memanggil file khodim_dkm_model yg ada di folder Models
 use App\Models\khodim_dkm_model;
 
 //memanggil file bidang_pengurus_controller yg ada di folder Controllers
 use App\Http\Controllers\bidang_pengurus_controller;
-
 //memanggil file bidang_pengurus_model yg ada di folder Models
 use App\Models\bidang_pengurus_model;
 

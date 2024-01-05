@@ -91,7 +91,7 @@
                                                 </select>
                                             </div>
 
-
+                                            {{-- syntax input gambar dan previewnya --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto1" class="form-label">Foto Uji 1</label>
                                                 <div class="custom-file">
@@ -101,8 +101,8 @@
                                                         1</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_foto1" class="mt-3">
-                                                    <img id="preview_foto1" src="#" alt=""
+                                                <div id="Preview_Foto1" class="mt-3">
+                                                    <img id="Muat_Foto1" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
@@ -120,14 +120,16 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#preview_foto1').attr('src', e.target.result);
+                                                            $('#Muat_Foto1').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_foto1').show(); // Show the image preview container
+                                                        $('#Preview_Foto1').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
+                                            {{-- akhir syntax input gambar --}}
 
+                                            {{-- syntax input gambar dan previewnya --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto2" class="form-label">Foto Uji 2</label>
                                                 <div class="custom-file">
@@ -137,8 +139,8 @@
                                                         2</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_foto2" class="mt-3">
-                                                    <img id="preview_foto2" src="#" alt=""
+                                                <div id="Preview_Foto2" class="mt-3">
+                                                    <img id="Muat_Foto2" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
@@ -156,13 +158,14 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#preview_foto2').attr('src', e.target.result);
+                                                            $('#Muat_Foto2').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_foto2').show(); // Show the image preview container
+                                                        $('#Preview_Foto2').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
+                                            {{-- akhir syntax input gambar --}}
 
                                             <!-- /.card-body -->
 

@@ -58,58 +58,46 @@
                             </form>
                         </div>
 
-                        {{-- <div class="col-auto">
-                    <form action="/data_uji" method="GET">
-                    <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
-                    </form>
-                </div> --}}
+                        {{-- css utk design table  --}}
+                        <style>
+                            /* overflow untuk bisa mengscroll table  */
+                            div.table-container {
+                                overflow-x: auto;
+                                max-height: 500px;
+                                overflow-y: auto;
+                                margin-top: 20px;
+                            }
 
-                        <!-- Button trigger modal -->
-                        {{-- @if (auth()->user()->akses === 'Admin')
-                <div class="col-auto">
-                    <form action="" method="">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Import Excel
-                    </button>
-                    </form>
-                </div>
-                @endif --}}
+                            table.table-murid-madrasah thead tr {
+                                background-color: #196e3f;
+                                /* Header background color */
+                                color: #ffffff;
+                                /* Header text color */
+                            }
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Import Excel Data uji</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
+                            table.table-murid-madrasah tbody tr:nth-child(odd) {
+                                background-color: #343A40;
+                                /* Lighter color for odd rows */
+                            }
 
-                                    <form action="uji_excel_import" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <input type="file" name="file_uji" required>
-                                                <p>
-                                                    Harap perhatikan file excel dan array field didalamnya
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                            table.table-murid-madrasah tbody tr:nth-child(even) {
+                                background-color: #3e454d;
+                                /* Default color for even rows */
+                            }
 
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                            table.table-murid-madrasah th,
+                            table.table-murid-madrasah td {
+                                color: #ffffff;
+                                /* Set the text color using CSS variable */
+                                padding: 10px;
+                                /* Adjust the padding value as needed */
+                            }
+                        </style>
+                        {{-- akhir css table --}}
 
                         {{-- overflow agar bisa mengscroll table --}}
-                        <div style="overflow-x: auto;">
-                            <table class="table table-bordered mt-3">
+                        <div class="table-container">
+                            <table class="table-murid-madrasah table-bordered mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
@@ -122,6 +110,7 @@
                                         <th scope="col">Nama Ibu Murid</th>
                                         <th scope="col">Nama Wali Murid</th>
                                         <th scope="col">Alamat Murid</th>
+
                                         <th scope="col">Foto Murid</th>
 
                                         @if (auth()->user()->akses === 'Admin')
@@ -136,9 +125,10 @@
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
                                             <th scope="col">Diperbaharui Oleh</th>
+                                            <th scope="col">Tanggal Data Dibuat</th>
+                                            <th scope="col">Tanggal Data Diubah</th>
                                         @endif
 
-                                        <th scope="col">Tanggal Data Dibuat</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -165,7 +155,6 @@
                                             @if ($row->Foto_Murid)
                                                 <img src="{{ asset('Data_Murid/Foto_Murid/' . $row->Foto_Murid) }}"
                                                     alt="Foto_Murid" style="width: 40px;">
-                                                {{-- <img src="{{ asset('storage/folder_foto1/' . $row->Foto1) }}" alt="Foto 1" style="width: 40px;"> --}}
                                             @endif
                                         </td>
 
@@ -175,7 +164,6 @@
                                                 @if ($row->Foto_Akta_Kelahiran_Murid)
                                                     <img src="{{ asset('Data_Murid/Foto_Akta_Kelahiran_Murid/' . $row->Foto_Akta_Kelahiran_Murid) }}"
                                                         alt="Foto_Akta_Murid" style="width: 40px;">
-                                                    {{-- <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;"> --}}
                                                 @endif
                                             </td>
 
@@ -183,7 +171,6 @@
                                                 @if ($row->Foto_KK_Murid)
                                                     <img src="{{ asset('Data_Murid/Foto_KK_Murid/' . $row->Foto_KK_Murid) }}"
                                                         alt="Foto_KK_Murid" style="width: 40px;">
-                                                    {{-- <img src="{{ asset('storage/folder_foto2/' . $row->Foto2) }}" alt="Foto 2" style="width: 40px;"> --}}
                                                 @endif
                                             </td>
                                         @endif
@@ -197,9 +184,9 @@
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
                                             <td>{{ $row->updated_by }}</td>
+                                            <td>{{ $row->created_at->format('D, d M Y H:i:s') }}</td>
+                                            <td>{{ $row->updated_at->format('D, d M Y H:i:s') }}</td>
                                         @endif
-
-                                        <td>{{ $row->created_at->format('D,d M Y') }}</td>
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')

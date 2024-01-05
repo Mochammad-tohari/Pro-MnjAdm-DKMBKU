@@ -107,9 +107,46 @@
                             </div>
                         </div>
 
-                        {{-- overflow untuk bisa mengscroll table --}}
-                        <div style="overflow-x: auto;">
-                            <table class="table table-bordered mt-3">
+                        {{-- css utk design table  --}}
+                        <style>
+                            /* overflow untuk bisa mengscroll table  */
+                            div.table-container {
+                                overflow-x: auto;
+                                max-height: 500px;
+                                overflow-y: auto;
+                                margin-top: 20px;
+                            }
+
+                            table.table-uji thead tr {
+                                background-color: #196e3f;
+                                /* Header background color */
+                                color: #ffffff;
+                                /* Header text color */
+                            }
+
+                            table.table-uji tbody tr:nth-child(odd) {
+                                background-color: #343A40;
+                                /* Lighter color for odd rows */
+                            }
+
+                            table.table-uji tbody tr:nth-child(even) {
+                                background-color: #3e454d;
+                                /* Default color for even rows */
+                            }
+
+                            table.table-uji th,
+                            table.table-uji td {
+                                color: #ffffff;
+                                /* Set the text color using CSS variable */
+                                padding: 10px;
+                                /* Adjust the padding value as needed */
+                            }
+                        </style>
+                        {{-- akhir css table --}}
+
+                        {{-- table dan kontenya --}}
+                        <div class="table-container">
+                            <table class="table-uji table-bordered mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
@@ -198,6 +235,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{-- table dan kontenya --}}
 
                     </div>
 

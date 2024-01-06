@@ -118,7 +118,7 @@
                             }
 
                             table.table-uji thead tr {
-                                background-color: #196e3f;
+                                background-color: #0c613b;
                                 /* Header background color */
                                 color: #ffffff;
                                 /* Header text color */

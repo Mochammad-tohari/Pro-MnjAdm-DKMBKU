@@ -31,7 +31,7 @@
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah +</button> </a>
+                        <a button type="button" class="btn btn-success" href="/create_data_uji">Tambah Data</button> </a>
                     @endif
 
                     {{-- {{ Session::get('page_url') }} --}}

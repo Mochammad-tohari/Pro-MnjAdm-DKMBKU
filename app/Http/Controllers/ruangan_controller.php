@@ -39,7 +39,7 @@ class ruangan_controller extends Controller
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $ruangan_data = ruangan_model::orderBy('Nama_Ruangan', 'asc')
-                                -> paginate(5);
+            ->paginate(5);
 
 
         // memanggil data gedung yang ada di table ruangan
@@ -51,7 +51,7 @@ class ruangan_controller extends Controller
         if ($request->has('search')) {
             $ruangan_data = ruangan_model::where(function ($query) use ($searchQuery) {
                 $query->where('Nama_Ruangan', 'LIKE', '%' . $searchQuery . '%')
-                      ->orWhere('Kode_Ruangan', 'LIKE', '%' . $searchQuery . '%');
+                    ->orWhere('Kode_Ruangan', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -67,7 +67,7 @@ class ruangan_controller extends Controller
         /*
         view 'ruangan_data' diambil dari ruangan_data.blade.php, compact 'ruangan_data', diambil dari variabel $ruangan_data
         */
-        return view('ruangan_data',compact ('ruangan_data'));
+        return view('ruangan_data', compact('ruangan_data'));
 
     }
 
@@ -78,7 +78,7 @@ class ruangan_controller extends Controller
         // gedung_model::pluck('Nama_Gedung', 'Kode_Gedung'); = mengambil nama gedung berdasarkan kode gedung yang ada di table gedung
 
         $gedungOptions = gedung_model::pluck('Nama_Gedung', 'Kode_Gedung');
-        return view('ruangan_create',compact ('gedungOptions'));
+        return view('ruangan_create', compact('gedungOptions'));
 
     }
 
@@ -87,19 +87,26 @@ class ruangan_controller extends Controller
         //dd($request->all());
 
         // Create a new instance of Ruangan
-        $ruangan = new ruangan_model();
+        $ruangan_data = new ruangan_model();
+        //pengisian model table dengan pengecualian 'updated_by_email'
+        $ruangan_data->fill($request->except('updated_by_email'));
 
+        // mengatur updated email utk menghindari isi otomatis di fungsi insert
+        $ruangan_data->updated_by_email = null;
+
+        // syntax pengambilan data 'Kode_Gedung'
         // Assign the input 'Kode_Gedung' value to the 'Kode_Gedung' property
-        $ruangan->Kode_Gedung = $request->input('Kode_Gedung');
+        $ruangan_data->Kode_Gedung = $request->input('Kode_Gedung');
 
-        // Assign other fields in the $ruangan model as per your form data
-        $ruangan->otherField = $request->input('otherField');
+        // Assign other fields in the $ruangan_data model as per your form data
+        $ruangan_data->otherField = $request->input('otherField');
         // ... continue assigning other fields
+        //akhir pengambilan data 'Kode_Gedung'
 
-                $ruangan_data = ruangan_model::create($request->all());
-                $ruangan_data->save();
+        $ruangan_data = ruangan_model::create($request->all());
+        $ruangan_data->save();
 
-                return redirect()->route('ruangan_index')->with('success', 'Data Berhasil Dimasukan');
+        return redirect()->route('ruangan_index')->with('success', 'Data Berhasil Dimasukan');
 
     }
 
@@ -128,7 +135,7 @@ class ruangan_controller extends Controller
 
 
         // Redirect or return response as needed
-        if(session('page_url')){
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
@@ -161,8 +168,8 @@ class ruangan_controller extends Controller
     public function ruangan_view($id_ruangan)
     {
 
-    $ruangan_data = ruangan_model::find($id_ruangan);
-    return view('ruangan_view', compact('ruangan_data'));
+        $ruangan_data = ruangan_model::find($id_ruangan);
+        return view('ruangan_view', compact('ruangan_data'));
 
     }
 

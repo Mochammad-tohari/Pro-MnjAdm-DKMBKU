@@ -55,7 +55,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://localhost'),
+
+    // 'url' => env('APP_URL', 'https://your-ngrok-subdomain.ngrok.io'),
 
     'asset_url' => env('ASSET_URL'),
 

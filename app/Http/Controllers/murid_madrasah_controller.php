@@ -28,7 +28,7 @@ class murid_madrasah_controller extends Controller
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $murid_madrasah_data = murid_madrasah_model::orderBy('Nama_Murid', 'asc')
-                                -> paginate(5);
+            ->paginate(5);
 
         //syntax search data
         $searchQuery = $request->input('search');
@@ -36,7 +36,7 @@ class murid_madrasah_controller extends Controller
         if ($request->has('search')) {
             $murid_madrasah_data = murid_madrasah_model::where(function ($query) use ($searchQuery) {
                 $query->where('Nama_Murid', 'LIKE', '%' . $searchQuery . '%')
-                      ->orWhere('Kode_Murid', 'LIKE', '%' . $searchQuery . '%');
+                    ->orWhere('Kode_Murid', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -52,7 +52,7 @@ class murid_madrasah_controller extends Controller
         /*
         view 'data_uji' diambil dari data_uji.blade.php, compact 'data_uji', diambil dari variabel $data_uji
         */
-        return view('murid_madrasah_data',compact ('murid_madrasah_data'));
+        return view('murid_madrasah_data', compact('murid_madrasah_data'));
 
     }
 
@@ -66,8 +66,16 @@ class murid_madrasah_controller extends Controller
 
     public function murid_madrasah_insert(Request $request)
     {
+        $murid_madrasah_data = new murid_madrasah_model();
+
+        //pengisian model table dengan pengecualian 'updated_by'
+        $murid_madrasah_data->fill($request->except('updated_by'));
+
+        // mengatur updated email null utk menghindari isi otomatis di fungsi insert
+        $murid_madrasah_data->updated_by = null;
+
         //memasukan gambar tanpa storage link
-        $murid_madrasah_data = murid_madrasah_model::create($request->all());
+
 
         if ($request->hasFile('Foto_Murid')) {
             $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Murid')->getClientOriginalName();
@@ -104,7 +112,7 @@ class murid_madrasah_controller extends Controller
     public function murid_madrasah_update(Request $request, $id_murid)
     {
 
-    //edit gambar tanpa storage link
+        //edit gambar tanpa storage link
         // Retrieve the existing data to be updated
         $murid_madrasah_data = murid_madrasah_model::findOrFail($id_murid);
 
@@ -131,7 +139,7 @@ class murid_madrasah_controller extends Controller
 
         $murid_madrasah_data->save();
 
-        if(session('page_url')){
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
@@ -167,8 +175,8 @@ class murid_madrasah_controller extends Controller
     public function murid_madrasah_view($id_murid)
     {
 
-    $murid_madrasah_data = murid_madrasah_model::find($id_murid);
-    return view('murid_madrasah_view', compact('murid_madrasah_data'));
+        $murid_madrasah_data = murid_madrasah_model::find($id_murid);
+        return view('murid_madrasah_view', compact('murid_madrasah_data'));
 
     }
 

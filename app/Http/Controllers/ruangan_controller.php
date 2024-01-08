@@ -88,11 +88,11 @@ class ruangan_controller extends Controller
 
         // Create a new instance of Ruangan
         $ruangan_data = new ruangan_model();
-        //pengisian model table dengan pengecualian 'updated_by_email'
-        $ruangan_data->fill($request->except('updated_by_email'));
+        //pengisian model table dengan pengecualian 'updated_by'
+        $ruangan_data->fill($request->except('updated_by'));
 
         // mengatur updated email utk menghindari isi otomatis di fungsi insert
-        $ruangan_data->updated_by_email = null;
+        $ruangan_data->updated_by = null;
 
         // syntax pengambilan data 'Kode_Gedung'
         // Assign the input 'Kode_Gedung' value to the 'Kode_Gedung' property

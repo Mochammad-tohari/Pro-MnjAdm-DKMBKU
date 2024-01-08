@@ -76,11 +76,11 @@ class gedung_controller extends Controller
         //dd($request->all());
         // Create a new instance of gedung
         $gedung_data = new gedung_model();
-        //pengisian model table dengan pengecualian 'updated_by_email'
-        $gedung_data->fill($request->except('updated_by_email'));
+        //pengisian model table dengan pengecualian 'updated_by'
+        $gedung_data->fill($request->except('updated_by'));
 
         // mengatur updated email utk menghindari isi otomatis di fungsi insert
-        $gedung_data->updated_by_email = null;
+        $gedung_data->updated_by = null;
 
         $gedung_data = gedung_model::create($request->all());
         $gedung_data->save();

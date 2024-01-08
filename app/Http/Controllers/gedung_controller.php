@@ -36,7 +36,7 @@ class gedung_controller extends Controller
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $gedung_data = gedung_model::orderBy('Nama_Gedung', 'asc')
-                                -> paginate(5);
+            ->paginate(5);
 
         //syntax search data
         $searchQuery = $request->input('search');
@@ -44,7 +44,7 @@ class gedung_controller extends Controller
         if ($request->has('search')) {
             $gedung_data = gedung_model::where(function ($query) use ($searchQuery) {
                 $query->where('Nama_Gedung', 'LIKE', '%' . $searchQuery . '%')
-                      ->orWhere('Kode_Gedung', 'LIKE', '%' . $searchQuery . '%');
+                    ->orWhere('Kode_Gedung', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -60,7 +60,7 @@ class gedung_controller extends Controller
         /*
         view 'gedung_data' diambil dari gedung_data.blade.php, compact 'gedung_data', diambil dari variabel $gedung_data
         */
-        return view('gedung_data',compact ('gedung_data'));
+        return view('gedung_data', compact('gedung_data'));
 
     }
 
@@ -74,13 +74,18 @@ class gedung_controller extends Controller
     public function gedung_insert(Request $request)
     {
         //dd($request->all());
+        // Create a new instance of gedung
+        $gedung_data = new gedung_model();
+        //pengisian model table dengan pengecualian 'updated_by_email'
+        $gedung_data->fill($request->except('updated_by_email'));
 
+        // mengatur updated email utk menghindari isi otomatis di fungsi insert
+        $gedung_data->updated_by_email = null;
 
-                $gedung_data = gedung_model::create($request->all());
+        $gedung_data = gedung_model::create($request->all());
+        $gedung_data->save();
 
-                $gedung_data->save();
-
-                return redirect()->route('gedung_index')->with('success', 'Data Berhasil Dimasukan');
+        return redirect()->route('gedung_index')->with('success', 'Data Berhasil Dimasukan');
 
     }
 
@@ -101,7 +106,7 @@ class gedung_controller extends Controller
 
         $gedung_data->save();
 
-        if(session('page_url')){
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
@@ -136,8 +141,8 @@ class gedung_controller extends Controller
     public function gedung_view($id_gedung)
     {
 
-    $gedung_data = gedung_model::find($id_gedung);
-    return view('gedung_view', compact('gedung_data'));
+        $gedung_data = gedung_model::find($id_gedung);
+        return view('gedung_view', compact('gedung_data'));
 
     }
 }

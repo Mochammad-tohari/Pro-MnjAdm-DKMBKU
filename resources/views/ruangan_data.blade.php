@@ -30,7 +30,7 @@
                 <div class="card-body col-auto">
 
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/ruangan_create">Tambah +</button> </a>
+                        <a button type="button" class="btn btn-success" href="/ruangan_create">Tambah Data</button> </a>
                     @endif
 
                     {{-- {{ Session::get('page_url') }} --}}
@@ -94,7 +94,7 @@
                         {{-- akhir css table --}}
 
 
-                        {{-- overflow agar bisa mengscroll table --}}
+                        {{-- konten tabel ruangan --}}
                         <div class="table-container">
                             <table class="table-ruangan table-bordered mt-3">
                                 <thead>
@@ -128,7 +128,7 @@
 
 
                                         {{-- memanggil dan mengecek kesediaan data Kode gedung
-                        yang ditampilkan oleh nama gedung dari table gedung --}}
+                                        yang ditampilkan oleh nama gedung dari table gedung --}}
                                         @if ($row->ambil_kode_gedung)
                                             <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}</th>
                                         @else
@@ -166,6 +166,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{-- akhir konten tabel ruangan --}}
 
                     </div>
 

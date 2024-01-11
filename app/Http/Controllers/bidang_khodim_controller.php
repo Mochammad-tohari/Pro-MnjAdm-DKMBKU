@@ -76,6 +76,14 @@ class bidang_khodim_controller extends Controller
     {
         //dd($request->all());
 
+        // Create a new instance of bidang_khodim
+        $bidang_khodim_data = new bidang_khodim_model();
+        //pengisian model table dengan pengecualian 'updated_by'
+        $bidang_khodim_data->fill($request->except('updated_by'));
+
+        // mengatur updated email utk menghindari isi otomatis di fungsi insert
+        $bidang_khodim_data->updated_by = null;
+
 
         $bidang_khodim_data = bidang_khodim_model::create($request->all());
 

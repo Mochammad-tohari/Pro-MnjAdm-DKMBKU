@@ -70,10 +70,19 @@
                                                 <select class="custom-select rounded-0" id=""
                                                     name="Jabatan_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
+                                                    {{-- memanggil variable $Bidang_Khodim_Options yang ada di ruangan controller
+                                                    mendefinisikan sebagai variable $Kode_Bidang_Khodim
+                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table Bidang_Khodim --}}
+                                                    {{-- Sort the $Bidang_Khodim_Options array by the values (nama Bidang_Khodim) in ascending order --}}
+                                                    @php
+                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)
+                                                            ->sort()
+                                                            ->all();
+                                                    @endphp
                                                     {{-- memanggil variable $gedungOptions yang ada di ruangan controller
                                                     mendefinisikan sebagai variable $Kode_Gedung
                                                     yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
-                                                    @foreach ($bidang_khodim_option as $Jabatan_Khodim => $Nama_Bidang_Khodim)
+                                                    @foreach ($sortedBidang_Khodim_Options as $Jabatan_Khodim => $Nama_Bidang_Khodim)
                                                         <option value="{{ $Jabatan_Khodim }}"
                                                             {{ $khodim_dkm_data->Jabatan_Khodim == $Jabatan_Khodim ? 'selected' : '' }}>
                                                             {{ $Nama_Bidang_Khodim }}
@@ -169,7 +178,7 @@
                                             <div class="card-footer mb-6">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn btn-warning ml-2">Reset</button>
-                                                <a href="khodim_dkm_data" class="ml-2">
+                                                <a href="/khodim_dkm_data" class="ml-2">
                                                     <button type="button" class="btn btn-danger">Batal</button>
                                                 </a>
                                             </div>

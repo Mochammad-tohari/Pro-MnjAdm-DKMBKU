@@ -116,7 +116,7 @@
                                                 <textarea class="form-control" name="Alamat_Murid"></textarea>
                                             </div>
 
-                                            {{-- akhir syntax input gambar --}}
+                                            {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto_Murid" class="form-label">Foto Murid</label>
                                                 <div class="custom-file">

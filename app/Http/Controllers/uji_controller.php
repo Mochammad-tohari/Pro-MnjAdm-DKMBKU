@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
 
 //import Model "uji_model" dari folder models
 use App\Models\uji_model;
@@ -76,6 +78,7 @@ class uji_controller extends Controller
 
     public function insert_data_uji(Request $request)
     {
+
         //dd($request->all());
 
         //memasukan gambar dengan storage link
@@ -103,34 +106,63 @@ class uji_controller extends Controller
 
         // return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
 
+        // dd('Before validation', $request->all());
 
-        $data_uji = new uji_model();
+        $validator = Validator::make($request->all(), [
+            'Nama' => 'required',
+            'Password' => 'required|min:4',
+            'Tanggal_masuk' => 'required',
+            'Status' => 'required',
+        ], [
+            'Password.required' => 'The Password field is required.',
+            'Password.min' => 'Password minimal memiliki :min karakter',
+        ]);
 
-        //pengisian model table dengan pengecualian 'updated_by_email'
-        $data_uji->fill($request->except('updated_by_email'));
-
-        // mengatur updated email null utk menghindari isi otomatis di fungsi insert
-        $data_uji->updated_by_email = null;
+        // dd('After validation', $validator->errors()->all());
 
 
-        //memasukan gambar tanpa storage link
-        if ($request->hasFile('Foto1')) {
-            $filename1 = date('Y-m-d') . '_' . $request->file('Foto1')->getClientOriginalName();
-            $request->file('Foto1')->move(public_path('uji_foto/Foto1'), $filename1);
-            $data_uji->foto1 = $filename1;
+        if ($validator->passes()) {
+            // dd('Validation passed. Proceeding...');
+
+            // Create a new instance of the model
+            $data_uji = new uji_model();
+
+            // Fill the model with request data
+            $data_uji->fill($request->except('updated_by_email'));
+
+            // Set 'updated_by_email' to null
+            $data_uji->updated_by_email = null;
+
+            // Handle file uploads
+            if ($request->hasFile('Foto1')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto1')->getClientOriginalName();
+                $request->file('Foto1')->move(public_path('uji_foto/Foto1'), $filename1);
+                $data_uji->foto1 = $filename1;
+            }
+
+            if ($request->hasFile('Foto2')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Foto2')->getClientOriginalName();
+                $request->file('Foto2')->move(public_path('uji_foto/Foto2'), $filename2);
+                $data_uji->Foto2 = $filename2;
+            }
+
+            // dd('Before saving');
+
+            // Save the model
+            $data_uji->save();
+
+            // dd('After saving');
+
+            // Redirect to the index page with a success message
+            return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
+        } else {
+            // dd('Validation failed');
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        if ($request->hasFile('Foto2')) {
-            $filename2 = date('Y-m-d') . '_' . $request->file('Foto2')->getClientOriginalName();
-            $request->file('Foto2')->move(public_path('uji_foto/Foto2'), $filename2);
-            $data_uji->Foto2 = $filename2;
-        }
-
-        $data_uji->save();
-
-        return redirect()->route('index_uji')->with('success', 'Data Berhasil Dimasukan');
-
     }
+
 
 
     // untuk delete data uji berfungsi untuk menghapus data

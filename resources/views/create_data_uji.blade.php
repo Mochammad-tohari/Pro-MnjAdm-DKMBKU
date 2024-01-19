@@ -59,36 +59,49 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="UJD<?php echo $tgl; ?>" id="" name="Kode" readonly>
+                                                    value="UJD<?php echo $tgl; ?>" id="Kode" name="Kode" readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama">
+                                                <input type="text" class="form-control" placeholder="" id="Nama"
+                                                    name="Nama" value="{{ old('Nama') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" placeholder="" id=""
+                                                <input type="password" class="form-control" placeholder="" id="Password"
                                                     name="Password">
+                                                @error('Password')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Tanggal_masuk" class="form-label">Tanggal Masuk</label>
-                                                <input class="form-control" type="date" id=""
-                                                    name="Tanggal_masuk" />
+                                                <input class="form-control" type="date" id="Tanggal_masuk"
+                                                    name="Tanggal_masuk" value="{{ old('Tanggal_masuk') }}">
+                                                @error('Tanggal_masuk')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="exampleSelectRounded0">Status</label>
                                                 <select class="custom-select rounded-0" id="exampleSelectRounded0"
-                                                    name="Status">
+                                                    name="Status" id="Status">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak_Aktif">Tidak_Aktif</option>
                                                 </select>
+                                                @error('Status')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             {{-- syntax input gambar dan previewnya --}}

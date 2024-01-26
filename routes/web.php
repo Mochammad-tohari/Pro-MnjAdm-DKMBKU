@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 //memanggil file controller yg ada di folder Controllers
 use App\Http\Controllers\Controller;
+
 //memanggil file login_controller yg ada di folder Controllers
 use App\Http\Controllers\login_controller;
 

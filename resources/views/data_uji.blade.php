@@ -217,7 +217,7 @@
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
 
-                                            <a href="/lihat_data_uji/{{ $row->id }}"
+                                            <a href="/lihat_data_uji/{{ $row->id }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
 
                                             @if (auth()->user()->akses === 'Admin')

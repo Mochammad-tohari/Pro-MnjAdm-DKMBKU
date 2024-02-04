@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
+
 //import Model "gedung_model" dari folder models
 use App\Models\gedung_model;
 
@@ -73,19 +76,36 @@ class gedung_controller extends Controller
 
     public function gedung_insert(Request $request)
     {
-        //dd($request->all());
-        // Create a new instance of gedung
-        $gedung_data = new gedung_model();
-        //pengisian model table dengan pengecualian 'updated_by'
-        $gedung_data->fill($request->except('updated_by'));
 
-        // mengatur updated email utk menghindari isi otomatis di fungsi insert
-        $gedung_data->updated_by = null;
+        $validator = Validator::make($request->all(), [
+            'Nama_Gedung' => 'required',
+            'Dimensi_Gedung' => 'required',
+            'Tanggal_Operasional_Gedung' => 'required',
+            'Status_Gedung' => 'required',
+        ]);
 
-        $gedung_data = gedung_model::create($request->all());
-        $gedung_data->save();
+        if ($validator->passes()) {
+            //dd($request->all());
+            // Create a new instance of gedung
+            $gedung_data = new gedung_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $gedung_data->fill($request->except('updated_by'));
 
-        return redirect()->route('gedung_index')->with('success', 'Data Berhasil Dimasukan');
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $gedung_data->updated_by = null;
+
+            $gedung_data = gedung_model::create($request->all());
+            $gedung_data->save();
+
+            return redirect()->route('gedung_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
 
     }
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
+
 //memanggil file murid_madrasah_model yg ada di folder Models
 use App\Models\murid_madrasah_model;
 
@@ -66,38 +69,60 @@ class murid_madrasah_controller extends Controller
 
     public function murid_madrasah_insert(Request $request)
     {
-        $murid_madrasah_data = new murid_madrasah_model();
 
-        //pengisian model table dengan pengecualian 'updated_by'
-        $murid_madrasah_data->fill($request->except('updated_by'));
+        $validator = Validator::make($request->all(), [
+            'Nama_Murid' => 'required',
+            'Tempat_Lahir_Murid' => 'required',
+            'Tanggal_Lahir_Murid' => 'required',
+            'Asal_Sekolah_Murid' => 'required',
+            'Alamat_Murid' => 'required',
+            'Tingkat_Murid' => 'required',
+            'Status_Murid' => 'required',
+        ]);
 
-        // mengatur updated email null utk menghindari isi otomatis di fungsi insert
-        $murid_madrasah_data->updated_by = null;
+        if ($validator->passes()) {
 
-        //memasukan gambar tanpa storage link
+            $murid_madrasah_data = new murid_madrasah_model();
+
+            //pengisian model table dengan pengecualian 'updated_by'
+            $murid_madrasah_data->fill($request->except('updated_by'));
+
+            // mengatur updated email null utk menghindari isi otomatis di fungsi insert
+            $murid_madrasah_data->updated_by = null;
+
+            //memasukan gambar tanpa storage link
 
 
-        if ($request->hasFile('Foto_Murid')) {
-            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Murid')->getClientOriginalName();
-            $request->file('Foto_Murid')->move(public_path('Data_Murid/Foto_Murid'), $filename1);
-            $murid_madrasah_data->Foto_Murid = $filename1;
+            if ($request->hasFile('Foto_Murid')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Murid')->getClientOriginalName();
+                $request->file('Foto_Murid')->move(public_path('Data_Murid/Foto_Murid'), $filename1);
+                $murid_madrasah_data->Foto_Murid = $filename1;
+            }
+
+            if ($request->hasFile('Foto_Akta_Kelahiran_Murid')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Foto_Akta_Kelahiran_Murid')->getClientOriginalName();
+                $request->file('Foto_Akta_Kelahiran_Murid')->move(public_path('Data_Murid/Foto_Akta_Kelahiran_Murid'), $filename2);
+                $murid_madrasah_data->Foto_Akta_Kelahiran_Murid = $filename2;
+            }
+
+            if ($request->hasFile('Foto_KK_Murid')) {
+                $filename3 = date('Y-m-d') . '_' . $request->file('Foto_KK_Murid')->getClientOriginalName();
+                $request->file('Foto_KK_Murid')->move(public_path('Data_Murid/Foto_KK_Murid'), $filename3);
+                $murid_madrasah_data->Foto_KK_Murid = $filename3;
+            }
+
+            $murid_madrasah_data->save();
+
+            return redirect()->route('murid_madrasah_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
         }
 
-        if ($request->hasFile('Foto_Akta_Kelahiran_Murid')) {
-            $filename2 = date('Y-m-d') . '_' . $request->file('Foto_Akta_Kelahiran_Murid')->getClientOriginalName();
-            $request->file('Foto_Akta_Kelahiran_Murid')->move(public_path('Data_Murid/Foto_Akta_Kelahiran_Murid'), $filename2);
-            $murid_madrasah_data->Foto_Akta_Kelahiran_Murid = $filename2;
-        }
 
-        if ($request->hasFile('Foto_KK_Murid')) {
-            $filename3 = date('Y-m-d') . '_' . $request->file('Foto_KK_Murid')->getClientOriginalName();
-            $request->file('Foto_KK_Murid')->move(public_path('Data_Murid/Foto_KK_Murid'), $filename3);
-            $murid_madrasah_data->Foto_KK_Murid = $filename3;
-        }
-
-        $murid_madrasah_data->save();
-
-        return redirect()->route('murid_madrasah_index')->with('success', 'Data Berhasil Dimasukan');
 
     }
 

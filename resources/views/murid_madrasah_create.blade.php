@@ -66,29 +66,47 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Murid" class="form-label">Nama Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Murid">
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Murid"
+                                                    name="Nama_Murid" value="{{ old('Nama_Murid') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Tempat_Lahir_Murid" class="form-label">Tempat Lahir
                                                     Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Tempat_Lahir_Murid">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Tempat_Lahir_Murid" name="Tempat_Lahir_Murid"
+                                                    value="{{ old('Tempat_Lahir_Murid') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Tempat_Lahir_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Tanggal_Lahir_Murid" class="form-label">Tanggal Lahir
                                                     Murid</label>
-                                                <input class="form-control" type="date" id=""
-                                                    name="Tanggal_Lahir_Murid" />
+                                                <input class="form-control" type="date" id="Tanggal_Lahir_Murid"
+                                                    name="Tanggal_Lahir_Murid" value="{{ old('Tanggal_Lahir_Murid') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Tanggal_Lahir_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Asal_Sekolah_Murid" class="form-label">Asal Sekolah
                                                     Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Asal_Sekolah_Murid">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Asal_Sekolah_Murid" name="Asal_Sekolah_Murid"
+                                                    value="{{ old('Asal_Sekolah_Murid') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Asal_Sekolah_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -113,7 +131,11 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Alamat_Murid" class="form-label">Alamat Murid</label>
-                                                <textarea class="form-control" name="Alamat_Murid"></textarea>
+                                                <textarea class="form-control" name="Alamat_Murid" id="Alamat_Murid">{{ old('Alamat_Murid') }}</textarea>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Alamat_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             {{-- syntax input gambar --}}
@@ -234,7 +256,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="exampleSelectRounded0">Tingkat Murid</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Tingkat_Murid"
                                                     name="Tingkat_Murid">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="1_Satu">1 Satu</option>
@@ -242,6 +264,10 @@
                                                     <option value="3_Tiga">3 Tiga</option>
                                                     <option value="4_Empat">4 Empat</option>
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Tingkat_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -253,7 +279,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="exampleSelectRounded0">Status Murid</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Murid"
                                                     name="Status_Murid">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
@@ -261,6 +287,10 @@
                                                     {{-- <option value="Pindah">Pindah</option> --}}
                                                     <option value="Lainya">Lainya</option>
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Status_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div name="" class="form-text">Pilih Aktif Jika Baru Mendaftar
                                                 </div>
                                             </div>

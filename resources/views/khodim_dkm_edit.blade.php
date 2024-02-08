@@ -126,6 +126,7 @@
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
+
                                             <script>
                                                 $('#Foto_Khodim').on('change', function() {
                                                     // Get the file name

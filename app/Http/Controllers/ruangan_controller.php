@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
+
 //import Model "ruangan_model" dari folder models
 use App\Models\ruangan_model;
 
@@ -84,29 +87,49 @@ class ruangan_controller extends Controller
 
     public function ruangan_insert(Request $request)
     {
-        //dd($request->all());
 
-        // Create a new instance of Ruangan
-        $ruangan_data = new ruangan_model();
-        //pengisian model table dengan pengecualian 'updated_by'
-        $ruangan_data->fill($request->except('updated_by'));
+        $validator = Validator::make($request->all(), [
+            'Gedung_Kode' => 'required',
+            'Nama_Ruangan' => 'required',
+            'Luas_Ruangan' => 'required',
+            'Tanggal_Operasional_Ruangan' => 'required',
+            'Status_Ruangan' => 'required',
+        ]);
 
-        // mengatur updated email utk menghindari isi otomatis di fungsi insert
-        $ruangan_data->updated_by = null;
+        if ($validator->passes()) {
 
-        // syntax pengambilan data 'Kode_Gedung'
-        // Assign the input 'Kode_Gedung' value to the 'Kode_Gedung' property
-        $ruangan_data->Kode_Gedung = $request->input('Kode_Gedung');
+            //dd($request->all());
 
-        // Assign other fields in the $ruangan_data model as per your form data
-        $ruangan_data->otherField = $request->input('otherField');
-        // ... continue assigning other fields
-        //akhir pengambilan data 'Kode_Gedung'
+            // Create a new instance of Ruangan
+            $ruangan_data = new ruangan_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $ruangan_data->fill($request->except('updated_by'));
 
-        $ruangan_data = ruangan_model::create($request->all());
-        $ruangan_data->save();
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $ruangan_data->updated_by = null;
 
-        return redirect()->route('ruangan_index')->with('success', 'Data Berhasil Dimasukan');
+            // syntax pengambilan data 'Kode_Gedung'
+            // Assign the input 'Kode_Gedung' value to the 'Kode_Gedung' property
+            $ruangan_data->Kode_Gedung = $request->input('Kode_Gedung');
+
+            // Assign other fields in the $ruangan_data model as per your form data
+            $ruangan_data->otherField = $request->input('otherField');
+            // ... continue assigning other fields
+            //akhir pengambilan data 'Kode_Gedung'
+
+            $ruangan_data = ruangan_model::create($request->all());
+            $ruangan_data->save();
+
+            return redirect()->route('ruangan_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
 
     }
 

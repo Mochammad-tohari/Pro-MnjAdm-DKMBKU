@@ -85,6 +85,10 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Gedung_Kode')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 {{-- memanggil variable $gedungOptions yang ada di ruangan controller
                                                 mendefinisikan sebagai variable $Kode_Gedung
                                                 yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
@@ -97,20 +101,33 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Ruangan" class="form-label">Nama Ruangan</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Ruangan">
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Ruangan"
+                                                    name="Nama_Ruangan" value="{{ old('Nama_Ruangan') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama_Ruangan')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Luas_Ruangan" class="form-label">Luas Ruangan</label>
-                                                <textarea class="form-control" name="Luas_Ruangan"></textarea>
+                                                <textarea class="form-control" name="Luas_Ruangan" id="Luas_Ruangan">{{ old('Luas_Ruangan') }}</textarea>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Luas_Ruangan')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Tanggal_Operasional_Ruangan" class="form-label">Tanggal
                                                     Operasional Ruangan</label>
-                                                <input class="form-control" type="date" id=""
-                                                    name="Tanggal_Operasional_Ruangan" />
+                                                <input class="form-control" type="date" id="Tanggal_Operasional_Ruangan"
+                                                    name="Tanggal_Operasional_Ruangan"
+                                                    value="{{ old('Tanggal_Operasional_Ruangan') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Tanggal_Operasional_Ruangan')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -121,13 +138,17 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Ruangan">Status_Ruangan</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Ruangan"
                                                     name="Status_Ruangan">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak_Aktif">Tidak_Aktif</option>
                                                     <option value="Lainya">Lainya</option>
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Status_Ruangan')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <!-- /.card-body -->

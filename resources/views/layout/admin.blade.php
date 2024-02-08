@@ -959,10 +959,10 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
+            <strong><a>Manajemen DKMBKU</a></strong>
+            AdminLTE.io All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                {{-- <b>Version</b> 3.2.0 --}}
             </div>
         </footer>
     </div>
@@ -987,10 +987,10 @@
     <!-- ChartJS -->
     <script src="{{ asset('Tema_LTE/plugins/chart.js/Chart.min.js') }}"></script>
 
-    <!-- AdminLTE for demo purposes -->
+    {{-- <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('Tema_LTE/dist/js/demo.js') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('Tema_LTE/dist/js/pages/dashboard2.js') }} "></script>
+    <script src="{{ asset('Tema_LTE/dist/js/pages/dashboard2.js') }} "></script> --}}
 </body>
 
 </html>

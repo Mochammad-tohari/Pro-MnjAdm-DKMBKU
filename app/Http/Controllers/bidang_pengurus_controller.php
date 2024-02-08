@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
+
 //import Model "bidang_pengurus_model" dari folder models
 use App\Models\bidang_pengurus_model;
 
@@ -27,8 +30,10 @@ use PDF;
 use Illuminate\Support\Facades\Session;
 
 
-class bidang_pengurus_controller extends Controller {
-    public function bidang_pengurus_index(Request $request) {
+class bidang_pengurus_controller extends Controller
+{
+    public function bidang_pengurus_index(Request $request)
+    {
         /*
         $bidang_pengurus_data pernyataan variabel
         bidang_pengurus_model diambil dari folder model
@@ -40,10 +45,10 @@ class bidang_pengurus_controller extends Controller {
         //syntax search data
         $searchQuery = $request->input('search');
 
-        if($request->has('search')) {
+        if ($request->has('search')) {
             $bidang_pengurus_data = bidang_pengurus_model::where(function ($query) use ($searchQuery) {
-                $query->where('Nama_Bidang_Pengurus', 'LIKE', '%'.$searchQuery.'%')
-                    ->orWhere('Kode_Bidang_Pengurus', 'LIKE', '%'.$searchQuery.'%');
+                $query->where('Nama_Bidang_Pengurus', 'LIKE', '%' . $searchQuery . '%')
+                    ->orWhere('Kode_Bidang_Pengurus', 'LIKE', '%' . $searchQuery . '%');
             })->paginate(5);
             Session::put('page_url', request()->fullUrl());
         } else {
@@ -63,26 +68,53 @@ class bidang_pengurus_controller extends Controller {
 
     }
 
-    public function bidang_pengurus_create() {
+    public function bidang_pengurus_create()
+    {
 
         return view('bidang_pengurus_create');
 
     }
 
 
-    public function bidang_pengurus_insert(Request $request) {
-        //dd($request->all());
+    public function bidang_pengurus_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Nama_Bidang_Pengurus' => 'required',
+            'Status_Bidang_Pengurus' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            //dd($request->all());
+
+            // Create a new instance of bidang_pengurus
+            $bidang_pengurus_data = new bidang_pengurus_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $bidang_pengurus_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $bidang_pengurus_data->updated_by = null;
 
 
-        $bidang_pengurus_data = bidang_pengurus_model::create($request->all());
+            $bidang_pengurus_data = bidang_pengurus_model::create($request->all());
 
-        $bidang_pengurus_data->save();
+            $bidang_pengurus_data->save();
 
-        return redirect()->route('bidang_pengurus_index')->with('success', 'Data Berhasil Dimasukan');
+            return redirect()->route('bidang_pengurus_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
 
     }
 
-    public function bidang_pengurus_edit($id_bidang_pengurus) {
+    public function bidang_pengurus_edit($id_bidang_pengurus)
+    {
 
         $bidang_pengurus_data = bidang_pengurus_model::find($id_bidang_pengurus);
 
@@ -90,7 +122,8 @@ class bidang_pengurus_controller extends Controller {
     }
 
 
-    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus) {
+    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus)
+    {
 
         $bidang_pengurus_data = bidang_pengurus_model::findOrFail($id_bidang_pengurus); // Assuming you have the ID of the row you want to update
 
@@ -98,7 +131,7 @@ class bidang_pengurus_controller extends Controller {
 
         $bidang_pengurus_data->save();
 
-        if(session('page_url')) {
+        if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
@@ -107,7 +140,8 @@ class bidang_pengurus_controller extends Controller {
 
     }
 
-    public function bidang_pengurus_export_pdf() {
+    public function bidang_pengurus_export_pdf()
+    {
         $bidang_pengurus_data = bidang_pengurus_model::orderBy('Nama_Bidang_Pengurus', 'asc')->get();
 
         view()->share('bidang_pengurus_data', $bidang_pengurus_data);

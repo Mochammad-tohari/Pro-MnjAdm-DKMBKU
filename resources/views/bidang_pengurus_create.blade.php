@@ -67,25 +67,34 @@
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Bidang_Pengurus" class="form-label">Nama Bidang
                                                     Pengurus</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Bidang_Pengurus">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Bidang_Pengurus" name="Nama_Bidang_Pengurus"
+                                                    value="{{ old('Nama_Bidang_Pengurus') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama_Bidang_Pengurus')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Bidang_Pengurus" class="form-label">Keterangan Bidang
                                                     Pengurus</label>
-                                                <textarea class="form-control" name="Keterangan_Bidang_Pengurus"></textarea>
+                                                <textarea class="form-control" name="Keterangan_Bidang_Pengurus" id="Keterangan_Bidang_Pengurus">{{ old('Keterangan_Bidang_Pengurus') }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Bidang_Pengurus">Status Bidang Pengurus</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Bidang_Pengurus"
                                                     name="Status_Bidang_Pengurus">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak_Aktif">Tidak_Aktif</option>
                                                     <option value="Lainya">Lainya</option>
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Status_Bidang_Pengurus')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <!-- /.card-body -->

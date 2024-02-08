@@ -64,71 +64,66 @@
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
 
-
-                                            {{-- <div class="form-group mb-3">
-                                                <label for="id" class="form-label">Divisi Khodim</label>
-                                                <select class="custom-select rounded-0" id=""
-                                                    name="Jabatan_Khodim">
-                                                    <option selected disabled value>--Pilih--</option>
-                                                    {{-- memanggil variable $bidang_khodim_option yang ada di ruangan controller
-                                                    mendefinisikan sebagai variable $Kode_Bidang_Khodim
-                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table bidang_khodim --}}
-                                            {{-- @foreach ($bidang_khodim_option as $Kode_Bidang_Khodim => $Nama_Bidang_Khodim)
-                                                        <option value="{{ $Kode_Bidang_Khodim }}">
-                                                            {{ $Nama_Bidang_Khodim }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <div name="" class="form-text">Pilih data yang sesuai, Jika tidak ada
-                                                    isi data ini <a href="/bidang_khodim_create">Bidang Khodim</a></div>
-                                            </div> --}}
-
                                             <div class="form-group mb-3">
-                                                <label for="id" class="form-label">Divisi Khodim</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <label for="id" class="form-label">Jabatan Khodim</label>
+                                                <select class="custom-select rounded-0" id="Jabatan_Khodim"
                                                     name="Jabatan_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
                                                     {{-- memanggil variable $Bidang_Khodim_Options yang ada di ruangan controller
                                                     mendefinisikan sebagai variable $Kode_Bidang_Khodim
-                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table Bidang_Khodim --}}
-                                                    {{-- Sort the $Bidang_Khodim_Options array by the values (nama Bidang_Khodim) in ascending order --}}
+                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table gedung --}}
+                                                    {{-- Sort the $Bidang_Khodim_Options array by the values (Jabatan Khodim) in ascending order --}}
                                                     @php
-                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)
-                                                            ->sort()
-                                                            ->all();
+                                                        $Sorted_Bidang_Khodim_Options = collect($Bidang_Khodim_Options)->sort()->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
-                                                    @foreach ($sortedBidang_Khodim_Options as $Kode_Bidang_Khodim => $Nama_Bidang_Khodim)
+                                                    @foreach ($Sorted_Bidang_Khodim_Options as $Kode_Bidang_Khodim => $Nama_Bidang_Khodim)
                                                         <option value="{{ $Kode_Bidang_Khodim }}">
                                                             {{ $Nama_Bidang_Khodim }}
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                {{-- memanggil variable $Bidang_Khodim_Options yang ada di bidang_khodim controller
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Jabatan_Khodim')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                {{-- memanggil variable $Bidang_Khodim_Options yang ada di ruangan controller
                                                 mendefinisikan sebagai variable $Kode_Bidang_Khodim
                                                 yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table gedung --}}
                                                 <div name="" class="form-text">
                                                     Pilih data yang sesuai, Jika tidak ada isi data ini <a
-                                                        href="/bidang_khodim_create">Gedung</a>
+                                                        href="/bidang_khodim_create">Bidang Khodim</a>
                                                 </div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Khodim" class="form-label">Nama Khodim</label>
                                                 <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Khodim">
+                                                    name="Nama_Khodim" value="{{ old('Nama_Khodim') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama_Khodim')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Kontak_Khodim" class="form-label">Kontak Khodim</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Kontak_Khodim">
+                                                <input type="text" class="form-control" placeholder="" id="Kontak_Khodim"
+                                                    name="Kontak_Khodim" value="{{ old('Kontak_Khodim') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Nama_Khodim')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
 
                                             <div class="form-group mb-3">
                                                 <label for="Alamat_Khodim" class="form-label">Alamat Khodim</label>
-                                                <textarea class="form-control" name="Alamat_Khodim"></textarea>
+                                                <textarea class="form-control" name="Alamat_Khodim" id="Alamat_Khodim">{{ old('Alamat_Khodim') }}</textarea>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Alamat_Khodim')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             {{-- syntax input gambar --}}
@@ -172,7 +167,7 @@
 
                                             {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Identitas_Khodim" class="form-label">Foto Identitas KTP/SIM
+                                                <label for="Identitas_Khodim" class="form-label">Foto Identitas (KTP/SIM)
                                                 </label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Identitas_Khodim"
@@ -212,18 +207,22 @@
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Khodim" class="form-label">Keterangan
                                                     Khodim</label>
-                                                <textarea class="form-control" name="Keterangan_Khodim"></textarea>
+                                                <textarea class="form-control" name="Keterangan_Khodim" id="Keterangan_Khodim">{{ old('Keterangan_Khodim') }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Khodim">Status Khodim</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Khodim"
                                                     name="Status_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak_Aktif">Tidak_Aktif</option>
                                                     <option value="Lainya">Lainya</option>
                                                 </select>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Status_Khodim')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <!-- /.card-body -->

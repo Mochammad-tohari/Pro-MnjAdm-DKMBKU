@@ -91,6 +91,7 @@
                                                 </select>
                                             </div>
 
+                                            {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto1" class="form-label">Foto Uji 1</label>
                                                 <div class="custom-file">
@@ -127,9 +128,9 @@
                                                     }
                                                 });
                                             </script>
+                                            {{-- akhir syntax edit gambar --}}
 
-
-
+                                            {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto2" class="form-label">Foto Uji 2</label>
                                                 <div class="custom-file">
@@ -166,6 +167,7 @@
                                                     }
                                                 });
                                             </script>
+                                            {{-- akhir syntax edit gambar --}}
 
                                             <!-- /.card-body -->
 

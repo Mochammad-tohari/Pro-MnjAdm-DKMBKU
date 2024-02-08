@@ -75,9 +75,7 @@
                                                     yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table Bidang_Khodim --}}
                                                     {{-- Sort the $Bidang_Khodim_Options array by the values (nama Bidang_Khodim) in ascending order --}}
                                                     @php
-                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)
-                                                            ->sort()
-                                                            ->all();
+                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)->sort()->all();
                                                     @endphp
                                                     {{-- memanggil variable $gedungOptions yang ada di ruangan controller
                                                     mendefinisikan sebagai variable $Kode_Gedung
@@ -111,6 +109,7 @@
                                                 <textarea class="form-control" name="Alamat_Khodim">{{ $khodim_dkm_data->Alamat_Khodim }}</textarea>
                                             </div>
 
+                                            {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
                                                 <label for="Foto_Khodim" class="form-label">Foto Khodim</label>
                                                 <div class="custom-file">
@@ -121,6 +120,11 @@
                                                 </div>
                                                 <div name="" class="form-text">Kosongkan jika tidak ada foto baru
                                                 </div>
+                                                <!-- Image preview -->
+                                                <div id="Preview_Foto_Khodim" class="mt-3">
+                                                    <img id="muat_Foto_Khodim" src="#" alt=""
+                                                        style="max-width: 150px; max-height: 150px;">
+                                                </div>
                                             </div>
                                             <script>
                                                 $('#Foto_Khodim').on('change', function() {
@@ -130,11 +134,24 @@
                                                     fileName = fileName.replace("C:\\fakepath\\", "");
                                                     // Replace the "Choose a file" label
                                                     $(this).next('.custom-file-label').html(fileName);
+
+                                                    // Image preview
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            $('#muat_Foto_Khodim').attr('src', e.target.result);
+                                                        }
+                                                        reader.readAsDataURL(this.files[0]);
+                                                        $('#Preview_Foto_Khodim').show(); // Show the image preview container
+                                                    }
                                                 });
                                             </script>
+                                            {{-- akhir syntax edit gambar --}}
 
+                                            {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Identitas_Khodim" class="form-label">Identitas Khodim</label>
+                                                <label for="Identitas_Khodim" class="form-label">Identitas Khodim
+                                                    (KTP/SIM)</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Identitas_Khodim"
                                                         value="{{ $khodim_dkm_data->Identitas_Khodim }}"
@@ -142,9 +159,15 @@
                                                     <label class="custom-file-label" for="exampleInputFile">Identitas
                                                         Khodim</label>
                                                 </div>
-                                                <div name="" class="form-text">Boleh menggunakan KTP atau SIM,
+                                                <div name="" class="form-text">
                                                     Kosongkan jika tidak ada foto baru</div>
                                             </div>
+                                            <!-- Image preview -->
+                                            <div id="Preview_Identitas_Khodim" class="mt-3">
+                                                <img id="muat_Identitas_Khodim" src="#" alt=""
+                                                    style="max-width: 150px; max-height: 150px;">
+                                            </div>
+
                                             <script>
                                                 $('#Identitas_Khodim').on('change', function() {
                                                     // Get the file name
@@ -153,11 +176,23 @@
                                                     fileName = fileName.replace("C:\\fakepath\\", "");
                                                     // Replace the "Choose a file" label
                                                     $(this).next('.custom-file-label').html(fileName);
+
+                                                    // Image preview
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            $('#muat_Identitas_Khodim').attr('src', e.target.result);
+                                                        }
+                                                        reader.readAsDataURL(this.files[0]);
+                                                        $('#Preview_Identitas_Khodim').show(); // Show the image preview container
+                                                    }
                                                 });
                                             </script>
+                                            {{-- akhir syntax edit gambar --}}
 
                                             <div class="form-group mb-3">
-                                                <label for="Keterangan_Khodim" class="form-label">Keterangan Khodim</label>
+                                                <label for="Keterangan_Khodim" class="form-label">Keterangan
+                                                    Khodim</label>
                                                 <textarea class="form-control" name="Keterangan_Khodim">{{ $khodim_dkm_data->Keterangan_Khodim }}</textarea>
                                             </div>
 

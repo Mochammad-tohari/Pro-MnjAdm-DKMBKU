@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+//import validator
+use Illuminate\Support\Facades\Validator;
+
 //import Model "bidang_khodim_model" dari folder models
 use App\Models\bidang_khodim_model;
 
@@ -74,22 +77,37 @@ class bidang_khodim_controller extends Controller
 
     public function bidang_khodim_insert(Request $request)
     {
-        //dd($request->all());
 
-        // Create a new instance of bidang_khodim
-        $bidang_khodim_data = new bidang_khodim_model();
-        //pengisian model table dengan pengecualian 'updated_by'
-        $bidang_khodim_data->fill($request->except('updated_by'));
+        $validator = Validator::make($request->all(), [
+            'Nama_Bidang_Khodim' => 'required',
+            'Status_Bidang_Khodim' => 'required',
+        ]);
 
-        // mengatur updated email utk menghindari isi otomatis di fungsi insert
-        $bidang_khodim_data->updated_by = null;
+        if ($validator->passes()) {
+
+            //dd($request->all());
+
+            // Create a new instance of bidang_khodim
+            $bidang_khodim_data = new bidang_khodim_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $bidang_khodim_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $bidang_khodim_data->updated_by = null;
 
 
-        $bidang_khodim_data = bidang_khodim_model::create($request->all());
+            $bidang_khodim_data = bidang_khodim_model::create($request->all());
 
-        $bidang_khodim_data->save();
+            $bidang_khodim_data->save();
 
-        return redirect()->route('bidang_khodim_index')->with('success', 'Data Berhasil Dimasukan');
+            return redirect()->route('bidang_khodim_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
 
     }
 

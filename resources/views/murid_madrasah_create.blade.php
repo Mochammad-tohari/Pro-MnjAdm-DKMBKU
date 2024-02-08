@@ -272,7 +272,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Murid" class="form-label">Keterangan Murid</label>
-                                                <textarea class="form-control" name="Keterangan_Murid"></textarea>
+                                                <textarea class="form-control" name="Keterangan_Murid" id="Keterangan_Murid">{{ old('Keterangan_Murid') }}</textarea>
                                                 <div name="" class="form-text">Memberikan kejelasan tentang
                                                     status/kondisi murid</div>
                                             </div>

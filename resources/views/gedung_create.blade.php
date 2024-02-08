@@ -97,7 +97,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Gedung" class="form-label">Keterangan Gedung</label>
-                                                <textarea class="form-control" name="Keterangan_Gedung"></textarea>
+                                                <textarea class="form-control" name="Keterangan_Gedung" id="Keterangan_Gedung">{{ old('Keterangan_Gedung') }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">

@@ -74,9 +74,7 @@
                                                     yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
                                                     {{-- Sort the $gedungOptions array by the values (nama gedung) in ascending order --}}
                                                     @php
-                                                        $sortedGedungOptions = collect($gedungOptions)
-                                                            ->sort()
-                                                            ->all();
+                                                        $sortedGedungOptions = collect($gedungOptions)->sort()->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
                                                     @foreach ($sortedGedungOptions as $Kode_Gedung => $Nama_Gedung)
@@ -133,7 +131,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Ruangan" class="form-label">Keterangan
                                                     Ruangan</label>
-                                                <textarea class="form-control" name="Keterangan_Ruangan"></textarea>
+                                                <textarea class="form-control" name="Keterangan_Ruangan" id="Keterangan_Ruangan">{{ old('Keterangan_Ruangan') }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">

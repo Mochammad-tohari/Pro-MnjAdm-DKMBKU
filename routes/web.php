@@ -257,6 +257,11 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');
 
 
+    //tabel pengurus_dkm
+    //insert data
+    Route::get('/pengurus_dkm_create', [pengurus_dkm_controller::class, 'pengurus_dkm_create'])->name('pengurus_dkm_create');
+    Route::post('/pengurus_dkm_insert', [pengurus_dkm_controller::class, 'pengurus_dkm_insert'])->name('pengurus_dkm_insert');
+
 });
 
 

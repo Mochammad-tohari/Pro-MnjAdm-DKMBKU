@@ -132,7 +132,7 @@
                                         <td>{{ $pengurus_dkm_index + $pengurus_dkm_data->firstItem() }}</td>
 
 
-                                        <th scope="row">{{ $row->Kode_pengurus }}</th>
+                                        <th scope="row">{{ $row->Kode_Pengurus }}</th>
                                         <td>{{ $row->NIP_Pengurus }}</td>
 
 

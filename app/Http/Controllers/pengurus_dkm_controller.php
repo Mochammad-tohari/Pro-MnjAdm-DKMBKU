@@ -73,4 +73,69 @@ class pengurus_dkm_controller extends Controller
         return view('pengurus_dkm_data', compact('pengurus_dkm_data'));
     }
 
+
+    public function pengurus_dkm_create()
+    {
+
+        // $bidang_pengurus_option
+        // bidang_pengurus_model::pluck('Nama_bidang_pengurus', 'Kode_bidang_pengurus'); = mengambil nama bidang_pengurus berdasarkan kode bidang_pengurus yang ada di table bidang_pengurus
+
+        $Bidang_Pengurus_Options = bidang_pengurus_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
+        return view('pengurus_dkm_create', compact('Bidang_Pengurus_Options'));
+    }
+
+    public function pengurus_dkm_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Jabatan_Pengurus' => 'required',
+            'Nama_Pengurus' => 'required',
+            'Kontak_Pengurus' => 'required',
+            'Alamat_Pengurus' => 'required',
+            'Status_Pengurus' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            // Create a new instance of pengurus_dkm_model
+            $pengurus_dkm_data = new pengurus_dkm_model();
+
+            // Fill the model with form data (excluding updated_by)
+            $pengurus_dkm_data->fill($request->except(['updated_by']));
+
+            // Set the updated_by field to null initially
+            $pengurus_dkm_data->updated_by = null;
+
+            // Assign the input 'Jabatan_pengurus' value to the 'Jabatan_pengurus' property
+            $pengurus_dkm_data->Jabatan_Pengurus = $request->input('Jabatan_Pengurus');
+
+            // Check if 'Foto_Pengurus' file is present in the request
+            if ($request->hasFile('Foto_Pengurus')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus')->getClientOriginalName();
+                $request->file('Foto_Pengurus')->move(public_path('Data_Pengurus/Foto_Pengurus'), $filename1);
+                $pengurus_dkm_data->Foto_Pengurus = $filename1;
+            }
+
+            // Check if 'Identitas_Pengurus' file is present in the request
+            if ($request->hasFile('Identitas_Pengurus')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus')->getClientOriginalName();
+                $request->file('Identitas_Pengurus')->move(public_path('Data_Pengurus/Identitas_Pengurus'), $filename2);
+                $pengurus_dkm_data->Identitas_Pengurus = $filename2;
+            }
+
+            // Save the updated files
+            $pengurus_dkm_data->save();
+
+            return redirect()->route('pengurus_dkm_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
+    }
+
 }

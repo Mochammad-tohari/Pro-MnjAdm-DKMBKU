@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <title>Data Khodim DKM</title>
+    <title>Data Pengurus DKM</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Khodim DKM</h1>
+                        <h1 class="m-0">Data Pengurus DKM</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Khodim DKM</li>
+                            <li class="breadcrumb-item active">Data Pengurus DKM</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,20 +24,22 @@
         <div class="col-auto">
             <div class="card col-auto">
                 <div class="card-header col-auto">
-                    <h3 class="card-title text-center">Daftar Data Khodim DKM</h3>
+                    <h3 class="card-title text-center">Daftar Data Pengurus DKM</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body col-auto">
 
+                    {{-- auth user akses admin hanya bisa diakses oleh admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/khodim_dkm_create">Tambah Data</button> </a>
+                        <a button type="button" class="btn btn-success" href="/pengurus_dkm_create">Tambah Data</button>
+                        </a>
                     @endif
 
                     {{-- {{ Session::get('page_url') }} --}}
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/khodim_dkm_data" method="GET">
+                            <form action="/pengurus_dkm_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -51,8 +53,8 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/khodim_dkm_data" method="GET">
-                                <a href="/khodim_dkm_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+                            <form action="/pengurus_dkm_data" method="GET">
+                                <a href="/pengurus_dkm_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 
@@ -66,25 +68,25 @@
                                 margin-top: 20px;
                             }
 
-                            table.table-khodim_dkm thead tr {
+                            table.table-pengurus_dkm thead tr {
                                 background-color: #0c613b;
                                 /* Header background color */
                                 color: #ffffff;
                                 /* Header text color */
                             }
 
-                            table.table-khodim_dkm tbody tr:nth-child(odd) {
+                            table.table-pengurus_dkm tbody tr:nth-child(odd) {
                                 background-color: #343A40;
                                 /* Lighter color for odd rows */
                             }
 
-                            table.table-khodim_dkm tbody tr:nth-child(even) {
+                            table.table-pengurus_dkm tbody tr:nth-child(even) {
                                 background-color: #3e454d;
                                 /* Default color for even rows */
                             }
 
-                            table.table-khodim_dkm th,
-                            table.table-khodim_dkm td {
+                            table.table-pengurus_dkm th,
+                            table.table-pengurus_dkm td {
                                 color: #ffffff;
                                 /* Set the text color using CSS variable */
                                 padding: 10px;
@@ -96,19 +98,20 @@
 
                         {{-- List table content --}}
                         <div class="table-container">
-                            <table class="table-khodim_dkm table-bordered mt-3">
+                            <table class="table-pengurus_dkm table-bordered mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Kode Khodim</th>
-                                        <th scope="col">Divisi Khodim</th>
-                                        <th scope="col">Nama Khodim</th>
-                                        <th scope="col">Kontak Khodim</th>
-                                        <th scope="col">Alamat Khodim</th>
-                                        <th scope="col">Foto Khodim</th>
-                                        <th scope="col">Identitas Khodim</th>
-                                        <th scope="col">Keterangan Khodim</th>
-                                        <th scope="col">Status Khodim</th>
+                                        <th scope="col">Kode Pengurus</th>
+                                        <th scope="col">NIP Pengurus</th>
+                                        <th scope="col">Jabatan Pengurus</th>
+                                        <th scope="col">Nama Pengurus</th>
+                                        <th scope="col">Kontak Pengurus</th>
+                                        <th scope="col">Alamat Pengurus</th>
+                                        <th scope="col">Foto Pengurus</th>
+                                        <th scope="col">Identitas Pengurus</th>
+                                        <th scope="col">Keterangan Pengurus</th>
+                                        <th scope="col">Status Pengurus</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
@@ -123,45 +126,50 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($khodim_dkm_data as $khodim_dkm_index => $row)
+                                        @foreach ($pengurus_dkm_data as $pengurus_dkm_index => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $khodim_dkm_index + $khodim_dkm_data->firstItem() }}</td>
+                                        <td>{{ $pengurus_dkm_index + $pengurus_dkm_data->firstItem() }}</td>
 
 
-                                        <th scope="row">{{ $row->Kode_Khodim }}</th>
+                                        <th scope="row">{{ $row->Kode_pengurus }}</th>
+                                        <td>{{ $row->NIP_Pengurus }}</td>
 
-                                        {{-- memanggil dan mengecek kesediaan data kode_bidang_khodim
-                                        yang ditampilkan oleh nama bidang_khodim dari table bidang_khodim --}}
-                                        @if ($row->ambil_kode_bidang_khodim)
-                                            <th scope="row">{{ $row->ambil_kode_bidang_khodim->Nama_Bidang_Khodim }}</th>
+
+                                        {{-- memanggil dan mengecek kesediaan data kode_bidang_pengurus
+                                        yang ditampilkan oleh nama bidang_pengurus dari table bidang_pengurus --}}
+                                        @if ($row->ambil_kode_bidang_pengurus)
+                                            <th scope="row">{{ $row->ambil_kode_bidang_pengurus->Nama_Bidang_Pengurus }}
+                                            </th>
                                         @else
-                                            <th scope="row">Divisi Tidak Diketahui</th>
+                                            <th scope="row">Jabatan Tidak Diketahui</th>
                                         @endif
 
-                                        <td>{{ $row->Nama_Khodim }}</td>
-                                        <td>{{ $row->Kontak_Khodim }}</td>
-                                        <td>{{ $row->Alamat_Khodim }}</td>
 
+                                        <td>{{ $row->Nama_Pengurus }}</td>
+                                        <td>{{ $row->Kontak_Pengurus }}</td>
+                                        <td>{{ $row->Alamat_Pengurus }}</td>
 
-                                        <td>
-                                            @if ($row->Foto_Khodim)
-                                                <img src="{{ asset('Data_Khodim/Foto_Khodim/' . $row->Foto_Khodim) }}"
-                                                    alt="Foto_Khodim" style="width: 40px;">
-                                            @endif
-                                        </td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>
-                                                @if ($row->Identitas_Khodim)
-                                                    <img src="{{ asset('Data_Khodim/Identitas_Khodim/' . $row->Identitas_Khodim) }}"
-                                                        alt="Identitas_Khodim" style="width: 40px;">
+                                                @if ($row->Foto_Pengurus)
+                                                    <img src="{{ asset('Data_Pengurus/Foto_Pengurus/' . $row->Foto_Pengurus) }}"
+                                                        alt="Foto_Pengurus" style="width: 40px;">
+                                                @endif
+                                            </td>
+
+
+                                            <td>
+                                                @if ($row->Identitas_Pengurus)
+                                                    <img src="{{ asset('Data_Pengurus/Identitas_Pengurus/' . $row->Identitas_Pengurus) }}"
+                                                        alt="Identitas_Pengurus" style="width: 40px;">
                                                 @endif
                                             </td>
                                         @endif
 
-                                        <td>{{ $row->Keterangan_Khodim }}</td>
-                                        <td>{{ $row->Status_Khodim }}</td>
+                                        <td>{{ $row->Keterangan_Pengurus }}</td>
+                                        <td>{{ $row->Status_Pengurus }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -173,10 +181,10 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/khodim_dkm_edit/{{ $row->id_khodim }}"
+                                                <a href="/pengurus_dkm_edit/{{ $row->id_pengurus }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
-                                            <a href="/khodim_dkm_view/{{ $row->id_khodim }}" target="_blank"
+                                            <a href="/pengurus_dkm_view/{{ $row->id_pengurus }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                                             {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                                         </td>
@@ -194,7 +202,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $khodim_dkm_data->links() }}
+                        {{ $pengurus_dkm_data->links() }}
                     </div>
                 </div>
             </div>

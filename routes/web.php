@@ -45,6 +45,11 @@ use App\Http\Controllers\bidang_pengurus_controller;
 use App\Models\bidang_pengurus_model;
 
 
+//memanggil file pengurus_dkm_controller yg ada di folder Controllers
+use App\Http\Controllers\pengurus_dkm_controller;
+//memanggil file pengurus_dkm_model yg ada di folder Models
+use App\Models\pengurus_dkm_model;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -155,6 +160,9 @@ Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_
 Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
 
 
+//tabel pengurus dkm
+//tampildata
+Route::get('/pengurus_dkm_data', [pengurus_dkm_controller::class, 'pengurus_dkm_index'])->name('pengurus_dkm_index')->middleware('auth');
 
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin

@@ -138,4 +138,50 @@ class pengurus_dkm_controller extends Controller
 
     }
 
+    public function pengurus_dkm_edit($id_pengurus)
+    {
+        //dd($id_pengurus);
+
+        // $bidang_pengurus_option
+        // bidang_pengurus_model::pluck('Nama_bidang_Pengurus', 'Kode_bidang_Pengurus'); = mengambil nama bidang_Pengurus berdasarkan kode bidang_Pengurus yang ada di table bidang_Pengurus
+        $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus);
+
+        $Bidang_Pengurus_Options = bidang_pengurus_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
+
+        return view('pengurus_dkm_edit', compact('pengurus_dkm_data', 'Bidang_Pengurus_Options'));
+    }
+
+    public function pengurus_dkm_update(Request $request, $id_pengurus)
+    {
+        $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus);
+        $pengurus_dkm_data->Jabatan_Pengurus = $request->input('Jabatan_Pengurus');
+
+        // Update the data with new values from the request
+        $pengurus_dkm_data->fill($request->all());
+
+        $pengurus_dkm_data->update($request->all());
+
+        if ($request->hasFile('Foto_Pengurus')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus')->getClientOriginalName();
+            $request->file('Foto_Pengurus')->move(public_path('Data_Pengurus/Foto_Pengurus'), $filename1);
+            $pengurus_dkm_data->Foto_Pengurus = $filename1;
+        }
+
+        if ($request->hasFile('Identitas_Pengurus')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus')->getClientOriginalName();
+            $request->file('Identitas_Pengurus')->move(public_path('Data_Pengurus/Identitas_Pengurus'), $filename2);
+            $pengurus_dkm_data->Identitas_Pengurus = $filename2;
+        }
+
+        $pengurus_dkm_data->save();
+
+
+        // Redirect or return response as needed
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('pengurus_dkm_index')->with('success_edit', 'Data Berhasil Diubah');
+    }
+
 }

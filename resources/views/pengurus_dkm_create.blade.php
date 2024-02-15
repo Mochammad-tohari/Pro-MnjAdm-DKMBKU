@@ -95,9 +95,7 @@
                                                 @error('Jabatan_Pengurus')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
-                                                {{-- memanggil variable $Bidang_Pengurus_Options yang ada di ruangan controller
-                                                mendefinisikan sebagai variable $Kode_Bidang_Pengurus
-                                                yang akan di tampilkan sebagai {{ $Nama_Bidang_Pengurus }} di table gedung --}}
+
                                                 <div name="" class="form-text">
                                                     Pilih data yang sesuai, Jika tidak ada isi data ini <a
                                                         href="/bidang_pengurus_create">Bidang Pengurus</a>

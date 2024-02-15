@@ -77,9 +77,7 @@
                                                     @php
                                                         $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)->sort()->all();
                                                     @endphp
-                                                    {{-- memanggil variable $gedungOptions yang ada di ruangan controller
-                                                    mendefinisikan sebagai variable $Kode_Gedung
-                                                    yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
+
                                                     @foreach ($sortedBidang_Khodim_Options as $Jabatan_Khodim => $Nama_Bidang_Khodim)
                                                         <option value="{{ $Jabatan_Khodim }}"
                                                             {{ $khodim_dkm_data->Jabatan_Khodim == $Jabatan_Khodim ? 'selected' : '' }}>

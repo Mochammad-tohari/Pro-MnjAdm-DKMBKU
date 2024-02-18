@@ -10,6 +10,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
+    {{-- <link rel="stylesheet" href="{{ secure_asset('Tema_LTE/plugins/fontawesome-free/css/all.min.css') }} ">
+    "secure_asset" untuk menjalankan di NGROK --}}
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('Tema_LTE/plugins/fontawesome-free/css/all.min.css') }} ">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('Tema_LTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }} ">

@@ -66,4 +66,45 @@ class uji_bidang_controller extends Controller
         return view('uji_bidang_data', compact('uji_bidang_data'));
 
     }
+
+
+    public function uji_bidang_create()
+    {
+
+        return view('uji_bidang_create');
+
+    }
+
+    public function uji_bidang_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Nama_Bidang' => 'required',
+            'Status_Bidang' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            //dd($request->all());
+            // Create a new instance of uji_bidang
+            $uji_bidang_data = new uji_bidang_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $uji_bidang_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $uji_bidang_data->updated_by = null;
+
+            $uji_bidang_data = uji_bidang_model::create($request->all());
+            $uji_bidang_data->save();
+
+            return redirect()->route('uji_bidang_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+    }
+
+
 }

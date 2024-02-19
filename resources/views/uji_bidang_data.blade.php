@@ -31,7 +31,7 @@
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/create_data_uji_bidang">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/uji_bidang_create">Tambah Data</button>
                         </a>
                     @endif
 
@@ -184,8 +184,8 @@
                                         <td>{{ $row->Status_Bidang }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
-                                            <td>{{ $row->inserted_by_email }}</td>
-                                            <td>{{ $row->updated_by_email }}</td>
+                                            <td>{{ $row->inserted_by }}</td>
+                                            <td>{{ $row->updated_by }}</td>
 
                                             <td>{{ $row->created_at->format('D, d M Y H:i:s') }}</td>
                                             <td>{{ $row->updated_at->format('D, d M Y H:i:s') }}</td>
@@ -194,18 +194,18 @@
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="/edit_uji_bidang/{{ $row->id_uji_bidang }}"
-                                                    class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
+                                                    class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
-                                            <a href="/lihat_uji_bidang/{{ $row->id_uji_bidang }}" target="_blank"
-                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
+                                            {{-- <a href="/lihat_uji_bidang/{{ $row->id_uji_bidang }}" target="_blank"
+                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
 
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="#" class="btn btn-danger btn-sm delete mt-2"
                                                     data-id="{{ $row->id_uji_bidang }}"
                                                     data-kode="{{ $row->Kode_Bidang }}"
-                                                    data-nama="{{ $row->Nama_Bidang }}"><i
-                                                        class="fas fa-trash-alt"></i>Hapus</a>
+                                                    data-nama="{{ $row->Nama_Bidang }}"><i class="fas fa-trash-alt"></i>
+                                                    Hapus</a>
                                             @endif
 
                                         </td>

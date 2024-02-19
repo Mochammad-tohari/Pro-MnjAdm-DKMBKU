@@ -41,13 +41,13 @@ class uji_bidang_model extends Model
     {
         static::creating(function ($uji_bidang) {
             if (auth()->check()) {
-                $uji_bidang->inserted_by_email = auth()->user()->email;
+                $uji_bidang->inserted_by = auth()->user()->email;
             }
         });
 
         static::updating(function ($uji_bidang) {
             if (auth()->check()) {
-                $uji_bidang->updated_by_email = auth()->user()->email;
+                $uji_bidang->updated_by = auth()->user()->email;
             }
         });
     }

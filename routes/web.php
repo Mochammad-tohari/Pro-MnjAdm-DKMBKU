@@ -122,6 +122,10 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->n
             */
 Route::get('/uji_bidang_data', [uji_bidang_controller::class, 'uji_bidang_index'])->name('uji_bidang_index')->middleware('auth');
 
+
+
+
+
 //tabel gedung
 //tampil data
 Route::get('/gedung_data', [gedung_controller::class, 'gedung_index'])->name('gedung_index')->middleware('auth');
@@ -181,7 +185,6 @@ Route::get('/pengurus_dkm_data', [pengurus_dkm_controller::class, 'pengurus_dkm_
 Route::middleware(['role:Admin'])->group(function () {
 
     //tabel uji
-
     /*  memanggil file 'uji_controller' yg ada di folder controller
                 /create_data_uji ->file create_data_uji.blade.php & 'create_data_uji' -> fungsi 'create_data_uji' yg ada di file uji_controller
             */
@@ -213,7 +216,17 @@ Route::middleware(['role:Admin'])->group(function () {
      */
     Route::post('/uji_excel_import', [uji_controller::class, 'uji_excel_import'])->name('uji_excel_import');
 
+    //tabel uji_bidang
+    /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                /uji_bidang_create ->file uji_bidang_create.blade.php & 'uji_bidang_create' -> fungsi 'uji_bidang_create' yg ada di file uji_bidang_controller
+            */
+    //Route::get('/uji_bidang_create', [AdminController::class, 'uji_bidang_create'])->name('uji_bidang_create');
+    Route::get('/uji_bidang_create', [uji_bidang_controller::class, 'uji_bidang_create'])->name('uji_bidang_create');
 
+    /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                'uji_bidang_insert' -> fungsi 'uji_bidang_insert' yg ada di file uji_bidang_controller
+            */
+    Route::post('/uji_bidang_insert', [uji_bidang_controller::class, 'uji_bidang_insert'])->name('uji_bidang_insert');
 
     //tabel gedung
     //insert data

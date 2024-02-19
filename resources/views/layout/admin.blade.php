@@ -188,6 +188,18 @@
                                     </a>
                                 </li>
 
+
+                                <li class="nav-item">
+                                    <a href="/uji_bidang_data"
+                                        class="nav-link{{ Request::is('uji_bidang_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Bidang Uji
+                                        </p>
+                                    </a>
+                                </li>
+
+                                {{--
                                 <li class="nav-item">
                                     <a href="/data_uji"
                                         class="nav-link{{ Request::is('data_uji') ? ' active' : '' }}">
@@ -196,7 +208,7 @@
                                             Data Uji
                                         </p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         </li>

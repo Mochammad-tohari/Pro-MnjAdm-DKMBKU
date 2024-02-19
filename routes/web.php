@@ -13,6 +13,11 @@ use App\Http\Controllers\uji_controller;
 //memanggil file uji_model yg ada di folder Models
 use App\Models\uji_model;
 
+//memanggil file uji_bidang_controller yg ada di folder Controllers
+use App\Http\Controllers\uji_bidang_controller;
+//memanggil file uji_bidang_model yg ada di folder Models
+use App\Models\uji_bidang_model;
+
 //memanggil file gedung_controller yg ada di folder Controllers
 use App\Http\Controllers\gedung_controller;
 //memanggil file gedung_model yg ada di folder Models
@@ -89,8 +94,8 @@ Route::get('/logout', [login_controller::class, 'logout'])->name('logout');
 fungsi table yang berada di luar row bisa di akses oleh "Admin" dan "Tamu"
 Pembatasan hak akses dibatasi di file blade.php masing2 table
 */
-//table uji
 
+//table uji
 /*  memanggil file 'uji_controller' yg ada di folder controller
                 /data_uji ->file data_uji.blade.php & 'index_uji' -> fungsi 'index_uji' yg ada di file uji_controller
                 tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
@@ -109,6 +114,13 @@ Route::get('/export_excel_uji', [uji_controller::class, 'export_excel_uji'])->na
  */
 Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->name('lihat_data_uji')->middleware('auth');
 
+
+//table uji_bidang
+/*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                /uji_bidang_data ->file uji_bidang_data.blade.php & 'uji_bidang_index' -> fungsi 'uji_bidang_index' yg ada di file uji_bidang_controller
+                tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
+            */
+Route::get('/uji_bidang_data', [uji_bidang_controller::class, 'uji_bidang_index'])->name('uji_bidang_index')->middleware('auth');
 
 //tabel gedung
 //tampil data

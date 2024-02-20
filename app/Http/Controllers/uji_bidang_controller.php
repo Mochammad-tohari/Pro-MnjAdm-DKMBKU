@@ -67,11 +67,17 @@ class uji_bidang_controller extends Controller
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // untuk create dan insert data
     public function uji_bidang_create()
     {
 
-        return view('uji_bidang_create');
+        // Fetch the uji_bidang_data from your database or any other source
+        $uji_bidang_data = uji_bidang_model::all(); // Replace YourModel with the actual model name
+
+        // Pass the $uji_bidang_data variable to the view
+        return view('uji_bidang_create', ['uji_bidang_data' => $uji_bidang_data]);
 
     }
 
@@ -106,5 +112,56 @@ class uji_bidang_controller extends Controller
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // untuk edit dan update data uji berfungsi untuk mengubah data
+    public function uji_bidang_edit($id_uji_bidang)
+    {
+
+        $uji_bidang_data = uji_bidang_model::find($id_uji_bidang);
+        //dd($data_uji);
+        return view('uji_bidang_edit', compact('uji_bidang_data'));
+    }
+
+
+    public function uji_bidang_update(Request $request, $id_uji_bidang)
+    {
+
+        $uji_bidang_data = uji_bidang_model::findOrFail($id_uji_bidang); // Assuming you have the ID of the row you want to update
+
+        $uji_bidang_data->update($request->all());
+
+        $uji_bidang_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('uji_bidang_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // untuk delete data uji berfungsi untuk menghapus data
+    public function uji_bidang_delete($id_uji_bidang)
+    {
+        // Find the uji bidang data by ID
+        $uji_bidang_data = uji_bidang_model::find($id_uji_bidang);
+
+        // Check if the data exists
+        if (!$uji_bidang_data) {
+            // Data not found, return an error response or redirect back with an error message
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        // Data found, proceed with deletion
+        $uji_bidang_data->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('uji_bidang_index')->with('success_delete', 'Data Berhasil Dihapus');
+    }
 
 }

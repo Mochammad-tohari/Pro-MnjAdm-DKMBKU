@@ -216,6 +216,9 @@ Route::middleware(['role:Admin'])->group(function () {
      */
     Route::post('/uji_excel_import', [uji_controller::class, 'uji_excel_import'])->name('uji_excel_import');
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //tabel uji_bidang
     /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
                 /uji_bidang_create ->file uji_bidang_create.blade.php & 'uji_bidang_create' -> fungsi 'uji_bidang_create' yg ada di file uji_bidang_controller
@@ -227,6 +230,25 @@ Route::middleware(['role:Admin'])->group(function () {
                 'uji_bidang_insert' -> fungsi 'uji_bidang_insert' yg ada di file uji_bidang_controller
             */
     Route::post('/uji_bidang_insert', [uji_bidang_controller::class, 'uji_bidang_insert'])->name('uji_bidang_insert');
+
+    /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                /uji_bidang_edit ->file uji_bidang_edit.blade.php & 'uji_bidang_edit' -> fungsi 'uji_bidang_edit' yg ada di file uji_bidang_controller
+            */
+    Route::get('/uji_bidang_edit/{id_uji_bidang}', [uji_bidang_controller::class, 'uji_bidang_edit'])->name('uji_bidang_edit');
+
+    /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                'uji_bidang_update' -> fungsi 'uji_bidang_update' yg ada di file uji_bidang_controller
+                {id} -> parameter yg menjadi acuan dalam hal update
+            */
+    Route::post('/uji_bidang_update/{id_uji_bidang}', [uji_bidang_controller::class, 'uji_bidang_update'])->name('uji_bidang_update');
+
+    /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
+                'uji_bidang_delete' -> fungsi 'uji_bidang_delete' yg ada di file uji_bidang_controller
+                {id} -> parameter yg menjadi acuan dalam hal edit
+            */
+    Route::get('/uji_bidang_delete/{id_uji_bidang}', [uji_bidang_controller::class, 'uji_bidang_delete'])->name('uji_bidang_delete');
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel gedung
     //insert data

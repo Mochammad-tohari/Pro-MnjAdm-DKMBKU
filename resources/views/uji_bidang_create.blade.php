@@ -110,4 +110,70 @@
 
                         </div>
                         <!-- /.card -->
+
+
+                        {{-- css utk design table  --}}
+                        <style>
+                            /* overflow untuk bisa mengscroll table  */
+                            div.table-container {
+                                overflow-x: auto;
+                                max-height: 500px;
+                                overflow-y: auto;
+                                margin-top: 20px;
+                            }
+
+                            table.table-uji_bidang thead tr {
+                                background-color: #0c613b;
+                                /* Header background color */
+                                color: #ffffff;
+                                /* Header text color */
+                            }
+
+                            table.table-uji_bidang tbody tr:nth-child(odd) {
+                                background-color: #343A40;
+                                /* Lighter color for odd rows */
+                            }
+
+                            table.table-uji_bidang tbody tr:nth-child(even) {
+                                background-color: #3e454d;
+                                /* Default color for even rows */
+                            }
+
+                            table.table-uji_bidang th,
+                            table.table-uji_bidang td {
+                                color: #ffffff;
+                                /* Set the text color using CSS variable */
+                                padding: 10px;
+                                /* Adjust the padding value as needed */
+                            }
+                        </style>
+
+                        {{-- card bidang tersedia --}}
+                        <div class="card card-danger">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title">Daftar Bidang Yang Sudah Ada</h3>
+                            </div>
+                            <!-- /.card-header -->
+
+                            <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+                                <table class="table-uji_bidang table-bordered mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Kode Bidang</th>
+                                            <th scope="col">Nama Bidang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($uji_bidang_data->sortBy('Kode_Bidang') as $row)
+                                            <tr>
+                                                <td>{{ $row->Kode_Bidang }}</td>
+                                                <td>{{ $row->Nama_Bidang }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        {{-- akhir card bidang tersedia --}}
                     @endsection

@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Uji Bidang</li>
+                            <li class="breadcrumb-item active"><a href="/uji_bidang_data">Uji Bidang</a> </li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -39,7 +39,7 @@
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/data_uji" method="GET">
+                            <form action="/uji_bidang_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -193,7 +193,7 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/edit_uji_bidang/{{ $row->id_uji_bidang }}"
+                                                <a href="/uji_bidang_edit/{{ $row->id_uji_bidang }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
@@ -202,10 +202,11 @@
 
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="#" class="btn btn-danger btn-sm delete mt-2"
-                                                    data-id="{{ $row->id_uji_bidang }}"
-                                                    data-kode="{{ $row->Kode_Bidang }}"
-                                                    data-nama="{{ $row->Nama_Bidang }}"><i class="fas fa-trash-alt"></i>
-                                                    Hapus</a>
+                                                    data-id-uji-bidang="{{ $row->id_uji_bidang }}"
+                                                    data-kode-bidang="{{ $row->Kode_Bidang }}"
+                                                    data-nama-bidang="{{ $row->Nama_Bidang }}">
+                                                    <i class="fas fa-trash-alt"></i> Hapus
+                                                </a>
                                             @endif
 
                                         </td>
@@ -249,32 +250,53 @@
 
             <!-- memberi fungsi delete dengan sweet alert -->
             <script>
-                $('.delete').click(function() {
+                $('.delete').click(function(event) {
+                    event.preventDefault();
 
                     var uji_id_bidang = $(this).attr('data-id-uji-bidang');
-                    var uji_kode_bidang = $(this).attr('data-kode-bindag');
+                    var uji_kode_bidang = $(this).attr('data-kode-bidang');
                     var uji_nama_bidang = $(this).attr('data-nama-bidang');
 
                     swal({
                             title: "Apakah anda yakin ?",
-                            text: "Data yang akan dihapus kode " + uji_kode_bidang + " Nama_Bidang " +
-                                uji_nama_bidang + "  ",
+                            text: "Data yang akan dihapus kode " + uji_kode_bidang + " Nama_Bidang " + uji_nama_bidang,
                             icon: "warning",
-                            buttons: true,
+                            buttons: ["Batal", "Hapus"], // Adjust the button labels
                             dangerMode: true,
                         })
                         .then((willDelete) => {
                             if (willDelete) {
-                                window.location = "/delete_data_uji/" + uji_id_bidang + ""
-                                swal("Data berhasil dihapus", {
-                                    icon: "success_delete",
-                                });
+                                // Proceed with deletion
+                                window.location = "/uji_bidang_delete/" + uji_id_bidang;
                             } else {
-                                swal("Data tidak dihapus");
+                                // Cancelled, do nothing or show a message
+                                swal("Data tidak dihapus", {
+                                    icon: "info",
+                                });
                             }
                         });
-                })
+                });
             </script>
+
+            <!-- syntax pemberitahuan bahwa data telah dihapus -->
+            <script>
+                @if (Session::has('success_delete'))
+                    // Set a success toast, with a title
+                    toastr.success('Data Telah Dihapus!', 'Berhasil', {
+                        "progressBar": true,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        "iconClass": "toast-success"
+                    });
+                @endif
+            </script>
+
 
             <!-- syntax pemberitahuan bahwa data telah dimasukan -->
             <script>

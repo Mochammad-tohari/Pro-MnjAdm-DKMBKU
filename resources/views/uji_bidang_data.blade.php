@@ -54,7 +54,7 @@
 
                         <div class="col-auto">
                             <form action="/uji_bidang_data" method="GET">
-                                <a href="/export_pdf_uji" class="btn btn-primary">Export PDF</button> </a>
+                                <a href="/uji_bidang_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 

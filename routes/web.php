@@ -115,6 +115,8 @@ Route::get('/export_excel_uji', [uji_controller::class, 'export_excel_uji'])->na
 Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->name('lihat_data_uji')->middleware('auth');
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //table uji_bidang
 /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
                 /uji_bidang_data ->file uji_bidang_data.blade.php & 'uji_bidang_index' -> fungsi 'uji_bidang_index' yg ada di file uji_bidang_controller
@@ -122,9 +124,11 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->n
             */
 Route::get('/uji_bidang_data', [uji_bidang_controller::class, 'uji_bidang_index'])->name('uji_bidang_index')->middleware('auth');
 
+/*  Pdf Export
+ */
+Route::get('/uji_bidang_export_pdf', [uji_bidang_controller::class, 'uji_bidang_export_pdf'])->name('uji_bidang_export_pdf')->middleware('auth');
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel gedung
 //tampil data
@@ -134,6 +138,7 @@ Route::get('/gedung_export_pdf', [gedung_controller::class, 'gedung_export_pdf']
 //lihat 1 data
 Route::get('/gedung_view/{id_gedung}', [gedung_controller::class, 'gedung_view'])->name('gedung_view')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel ruangan
 //tampil data
@@ -143,6 +148,7 @@ Route::get('/ruangan_export_pdf', [ruangan_controller::class, 'ruangan_export_pd
 //lihat 1 data
 Route::get('/ruangan_view/{id_ruangan}', [ruangan_controller::class, 'ruangan_view'])->name('ruangan_view')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel murid madrasah
 //tampildata
@@ -152,6 +158,7 @@ Route::get('/murid_madrasah_export_pdf', [murid_madrasah_controller::class, 'mur
 //lihat 1 data
 Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_view'])->name('murid_madrasah_view')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel bidang khodim
 //tampildata
@@ -159,6 +166,7 @@ Route::get('/bidang_khodim_data', [bidang_khodim_controller::class, 'bidang_khod
 //export PDF
 Route::get('/bidang_khodim_export_pdf', [bidang_khodim_controller::class, 'bidang_khodim_export_pdf'])->name('bidang_khodim_export_pdf')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel khodim dkm
 //tampildata
@@ -168,6 +176,7 @@ Route::get('/khodim_dkm_export_pdf', [khodim_dkm_controller::class, 'khodim_dkm_
 //lihat 1 data
 Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_view'])->name('khodim_dkm_view')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel bidang pengurus
 //tampildata
@@ -175,11 +184,14 @@ Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_
 //export PDF
 Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel pengurus dkm
 //tampildata
 Route::get('/pengurus_dkm_data', [pengurus_dkm_controller::class, 'pengurus_dkm_index'])->name('pengurus_dkm_index')->middleware('auth');
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
 Route::middleware(['role:Admin'])->group(function () {
@@ -258,6 +270,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/gedung_edit/{id_gedung}', [gedung_controller::class, 'gedung_edit'])->name('gedung_edit');
     Route::post('/gedung_update/{id_gedung}', [gedung_controller::class, 'gedung_update'])->name('gedung_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel ruangan
     //insert data
@@ -267,6 +280,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/ruangan_edit/{id_ruangan}', [ruangan_controller::class, 'ruangan_edit'])->name('ruangan_edit');
     Route::post('/ruangan_update/{id_ruangan}', [ruangan_controller::class, 'ruangan_update'])->name('ruangan_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel murid madrasah
     //insert data
@@ -276,6 +290,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/murid_madrasah_edit/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_edit'])->name('murid_madrasah_edit');
     Route::post('/murid_madrasah_update/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_update'])->name('murid_madrasah_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel bidang_khodim
     //insert data
@@ -285,6 +300,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/bidang_khodim_edit/{id_bidang_khodim}', [bidang_khodim_controller::class, 'bidang_khodim_edit'])->name('bidang_khodim_edit');
     Route::post('/bidang_khodim_update/{id_bidang_khodim}', [bidang_khodim_controller::class, 'bidang_khodim_update'])->name('bidang_khodim_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel khodim_dkm
     //insert data
@@ -294,6 +310,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/khodim_dkm_edit/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_edit'])->name('khodim_dkm_edit');
     Route::post('/khodim_dkm_update/{id_khodim}', [khodim_dkm_controller::class, 'khodim_dkm_update'])->name('khodim_dkm_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel bidang_pengurus
     //insert data
@@ -303,6 +320,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/bidang_pengurus_edit/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_edit'])->name('bidang_pengurus_edit');
     Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel pengurus_dkm
     //insert data
@@ -312,6 +330,7 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/pengurus_dkm_edit/{id_pengurus}', [pengurus_dkm_controller::class, 'pengurus_dkm_edit'])->name('pengurus_dkm_edit');
     Route::post('/pengurus_dkm_update/{id_pengurus}', [pengurus_dkm_controller::class, 'pengurus_dkm_update'])->name('pengurus_dkm_update');
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 });
 

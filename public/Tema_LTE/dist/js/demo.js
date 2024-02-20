@@ -21,7 +21,7 @@
       );
       // eslint-disable-next-line no-alert
       alert(
-        'You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!'
+        'Selamat Datang Di WEB Manajemen DKMBKU\'s "demo.js", \nTerbatas Hanya Untuk Anggota DKMBKU !'
       );
     }
   }, 1000);

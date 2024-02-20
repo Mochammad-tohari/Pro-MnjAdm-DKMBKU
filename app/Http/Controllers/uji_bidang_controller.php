@@ -164,4 +164,18 @@ class uji_bidang_controller extends Controller
         return redirect()->route('uji_bidang_index')->with('success_delete', 'Data Berhasil Dihapus');
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //export PDF
+    public function uji_bidang_export_pdf()
+    {
+        $uji_bidang_data = uji_bidang_model::orderBy('Nama_Bidang', 'asc')->get();
+
+        view()->share('uji_bidang_data', $uji_bidang_data);
+        $uji_bidang_pdf = PDF::loadview('uji_bidang_export-pdf');
+        return $uji_bidang_pdf->download('data_uji_bidang.pdf');
+
+
+    }
+
 }

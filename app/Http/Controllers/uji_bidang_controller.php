@@ -16,11 +16,11 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
-//import method export Excel
-use App\Exports\export_excel_uji;
+//import method export Excel sesuaikan nama fungsinya contoh "uji_bidang_export_excel"
+use App\Exports\uji_bidang_export_excel;
 
-//import method export Excel di folder Exports
-use App\Imports\uji_excel_import;
+//import method export Excel di folder Exports sesuaikan nama fungsinya contoh "uji_bidang_import_excel"
+use App\Imports\uji_bidang_import_excel;
 
 //import method import Excel di folder Imports
 use Maatwebsite\Excel\Facades\Excel;
@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Session;
 class uji_bidang_controller extends Controller
 {
     // untuk index data uji_bidang berfungsi untuk menampilkan data
-    public function uji_bidang_index(Request $request)
+    public function uji_bidang_index_new(Request $request)
     {
         /*
         $uji_bidang_data pernyataan variabel
@@ -55,15 +55,15 @@ class uji_bidang_controller extends Controller
             Session::put('page_url', request()->fullUrl());
         }
 
-        return view('uji_bidang_data', [
-            'uji_bidang_data' => $uji_bidang_data,
+        return view('uji_bidang_data_new', [
+            'uji_bidang_data_new' => $uji_bidang_data,
             'searchQuery' => $searchQuery,
         ]);
 
         /*
-        view 'uji_bidang_data' diambil dari uji_bidang_data.blade.php, compact 'uji_bidang_data', diambil dari variabel $data_uji_bidang
+        view 'uji_bidang_data_new' diambil dari uji_bidang_data_new.blade.php, compact 'uji_bidang_data_new', diambil dari variabel $data_uji_bidang
         */
-        return view('uji_bidang_data', compact('uji_bidang_data'));
+        return view('uji_bidang_data_new', compact('uji_bidang_data_new'));
 
     }
 
@@ -174,6 +174,32 @@ class uji_bidang_controller extends Controller
         view()->share('uji_bidang_data', $uji_bidang_data);
         $uji_bidang_pdf = PDF::loadview('uji_bidang_export-pdf');
         return $uji_bidang_pdf->download('data_uji_bidang.pdf');
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // untuk export_excel_uji berfungsi untuk mengesport data ke file excel
+    public function uji_bidang_export_excel()
+    {
+
+        return Excel::download(new uji_bidang_export_excel, 'uji_bidang.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
+    }
+
+
+    // untuk uji_bidang_import_excel berfungsi untuk import file excel
+    public function uji_bidang_import_excel(Request $request)
+    {
+
+        $uji_bidang_data = $request->file('file_uji_bidang');
+
+        $filename = $uji_bidang_data->getClientOriginalName();
+        $uji_bidang_data->move('Uji_Bidang_Data', $filename);
+
+        Excel::import(new uji_bidang_import_excel, \public_path('/Uji_Bidang_Data/' . $filename));
+        return \redirect()->back();
 
 
     }

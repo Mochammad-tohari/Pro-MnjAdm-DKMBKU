@@ -21,7 +21,7 @@
       );
       // eslint-disable-next-line no-alert
       alert(
-        'Selamat Datang Di WEB Manajemen DKMBKU\'s "demo.js", \nTerbatas Hanya Untuk Anggota DKMBKU !'
+        "Selamat Datang Di WEB Manajemen DKMBKU , \nAkses Terbatas Hanya Untuk Anggota DKMBKU !"
       );
     }
   }, 1000);

@@ -88,11 +88,11 @@
                                             aria-label="Close"></button>
                                     </div>
 
-                                    <form action="uji_excel_import" method="POST" enctype="multipart/form-data">
+                                    <form action="uji_bidang_import_excel" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <input type="file" name="file_bidang_uji" required>
+                                                <input type="file" name="file_uji_bidang" required>
                                                 <p>
                                                     Harap perhatikan file excel dan array field didalamnya
                                                 </p>
@@ -173,10 +173,10 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($uji_bidang_data as $uji_bidang_index => $row)
+                                        @foreach ($uji_bidang_data_new as $uji_bidang_index_new => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $uji_bidang_index + $uji_bidang_data->firstItem() }}</td>
+                                        <td>{{ $uji_bidang_index_new + $uji_bidang_data_new->firstItem() }}</td>
 
                                         <th scope="row">{{ $row->Kode_Bidang }}</th>
                                         <td>{{ $row->Nama_Bidang }}</td>
@@ -224,7 +224,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $uji_bidang_data->links() }}
+                        {{ $uji_bidang_data_new->links() }}
                     </div>
                 </div>
             </div>

@@ -119,14 +119,19 @@ Route::get('/lihat_data_uji/{id}', [uji_controller::class, 'lihat_data_uji'])->n
 
 //table uji_bidang
 /*  memanggil file 'uji_bidang_controller' yg ada di folder controller
-                /uji_bidang_data ->file uji_bidang_data.blade.php & 'uji_bidang_index' -> fungsi 'uji_bidang_index' yg ada di file uji_bidang_controller
+                /uji_bidang_data_new ->file uji_bidang_data_new.blade.php & 'uji_bidang_index_new' -> fungsi 'uji_bidang_index_new' yg ada di file uji_bidang_controller
                 tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
             */
-Route::get('/uji_bidang_data', [uji_bidang_controller::class, 'uji_bidang_index'])->name('uji_bidang_index')->middleware('auth');
+Route::get('/uji_bidang_data_new', [uji_bidang_controller::class, 'uji_bidang_index_new'])->name('uji_bidang_index_new')->middleware('auth');
 
 /*  Pdf Export
  */
 Route::get('/uji_bidang_export_pdf', [uji_bidang_controller::class, 'uji_bidang_export_pdf'])->name('uji_bidang_export_pdf')->middleware('auth');
+
+/*  Excel Export
+ */
+Route::get('/uji_bidang_export_excel', [uji_bidang_controller::class, 'uji_bidang_export_excel'])->name('uji_bidang_export_excel')->middleware('auth');
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -259,6 +264,10 @@ Route::middleware(['role:Admin'])->group(function () {
                 {id} -> parameter yg menjadi acuan dalam hal edit
             */
     Route::get('/uji_bidang_delete/{id_uji_bidang}', [uji_bidang_controller::class, 'uji_bidang_delete'])->name('uji_bidang_delete');
+
+    /*  Excel import
+     */
+    Route::post('/uji_bidang_import_excel', [uji_bidang_controller::class, 'uji_bidang_import_excel'])->name('uji_bidang_import_excel');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

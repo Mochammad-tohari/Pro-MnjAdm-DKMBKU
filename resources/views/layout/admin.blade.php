@@ -190,8 +190,8 @@
 
 
                                 <li class="nav-item">
-                                    <a href="/uji_bidang_data"
-                                        class="nav-link{{ Request::is('uji_bidang_data') ? ' active' : '' }}">
+                                    <a href="/uji_bidang_data_new"
+                                        class="nav-link{{ Request::is('uji_bidang_data_new') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
                                             Data Bidang Uji

@@ -18,6 +18,11 @@ use App\Http\Controllers\uji_bidang_controller;
 //memanggil file uji_bidang_model yg ada di folder Models
 use App\Models\uji_bidang_model;
 
+//memanggil file uji_user_controller yg ada di folder Controllers
+use App\Http\Controllers\uji_user_controller;
+//memanggil file uji_user_model yg ada di folder Models
+use App\Models\uji_user_model;
+
 //memanggil file gedung_controller yg ada di folder Controllers
 use App\Http\Controllers\gedung_controller;
 //memanggil file gedung_model yg ada di folder Models
@@ -131,6 +136,16 @@ Route::get('/uji_bidang_export_pdf', [uji_bidang_controller::class, 'uji_bidang_
 /*  Excel Export
  */
 Route::get('/uji_bidang_export_excel', [uji_bidang_controller::class, 'uji_bidang_export_excel'])->name('uji_bidang_export_excel')->middleware('auth');
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//table uji_user
+/*  memanggil file 'uji_user_controller' yg ada di folder controller
+                /uji_user_data ->file uji_user_data.blade.php & 'uji_user_index' -> fungsi 'uji_user_index' yg ada di file uji_user_controller
+                tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
+            */
+Route::get('/uji_user_data', [uji_user_controller::class, 'uji_user_index'])->name('uji_user_index')->middleware('auth');
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

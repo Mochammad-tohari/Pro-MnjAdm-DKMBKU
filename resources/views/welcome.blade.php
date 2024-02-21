@@ -200,14 +200,18 @@
                     <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 3 -->
-                        <div class="small-box bg-info info-box-uji">
+                        <div class="small-box bg-info info-box-uji-user">
                             <div class="inner">
-                                <h4><strong>Indeks Data Uji</strong></h4>
+                                <h4><strong>Indeks Data Uji User</strong></h4>
                                 <span class="info-box-number-1 mb-3">
-                                    <p class="info-box-text-uji">Jumlah Data Uji:
-                                        {{ $data_uji_kondisi['data_uji_jumlah'] }}</p>
-                                    <p class="info-box-text-uji">Aktif: {{ $data_uji_kondisi['aktif_count'] }}</p>
-                                    <p class="info-box-text-uji">Tidak Aktif: {{ $data_uji_kondisi['tidak_aktif_count'] }}
+                                    <p class="info-box-text-uji-user">Jumlah Data Uji User:
+                                        {{ $uji_user_kondisi['uji_user_jumlah'] }}</p>
+                                    <p class="info-box-text-uji">Aktif: {{ $uji_user_kondisi['uji_user_aktif_count'] }}</p>
+                                    <p class="info-box-text-uji">Tidak Aktif:
+                                        {{ $uji_user_kondisi['uji_user_tidak_aktif_count'] }}
+                                    </p>
+                                    <p class="info-box-text-uji">Lainya:
+                                        {{ $uji_user_kondisi['uji_user_lainya_count'] }}
                                     </p>
                                     {{-- <small>Data</small> --}}
                                 </span>
@@ -215,7 +219,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/data_uji" class="small-box-footer">More info <i
+                            <a href="/uji_user_data" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

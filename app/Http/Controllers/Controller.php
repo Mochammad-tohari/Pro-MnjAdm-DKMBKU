@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 //import table model
 use App\Models\uji_model;
+use App\Models\uji_bidang_model;
+use App\Models\uji_user_model;
 use App\Models\gedung_model;
 use App\Models\ruangan_model;
 use App\Models\murid_madrasah_model;
@@ -15,20 +17,24 @@ use App\Models\bidang_khodim_model;
 use App\Models\khodim_dkm_model;
 use App\Models\bidang_pengurus_model;
 
-class Controller extends BaseController {
+class Controller extends BaseController
+{
     use AuthorizesRequests, ValidatesRequests;
 
-    public function welcome() {
-        // Count total records for data_uji
-        $data_uji_jumlah = uji_model::count();
+    public function welcome()
+    {
+        // Count total records for uji_user
+        $uji_user_jumlah = uji_user_model::count();
 
-        // Define an array of variables for data_uji
-        $data_uji_kondisi = [
-            'data_uji_jumlah' => $data_uji_jumlah,
-            // Count 'Aktif' status records
-            'aktif_count' => uji_model::where('Status', 'Aktif')->count(),
-            // Count 'Tidak_Aktif' status records
-            'tidak_aktif_count' => uji_model::where('Status', 'Tidak_Aktif')->count(),
+        // Define an array of variables for uji_user
+        $uji_user_kondisi = [
+            'uji_user_jumlah' => $uji_user_jumlah,
+            // Count 'Aktif' Status_Uji_User records
+            'uji_user_aktif_count' => uji_user_model::where('Status_Uji_User', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' Status_Uji_User records
+            'uji_user_tidak_aktif_count' => uji_user_model::where('Status_Uji_User', 'Tidak_Aktif')->count(),
+            // Count 'Tidak_Aktif' Status_Uji_User records
+            'uji_user_lainya_count' => uji_user_model::where('Status_Uji_User', 'Lainya')->count(),
             // Add more variables here if needed
         ];
 
@@ -127,7 +133,7 @@ class Controller extends BaseController {
 
         // Pass all the data variables to the view
         return view('welcome', [
-            'data_uji_kondisi' => $data_uji_kondisi,
+            'uji_user_kondisi' => $uji_user_kondisi,
             'data_gedung_kondisi' => $data_gedung_kondisi,
             'data_ruangan_kondisi' => $data_ruangan_kondisi,
             'data_murid_kondisi' => $data_murid_kondisi,

@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <title>Data Uji Bidang</title>
+    <title>Data Uji User</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Uji Bidang</h1>
+                        <h1 class="m-0">Data Uji User</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="/uji_bidang_data">Uji Bidang</a> </li>
+                            <li class="breadcrumb-item active"><a href="/uji_user_data">Uji User</a> </li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,14 +24,14 @@
         <div class="col-auto">
             <div class="card col-auto">
                 <div class="card-header col-auto">
-                    <h3 class="card-title text-center">Daftar Data Uji Bidang</h3>
+                    <h3 class="card-title text-center">Daftar Data Uji User</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body col-auto">
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/uji_bidang_create">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/uji_user_create">Tambah Data</button>
                         </a>
                     @endif
 
@@ -39,7 +39,7 @@
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
+                            <form action="/uji_user_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -53,14 +53,14 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
-                                <a href="/uji_bidang_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+                            <form action="/uji_user_data" method="GET">
+                                <a href="/uji_user_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
-                                <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
+                            <form action="/uji_user_data" method="GET">
+                                <a href="/uji_user_export_pdf" class="btn btn-success">Export Excel</button> </a>
                             </form>
                         </div>
 
@@ -120,25 +120,25 @@
                                 margin-top: 20px;
                             }
 
-                            table.table-uji_bidang thead tr {
+                            table.table-uji_user thead tr {
                                 background-color: #0c613b;
                                 /* Header background color */
                                 color: #ffffff;
                                 /* Header text color */
                             }
 
-                            table.table-uji_bidang tbody tr:nth-child(odd) {
+                            table.table-uji_user tbody tr:nth-child(odd) {
                                 background-color: #343A40;
                                 /* Lighter color for odd rows */
                             }
 
-                            table.table-uji_bidang tbody tr:nth-child(even) {
+                            table.table-uji_user tbody tr:nth-child(even) {
                                 background-color: #3e454d;
                                 /* Default color for even rows */
                             }
 
-                            table.table-uji_bidang th,
-                            table.table-uji_bidang td {
+                            table.table-uji_user th,
+                            table.table-uji_user td {
                                 color: #ffffff;
                                 /* Set the text color using CSS variable */
                                 padding: 10px;
@@ -149,14 +149,23 @@
 
                         {{-- table dan kontenya --}}
                         <div class="table-container">
-                            <table class="table-uji_bidang table-bordered mt-3">
+                            <table class="table-uji_user table-bordered mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Kode Bidang</th>
-                                        <th scope="col">Nama Bidang</th>
-                                        <th scope="col">Keterangan Bidang</th>
-                                        <th scope="col">Status Bidang</th>
+                                        <th scope="col">Kode Uji User</th>
+                                        <th scope="col">Jabatan Uji User</th>
+                                        <th scope="col">Nama Uji User</th>
+                                        <th scope="col">Password Uji User</th>
+                                        <th scope="col">Tanggal Uji User</th>
+                                        <th scope="col">Keterangan Uji User</th>
+
+                                        @if (auth()->user()->akses === 'Admin')
+                                            <th scope="col">Foto Profil</th>
+                                            <th scope="col">Foto Identitas</th>
+                                        @endif
+
+                                        <th scope="col">Status Uji User</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
@@ -173,15 +182,25 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($uji_bidang_data_new as $uji_bidang_index_new => $row)
+                                        @foreach ($uji_user_data as $uji_user_index => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $uji_bidang_index_new + $uji_bidang_data_new->firstItem() }}</td>
+                                        <td>{{ $uji_user_index + $uji_user_data->firstItem() }}</td>
 
-                                        <th scope="row">{{ $row->Kode_Bidang }}</th>
-                                        <td>{{ $row->Nama_Bidang }}</td>
-                                        <td>{{ $row->Keterangan_Bidang }}</td>
-                                        <td>{{ $row->Status_Bidang }}</td>
+                                        <th scope="row">{{ $row->Kode_Uji_User }}</th>
+                                        <td>{{ $row->Jabatan_Uji_User }}</td>
+                                        <td>{{ $row->Nama_Uji_User }}</td>
+                                        <td>{{ $row->Password_Uji_User }}</td>
+                                        <td>{{ $row->Tanggal_Uji_User }}</td>
+                                        <td>{{ $row->Keterangan_Uji_User }}</td>
+
+                                        @if (auth()->user()->akses === 'Admin')
+                                            <td>{{ $row->Foto_Profil }}</td>
+                                            <td>{{ $row->Foto_Identitas }}</td>
+                                        @endif
+
+                                        <td>{{ $row->Status_Uji_User }}</td>
+
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -193,16 +212,16 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/uji_bidang_edit/{{ $row->id_uji_bidang }}"
+                                                <a href="/uji_bidang_edit/{{ $row->id_uji_user }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
-                                            {{-- <a href="/lihat_uji_bidang/{{ $row->id_uji_bidang }}" target="_blank"
+                                            {{-- <a href="/lihat_uji_bidang/{{ $row->id_uji_user }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
 
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="#" class="btn btn-danger btn-sm delete mt-2"
-                                                    data-id-uji-bidang="{{ $row->id_uji_bidang }}"
+                                                    data-id-uji-bidang="{{ $row->id_uji_user }}"
                                                     data-kode-bidang="{{ $row->Kode_Bidang }}"
                                                     data-nama-bidang="{{ $row->Nama_Bidang }}">
                                                     <i class="fas fa-trash-alt"></i> Hapus
@@ -224,7 +243,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $uji_bidang_data_new->links() }}
+                        {{ $uji_user_data->links() }}
                     </div>
                 </div>
             </div>

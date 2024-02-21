@@ -1,22 +1,22 @@
 /* box_info_data.css */
 
-.small-box.bg-info.info-box-uji {
+.small-box.bg-info.info-box-uji-user {
     background-image: url("../box_info_image/uji_bg.jpg");
     background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
     /* Add additional styles for the first info box if needed */
 }
 
-.info-box-uji .info-box-text-uji {
+.info-box-uji-user .info-box-text-uji-user {
     font-size: 14px; /* You can adjust the value as needed */
 }
 
 /* Add custom styles to create gap after the heading */
-.info-box-uji p:first-child {
+.info-box-uji-user p:first-child {
     margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
-.info-box-uji p {
+.info-box-uji-user p {
     margin: 0;
     line-height: 1.5;
 }

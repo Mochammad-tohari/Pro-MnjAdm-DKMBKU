@@ -11,7 +11,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
     </script>
 
-    <title>Tambah Data Pengurus DKM</title>
+    <title>Tambah Data Uji User</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -19,12 +19,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Tambah Data Pengurus DKM</h1>
+                        <h1 class="m-0">Tambah Data Uji User</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/pengurus_dkm_data">Data Pengurus DKM</a></li>
-                            <li class="breadcrumb-item active">Tambah Data Pengurus DKM</li>
+                            <li class="breadcrumb-item"><a href="/pengurus_dkm_data">Data Uji User</a></li>
+                            <li class="breadcrumb-item active">Tambah Data Uji User</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -36,7 +36,7 @@
             <!-- /.card-header -->
             <div class="card-body col-auto">
                 <div class="card-body">
-                    <form action="/pengurus_dkm_insert" method="POST" enctype="multipart/form-data">
+                    <form action="/uji_user_insert" method="POST" enctype="multipart/form-data">
                         <!-- crsf token berfungsi untuk membuat data di laravel -->
                         @csrf
                         <div class="row">
@@ -45,7 +45,7 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header mb-3">
-                                        <h3 class="card-title">Tambah Data Pengurus DKM</h3>
+                                        <h3 class="card-title">Tambah Data Uji User</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
@@ -53,104 +53,106 @@
                                         <div class="card-body mb-3">
 
                                             <div class="form-group mb-3">
-                                                <label for="id" class="form-label">Kode Pengurus</label>
-                                                <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal-->
+                                                <label for="id" class="form-label">Kode Uji User</label>
+                                                <!-- tag php dan echo ?php disini utk membuat Kode key secara otomatis menggunakan tanggal-->
                                                 <?php
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="PRS<?php echo $tgl; ?>" id="" name="Kode_Pengurus"
+                                                    value="UJUSR-<?php echo $tgl; ?>" id="" name="Kode_Uji_User"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="NIP_Pengurus" class="form-label">NIP Pengurus</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="NIP_Pengurus" value="{{ old('NIP_Pengurus') }}">
-                                                <div name="" class="form-text">Jika tidak ada NIP boleh dikosongkan
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label for="id" class="form-label">Jabatan Pengurus</label>
-                                                <select class="custom-select rounded-0" id="Jabatan_Pengurus"
-                                                    name="Jabatan_Pengurus">
+                                                <label for="id" class="form-label">Jabatan Uji User</label>
+                                                <select class="custom-select rounded-0" id="Jabatan_Uji_User"
+                                                    name="Jabatan_Uji_User">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    {{-- memanggil variable $Bidang_Pengurus_Options yang ada di ruangan controller
-                                                    mendefinisikan sebagai variable $Kode_Bidang_Pengurus
-                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Pengurus }} di table gedung --}}
-                                                    {{-- Sort the $Bidang_Pengurus_Options array by the values (Jabatan Pengurus) in ascending order --}}
+                                                    {{-- memanggil variable $Uji_User_Options yang ada di ruangan controller
+                                                    mendefinisikan sebagai variable $Kode_Bidang
+                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang }} di table uji_bidang --}}
+                                                    {{-- Sort the $Uji_User_Options array by the values (Jabatan Pengurus) in ascending order --}}
                                                     @php
-                                                        $Sorted_Bidang_Pengurus_Options = collect($Bidang_Pengurus_Options)->sort()->all();
+                                                        $Sorted_Uji_User_Options = collect($Uji_User_Options)->sort()->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
-                                                    @foreach ($Sorted_Bidang_Pengurus_Options as $Kode_Bidang_Pengurus => $Nama_Bidang_Pengurus)
-                                                        <option value="{{ $Kode_Bidang_Pengurus }}">
-                                                            {{ $Nama_Bidang_Pengurus }}
+                                                    @foreach ($Sorted_Uji_User_Options as $Kode_Bidang => $Nama_Bidang)
+                                                        <option value="{{ $Kode_Bidang }}">
+                                                            {{ $Nama_Bidang }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Jabatan_Pengurus')
+                                                @error('Jabatan_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
 
                                                 <div name="" class="form-text">
                                                     Pilih data yang sesuai, Jika tidak ada isi data ini <a
-                                                        href="/bidang_pengurus_create">Bidang Pengurus</a>
+                                                        href="/uji_bidang_create">Uji Bidang</a>
                                                 </div>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="Nama_Pengurus" class="form-label">Nama Pengurus</label>
+                                                <label for="Nama_Uji_User" class="form-label">Nama Uji User</label>
                                                 <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Pengurus" value="{{ old('Nama_Pengurus') }}">
+                                                    name="Nama_Uji_User" value="{{ old('Nama_Uji_User') }}">
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Nama_Pengurus')
+                                                @error('Nama_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="Kontak_Pengurus" class="form-label">Kontak Pengurus</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    id="Kontak_Pengurus" name="Kontak_Pengurus"
-                                                    value="{{ old('Kontak_Pengurus') }}">
+                                                <label for="Password_Uji_User" class="form-label">Password Uji User</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                    id="Password_Uji_User" name="Password_Uji_User"
+                                                    value="{{ old('Password_Uji_User') }}">
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Kontak_Pengurus')
+                                                @error('Password_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
+                                            <div class="form-group mb-3">
+                                                <label for="Tanggal_Uji_User" class="form-label">Tanggal Uji User</label>
+                                                <input type="date" class="form-control" placeholder=""
+                                                    id="Tanggal_Uji_User" name="Tanggal_Uji_User">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Tanggal_Uji_User')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="Alamat_Pengurus" class="form-label">Alamat Pengurus</label>
-                                                <textarea class="form-control" name="Alamat_Pengurus" id="Alamat_Pengurus">{{ old('Alamat_Pengurus') }}</textarea>
+                                                <label for="Keterangan_Uji_User" class="form-label">Keterangan Uji
+                                                    User</label>
+                                                <textarea class="form-control" name="Keterangan_Uji_User" id="Keterangan_Uji_User">{{ old('Keterangan_Uji_User') }}</textarea>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Alamat_Pengurus')
+                                                @error('Keterangan_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
                                             {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Foto_Pengurus" class="form-label">Foto Pengurus</label>
+                                                <label for="Foto_Profil" class="form-label">Foto Profil</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="Foto_Pengurus"
-                                                        name="Foto_Pengurus">
+                                                    <input type="file" class="custom-file-input" id="Foto_Profil"
+                                                        name="Foto_Profil">
                                                     <label class="custom-file-label" for="exampleInputFile">Pilih Foto
-                                                        Pengurus</label>
+                                                        Profil</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_Foto_Pengurus" class="mt-3">
-                                                    <img id="Muat_Foto_Pengurus" src="#" alt=""
+                                                <div id="Preview_Foto_Profil" class="mt-3">
+                                                    <img id="Muat_Foto_Profil" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_Pengurus').on('change', function() {
+                                                $('#Foto_Profil').on('change', function() {
                                                     // Get the file name
                                                     var fileName = $(this).val();
                                                     // Remove "C:\fakepath\" from the file path
@@ -162,10 +164,10 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#Muat_Foto_Pengurus').attr('src', e.target.result);
+                                                            $('#Muat_Foto_Profil').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_Pengurus').show(); // Show the image preview container
+                                                        $('#Preview_Foto_Profil').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
@@ -174,23 +176,23 @@
 
                                             {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Identitas_Pengurus" class="form-label">Foto Identitas (KTP/SIM)
+                                                <label for="Foto_Identitas" class="form-label">Foto Identitas (KTP/SIM)
                                                 </label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input"
-                                                        id="Identitas_Pengurus" name="Identitas_Pengurus">
+                                                    <input type="file" class="custom-file-input" id="Foto_Identitas"
+                                                        name="Foto_Identitas">
                                                     <label class="custom-file-label" for="exampleInputFile">Pilih Foto
                                                         Identitas</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_Identitas_Pengurus" class="mt-3">
-                                                    <img id="Muat_Identitas_Pengurus" src="#" alt=""
+                                                <div id="Preview_Foto_Identitas" class="mt-3">
+                                                    <img id="Muat_Foto_Identitas" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Identitas_Pengurus').on('change', function() {
+                                                $('#Foto_Identitas').on('change', function() {
                                                     // Get the file name
                                                     var fileName = $(this).val();
                                                     // Remove "C:\fakepath\" from the file path
@@ -202,32 +204,26 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#Muat_Identitas_Pengurus').attr('src', e.target.result);
+                                                            $('#Muat_Foto_Identitas').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Identitas_Pengurus').show(); // Show the image preview container
+                                                        $('#Preview_Foto_Identitas').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
                                             {{-- akhir syntax input gambar --}}
 
                                             <div class="form-group mb-3">
-                                                <label for="Keterangan_Pengurus" class="form-label">Keterangan
-                                                    Pengurus</label>
-                                                <textarea class="form-control" name="Keterangan_Pengurus" id="Keterangan_Pengurus">{{ old('Keterangan_Pengurus') }}</textarea>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label for="Status_Pengurus">Status Pengurus</label>
-                                                <select class="custom-select rounded-0" id="Status_Pengurus"
-                                                    name="Status_Pengurus">
+                                                <label for="Status_Uji_User">Status Uji User</label>
+                                                <select class="custom-select rounded-0" id="Status_Uji_User"
+                                                    name="Status_Uji_User">
                                                     <option selected disabled value>--Pilih--</option>
                                                     <option value="Aktif">Aktif</option>
                                                     <option value="Tidak_Aktif">Tidak_Aktif</option>
                                                     <option value="Lainya">Lainya</option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Status_Pengurus')
+                                                @error('Status_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -237,7 +233,7 @@
                                             <div class="card-footer mb-6">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn btn-warning ml-2">Reset</button>
-                                                <a href="/pengurus_dkm_data" class="ml-2">
+                                                <a href="/uji_user_data" class="ml-2">
                                                     <button type="button" class="btn btn-danger">Batal</button>
                                                 </a>
                                             </div>

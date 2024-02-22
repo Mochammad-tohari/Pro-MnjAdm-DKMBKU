@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 //import validator
 use Illuminate\Support\Facades\Validator;
 
+//import hash untuk field password
+use Illuminate\Support\Facades\Hash;
+
 //import Model "uji_bidang_model" dari folder models
 use App\Models\uji_bidang_model;
 
@@ -72,5 +75,86 @@ class uji_user_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //create dan insert data
+    public function uji_user_create()
+    {
+
+        // $Uji_User_Option
+        // uji_bidang_model::pluck('Jabatan_Uji_User', 'Kode_Bidang'); = mengambil nama Nama_Bidang berdasarkan kode Kode_Bidang yang ada di table uji_bidang
+
+        $Uji_User_Options = uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang');
+        return view('uji_user_create', compact('Uji_User_Options'));
+    }
+
+    public function uji_user_insert(Request $request)
+    {
+
+        //validator berfungsi mengecek isian form yang harus di isi terkadang memiliki beberapa kondisi seperti pada "Password"
+        $validator = Validator::make($request->all(), [
+            'Jabatan_Uji_User' => 'required',
+            'Nama_Uji_User' => 'required',
+            'Password_Uji_User' => 'required|min:5',
+            'Tanggal_Uji_User' => 'required',
+            'Status_Uji_User' => 'required',
+        ], [
+            'Password_Uji_User.required' => 'The Password field is required.',
+            'Password_Uji_User.min' => 'Password minimal memiliki :min karakter',
+        ]);
+
+        if ($validator->passes()) {
+
+            // Create a new instance of pengurus_dkm_model
+            $uji_user_data = new uji_user_model();
+
+            // Fill the model with form data (excluding updated_by)
+            $uji_user_data->fill($request->except(['updated_by']));
+
+            // Set the updated_by field to null initially
+            $uji_user_data->updated_by = null;
+
+            // Assign the input 'Jabatan_Uji_User' value to the 'Jabatan_Uji_User' property
+            $uji_user_data->Jabatan_Uji_User = $request->input('Jabatan_Uji_User');
+
+            // Encrypt the password using bcrypt
+            $encryptedPassword = Hash::make($request->input('Password_Uji_User'));
+
+            // Assign the encrypted password to the 'Password_Uji_User' property
+            $uji_user_data->Password_Uji_User = $encryptedPassword;
+
+            // Check if 'Foto_Profil' file is present in the request
+            /*
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Profil')->getClientOriginalName();
+            memberikan nama foto sesuai dengan nama file dan menambahkan nama tanggal pada file yang diminta
+
+            $request->file('Foto_Profil')->move(public_path('Data_Uji_User/Foto_Profil'), $filename1);
+            menyimpan file foto di folder public->Data_Uji_User->Foto_Profil
+             */
+            if ($request->hasFile('Foto_Profil')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Profil')->getClientOriginalName();
+                $request->file('Foto_Profil')->move(public_path('Data_Uji_User/Foto_Profil'), $filename1);
+                $uji_user_data->Foto_Profil = $filename1;
+            }
+
+            // Check if 'Foto_Identitas' file is present in the request
+            if ($request->hasFile('Foto_Identitas')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Foto_Identitas')->getClientOriginalName();
+                $request->file('Foto_Identitas')->move(public_path('Data_Uji_User/Foto_Identitas'), $filename2);
+                $uji_user_data->Foto_Identitas = $filename2;
+            }
+
+            // Save the updated files
+            $uji_user_data->save();
+
+            return redirect()->route('uji_user_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
+    }
 
 }

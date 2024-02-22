@@ -285,6 +285,20 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::post('/uji_bidang_import_excel', [uji_bidang_controller::class, 'uji_bidang_import_excel'])->name('uji_bidang_import_excel');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //tabel uji user
+    /*  memanggil file 'uji_user_controller' yg ada di folder controller
+               /uji_user_create ->file uji_user_create.blade.php & 'uji_user_create' -> fungsi 'uji_user_create' yg ada di file uji_user_controller
+           */
+    //Route::get('/uji_user_create', [AdminController::class, 'uji_user_create'])->name('uji_user_create');
+    Route::get('/uji_user_create', [uji_user_controller::class, 'uji_user_create'])->name('uji_user_create');
+
+    /*  memanggil file 'uji_user_controller' yg ada di folder controller
+                   'uji_user_insert' -> fungsi 'uji_user_insert' yg ada di file uji_user_controller
+               */
+    Route::post('/uji_user_insert', [uji_user_controller::class, 'uji_user_insert'])->name('uji_user_insert');
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //tabel gedung
     //insert data

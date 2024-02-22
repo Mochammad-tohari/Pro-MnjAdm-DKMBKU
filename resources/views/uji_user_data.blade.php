@@ -187,7 +187,15 @@
                                         <!-- daftar nomor urut -->
                                         <td>{{ $uji_user_index + $uji_user_data->firstItem() }}</td>
 
-                                        <th scope="row">{{ $row->Kode_Uji_User }}</th>
+                                        {{-- memanggil dan mengecek kesediaan data kode_uji_bidang
+                                        yang ditampilkan oleh nama Nama_Bidang dari table uji_bidang --}}
+                                        @if ($row->ambil_kode_uji_bidang)
+                                            <th scope="row">{{ $row->ambil_kode_uji_bidang->Nama_Bidang }}
+                                            </th>
+                                        @else
+                                            <th scope="row">Jabatan Tidak Diketahui</th>
+                                        @endif
+
                                         <td>{{ $row->Jabatan_Uji_User }}</td>
                                         <td>{{ $row->Nama_Uji_User }}</td>
                                         <td>{{ $row->Password_Uji_User }}</td>
@@ -195,8 +203,19 @@
                                         <td>{{ $row->Keterangan_Uji_User }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
-                                            <td>{{ $row->Foto_Profil }}</td>
-                                            <td>{{ $row->Foto_Identitas }}</td>
+                                            <td>
+                                                @if ($row->Foto_Profil)
+                                                    <img src="{{ asset('Data_Uji_User/Foto_Profil/' . $row->Foto_Profil) }}"
+                                                        alt="Foto_Profil" style="width: 40px;">
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($row->Foto_Identitas)
+                                                    <img src="{{ asset('Data_Uji_User/Foto_Identitas/' . $row->Foto_Identitas) }}"
+                                                        alt="Foto_Identitas" style="width: 40px;">
+                                                @endif
+                                            </td>
                                         @endif
 
                                         <td>{{ $row->Status_Uji_User }}</td>

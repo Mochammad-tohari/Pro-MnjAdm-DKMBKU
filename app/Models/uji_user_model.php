@@ -26,7 +26,7 @@ class uji_user_model extends Model
     'Jabatan_Uji_User' = field yang ada di table pengurus_dkm
     'Kode_Bidang' = field yang diambil dari table uji_bidang
     */
-    public function ambil_kode__uji_bidang()
+    public function ambil_kode_uji_bidang()
     {
         return $this->belongsTo(uji_bidang_model::class, 'Jabatan_Uji_User', 'Kode_Bidang');
     }

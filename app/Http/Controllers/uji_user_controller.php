@@ -79,11 +79,11 @@ class uji_user_controller extends Controller
     public function uji_user_create()
     {
 
-        // $Uji_User_Option
+        // $Uji_Bidang_Options
         // uji_bidang_model::pluck('Jabatan_Uji_User', 'Kode_Bidang'); = mengambil nama Nama_Bidang berdasarkan kode Kode_Bidang yang ada di table uji_bidang
+        $Uji_Bidang_Options = uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang');
 
-        $Uji_User_Options = uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang');
-        return view('uji_user_create', compact('Uji_User_Options'));
+        return view('uji_user_create', compact('Uji_Bidang_Options'));
     }
 
     public function uji_user_insert(Request $request)
@@ -155,6 +155,57 @@ class uji_user_controller extends Controller
         }
 
 
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //fungsi edit dan update
+    public function uji_user_edit($id_uji_user)
+    {
+        //dd($id_uji_user);
+
+        // $bidang_pengurus_option
+        $uji_user_data = uji_user_model::findOrFail($id_uji_user);
+
+        // uji_bidang_model::pluck('Jabatan_Uji_User', 'Kode_Bidang'); = mengambil nama Nama_Bidang berdasarkan kode Kode_Bidang yang ada di table uji_bidang
+        $Uji_Bidang_Options = uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang');
+
+        return view('uji_user_edit', compact('uji_user_data', 'Uji_Bidang_Options'));
+    }
+
+
+    public function uji_user_update(Request $request, $id_uji_user)
+    {
+        $uji_user_data = uji_user_model::findOrFail($id_uji_user);
+        $uji_user_data->Jabatan_Uji_User = $request->input('Jabatan_Uji_User');
+
+        // Update the data with new values from the request
+        $uji_user_data->fill($request->all());
+
+        $uji_user_data->update($request->all());
+
+        if ($request->hasFile('Foto_Profil')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Profil')->getClientOriginalName();
+            $request->file('Foto_Profil')->move(public_path('Data_Uji_User/Foto_Profil'), $filename1);
+            $uji_user_data->Foto_Profil = $filename1;
+        }
+
+
+        if ($request->hasFile('Foto_Identitas')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Foto_Identitas')->getClientOriginalName();
+            $request->file('Foto_Identitas')->move(public_path('Data_Uji_User/Foto_Identitas'), $filename2);
+            $uji_user_data->Foto_Identitas = $filename2;
+        }
+
+        $uji_user_data->save();
+
+
+        // Redirect or return response as needed
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('uji_user_index')->with('success_edit', 'Data Berhasil Diubah');
     }
 
 }

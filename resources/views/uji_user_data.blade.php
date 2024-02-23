@@ -186,6 +186,7 @@
                                     <tr>
                                         <!-- daftar nomor urut -->
                                         <td>{{ $uji_user_index + $uji_user_data->firstItem() }}</td>
+                                        <td>{{ $row->Kode_Uji_User }}</td>
 
                                         {{-- memanggil dan mengecek kesediaan data kode_uji_bidang
                                         yang ditampilkan oleh nama Nama_Bidang dari table uji_bidang --}}
@@ -196,7 +197,6 @@
                                             <th scope="row">Jabatan Tidak Diketahui</th>
                                         @endif
 
-                                        <td>{{ $row->Jabatan_Uji_User }}</td>
                                         <td>{{ $row->Nama_Uji_User }}</td>
                                         <td>{{ $row->Password_Uji_User }}</td>
                                         <td>{{ $row->Tanggal_Uji_User }}</td>
@@ -231,7 +231,7 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/uji_bidang_edit/{{ $row->id_uji_user }}"
+                                                <a href="/uji_user_edit/{{ $row->id_uji_user }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 

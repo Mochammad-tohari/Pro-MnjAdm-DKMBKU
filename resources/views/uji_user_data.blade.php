@@ -186,7 +186,7 @@
                                     <tr>
                                         <!-- daftar nomor urut -->
                                         <td>{{ $uji_user_index + $uji_user_data->firstItem() }}</td>
-                                        <td>{{ $row->Kode_Uji_User }}</td>
+                                        <th scope="row">{{ $row->Kode_Uji_User }}</th>
 
                                         {{-- memanggil dan mengecek kesediaan data kode_uji_bidang
                                         yang ditampilkan oleh nama Nama_Bidang dari table uji_bidang --}}
@@ -239,10 +239,10 @@
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
 
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="#" class="btn btn-danger btn-sm delete mt-2"
-                                                    data-id-uji-bidang="{{ $row->id_uji_user }}"
-                                                    data-kode-bidang="{{ $row->Kode_Bidang }}"
-                                                    data-nama-bidang="{{ $row->Nama_Bidang }}">
+                                                <a href="/uji_user_delete" class="btn btn-danger btn-sm delete mt-2"
+                                                    data-id-uji-user="{{ $row->id_uji_user }}"
+                                                    data-kode-uji-user="{{ $row->Kode_Uji_User }}"
+                                                    data-nama-uji-user="{{ $row->Nama_Uji_User }}">
                                                     <i class="fas fa-trash-alt"></i> Hapus
                                                 </a>
                                             @endif
@@ -291,13 +291,14 @@
                 $('.delete').click(function(event) {
                     event.preventDefault();
 
-                    var uji_id_bidang = $(this).attr('data-id-uji-bidang');
-                    var uji_kode_bidang = $(this).attr('data-kode-bidang');
-                    var uji_nama_bidang = $(this).attr('data-nama-bidang');
+                    var uji_id_user = $(this).attr('data-id-uji-user');
+                    var uji_kode_uji_user = $(this).attr('data-kode-uji-user');
+                    var uji_nama_uji_user = $(this).attr('data-nama-uji-user');
 
                     swal({
                             title: "Apakah anda yakin ?",
-                            text: "Data yang akan dihapus kode " + uji_kode_bidang + " Nama_Bidang " + uji_nama_bidang,
+                            text: "Data yang akan dihapus kode " + uji_kode_uji_user + " Nama_User " +
+                                uji_nama_uji_user,
                             icon: "warning",
                             buttons: ["Batal", "Hapus"], // Adjust the button labels
                             dangerMode: true,
@@ -305,7 +306,7 @@
                         .then((willDelete) => {
                             if (willDelete) {
                                 // Proceed with deletion
-                                window.location = "/uji_bidang_delete/" + uji_id_bidang;
+                                window.location = "/uji_user_delete/" + uji_id_user;
                             } else {
                                 // Cancelled, do nothing or show a message
                                 swal("Data tidak dihapus", {

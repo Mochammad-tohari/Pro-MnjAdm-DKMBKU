@@ -309,6 +309,11 @@ Route::middleware(['role:Admin'])->group(function () {
             */
     Route::post('/uji_user_update/{id_uji_user}', [uji_user_controller::class, 'uji_user_update'])->name('uji_user_update');
 
+    /*  memanggil file 'uji_user_controller' yg ada di folder controller
+                    'uji_user_delete' -> fungsi 'uji_user_delete' yg ada di file uji_user_controller
+                    {id} -> parameter yg menjadi acuan dalam hal edit
+                */
+    Route::get('/uji_user_delete/{id_uji_user}', [uji_user_controller::class, 'uji_user_delete'])->name('uji_user_delete');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

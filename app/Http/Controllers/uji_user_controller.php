@@ -208,4 +208,25 @@ class uji_user_controller extends Controller
         return redirect()->route('uji_user_index')->with('success_edit', 'Data Berhasil Diubah');
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // untuk delete data uji berfungsi untuk menghapus data
+    public function uji_user_delete($id_uji_user)
+    {
+        // Find the uji user data by ID
+        $uji_user_data = uji_user_model::find($id_uji_user);
+
+        // Check if the data exists
+        if (!$uji_user_data) {
+            // Data not found, return an error response or redirect back with an error message
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        // Data found, proceed with deletion
+        $uji_user_data->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('uji_user_index')->with('success_delete', 'Data Berhasil Dihapus');
+    }
+
 }

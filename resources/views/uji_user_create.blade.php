@@ -78,7 +78,8 @@
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
                                                     @foreach ($Sorted_Uji_Bidang_Options as $Kode_Bidang => $Nama_Bidang)
-                                                        <option value="{{ $Kode_Bidang }}">
+                                                        <option value="{{ $Kode_Bidang }}"
+                                                            {{ old('Jabatan_Uji_User') == $Kode_Bidang ? 'selected' : '' }}>
                                                             {{ $Nama_Bidang }}
                                                         </option>
                                                     @endforeach
@@ -219,15 +220,22 @@
                                                 <select class="custom-select rounded-0" id="Status_Uji_User"
                                                     name="Status_Uji_User">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Uji_User') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Uji_User') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Uji_User') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Uji_User')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
+
 
                                             <!-- /.card-body -->
 

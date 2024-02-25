@@ -161,7 +161,7 @@ class uji_bidang_controller extends Controller
         $uji_bidang_data->delete();
 
         // Redirect to the index page with a success message
-        return redirect()->route('uji_bidang_index')->with('success_delete', 'Data Berhasil Dihapus');
+        return redirect()->route('uji_bidang_index_new')->with('success_delete', 'Data Berhasil Dihapus');
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -201,7 +201,7 @@
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
 
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="#" class="btn btn-danger btn-sm delete mt-2"
+                                                <a href="/uji_bidang_delete" class="btn btn-danger btn-sm delete mt-2"
                                                     data-id-uji-bidang="{{ $row->id_uji_bidang }}"
                                                     data-kode-bidang="{{ $row->Kode_Bidang }}"
                                                     data-nama-bidang="{{ $row->Nama_Bidang }}">

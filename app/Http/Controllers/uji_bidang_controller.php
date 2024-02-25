@@ -102,7 +102,7 @@ class uji_bidang_controller extends Controller
             $uji_bidang_data = uji_bidang_model::create($request->all());
             $uji_bidang_data->save();
 
-            return redirect()->route('uji_bidang_index')->with('success', 'Data Berhasil Dimasukan');
+            return redirect()->route('uji_bidang_index_new')->with('success', 'Data Berhasil Dimasukan');
 
         } else {
 
@@ -137,7 +137,7 @@ class uji_bidang_controller extends Controller
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
-        return redirect()->route('uji_bidang_index')->with('success_edit', 'Data Berhasil Diubah');
+        return redirect()->route('uji_bidang_index_new')->with('success_edit', 'Data Berhasil Diubah');
 
 
     }

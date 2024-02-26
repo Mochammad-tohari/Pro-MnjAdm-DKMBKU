@@ -119,6 +119,12 @@ class gedung_controller extends Controller
 
         $gedung_data->update($request->all());
 
+        if ($request->hasFile('Foto_Gedung')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Gedung')->getClientOriginalName();
+            $request->file('Foto_Gedung')->move(public_path('Data_Gedung/Foto_Gedung'), $filename1);
+            $gedung_data->Foto_Gedung = $filename1;
+        }
+
         $gedung_data->save();
 
         if (session('page_url')) {

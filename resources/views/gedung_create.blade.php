@@ -59,7 +59,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="GDG-<?php echo $tgl; ?>" id="" name="Kode_Gedung"
+                                                    value="GDG-<?php echo $tgl; ?>" id="Kode_Gedung" name="Kode_Gedung"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
@@ -145,9 +145,15 @@
                                                 <select class="custom-select rounded-0" id="Status_Gedung"
                                                     name="Status_Gedung">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Gedung') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Gedung') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Gedung') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Gedung')

@@ -33,7 +33,7 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <!-- Small boxes (Stat box) -->
+                    {{-- <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-gedung">
@@ -49,7 +49,7 @@
                                     <p class="info-box-text-lainya">Gedung Lainya:
                                         {{ $data_gedung_kondisi['gedung_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -57,10 +57,10 @@
                             <a href="/gedung_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}}
 
 
-                    <!-- Small boxes (Stat box) -->
+                    {{-- <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-ruangan">
@@ -76,7 +76,7 @@
                                     <p class="info-box-text-lainya">Ruangan Lainya:
                                         {{ $data_ruangan_kondisi['ruangan_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -84,10 +84,10 @@
                             <a href="/ruangan_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}}
 
 
-                    <!-- Small boxes (Stat box) -->
+                    {{-- <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-madrasah">
@@ -101,10 +101,10 @@
                                     <p class="info-box-text-tidak-aktif">Murid Tidak Aktif:
                                         {{ $data_murid_kondisi['murid_tidak_aktif_count'] }}</p>
                                     {{-- <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p> --}}
-                                    <p class="info-box-text-lainya">Murid Lainya:
+                    {{-- <p class="info-box-text-lainya">Murid Lainya:
                                         {{ $data_murid_kondisi['murid_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -112,10 +112,10 @@
                             <a href="/murid_madrasah_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}} --}}
 
 
-                    <!-- Small boxes (Stat box) -->
+                    {{-- <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_khodim">
@@ -131,7 +131,7 @@
                                     <p class="info-box-text-lainya">Bid.Khodim Lainya:
                                         {{ $data_bidang_khodim_kondisi['bidang_khodim_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -139,9 +139,9 @@
                             <a href="/bidang_khodim_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}}
 
-
+                    {{--
                     <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
@@ -158,7 +158,7 @@
                                     <p class="info-box-text-lainya">Khodim Lainya:
                                         {{ $data_khodim_dkm_kondisi['khodim_dkm_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -166,12 +166,12 @@
                             <a href="/khodim_dkm_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}}
 
 
 
                     <!-- Small boxes (Stat box) -->
-                    <div class="col-lg-3 col-6">
+                    {{-- <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_pengurus">
                             <div class="inner">
@@ -186,7 +186,7 @@
                                     <p class="info-box-text-lainya">Bid.Pengurus Lainya:
                                         {{ $data_bidang_pengurus_kondisi['bidang_pengurus_lainya_count'] }}</p>
                                     {{-- <small>Data</small> --}}
-                                </span>
+                    {{-- </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -194,7 +194,7 @@
                             <a href="/bidang_pengurus_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}} --}}
 
 
                     <!-- Small boxes (Stat box) -->

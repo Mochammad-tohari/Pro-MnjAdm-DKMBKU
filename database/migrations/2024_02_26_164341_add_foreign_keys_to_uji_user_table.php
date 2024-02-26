@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('uji_user', function (Blueprint $table) {
-            $table->foreign(['inserted_by'], 'uji_user_ibfk_1')->references(['email'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign(['Jabatan_Uji_User'], 'uji_user_ibfk_3')->references(['Kode_Bidang'])->on('uji_bidang')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign(['updated_by'], 'uji_user_ibfk_2')->references(['email'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['Jabatan_Uji_User'], 'uji_user_ibfk_1')->references(['Kode_Bidang'])->on('uji_bidang')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign(['updated_by'], 'uji_user_ibfk_3')->references(['email'])->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign(['inserted_by'], 'uji_user_ibfk_2')->references(['email'])->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
         });
     }
 

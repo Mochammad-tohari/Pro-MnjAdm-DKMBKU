@@ -62,45 +62,31 @@ class login_controller extends Controller
 
     public function register_user(Request $request)
     {
-
-        // dd($request->all());
-
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:5',
             'akses' => 'required',
         ], [
-            'Password.required' => 'The Password field is required.',
-            'Password.min' => 'Password minimal memiliki :min karakter',
+            'password.required' => 'The Password field is required.',
+            'password.min' => 'Password minimal memiliki :min karakter',
         ]);
 
         if ($validator->passes()) {
-
             User::create([
-
                 'name' => $request->name,
                 'email' => $request->email,
                 'akses' => $request->akses,
-
-                // tag bcrypt untuk merubah text menjadi crypt data di field password
                 'password' => bcrypt($request->password),
-
                 'remember_token' => Str::random(60),
-
             ]);
 
             return redirect('/login')->with('success', 'Akun Sudah Dibuat');
-
         } else {
             return redirect()->back()->withErrors($validator)->withInput();
-            ;
         }
-
-
-
     }
+
 
     public function logout()
     {

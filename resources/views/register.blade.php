@@ -56,9 +56,14 @@
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email" name="email" id="email"
                             value="{{ old('email') }}">
-                        @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @if ($errors->has('email'))
+                            @if ($errors->first('email') == 'The email field is required.')
+                                <div class="alert alert-danger">Email harus diisi.</div>
+                            @else
+                                <div class="alert alert-danger">Email sudah digunakan. Silahkan gunakan email lain.
+                                </div>
+                            @endif
+                        @endif
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -113,7 +118,8 @@
 
                     <!-- /.col -->
                     <div class="input-group mb-3">
-                        <button type="submit" class="btn btn-success btn-block" id="submitBtn" disabled>Daftar</button>
+                        <button type="submit" class="btn btn-success btn-block" id="submitBtn"
+                            disabled>Daftar</button>
                     </div>
 
                     <div class="input-group mb-3">

@@ -104,6 +104,7 @@
                                         <th scope="col">Dimensi Gedung</th>
                                         <th scope="col">Tanggal Operasional Gedung</th>
                                         <th scope="col">Keterangan Gedung</th>
+                                        <th scope="col">Foto Gedung</th>
                                         <th scope="col">Status Gedung</th>
 
                                         @if (auth()->user()->akses === 'Admin')
@@ -131,6 +132,14 @@
                                         <td>{{ $row->Dimensi_Gedung }}</td>
                                         <td>{{ $row->Tanggal_Operasional_Gedung }}</td>
                                         <td>{{ $row->Keterangan_Gedung }}</td>
+
+                                        <td>
+                                            @if ($row->Foto_Gedung)
+                                                <img src="{{ asset('Data_Gedung/Foto_Gedung/' . $row->Foto_Gedung) }}"
+                                                    alt="Foto_Gedung" style="width: 40px;">
+                                            @endif
+                                        </td>
+
                                         <td>{{ $row->Status_Gedung }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')

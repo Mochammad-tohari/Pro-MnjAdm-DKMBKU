@@ -59,7 +59,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="GDG<?php echo $tgl; ?>" id="" name="Kode_Gedung"
+                                                    value="GDG-<?php echo $tgl; ?>" id="" name="Kode_Gedung"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
@@ -99,6 +99,46 @@
                                                 <label for="Keterangan_Gedung" class="form-label">Keterangan Gedung</label>
                                                 <textarea class="form-control" name="Keterangan_Gedung" id="Keterangan_Gedung">{{ old('Keterangan_Gedung') }}</textarea>
                                             </div>
+
+
+                                            {{-- syntax input gambar --}}
+                                            <div class="form-group mb-3">
+                                                <label for="Foto_Gedung" class="form-label">Foto Gedung</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Foto_Gedung"
+                                                        name="Foto_Gedung">
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Gedung</label>
+                                                </div>
+                                                <!-- Image preview -->
+                                                <div id="Preview_Foto_Gedung" class="mt-3">
+                                                    <img id="Muat_Foto_Gedung" src="#" alt=""
+                                                        style="max-width: 150px; max-height: 150px;">
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                $('#Foto_Gedung').on('change', function() {
+                                                    // Get the file name
+                                                    var fileName = $(this).val();
+                                                    // Remove "C:\fakepath\" from the file path
+                                                    fileName = fileName.replace("C:\\fakepath\\", "");
+                                                    // Replace the "Choose a file" label
+                                                    $(this).next('.custom-file-label').html(fileName);
+
+                                                    // Image preview
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            $('#Muat_Foto_Gedung').attr('src', e.target.result);
+                                                        }
+                                                        reader.readAsDataURL(this.files[0]);
+                                                        $('#Preview_Foto_Gedung').show(); // Show the image preview container
+                                                    }
+                                                });
+                                            </script>
+                                            {{-- akhir syntax input gambar --}}
+
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Gedung">Status_Gedung</label>

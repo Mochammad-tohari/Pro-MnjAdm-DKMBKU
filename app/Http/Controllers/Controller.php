@@ -38,35 +38,35 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
-        // // Count total records
-        // $data_gedung_jumlah = gedung_model::count();
+        // Count total records
+        $data_gedung_jumlah = gedung_model::count();
 
-        // // Define an array of variables to pass to the view
-        // $data_gedung_kondisi = [
-        //     'data_gedung_jumlah' => $data_gedung_jumlah,
-        //     // Count 'Aktif' status records
-        //     'gedung_aktif_count' => gedung_model::where('Status_Gedung', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'gedung_tidak_aktif_count' => gedung_model::where('Status_Gedung', 'Tidak_Aktif')->count(),
-        //     // Count 'Lainya' status records
-        //     'gedung_lainya_count' => gedung_model::where('Status_Gedung', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
+        // Define an array of variables to pass to the view
+        $data_gedung_kondisi = [
+            'data_gedung_jumlah' => $data_gedung_jumlah,
+            // Count 'Aktif' status records
+            'gedung_aktif_count' => gedung_model::where('Status_Gedung', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'gedung_tidak_aktif_count' => gedung_model::where('Status_Gedung', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'gedung_lainya_count' => gedung_model::where('Status_Gedung', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
 
-        // // Count total records
-        // $data_ruangan_jumlah = ruangan_model::count();
+        // Count total records
+        $data_ruangan_jumlah = ruangan_model::count();
 
-        // // Define an array of variables to pass to the view
-        // $data_ruangan_kondisi = [
-        //     'data_ruangan_jumlah' => $data_ruangan_jumlah,
-        //     // Count 'Aktif' status records
-        //     'ruangan_aktif_count' => ruangan_model::where('Status_ruangan', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'ruangan_tidak_aktif_count' => ruangan_model::where('Status_ruangan', 'Tidak_Aktif')->count(),
-        //     // Count 'Lainya' status records
-        //     'ruangan_lainya_count' => ruangan_model::where('Status_ruangan', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
+        // Define an array of variables to pass to the view
+        $data_ruangan_kondisi = [
+            'data_ruangan_jumlah' => $data_ruangan_jumlah,
+            // Count 'Aktif' status records
+            'ruangan_aktif_count' => ruangan_model::where('Status_ruangan', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'ruangan_tidak_aktif_count' => ruangan_model::where('Status_ruangan', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'ruangan_lainya_count' => ruangan_model::where('Status_ruangan', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
 
         // // Count total records
         // $data_murid_jumlah = murid_madrasah_model::count();
@@ -134,8 +134,8 @@ class Controller extends BaseController
         // Pass all the data variables to the view
         return view('welcome', [
             'uji_user_kondisi' => $uji_user_kondisi,
-            // 'data_gedung_kondisi' => $data_gedung_kondisi,
-            // 'data_ruangan_kondisi' => $data_ruangan_kondisi,
+            'data_gedung_kondisi' => $data_gedung_kondisi,
+            'data_ruangan_kondisi' => $data_ruangan_kondisi,
             // 'data_murid_kondisi' => $data_murid_kondisi,
             // 'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
             // 'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,

@@ -17,15 +17,6 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
-// //import method export Excel
-// use App\Exports\export_excel_uji;
-
-// //import method export Excel di folder Exports
-// use App\Imports\uji_excel_import;
-
-// //import method import Excel di folder Imports
-// use Maatwebsite\Excel\Facades\Excel;
-
 //import class Session
 use Illuminate\Support\Facades\Session;
 
@@ -80,7 +71,6 @@ class gedung_controller extends Controller
         $validator = Validator::make($request->all(), [
             'Nama_Gedung' => 'required',
             'Dimensi_Gedung' => 'required',
-            'Tanggal_Operasional_Gedung' => 'required',
             'Status_Gedung' => 'required',
         ]);
 
@@ -94,7 +84,12 @@ class gedung_controller extends Controller
             // mengatur updated email utk menghindari isi otomatis di fungsi insert
             $gedung_data->updated_by = null;
 
-            $gedung_data = gedung_model::create($request->all());
+            if ($request->hasFile('Foto_Gedung')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Gedung')->getClientOriginalName();
+                $request->file('Foto_Gedung')->move(public_path('Data_Gedung/Foto_Gedung'), $filename1);
+                $gedung_data->Foto_Gedung = $filename1;
+            }
+
             $gedung_data->save();
 
             return redirect()->route('gedung_index')->with('success', 'Data Berhasil Dimasukan');

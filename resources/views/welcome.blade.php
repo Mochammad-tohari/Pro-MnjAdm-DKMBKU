@@ -33,7 +33,7 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    {{-- <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-gedung">
@@ -48,8 +48,8 @@
                                         {{ $data_gedung_kondisi['gedung_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Gedung Lainya:
                                         {{ $data_gedung_kondisi['gedung_lainya_count'] }}</p>
-                                    {{-- <small>Data</small> --}}
-                    {{-- </span>
+                                    <small>Data</small>
+                                </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -57,10 +57,10 @@
                             <a href="/gedung_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> --}} --}}
+                    </div>
 
 
-                    {{-- <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Stat box) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-ruangan">
@@ -75,8 +75,8 @@
                                         {{ $data_ruangan_kondisi['ruangan_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Ruangan Lainya:
                                         {{ $data_ruangan_kondisi['ruangan_lainya_count'] }}</p>
-                                    {{-- <small>Data</small> --}}
-                    {{-- </span>
+                                    <small>Data</small>
+                                </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -84,7 +84,7 @@
                             <a href="/ruangan_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> --}} --}}
+                    </div>
 
 
                     {{-- <!-- Small boxes (Stat box) -->
@@ -206,7 +206,8 @@
                                 <span class="info-box-number-1 mb-3">
                                     <p class="info-box-text-uji-user">Jumlah Data Uji User:
                                         {{ $uji_user_kondisi['uji_user_jumlah'] }}</p>
-                                    <p class="info-box-text-uji">Aktif: {{ $uji_user_kondisi['uji_user_aktif_count'] }}</p>
+                                    <p class="info-box-text-uji">Aktif:
+                                        {{ $uji_user_kondisi['uji_user_aktif_count'] }}</p>
                                     <p class="info-box-text-uji">Tidak Aktif:
                                         {{ $uji_user_kondisi['uji_user_tidak_aktif_count'] }}
                                     </p>

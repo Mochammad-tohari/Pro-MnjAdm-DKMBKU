@@ -147,6 +147,9 @@ Route::get('/uji_bidang_export_excel', [uji_bidang_controller::class, 'uji_bidan
             */
 Route::get('/uji_user_data', [uji_user_controller::class, 'uji_user_index'])->name('uji_user_index')->middleware('auth');
 
+/*  Pdf Export
+ */
+Route::get('/uji_user_export_pdf', [uji_user_controller::class, 'uji_user_export_pdf'])->name('uji_user_export_pdf')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

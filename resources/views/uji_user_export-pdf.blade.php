@@ -45,8 +45,8 @@
                 <th>Nomor</th>
                 <th>Kode User</th>
                 <th>Jabatan User</th>
-                <th>Tanggal Daftar</th>
                 <th>Nama User</th>
+                <th>Tanggal Daftar</th>
                 <th>Keterangan User</th>
                 <th>Status User</th>
 

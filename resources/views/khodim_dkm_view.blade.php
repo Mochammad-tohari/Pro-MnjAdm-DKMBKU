@@ -46,36 +46,7 @@
 
                         </table>
 
-                        {{--
 
-
-
-                        <div class="form-group row mb-2">
-                            <label class="col-sm-4 col-label-form"><b>Password</b></label>
-                            {{$data_uji->Password}}
-                        </div>
-
-
-
-                        <div class="form-group row mb-2">
-                            <label class="col-sm-4 col-label-form"><b>Status</b></label>
-                            {{$data_uji->Status}}
-                        </div>
-
-                        <div class="form-group row mb-2">
-                            <label class="col-sm-4 col-label-form"><b>Foto1</b></label>
-                            <img src="{{ asset('storage/folder_foto1/' . $data_uji->Foto1) }}" alt="Foto 1" style="width: 80px;">
-                        </div>
-
-                        <div class="form-group row mb-2">
-                            <label class="col-sm-4 col-label-form"><b>Foto2</b></label>
-                            <img src="{{ asset('storage/folder_foto2/' . $data_uji->Foto2) }}" alt="Foto 1" style="width: 80px;">
-                        </div>
-
-                        <div class="form-group row mb-2">
-                            <label class="col-sm-4 col-label-form"><b>Tanggal Data Dibuat</b></label>
-                            {{$data_uji->created_at->format('D,d M Y')}}
-                        </div> --}}
 
                     </div>
 

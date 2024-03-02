@@ -151,6 +151,9 @@ Route::get('/uji_user_data', [uji_user_controller::class, 'uji_user_index'])->na
  */
 Route::get('/uji_user_export_pdf', [uji_user_controller::class, 'uji_user_export_pdf'])->name('uji_user_export_pdf')->middleware('auth');
 
+//lihat 1 data
+Route::get('/uji_user_view/{id_uji_user}', [uji_user_controller::class, 'uji_user_view'])->name('uji_user_view')->middleware('auth');
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel gedung

@@ -1,0 +1,71 @@
+/* background image */
+
+.card-uji-user {
+    position: fixed;
+    background-image: url("../name_tag/khodim_name_tag.jpg");
+    background-size: cover;
+    width: 100mm;
+    height: 150mm;
+    /* Center the content vertically and horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.card-body {
+    position: fixed;
+    /* Make the card body transparent so that the background image of the card is visible through it */
+    background-color: transparent;
+}
+
+/* content */
+
+.Foto_Profil {
+    /* Adjust the top and bottom margins to move the div up or down */
+    position: fixed;
+    margin-top: -88px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: -53px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+
+    /* Float the .Foto1 div to the left */
+    float: left;
+
+    /* You can also use text-align to control the positioning of the image within the div */
+    text-align: center; /* This will center the image horizontally within the div */
+}
+
+.Foto_Profil img {
+    position: fixed;
+    /* Apply styles to the image if needed */
+    width: 110px;
+    /* Additional styles for the image */
+
+    margin-top: 120px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 148px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#uji_user_table {
+    margin-top: 150px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 0px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#Nama_Uji_User th {
+    color: #1705b0;
+}
+
+#Kode_Uji_User {
+    color: #2e2e2e;
+}
+
+#button_download {
+    position: fixed;
+    margin-top: 550px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 160px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}

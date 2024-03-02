@@ -235,8 +235,8 @@
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
-                                            {{-- <a href="/lihat_uji_bidang/{{ $row->id_uji_user }}" target="_blank"
-                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
+                                            <a href="/uji_user_view/{{ $row->id_uji_user }}" target="_blank"
+                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
 
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="/uji_user_delete" class="btn btn-danger btn-sm delete mt-2"

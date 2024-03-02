@@ -220,7 +220,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/uji_user_data" class="small-box-footer">More info <i
+                            <a href="/uji_user_data_new" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

@@ -200,8 +200,8 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="/uji_user_data"
-                                        class="nav-link{{ Request::is('uji_user_data') ? ' active' : '' }}">
+                                    <a href="/uji_user_data_new"
+                                        class="nav-link{{ Request::is('uji_user_data_new') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
                                             Data User Uji

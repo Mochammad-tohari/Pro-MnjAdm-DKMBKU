@@ -142,10 +142,10 @@ Route::get('/uji_bidang_export_excel', [uji_bidang_controller::class, 'uji_bidan
 
 //table uji_user
 /*  memanggil file 'uji_user_controller' yg ada di folder controller
-                /uji_user_data ->file uji_user_data.blade.php & 'uji_user_index' -> fungsi 'uji_user_index' yg ada di file uji_user_controller
+                /uji_user_data_new_new ->file uji_user_data_new.blade.php & 'uji_user_index_new' -> fungsi 'uji_user_index_new' yg ada di file uji_user_controller
                 tag ->middleware('auth') berfungsi untuk keamanan jadi pengguna harus login dahulu jika tidak tidak mendapatkan akses
             */
-Route::get('/uji_user_data', [uji_user_controller::class, 'uji_user_index'])->name('uji_user_index')->middleware('auth');
+Route::get('/uji_user_data_new', [uji_user_controller::class, 'uji_user_index_new'])->name('uji_user_index_new')->middleware('auth');
 
 /*  Pdf Export
  */
@@ -325,6 +325,10 @@ Route::middleware(['role:Admin'])->group(function () {
                     {id} -> parameter yg menjadi acuan dalam hal edit
                 */
     Route::get('/uji_user_delete/{id_uji_user}', [uji_user_controller::class, 'uji_user_delete'])->name('uji_user_delete');
+
+    /*  Excel Import
+     */
+    Route::post('/uji_user_excel_import', [uji_user_controller::class, 'uji_user_excel_import'])->name('uji_user_excel_import')->middleware('auth');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

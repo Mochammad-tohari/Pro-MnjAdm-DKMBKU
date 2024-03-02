@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="/uji_user_data">Uji User</a> </li>
+                            <li class="breadcrumb-item active"><a href="/uji_user_data_new">Uji User</a> </li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -39,7 +39,7 @@
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/uji_user_data" method="GET">
+                            <form action="/uji_user_data_new" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -53,13 +53,13 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/uji_user_data" method="GET">
+                            <form action="/uji_user_data_new" method="GET">
                                 <a href="/uji_user_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 
                         <div class="col-auto">
-                            <form action="/uji_user_data" method="GET">
+                            <form action="/uji_user_data_new" method="GET">
                                 <a href="/uji_user_excel_export" class="btn btn-success">Export Excel</button> </a>
                             </form>
                         </div>
@@ -82,17 +82,17 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Import Excel Data Bidang Uji
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Import Excel Data Uji User
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
-                                    <form action="uji_bidang_import_excel" method="POST" enctype="multipart/form-data">
+                                    <form action="uji_user_excel_import" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <input type="file" name="file_uji_bidang" required>
+                                                <input type="file" name="file_uji_user" required>
                                                 <p>
                                                     Harap perhatikan file excel dan array field didalamnya
                                                 </p>
@@ -182,10 +182,10 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($uji_user_data as $uji_user_index => $row)
+                                        @foreach ($uji_user_data_new as $uji_user_index_new => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $uji_user_index + $uji_user_data->firstItem() }}</td>
+                                        <td>{{ $uji_user_index_new + $uji_user_data_new->firstItem() }}</td>
                                         <th scope="row">{{ $row->Kode_Uji_User }}</th>
 
                                         {{-- memanggil dan mengecek kesediaan data kode_uji_bidang
@@ -262,7 +262,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $uji_user_data->links() }}
+                        {{ $uji_user_data_new->links() }}
                     </div>
                 </div>
             </div>

@@ -25,11 +25,17 @@ use PDF;
 //import method import Excel di folder Imports
 use Maatwebsite\Excel\Facades\Excel;
 
-//import method export Excel
+/*
+import method export Excel sesuaikan dengan nama fungsi dan file di folder export contoh
+uji_user_excel_export
+*/
 use App\Exports\uji_user_excel_export;
 
-//import method export Excel di folder Exports
-use App\Imports\uji_excel_import;
+/*
+import method import Excel sesuaikan dengan nama fungsi dan file di folder import contoh
+uji_user_excel_import
+*/
+use App\Imports\uji_user_excel_import;
 
 //import class Session
 use Illuminate\Support\Facades\Session;
@@ -37,7 +43,7 @@ use Illuminate\Support\Facades\Session;
 class uji_user_controller extends Controller
 {
     // untuk index data uji berfungsi untuk menampilkan data
-    public function uji_user_index(Request $request)
+    public function uji_user_index_new(Request $request)
     {
         /*
         $uji_user_data pernyataan variabel
@@ -61,15 +67,15 @@ class uji_user_controller extends Controller
             Session::put('page_url', request()->fullUrl());
         }
 
-        return view('uji_user_data', [
-            'uji_user_data' => $uji_user_data,
+        return view('uji_user_data_new', [
+            'uji_user_data_new' => $uji_user_data,
             'searchQuery' => $searchQuery,
         ]);
 
         /*
-        view 'uji_user_data' diambil dari uji_user_data.blade.php, compact 'uji_user_data', diambil dari variabel $uji_user_data
+        view 'uji_user_data_new' diambil dari uji_user_data_new.blade.php, compact 'uji_user_data_new', diambil dari variabel $uji_user_data_new
         */
-        return view('uji_user_data', compact('uji_user_data'));
+        return view('uji_user_data_new', compact('uji_user_data_new'));
 
     }
 
@@ -145,7 +151,7 @@ class uji_user_controller extends Controller
             // Save the updated files
             $uji_user_data->save();
 
-            return redirect()->route('uji_user_index')->with('success', 'Data Berhasil Dimasukan');
+            return redirect()->route('uji_user_index_new')->with('success', 'Data Berhasil Dimasukan');
 
         } else {
 
@@ -205,7 +211,7 @@ class uji_user_controller extends Controller
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
-        return redirect()->route('uji_user_index')->with('success_edit', 'Data Berhasil Diubah');
+        return redirect()->route('uji_user_index_new')->with('success_edit', 'Data Berhasil Diubah');
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -226,7 +232,7 @@ class uji_user_controller extends Controller
         $uji_user_data->delete();
 
         // Redirect to the index page with a success message
-        return redirect()->route('uji_user_index')->with('success_delete', 'Data Berhasil Dihapus');
+        return redirect()->route('uji_user_index_new')->with('success_delete', 'Data Berhasil Dihapus');
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -253,7 +259,7 @@ class uji_user_controller extends Controller
         if ($uji_user_data) {
             return view('uji_user.show', ['uji_user_data' => $uji_user_data]);
         } else {
-            return redirect()->route('uji_user_index')->with('error', 'Data not found.');
+            return redirect()->route('uji_user_index_new')->with('error', 'Data not found.');
         }
     }
 
@@ -272,6 +278,22 @@ class uji_user_controller extends Controller
     {
 
         return Excel::download(new uji_user_excel_export, 'uji_user.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
+    }
+
+
+    // untuk uji_user_excel_import berfungsi untuk import file excel
+    public function uji_user_excel_import(Request $request)
+    {
+
+        $uji_user_data = $request->file('file_uji_user');
+
+        $filename = $uji_user_data->getClientOriginalName();
+        $uji_user_data->move('Uji_User_Data', $filename);
+
+        Excel::import(new uji_user_excel_import, \public_path('/Uji_User_Data/' . $filename));
+        return \redirect()->back();
+
 
     }
 

@@ -74,7 +74,9 @@
                                                     yang akan di tampilkan sebagai {{ $Nama_Bidang }} di table uji_bidang --}}
                                                     {{-- Sort the $Uji_Bidang_Options array by the values (Jabatan Pengurus) in ascending order --}}
                                                     @php
-                                                        $Sorted_Uji_Bidang_Options = collect($Uji_Bidang_Options)->sort()->all();
+                                                        $Sorted_Uji_Bidang_Options = collect($Uji_Bidang_Options)
+                                                            ->sort()
+                                                            ->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
                                                     @foreach ($Sorted_Uji_Bidang_Options as $Kode_Bidang => $Nama_Bidang)
@@ -242,7 +244,7 @@
                                             <div class="card-footer mb-6">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                 <button type="reset" class="btn btn-warning ml-2">Reset</button>
-                                                <a href="/uji_user_data" class="ml-2">
+                                                <a href="/uji_user_data_new" class="ml-2">
                                                     <button type="button" class="btn btn-danger">Batal</button>
                                                 </a>
                                             </div>

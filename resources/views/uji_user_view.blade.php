@@ -78,8 +78,12 @@
 
                 // Create a temporary link element
                 var link = document.createElement('a');
+
+                // mengatur file download sesuai dengan nilai Nama_Uji_User
+                var fileName = '{{ $uji_user_data->Nama_Uji_User }}' + '_Uji_User.png';
+
                 link.href = imgData;
-                link.download = 'screenshot_data_uji_user.png';
+                link.download = fileName;
 
                 // Append the link to the body and trigger the click event
                 document.body.appendChild(link);
@@ -90,6 +94,7 @@
             });
         }
     </script>
+
     {{-- akhir syntax ss nametag --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

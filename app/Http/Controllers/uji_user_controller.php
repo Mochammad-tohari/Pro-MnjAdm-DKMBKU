@@ -22,14 +22,14 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
+//import method import Excel di folder Imports
+use Maatwebsite\Excel\Facades\Excel;
+
 //import method export Excel
-use App\Exports\export_excel_uji;
+use App\Exports\uji_user_excel_export;
 
 //import method export Excel di folder Exports
 use App\Imports\uji_excel_import;
-
-//import method import Excel di folder Imports
-use Maatwebsite\Excel\Facades\Excel;
 
 //import class Session
 use Illuminate\Support\Facades\Session;
@@ -266,5 +266,14 @@ class uji_user_controller extends Controller
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // untuk export_excel_uji berfungsi untuk mengesport data ke file excel
+    public function uji_user_excel_export()
+    {
+
+        return Excel::download(new uji_user_excel_export, 'uji_user.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
+    }
+
 
 }

@@ -60,7 +60,7 @@
 
                         <div class="col-auto">
                             <form action="/uji_user_data" method="GET">
-                                <a href="/uji_user_export_pdf" class="btn btn-success">Export Excel</button> </a>
+                                <a href="/uji_user_excel_export" class="btn btn-success">Export Excel</button> </a>
                             </form>
                         </div>
 

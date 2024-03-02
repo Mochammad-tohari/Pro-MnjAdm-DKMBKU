@@ -289,9 +289,9 @@ class uji_user_controller extends Controller
         $uji_user_data = $request->file('file_uji_user');
 
         $filename = $uji_user_data->getClientOriginalName();
-        $uji_user_data->move('Uji_User_Data', $filename);
+        $uji_user_data->move('Uji_User_Data_Excel_Import', $filename);
 
-        Excel::import(new uji_user_excel_import, \public_path('/Uji_User_Data/' . $filename));
+        Excel::import(new uji_user_excel_import, \public_path('/Uji_User_Data_Excel_Import/' . $filename));
         return \redirect()->back();
 
 

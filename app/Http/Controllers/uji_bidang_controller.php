@@ -196,9 +196,9 @@ class uji_bidang_controller extends Controller
         $uji_bidang_data = $request->file('file_uji_bidang');
 
         $filename = $uji_bidang_data->getClientOriginalName();
-        $uji_bidang_data->move('Uji_Bidang_Data', $filename);
+        $uji_bidang_data->move('Uji_Bidang_Data_Excel_Import', $filename);
 
-        Excel::import(new uji_bidang_import_excel, \public_path('/Uji_Bidang_Data/' . $filename));
+        Excel::import(new uji_bidang_import_excel, \public_path('/Uji_Bidang_Data_Excel_Import/' . $filename));
         return \redirect()->back();
 
 

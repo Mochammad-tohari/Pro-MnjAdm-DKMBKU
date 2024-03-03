@@ -7,6 +7,13 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
 class uji_user_excel_import implements ToModel
 {
+
+    /*
+           syntax membuat file import excel, nama model harus sesuai dengan yang ada di folder Models
+
+           php artisan make:import uji_user_excel_import  --model=uji_user_model
+       */
+
     /**
      * @param array $row
      *

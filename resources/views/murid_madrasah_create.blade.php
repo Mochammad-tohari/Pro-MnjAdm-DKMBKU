@@ -1,5 +1,12 @@
+{{-- @extends('layout.admin')
+memasukan layout admin.php sebagai tampilan di halaman ini
+--}}
 @extends('layout.admin')
 
+
+{{-- @section('content')
+memasukan bagian tampilan content dari admin.php sebagai tampilan di halaman ini
+--}}
 @section('content')
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous">
@@ -59,7 +66,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="MRD<?php echo $tgl; ?>" id="" name="Kode_Murid"
+                                                    value="MRD-<?php echo $tgl; ?>" id="Kode_Murid" name="Kode_Murid"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
@@ -111,20 +118,23 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Ayah_Murid" class="form-label">Nama Ayah Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Ayah_Murid">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Ayah_Murid" name="Nama_Ayah_Murid"
+                                                    value="{{ old('Nama_Ayah_Murid') }}">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Ibu_Murid" class="form-label">Nama Ibu Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Ibu_Murid">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Ibu_Murid" name="Nama_Ibu_Murid"
+                                                    value="{{ old('Nama_Ibu_Murid') }}">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Wali_Murid" class="form-label">Nama Wali Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Wali_Murid">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Wali_Murid" name="Nama_Wali_Murid"
+                                                    value="{{ old('Nama_Wali_Murid') }}">
                                                 <div name="" class="form-text">Bisa dikosongkan
                                                     jika sudah ada data orang tua</div>
                                             </div>
@@ -259,10 +269,18 @@
                                                 <select class="custom-select rounded-0" id="Tingkat_Murid"
                                                     name="Tingkat_Murid">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="1_Satu">1 Satu</option>
-                                                    <option value="2_Dua">2 Dua</option>
-                                                    <option value="3_Tiga">3 Tiga</option>
-                                                    <option value="4_Empat">4 Empat</option>
+                                                    <option value="1_Satu"
+                                                        {{ old('Tingkat_Murid') == '1_Satu' ? 'selected' : '' }}>1 Satu
+                                                    </option>
+                                                    <option value="2_Dua"
+                                                        {{ old('Tingkat_Murid') == '2_Dua' ? 'selected' : '' }}>2 Dua
+                                                    </option>
+                                                    <option value="3_Tiga"
+                                                        {{ old('Tingkat_Murid') == '3_Tiga' ? 'selected' : '' }}>3 Tiga
+                                                    </option>
+                                                    <option value="4_Empat"
+                                                        {{ old('Tingkat_Murid') == '4_Empat' ? 'selected' : '' }}>4 Empat
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Tingkat_Murid')
@@ -282,10 +300,15 @@
                                                 <select class="custom-select rounded-0" id="Status_Murid"
                                                     name="Status_Murid">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    {{-- <option value="Pindah">Pindah</option> --}}
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Murid') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Murid') == 'Tidak_Aktif' ? 'selected' : '' }}>Tidak
+                                                        Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Murid') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Murid')
@@ -294,6 +317,7 @@
                                                 <div name="" class="form-text">Pilih Aktif Jika Baru Mendaftar
                                                 </div>
                                             </div>
+
 
                                             <!-- /.card-body -->
 

@@ -6,15 +6,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-//import table model
+//import table model dari folder models
 use App\Models\uji_model;
+
 use App\Models\uji_bidang_model;
 use App\Models\uji_user_model;
+
 use App\Models\gedung_model;
 use App\Models\ruangan_model;
+
 use App\Models\murid_madrasah_model;
+
 use App\Models\bidang_khodim_model;
 use App\Models\khodim_dkm_model;
+
 use App\Models\bidang_pengurus_model;
 
 class Controller extends BaseController
@@ -23,20 +28,32 @@ class Controller extends BaseController
 
     public function welcome()
     {
-        // Count total records for uji_user
+        // menghitung jumlah data di tabel uji_user
         $uji_user_jumlah = uji_user_model::count();
 
-        // Define an array of variables for uji_user
+        // menghitung berdasarkan Status_Uji_User dengan kondisi yang ada
         $uji_user_kondisi = [
+            //menghitung total jumlah data uji_user
             'uji_user_jumlah' => $uji_user_jumlah,
-            // Count 'Aktif' Status_Uji_User records
+
+            // Menghitung 'Aktif' Status_Uji_User records
             'uji_user_aktif_count' => uji_user_model::where('Status_Uji_User', 'Aktif')->count(),
-            // Count 'Tidak_Aktif' Status_Uji_User records
+            // Menghitung 'Tidak_Aktif' Status_Uji_User records
             'uji_user_tidak_aktif_count' => uji_user_model::where('Status_Uji_User', 'Tidak_Aktif')->count(),
-            // Count 'Tidak_Aktif' Status_Uji_User records
+            // Menghitung 'Tidak_Aktif' Status_Uji_User records
             'uji_user_lainya_count' => uji_user_model::where('Status_Uji_User', 'Lainya')->count(),
-            // Add more variables here if needed
+            // tambah parameter atau kondisi jika dibutuhkan (perlu migrasi table baru)
+
+            /*
+                $uji_user_kondisi
+                variable diatas akan di gunakan utk mengambil jumlah data di file welcome.blade.php
+
+                uji_user_aktif_count , uji_user_tidak_aktif_count, uji_user_lainya_count
+                ketiga parameter diatas akan di gunakan utk mengambil jumlah data di file welcome.blade.php dengan kondisi yang telah ditetapkan
+            */
         ];
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Count total records
         $data_gedung_jumlah = gedung_model::count();
@@ -68,22 +85,23 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
-        // // Count total records
-        // $data_murid_jumlah = murid_madrasah_model::count();
 
-        // // Define an array of variables to pass to the view
-        // $data_murid_kondisi = [
-        //     'data_murid_jumlah' => $data_murid_jumlah,
-        //     // Count 'Aktif' status records
-        //     'murid_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'murid_tidak_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Tidak_Aktif')->count(),
-        //     // Count 'Pindah' status records
-        //     'murid_pindah_count' => murid_madrasah_model::where('Status_Murid', 'Pindah')->count(),
-        //     // Count 'Lainya' status records
-        //     'murid_lainya_count' => murid_madrasah_model::where('Status_Murid', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Count total records
+        $data_murid_jumlah = murid_madrasah_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_murid_kondisi = [
+            'data_murid_jumlah' => $data_murid_jumlah,
+            // Count 'Aktif' status records
+            'murid_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'murid_tidak_aktif_count' => murid_madrasah_model::where('Status_Murid', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'murid_lainya_count' => murid_madrasah_model::where('Status_Murid', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
 
         // // Count total records
         // $data_bidang_khodim_jumlah = bidang_khodim_model::count();
@@ -136,7 +154,7 @@ class Controller extends BaseController
             'uji_user_kondisi' => $uji_user_kondisi,
             'data_gedung_kondisi' => $data_gedung_kondisi,
             'data_ruangan_kondisi' => $data_ruangan_kondisi,
-            // 'data_murid_kondisi' => $data_murid_kondisi,
+            'data_murid_kondisi' => $data_murid_kondisi,
             // 'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
             // 'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
             // 'data_bidang_pengurus_kondisi' => $data_bidang_pengurus_kondisi,

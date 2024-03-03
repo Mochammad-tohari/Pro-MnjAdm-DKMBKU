@@ -26,8 +26,8 @@ class murid_madrasah_controller extends Controller
     public function murid_madrasah_index(Request $request)
     {
         /*
-        $data_uji pernyataan variabel
-        uji_model diambil dari folder model
+        $murid_madrasah_data pernyataan variabel
+        murid_madrasah_model diambil dari folder model
         latest()->paginate(5); membatasi 5 data baru yang tampil
         */
         $murid_madrasah_data = murid_madrasah_model::orderBy('Nama_Murid', 'asc')
@@ -53,11 +53,13 @@ class murid_madrasah_controller extends Controller
         ]);
 
         /*
-        view 'data_uji' diambil dari data_uji.blade.php, compact 'data_uji', diambil dari variabel $data_uji
+        view 'murid_madrasah_data' diambil dari murid_madrasah_data.blade.php, compact 'murid_madrasah_data', diambil dari variabel $murid_madrasah_data
         */
         return view('murid_madrasah_data', compact('murid_madrasah_data'));
 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // untuk create dan insert data uji berfungsi untuk memasukan data
     public function murid_madrasah_create()
@@ -69,7 +71,11 @@ class murid_madrasah_controller extends Controller
 
     public function murid_madrasah_insert(Request $request)
     {
-
+        /**
+         * validator berguna utk memeriksa kebutuhan data yang wajib diisi
+         * jika data kosong maka akan ada peringatan bahwa data harus diisi
+         *
+         */
         $validator = Validator::make($request->all(), [
             'Nama_Murid' => 'required',
             'Tempat_Lahir_Murid' => 'required',
@@ -91,7 +97,6 @@ class murid_madrasah_controller extends Controller
             $murid_madrasah_data->updated_by = null;
 
             //memasukan gambar tanpa storage link
-
 
             if ($request->hasFile('Foto_Murid')) {
                 $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Murid')->getClientOriginalName();
@@ -125,6 +130,8 @@ class murid_madrasah_controller extends Controller
 
 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function murid_madrasah_edit($id_murid)
     {

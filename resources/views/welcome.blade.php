@@ -33,7 +33,7 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Gedung) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-gedung">
@@ -48,7 +48,6 @@
                                         {{ $data_gedung_kondisi['gedung_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Gedung Lainya:
                                         {{ $data_gedung_kondisi['gedung_lainya_count'] }}</p>
-                                    <small>Data</small>
                                 </span>
                             </div>
                             <div class="icon">
@@ -60,7 +59,7 @@
                     </div>
 
 
-                    <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Ruangan) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-ruangan">
@@ -75,7 +74,6 @@
                                         {{ $data_ruangan_kondisi['ruangan_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Ruangan Lainya:
                                         {{ $data_ruangan_kondisi['ruangan_lainya_count'] }}</p>
-                                    <small>Data</small>
                                 </span>
                             </div>
                             <div class="icon">
@@ -87,7 +85,7 @@
                     </div>
 
 
-                    {{-- <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Murid Madrasah) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-madrasah">
@@ -100,11 +98,9 @@
                                         {{ $data_murid_kondisi['murid_aktif_count'] }}</p>
                                     <p class="info-box-text-tidak-aktif">Murid Tidak Aktif:
                                         {{ $data_murid_kondisi['murid_tidak_aktif_count'] }}</p>
-                                    {{-- <p class="info-box-text-lainya">Murid Pindah: {{ $data_murid_kondisi['murid_pindah_count'] }}</p> --}}
-                    {{-- <p class="info-box-text-lainya">Murid Lainya:
+                                    <p class="info-box-text-lainya">Murid Lainya:
                                         {{ $data_murid_kondisi['murid_lainya_count'] }}</p>
-                                    {{-- <small>Data</small> --}}
-                    {{-- </span>
+                                </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -112,7 +108,7 @@
                             <a href="/murid_madrasah_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> --}} --}} --}}
+                    </div>
 
 
                     {{-- <!-- Small boxes (Stat box) -->
@@ -197,7 +193,7 @@
                     </div> --}} --}}
 
 
-                    <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (Uji User) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 3 -->
                         <div class="small-box bg-info info-box-uji-user">

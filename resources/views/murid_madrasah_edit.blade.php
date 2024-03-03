@@ -55,26 +55,23 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Kode_Murid" class="form-label">Kode Murid</label>
-                                                <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal-->
-                                                <?php
-                                                $tgl = date('ymdGis');
-                                                ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="{{ $murid_madrasah_data->Kode_Murid }}" id=""
+                                                    value="{{ $murid_madrasah_data->Kode_Murid }}" id="Kode_Murid"
                                                     name="Kode_Murid" readonly>
                                                 <div name="" class="form-text">Tidak Bisa Diubah</div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Murid" class="form-label">Nama Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Murid"
                                                     value="{{ $murid_madrasah_data->Nama_Murid }}" name="Nama_Murid">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Tempat_Lahir_Murid" class="form-label">Tempat Lahir
                                                     Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Tempat_Lahir_Murid"
                                                     value="{{ $murid_madrasah_data->Tempat_Lahir_Murid }}"
                                                     name="Tempat_Lahir_Murid">
                                             </div>
@@ -82,7 +79,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="Tanggal_Lahir_Murid" class="form-label">Tanggal Lahir
                                                     Murid</label>
-                                                <input class="form-control" type="date" id=""
+                                                <input class="form-control" type="date" id="Tanggal_Lahir_Murid"
                                                     value="{{ $murid_madrasah_data->Tanggal_Lahir_Murid }}"
                                                     name="Tanggal_Lahir_Murid" />
                                             </div>
@@ -90,35 +87,36 @@
                                             <div class="form-group mb-3">
                                                 <label for="Asal_Sekolah_Murid" class="form-label">Asal Sekolah
                                                     Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Asal_Sekolah_Murid"
                                                     value="{{ $murid_madrasah_data->Asal_Sekolah_Murid }}"
                                                     name="Asal_Sekolah_Murid">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Ayah_Murid" class="form-label">Nama Ayah Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    value="{{ $murid_madrasah_data->Nama_Ayah_Murid }}"
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Ayah_Murid" value="{{ $murid_madrasah_data->Nama_Ayah_Murid }}"
                                                     name="Nama_Ayah_Murid">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Ibu_Murid" class="form-label">Nama Ibu Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    value="{{ $murid_madrasah_data->Nama_Ibu_Murid }}"
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Ibu_Murid" value="{{ $murid_madrasah_data->Nama_Ibu_Murid }}"
                                                     name="Nama_Ibu_Murid">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Wali_Murid" class="form-label">Nama Wali Murid</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    value="{{ $murid_madrasah_data->Nama_Wali_Murid }}"
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Nama_Wali_Murid" value="{{ $murid_madrasah_data->Nama_Wali_Murid }}"
                                                     name="Nama_Wali_Murid">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Alamat_Murid" class="form-label">Alamat Murid</label>
-                                                <textarea class="form-control" name="Alamat_Murid">{{ $murid_madrasah_data->Alamat_Murid }}</textarea>
+                                                <textarea class="form-control" name="Alamat_Murid" id="Alamat_Murid">{{ $murid_madrasah_data->Alamat_Murid }}</textarea>
                                             </div>
 
                                             {{-- syntax edit gambar --}}
@@ -126,130 +124,160 @@
                                                 <label for="Foto_Murid" class="form-label">Foto Murid</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Foto_Murid"
-                                                        value="{{ $murid_madrasah_data->Foto_Murid }}" name="Foto_Murid">
-                                                    <label class="custom-file-label" for="exampleInputFile">Foto
+                                                        name="Foto_Murid">
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
                                                         Murid</label>
                                                     <div name="" class="form-text">Kosongkan Jika Tidak Ada Foto
-                                                        Baru</div>
+                                                        Baru
+                                                    </div>
                                                 </div>
                                                 <!-- Image preview -->
                                                 <div id="Preview_Foto_Murid" class="mt-3">
-                                                    <img id="muat_Foto_Murid" src="#" alt=""
-                                                        style="max-width: 150px; max-height: 150px;">
+                                                    @if ($murid_madrasah_data->Foto_Murid)
+                                                        <img id="Muat_Foto_Murid"
+                                                            src="{{ asset('Data_Murid/Foto_Murid/' . $murid_madrasah_data->Foto_Murid) }}"
+                                                            alt="" style="max-width: 150px; max-height: 150px;">
+                                                    @else
+                                                        <img id="Muat_Foto_Murid" src="#" alt=""
+                                                            style="max-width: 150px; max-height: 150px; display: none;">
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_Murid').on('change', function() {
-                                                    // Get the file name
-                                                    var fileName = $(this).val();
-                                                    // Remove "C:\fakepath\" from the file path
-                                                    fileName = fileName.replace("C:\\fakepath\\", "");
-                                                    // Replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
+                                                $(document).ready(function() {
+                                                    // Check if there's a file selected
+                                                    $('#Foto_Murid').on('change', function() {
+                                                        // Get the file name
+                                                        var fileName = $(this).val();
+                                                        // Remove "C:\fakepath\" from the file path
+                                                        fileName = fileName.replace("C:\\fakepath\\", "");
+                                                        // Replace the "Choose a file" label
+                                                        $(this).next('.custom-file-label').html(fileName);
 
-                                                    // Image preview
-                                                    if (this.files && this.files[0]) {
-                                                        var reader = new FileReader();
-                                                        reader.onload = function(e) {
-                                                            $('#muat_Foto_Murid').attr('src', e.target.result);
+                                                        // Image preview
+                                                        if (this.files && this.files[0]) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(e) {
+                                                                $('#Muat_Foto_Murid').attr('src', e.target.result).show();
+                                                            }
+                                                            reader.readAsDataURL(this.files[0]);
+                                                            $('#Preview_Foto_Murid').show(); // Show the image preview container
                                                         }
-                                                        reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_Murid').show(); // Show the image preview container
-                                                    }
+                                                    });
                                                 });
                                             </script>
                                             {{-- akhir syntax edit gambar --}}
 
+
                                             {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Foto_Akta_Kelahiran_Murid" class="form-label">Foto Akta
-                                                    Kelahiran Murid</label>
+                                                <label for="Foto_Akta_Kelahiran_Murid" class="form-label">Foto
+                                                    Akta Kelahiran Murid</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input"
-                                                        id="Foto_Akta_Kelahiran_Murid"
-                                                        value="{{ $murid_madrasah_data->Foto_Akta_Kelahiran_Murid }}"
-                                                        name="Foto_Akta_Kelahiran_Murid">
-                                                    <label class="custom-file-label" for="exampleInputFile">Foto Akta
-                                                        Kelahiran Murid</label>
-                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada
-                                                        Foto Baru</div>
+                                                        id="Foto_Akta_Kelahiran_Murid" name="Foto_Akta_Kelahiran_Murid">
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Akta Kelahiran Murid</label>
+                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada Foto
+                                                        Baru
+                                                    </div>
                                                 </div>
                                                 <!-- Image preview -->
                                                 <div id="Preview_Foto_Akta_Kelahiran_Murid" class="mt-3">
-                                                    <img id="muat_Foto_Akta_Kelahiran_Murid" src="#"
-                                                        alt="" style="max-width: 150px; max-height: 150px;">
+                                                    @if ($murid_madrasah_data->Foto_Akta_Kelahiran_Murid)
+                                                        <img id="Muat_Foto_Akta_Kelahiran_Murid"
+                                                            src="{{ asset('Data_Murid/Foto_Akta_Kelahiran_Murid/' . $murid_madrasah_data->Foto_Akta_Kelahiran_Murid) }}"
+                                                            alt="" style="max-width: 150px; max-height: 150px;">
+                                                    @else
+                                                        <img id="Muat_Foto_Akta_Kelahiran_Murid" src="#"
+                                                            alt=""
+                                                            style="max-width: 150px; max-height: 150px; display: none;">
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_Akta_Kelahiran_Murid').on('change', function() {
-                                                    // Get the file name
-                                                    var fileName = $(this).val();
-                                                    // Remove "C:\fakepath\" from the file path
-                                                    fileName = fileName.replace("C:\\fakepath\\", "");
-                                                    // Replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
+                                                $(document).ready(function() {
+                                                    // Check if there's a file selected
+                                                    $('#Foto_Akta_Kelahiran_Murid').on('change', function() {
+                                                        // Get the file name
+                                                        var fileName = $(this).val();
+                                                        // Remove "C:\fakepath\" from the file path
+                                                        fileName = fileName.replace("C:\\fakepath\\", "");
+                                                        // Replace the "Choose a file" label
+                                                        $(this).next('.custom-file-label').html(fileName);
 
-                                                    // Image preview
-                                                    if (this.files && this.files[0]) {
-                                                        var reader = new FileReader();
-                                                        reader.onload = function(e) {
-                                                            $('#muat_Foto_Akta_Kelahiran_Murid').attr('src', e.target.result);
+                                                        // Image preview
+                                                        if (this.files && this.files[0]) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(e) {
+                                                                $('#Muat_Foto_Akta_Kelahiran_Murid').attr('src', e.target.result).show();
+                                                            }
+                                                            reader.readAsDataURL(this.files[0]);
+                                                            $('#Preview_Foto_Akta_Kelahiran_Murid').show(); // Show the image preview container
                                                         }
-                                                        reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_Akta_Kelahiran_Murid').show(); // Show the image preview container
-                                                    }
+                                                    });
                                                 });
                                             </script>
                                             {{-- akhir syntax edit gambar --}}
+
 
                                             {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Foto_KK_Murid" class="form-label">Foto KK
-                                                    Murid</label>
+                                                <label for="Foto_KK_Murid" class="form-label">Foto
+                                                    Akta Kelahiran Murid</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Foto_KK_Murid"
-                                                        value="{{ $murid_madrasah_data->Foto_KK_Murid }}"
                                                         name="Foto_KK_Murid">
-                                                    <label class="custom-file-label" for="exampleInputFile">Foto
-                                                        KK
-                                                        Murid</label>
-                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada
-                                                        Foto Baru</div>
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Akta Kelahiran Murid</label>
+                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada Foto
+                                                        Baru
+                                                    </div>
                                                 </div>
                                                 <!-- Image preview -->
                                                 <div id="Preview_Foto_KK_Murid" class="mt-3">
-                                                    <img id="muat_Foto_KK_Murid" src="#" alt=""
-                                                        style="max-width: 150px; max-height: 150px;">
+                                                    @if ($murid_madrasah_data->Foto_KK_Murid)
+                                                        <img id="Muat_Foto_KK_Murid"
+                                                            src="{{ asset('Data_Murid/Foto_KK_Murid/' . $murid_madrasah_data->Foto_KK_Murid) }}"
+                                                            alt="" style="max-width: 150px; max-height: 150px;">
+                                                    @else
+                                                        <img id="Muat_Foto_KK_Murid" src="#" alt=""
+                                                            style="max-width: 150px; max-height: 150px; display: none;">
+                                                    @endif
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_KK_Murid').on('change', function() {
-                                                    // Get the file name
-                                                    var fileName = $(this).val();
-                                                    // Remove "C:\fakepath\" from the file path
-                                                    fileName = fileName.replace("C:\\fakepath\\", "");
-                                                    // Replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
+                                                $(document).ready(function() {
+                                                    // Check if there's a file selected
+                                                    $('#Foto_KK_Murid').on('change', function() {
+                                                        // Get the file name
+                                                        var fileName = $(this).val();
+                                                        // Remove "C:\fakepath\" from the file path
+                                                        fileName = fileName.replace("C:\\fakepath\\", "");
+                                                        // Replace the "Choose a file" label
+                                                        $(this).next('.custom-file-label').html(fileName);
 
-                                                    // Image preview
-                                                    if (this.files && this.files[0]) {
-                                                        var reader = new FileReader();
-                                                        reader.onload = function(e) {
-                                                            $('#muat_Foto_KK_Murid').attr('src', e.target.result);
+                                                        // Image preview
+                                                        if (this.files && this.files[0]) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(e) {
+                                                                $('#Muat_Foto_KK_Murid').attr('src', e.target.result).show();
+                                                            }
+                                                            reader.readAsDataURL(this.files[0]);
+                                                            $('#Preview_Foto_KK_Murid').show(); // Show the image preview container
                                                         }
-                                                        reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_KK_Murid').show(); // Show the image preview container
-                                                    }
+                                                    });
                                                 });
                                             </script>
                                             {{-- akhir syntax edit gambar --}}
 
+
                                             <div class="form-group mb-3">
                                                 <label for="exampleSelectRounded0">Tingkat Murid</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Tingkat_Murid"
                                                     name="Tingkat_Murid">
                                                     <option selected disabled value>
                                                         {{ $murid_madrasah_data->Tingkat_Murid }}
@@ -269,7 +297,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="exampleSelectRounded0">Status Murid</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Murid"
                                                     name="Status_Murid">
                                                     <option selected disabled value>
                                                         {{ $murid_madrasah_data->Status_Murid }}</option>

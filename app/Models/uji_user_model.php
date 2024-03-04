@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-//import Model "uji_bidang_model" dari folder models
+/**
+import Model "uji_bidang_model" dari folder models
+diimport karena di tabel/model ini merupakan tabel yang memiliki field,
+yang bergantung dengan suatu field di table uji_bidang
+contoh : "Jabatan_Uji_User" di tbl uji_user
+bergantung pada nilai kpd "Kode_Bidang" di tbl uji_bidang
+*/
 use App\Models\uji_bidang_model;
 
 // import class uuid
@@ -23,7 +29,7 @@ class uji_user_model extends Model
 
     /*
     mengambil informasi di table ruangan
-    'Jabatan_Uji_User' = field yang ada di table pengurus_dkm
+    'Jabatan_Uji_User' = field yang ada di table uji_user
     'Kode_Bidang' = field yang diambil dari table uji_bidang
     */
     public function ambil_kode_uji_bidang()
@@ -49,7 +55,9 @@ class uji_user_model extends Model
     }
 
 
-    //syntax tracking olah data
+    /*syntax tracking olah data
+     berdasarkan email yang ada di table users
+    */
     protected static function booted()
     {
         static::creating(function ($uji_user) {

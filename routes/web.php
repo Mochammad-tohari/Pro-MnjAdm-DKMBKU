@@ -311,18 +311,19 @@ Route::middleware(['role:Admin'])->group(function () {
 
     /*  memanggil file 'uji_user_controller' yg ada di folder controller
                 /uji_user_edit ->file uji_user_edit.blade.php & 'uji_user_edit' -> fungsi 'uji_user_edit' yg ada di file uji_user_controller
+                {id_uji_user} -> parameter yg menjadi acuan dalam hal update
             */
     Route::get('/uji_user_edit/{id_uji_user}', [uji_user_controller::class, 'uji_user_edit'])->name('uji_user_edit');
 
     /*  memanggil file 'uji_user_controller' yg ada di folder controller
                 'uji_user_update' -> fungsi 'uji_user_update' yg ada di file uji_user_controller
-                {id} -> parameter yg menjadi acuan dalam hal update
+                {id_uji_user} -> parameter yg menjadi acuan dalam hal update
             */
     Route::post('/uji_user_update/{id_uji_user}', [uji_user_controller::class, 'uji_user_update'])->name('uji_user_update');
 
     /*  memanggil file 'uji_user_controller' yg ada di folder controller
                     'uji_user_delete' -> fungsi 'uji_user_delete' yg ada di file uji_user_controller
-                    {id} -> parameter yg menjadi acuan dalam hal edit
+                    {id_uji_user} -> parameter yg menjadi acuan dalam hal edit
                 */
     Route::get('/uji_user_delete/{id_uji_user}', [uji_user_controller::class, 'uji_user_delete'])->name('uji_user_delete');
 

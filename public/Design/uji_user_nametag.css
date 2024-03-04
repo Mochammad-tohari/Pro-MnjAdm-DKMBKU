@@ -1,6 +1,6 @@
 /* background image */
 
-.card-uji-user {
+.uji-user-card {
     position: fixed;
     background-image: url("../name_tag/khodim_name_tag.jpg");
     background-size: cover;
@@ -20,30 +20,15 @@
 
 /* content */
 
-.Foto_Profil {
-    /* Adjust the top and bottom margins to move the div up or down */
-    position: fixed;
-    margin-top: -88px; /* Increase this value to move the div down */
-    margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: -53px; /* Increase this value to move the div to the right */
-    margin-right: 0px; /* Increase this value to move the div to the left */
-
-    /* Float the .Foto1 div to the left */
-    float: left;
-
-    /* You can also use text-align to control the positioning of the image within the div */
-    text-align: center; /* This will center the image horizontally within the div */
-}
-
 .Foto_Profil img {
     position: fixed;
     /* Apply styles to the image if needed */
     width: 110px;
     /* Additional styles for the image */
 
-    margin-top: 120px; /* Increase this value to move the div down */
+    margin-top: 33px; /* Increase this value to move the div down */
     margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 148px; /* Increase this value to move the div to the right */
+    margin-left: 108px; /* Increase this value to move the div to the right */
     margin-right: 0px; /* Increase this value to move the div to the left */
 }
 

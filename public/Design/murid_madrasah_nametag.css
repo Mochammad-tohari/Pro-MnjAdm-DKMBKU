@@ -1,6 +1,6 @@
 /* background image */
 
-.card-murid {
+.murid-madrasah-card {
     background-image: url("../name_tag/name_tag_murid.jpg");
     background-size: cover;
     width: 105mm;
@@ -12,46 +12,44 @@
 }
 
 .card-body {
+    position: fixed;
     /* Make the card body transparent so that the background image of the card is visible through it */
     background-color: transparent;
 }
 
 /* content */
 
-.Foto_Murid {
-    /* Adjust the top and bottom margins to move the div up or down */
-    position: fixed;
-    margin-top: -142px; /* Increase this value to move the div down */
-    margin-bottom: 115px; /* Increase this value to move the div up */
-    margin-left: 150px; /* Increase this value to move the div to the right */
-    margin-right: 5px; /* Increase this value to move the div to the left */
-
-    /* Float the .Foto1 div to the left */
-    float: left;
-
-    /* You can also use text-align to control the positioning of the image within the div */
-    text-align: center; /* This will center the image horizontally within the div */
-}
-
 .Foto_Murid img {
+    position: fixed;
     /* Apply styles to the image if needed */
     width: 110px;
     /* Additional styles for the image */
+
+    margin-top: -15px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 112px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
 }
 
-#name_tag th {
-    text-align: center; /* Center the header "Nama" */
-    font-size: 16px; /* Set the font size for the header */
-    font-weight: bold; /* Make the header bold */
-    padding: 50px 0; /* Add padding to the header cell (top and bottom) */
+#murid_madrasah_table {
+    margin-top: 150px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 0px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#Nama_Murid th {
     color: #1705b0;
 }
 
-#name_tag {
-    position: fixed;
-    margin-top: -70px; /* Increase this value to move the div down */
-    margin-bottom: 70px; /* Increase this value to move the div up */
-    margin-left: 110px; /* Increase this value to move the div to the right */
-    margin-right: 5px; /* Increase this value to move the div to the left */
+#Kode_Murid {
     color: #2e2e2e;
+}
+
+#button_download {
+    position: fixed;
+    margin-top: 5px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 180px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
 }

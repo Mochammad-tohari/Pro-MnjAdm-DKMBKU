@@ -19,12 +19,15 @@
     <div class="container mb-4">
         <div class="row justify-content-center">
             <div class="col-sm-6">
-                <div class="card-uji-user card-primary" id="card-uji-user">
+                <div class="uji-user-card card-primary" id="uji-user-card">
+
                     <div class="card-body">
+
                         <div class="form-group row Foto_Profil">
                             <img src="{{ asset('Data_Uji_User/Foto_Profil/' . $uji_user_data->Foto_Profil) }}"
                                 alt="Foto_Profil">
                         </div>
+
                         <table id="uji_user_table" style=" width: 300px;">
 
                             <tr id="Nama_Uji_User" style="margin-top: 20px;">
@@ -69,7 +72,7 @@
     <script>
         function takeScreenshot() {
             // Select the element to be captured
-            var element = document.getElementById('card-uji-user');
+            var element = document.getElementById('uji-user-card');
 
             // Use html2canvas to capture the element
             html2canvas(element).then(function(canvas) {

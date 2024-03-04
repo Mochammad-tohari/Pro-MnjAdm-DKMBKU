@@ -1,5 +1,9 @@
+{{-- layout.admin berasal dari folder layout -> file admin.blade.php
+    kegunaanya untuk meng extend atau memasukan tampilan admin pada halaman ini --}}
 @extends('layout.admin')
 
+{{-- @section('content') berasal dari file welcome.php yang di cut pada section "content"
+jadi segala tampilan yang masuk pada section ini akan ditamplkan sebagai bagian content --}}
 @section('content')
     <title>Data Uji User</title>
 
@@ -31,6 +35,7 @@
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
+                        {{-- button di bawah berfungsi sebagai link ke laman tambah data --}}
                         <a button type="button" class="btn btn-success" href="/uji_user_create">Tambah Data</button>
                         </a>
                     @endif
@@ -38,31 +43,45 @@
                     {{-- {{ Session::get('page_url') }} --}}
 
                     <div class="row g-3 d-flex flex-row-reverse">
+                        {{-- awal search input unutk mencari data --}}
                         <div class="col-auto">
                             <form action="/uji_user_data_new" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
                         </div>
+                        {{-- akhir search input unutk mencari data --}}
 
                         {{-- <!-- syntax pemberitahuan bahwa data telah dimasukan -->
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success" role="alert">
-            {{$message}}
-        </div>
-        @endif --}}
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success" role="alert">
+                                {{$message}}
+                            </div>
+                            @endif --}}
 
+                        {{-- awal fungsi button untuk export semua data kedalam file PDF
+                            <form action="/uji_user_data_new" method="GET">
+                            tag diatas bermaksud mendapatkan data dari laman
+                            uji_user_data_new.blade.php --}}
                         <div class="col-auto">
                             <form action="/uji_user_data_new" method="GET">
                                 <a href="/uji_user_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
+                        {{-- akhir fungsi button untuk export semua data kedalam file PDF --}}
 
+
+                        {{-- awal fungsi button untuk export semua data kedalam file Excel
+                            <form action="/uji_user_data_new" method="GET">
+                            tag diatas bermaksud mendapatkan data dari laman
+                            uji_user_data_new.blade.php --}}
                         <div class="col-auto">
                             <form action="/uji_user_data_new" method="GET">
                                 <a href="/uji_user_excel_export" class="btn btn-success">Export Excel</button> </a>
                             </form>
                         </div>
+                        {{-- akhir fungsi button untuk export semua data kedalam file Excel --}}
+
 
                         <!-- Button trigger modal -->
                         @if (auth()->user()->akses === 'Admin')
@@ -76,7 +95,7 @@
                             </div>
                         @endif
 
-                        <!-- Modal -->
+                        <!-- Modal untuk fungsi import Excel-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -88,10 +107,16 @@
                                             aria-label="Close"></button>
                                     </div>
 
+                                    {{-- action="uji_user_excel_import" method="POST"
+                                    memanggil fungsi yang ada di file uji_user_controller
+                                    dan method dari file web.php --}}
                                     <form action="uji_user_excel_import" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
+                                                {{-- <input type="file" name="file_uji_user" required>
+                                                   memanggil parameter file_uji_user yang ada di file uji_user_controller
+                                                   "$uji_user_data = $request->file('file_uji_user');" --}}
                                                 <input type="file" name="file_uji_user" required>
                                                 <p>
                                                     Harap perhatikan file excel dan array field didalamnya
@@ -121,28 +146,32 @@
                             }
 
                             table.table-uji_user thead tr {
+                                /* warna header */
                                 background-color: #0c613b;
-                                /* Header background color */
+
+                                /* warna teks header */
                                 color: #ffffff;
-                                /* Header text color */
+
                             }
 
                             table.table-uji_user tbody tr:nth-child(odd) {
+                                /* memberi warna untuk baris ganjil */
                                 background-color: #343A40;
-                                /* Lighter color for odd rows */
+
                             }
 
                             table.table-uji_user tbody tr:nth-child(even) {
+                                /* memberi warna untuk baris genap */
                                 background-color: #3e454d;
-                                /* Default color for even rows */
+
                             }
 
                             table.table-uji_user th,
                             table.table-uji_user td {
                                 color: #ffffff;
-                                /* Set the text color using CSS variable */
+                                /* memberi warna teks data */
                                 padding: 10px;
-                                /* Adjust the padding value as needed */
+                                /* mengatur padding*/
                             }
                         </style>
                         {{-- akhir css table --}}
@@ -182,6 +211,8 @@
 
                                 <tbody>
                                     <tr>
+                                        {{-- @foreach ($uji_user_data_new as $uji_user_index_new => $row)
+                                            syntax pengulangan berguna untuk memuat data sesuai dengan jumlah yang ada --}}
                                         @foreach ($uji_user_data_new as $uji_user_index_new => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
@@ -204,6 +235,7 @@
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>
+                                                {{-- mengambil file gambar yang tersimpan di folder Data_Uji_User/Foto_Profil/ --}}
                                                 @if ($row->Foto_Profil)
                                                     <img src="{{ asset('Data_Uji_User/Foto_Profil/' . $row->Foto_Profil) }}"
                                                         alt="Foto_Profil" style="width: 40px;">
@@ -225,19 +257,24 @@
                                             <td>{{ $row->inserted_by }}</td>
                                             <td>{{ $row->updated_by }}</td>
 
+                                            {{--  <td>{{ $row->created_at->format('D, d M Y H:i:s') }}</td>
+                                            menampilkan data dibuat berdasarkan hari, tanggal,bulan, tahun dan waktu aktualnya --}}
                                             <td>{{ $row->created_at->format('D, d M Y H:i:s') }}</td>
                                             <td>{{ $row->updated_at->format('D, d M Y H:i:s') }}</td>
                                         @endif
 
                                         <td>
+                                            {{-- tombol menuju menu edit data --}}
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="/uji_user_edit/{{ $row->id_uji_user }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
+                                            {{-- tombol menuju menu lihat satu data --}}
                                             <a href="/uji_user_view/{{ $row->id_uji_user }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
 
+                                            {{-- tombol hapus datadata --}}
                                             @if (auth()->user()->akses === 'Admin')
                                                 <a href="/uji_user_delete" class="btn btn-danger btn-sm delete mt-2"
                                                     data-id-uji-user="{{ $row->id_uji_user }}"
@@ -291,10 +328,17 @@
                 $('.delete').click(function(event) {
                     event.preventDefault();
 
+                    /**
+                     * sesuaikan varibel dengan padameter yang ada di tombol delete
+                     */
                     var uji_id_user = $(this).attr('data-id-uji-user');
                     var uji_kode_uji_user = $(this).attr('data-kode-uji-user');
                     var uji_nama_uji_user = $(this).attr('data-nama-uji-user');
 
+                    /**
+                     * pop up data yang akan dihapus
+                     * ada pilihan jika ya maka hapus jika tidak data tetap utuh
+                     */
                     swal({
                             title: "Apakah anda yakin ?",
                             text: "Data yang akan dihapus kode " + uji_kode_uji_user + " Nama_User " +
@@ -305,10 +349,13 @@
                         })
                         .then((willDelete) => {
                             if (willDelete) {
-                                // Proceed with deletion
+                                /**
+                                 * proses hapus data
+                                 * uji_user_delete merupakan fungsi hapus dari file uji_user_controller.php
+                                 */
                                 window.location = "/uji_user_delete/" + uji_id_user;
                             } else {
-                                // Cancelled, do nothing or show a message
+                                // pemberitahuan data tidak jadi dihapus
                                 swal("Data tidak dihapus", {
                                     icon: "info",
                                 });
@@ -356,4 +403,5 @@
             </script>
 
         </div>
+        {{-- @endsection merupakan tag penutup untuk section content --}}
     @endsection

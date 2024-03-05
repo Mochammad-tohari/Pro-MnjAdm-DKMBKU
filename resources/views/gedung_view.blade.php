@@ -80,7 +80,7 @@
                 var link = document.createElement('a');
 
                 // mengatur file download sesuai dengan nilai Nama_Uji_User
-                var fileName = ' {{ $gedung_data->Nama_Gedung }}' + '_GDG.png';
+                var fileName = '{{ $gedung_data->Nama_Gedung }}' + '_GDG.png';
 
                 link.href = imgData;
                 link.download = fileName;

@@ -156,16 +156,21 @@ class ruangan_controller extends Controller
         $ruangan_data->Gedung_Kode = $request->input('Gedung_Kode');
 
         $ruangan_data->update($request->all());
-        // Update other fields in the $ruangan model as per your form data
+
+        if ($request->hasFile('Foto_Ruangan')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Ruangan')->getClientOriginalName();
+            $request->file('Foto_Ruangan')->move(public_path('Data_Ruangan/Foto_Ruangan'), $filename1);
+            $ruangan_data->Foto_Ruangan = $filename1;
+        }
+
         $ruangan_data->save();
 
-
-        // Redirect or return response as needed
         if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
         return redirect()->route('ruangan_index')->with('success_edit', 'Data Berhasil Diubah');
+
     }
 
     public function ruangan_export_pdf()

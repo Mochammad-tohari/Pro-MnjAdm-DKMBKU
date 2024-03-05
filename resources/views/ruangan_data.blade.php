@@ -133,7 +133,7 @@
                                         @if ($row->ambil_kode_gedung)
                                             <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}</th>
                                         @else
-                                            <th scope="row">Unknown Gedung</th>
+                                            <th scope="row">Gedung Tidak Diketahui</th>
                                         @endif
 
                                         <th scope="row">{{ $row->Kode_Ruangan }}</th>

@@ -108,16 +108,19 @@ class ruangan_controller extends Controller
             // mengatur updated email utk menghindari isi otomatis di fungsi insert
             $ruangan_data->updated_by = null;
 
-            // syntax pengambilan data 'Kode_Gedung'
-            // Assign the input 'Kode_Gedung' value to the 'Kode_Gedung' property
-            $ruangan_data->Kode_Gedung = $request->input('Kode_Gedung');
+            // syntax pengambilan data 'Gedung_Kode'
+            // Assign the input 'Gedung_Kode' value to the 'Gedung_Kode' property
+            $ruangan_data->Gedung_Kode = $request->input('Gedung_Kode');
 
-            // Assign other fields in the $ruangan_data model as per your form data
-            $ruangan_data->otherField = $request->input('otherField');
             // ... continue assigning other fields
             //akhir pengambilan data 'Kode_Gedung'
 
-            $ruangan_data = ruangan_model::create($request->all());
+            if ($request->hasFile('Foto_Ruangan')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Ruangan')->getClientOriginalName();
+                $request->file('Foto_Ruangan')->move(public_path('Data_Ruangan/Foto_Ruangan'), $filename1);
+                $ruangan_data->Foto_Ruangan = $filename1;
+            }
+
             $ruangan_data->save();
 
             return redirect()->route('ruangan_index')->with('success', 'Data Berhasil Dimasukan');

@@ -104,6 +104,8 @@
                                                         <img id="Muat_Foto_Gedung"
                                                             src="{{ asset('Data_Gedung/Foto_Gedung/' . $gedung_data->Foto_Gedung) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Gedung" name="" class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_Gedung" src="#" alt=""
                                                             style="max-width: 150px; max-height: 150px; display: none;">

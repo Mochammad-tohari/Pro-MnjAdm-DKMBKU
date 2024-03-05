@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Ruangan</li>
+                            <li class="breadcrumb-item active"> <a href="/ruangan_data">Data Ruangan</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -106,6 +106,7 @@
                                         <th scope="col">Luas Ruangan</th>
                                         <th scope="col">Tanggal Operasional Ruangan</th>
                                         <th scope="col">Keterangan Ruangan</th>
+                                        <th scope="col">Foto Ruangan</th>
                                         <th scope="col">Status Ruangan</th>
 
                                         @if (auth()->user()->akses === 'Admin')
@@ -140,6 +141,15 @@
                                         <td>{{ $row->Luas_Ruangan }}</td>
                                         <td>{{ $row->Tanggal_Operasional_Ruangan }}</td>
                                         <td>{{ $row->Keterangan_Ruangan }}</td>
+
+                                        <td>
+                                            {{-- mengambil file gambar yang tersimpan di folder Data_Uji_User/Foto_Profil/ --}}
+                                            @if ($row->Foto_Ruangan)
+                                                <img src="{{ asset('Data_Ruangan/Foto_Ruangan/' . $row->Foto_Ruangan) }}"
+                                                    alt="Foto_Ruangan" style="width: 40px;">
+                                            @endif
+                                        </td>
+
                                         <td>{{ $row->Status_Ruangan }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')

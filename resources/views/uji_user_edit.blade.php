@@ -58,7 +58,7 @@
                                                 <input type="text" class="form-control" placeholder="" id=""
                                                     name="Kode_Uji_User" value="{{ $uji_user_data->Kode_Uji_User }}"
                                                     readonly>
-                                                <div name="" class="form-text">Otomatis Terisi</div>
+                                                <div name="" class="form-text">Tidak Bisa Diubah</div>
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -148,10 +148,14 @@
                                                         <img id="Muat_Foto_Profil"
                                                             src="{{ asset('Data_Uji_User/Foto_Profil/' . $uji_user_data->Foto_Profil) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Profil" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_Profil" src="#" alt=""
                                                             style="max-width: 150px; max-height: 150px; display: none;">
                                                     @endif
+
                                                 </div>
                                             </div>
 
@@ -200,6 +204,9 @@
                                                         <img id="Muat_Foto_Identitas"
                                                             src="{{ asset('Data_Uji_User/Foto_Identitas/' . $uji_user_data->Foto_Identitas) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Identitas" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_Identitas" src="#" alt=""
                                                             style="max-width: 150px; max-height: 150px; display: none;">

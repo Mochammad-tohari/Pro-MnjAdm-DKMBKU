@@ -59,7 +59,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="RNG<?php echo $tgl; ?>" id="" name="Kode_Ruangan"
+                                                    value="RNG-<?php echo $tgl; ?>" id="" name="Kode_Ruangan"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
@@ -134,14 +134,60 @@
                                                 <textarea class="form-control" name="Keterangan_Ruangan" id="Keterangan_Ruangan">{{ old('Keterangan_Ruangan') }}</textarea>
                                             </div>
 
+
+                                            {{-- syntax input gambar --}}
+                                            <div class="form-group mb-3">
+                                                <label for="Foto_Ruangan" class="form-label">Foto Gedung</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Foto_Ruangan"
+                                                        name="Foto_Ruangan">
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Ruangan</label>
+                                                </div>
+                                                <!-- Image preview -->
+                                                <div id="Preview_Foto_Ruangan" class="mt-3">
+                                                    <img id="Muat_Foto_Ruangan" src="#" alt=""
+                                                        style="max-width: 150px; max-height: 150px;">
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                                $('#Foto_Ruangan').on('change', function() {
+                                                    // Get the file name
+                                                    var fileName = $(this).val();
+                                                    // Remove "C:\fakepath\" from the file path
+                                                    fileName = fileName.replace("C:\\fakepath\\", "");
+                                                    // Replace the "Choose a file" label
+                                                    $(this).next('.custom-file-label').html(fileName);
+
+                                                    // Image preview
+                                                    if (this.files && this.files[0]) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            $('#Muat_Foto_Ruangan').attr('src', e.target.result);
+                                                        }
+                                                        reader.readAsDataURL(this.files[0]);
+                                                        $('#Preview_Foto_Ruangan').show(); // Show the image preview container
+                                                    }
+                                                });
+                                            </script>
+                                            {{-- akhir syntax input gambar --}}
+
+
                                             <div class="form-group mb-3">
                                                 <label for="Status_Ruangan">Status_Ruangan</label>
                                                 <select class="custom-select rounded-0" id="Status_Ruangan"
                                                     name="Status_Ruangan">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Ruangan') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Ruangan') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Ruangan') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Ruangan')

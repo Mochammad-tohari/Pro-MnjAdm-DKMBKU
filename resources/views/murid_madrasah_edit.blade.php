@@ -137,6 +137,9 @@
                                                         <img id="Muat_Foto_Murid"
                                                             src="{{ asset('Data_Murid/Foto_Murid/' . $murid_madrasah_data->Foto_Murid) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Murid" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_Murid" src="#" alt=""
                                                             style="max-width: 150px; max-height: 150px; display: none;">
@@ -189,6 +192,9 @@
                                                         <img id="Muat_Foto_Akta_Kelahiran_Murid"
                                                             src="{{ asset('Data_Murid/Foto_Akta_Kelahiran_Murid/' . $murid_madrasah_data->Foto_Akta_Kelahiran_Murid) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Akta_Kelahiran_Murid" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_Akta_Kelahiran_Murid" src="#"
                                                             alt=""
@@ -242,6 +248,9 @@
                                                         <img id="Muat_Foto_KK_Murid"
                                                             src="{{ asset('Data_Murid/Foto_KK_Murid/' . $murid_madrasah_data->Foto_KK_Murid) }}"
                                                             alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_KK_Murid" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
                                                     @else
                                                         <img id="Muat_Foto_KK_Murid" src="#" alt=""
                                                             style="max-width: 150px; max-height: 150px; display: none;">

@@ -55,10 +55,6 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Kode Ruangan</label>
-                                                <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal-->
-                                                <?php
-                                                $tgl = date('ymdGis');
-                                                ?>
                                                 <input type="text" class="form-control" placeholder=""
                                                     value="{{ $ruangan_data->Kode_Ruangan }}" id=""
                                                     name="Kode_Ruangan" readonly>
@@ -75,9 +71,7 @@
                                                      yang akan di tampilkan sebagai {{ $Nama_Gedung }} di table gedung --}}
                                                     {{-- Sort the $gedungOptions array by the values (nama gedung) in ascending order --}}
                                                     @php
-                                                        $sortedGedungOptions = collect($gedungOptions)
-                                                            ->sort()
-                                                            ->all();
+                                                        $sortedGedungOptions = collect($gedungOptions)->sort()->all();
                                                     @endphp
 
                                                     {{-- Loop through the sorted array --}}

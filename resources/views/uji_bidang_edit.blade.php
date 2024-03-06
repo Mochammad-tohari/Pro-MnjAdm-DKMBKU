@@ -56,7 +56,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Kode Bidang</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="{{ $uji_bidang_data->Kode_Bidang }}" id=""
+                                                    value="{{ $uji_bidang_data->Kode_Bidang }}" id="Kode_Bidang"
                                                     name="Kode_Bidang" readonly>
                                                 <div name="" class="form-text">Tidak Bisa Diubah</div>
                                             </div>
@@ -64,7 +64,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Bidang" class="form-label">Nama Bidang
                                                     Khodim</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Bidang"
                                                     name="Nama_Bidang" value="{{ $uji_bidang_data->Nama_Bidang }}">
                                             </div>
 
@@ -76,7 +76,8 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Bidang">Status Bidang Khodim</label>
-                                                <select class="custom-select rounded-0" id="" name="Status_Bidang">
+                                                <select class="custom-select rounded-0" id="Status_Bidang"
+                                                    name="Status_Bidang">
                                                     <option selected disabled value>
                                                         {{ $uji_bidang_data->Status_Bidang }}</option>
                                                     <option value="Aktif">Aktif</option>

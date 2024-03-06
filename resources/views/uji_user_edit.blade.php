@@ -55,7 +55,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Kode Uji User</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Kode_Uji_User"
                                                     name="Kode_Uji_User" value="{{ $uji_user_data->Kode_Uji_User }}"
                                                     readonly>
                                                 <div name="" class="form-text">Tidak Bisa Diubah</div>

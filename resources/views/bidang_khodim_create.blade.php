@@ -59,8 +59,8 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="BDK<?php echo $tgl; ?>" id="" name="Kode_Bidang_Khodim"
-                                                    readonly>
+                                                    value="BDKH-<?php echo $tgl; ?>" id="Kode_Bidang_Khodim"
+                                                    name="Kode_Bidang_Khodim" readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
 
@@ -87,9 +87,16 @@
                                                 <select class="custom-select rounded-0" id="Status_Bidang_Khodim"
                                                     name="Status_Bidang_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Bidang_Khodim') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Bidang_Khodim') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Bidang_Khodim') == 'Lainya' ? 'selected' : '' }}>
+                                                        Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Bidang_Khodim')

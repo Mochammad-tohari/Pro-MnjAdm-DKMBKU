@@ -17,15 +17,6 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
-// //import method export Excel
-// use App\Exports\export_excel_uji;
-
-// //import method export Excel di folder Exports
-// use App\Imports\uji_excel_import;
-
-// //import method import Excel di folder Imports
-// use Maatwebsite\Excel\Facades\Excel;
-
 //import class Session
 use Illuminate\Support\Facades\Session;
 
@@ -66,6 +57,8 @@ class bidang_khodim_controller extends Controller
         return view('bidang_khodim_data', compact('bidang_khodim_data'));
 
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function bidang_khodim_create()
     {
@@ -111,6 +104,8 @@ class bidang_khodim_controller extends Controller
 
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function bidang_khodim_edit($id_bidang_khodim)
     {
 
@@ -138,6 +133,7 @@ class bidang_khodim_controller extends Controller
 
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function bidang_khodim_export_pdf()
     {

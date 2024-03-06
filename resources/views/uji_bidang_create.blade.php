@@ -85,9 +85,15 @@
                                                 <select class="custom-select rounded-0" id="Status_Bidang"
                                                     name="Status_Bidang">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Bidang') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Bidang') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Bidang') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Bidang')

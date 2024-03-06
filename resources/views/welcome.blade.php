@@ -111,7 +111,7 @@
                     </div>
 
 
-                    {{-- <!-- Small boxes (Stat box) -->
+                    <!-- Small boxes (bidang_khodim) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_khodim">
@@ -126,8 +126,7 @@
                                         {{ $data_bidang_khodim_kondisi['bidang_khodim_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Bid.Khodim Lainya:
                                         {{ $data_bidang_khodim_kondisi['bidang_khodim_lainya_count'] }}</p>
-                                    {{-- <small>Data</small> --}}
-                    {{-- </span>
+                                </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -135,10 +134,10 @@
                             <a href="/bidang_khodim_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> --}} --}}
+                    </div>
 
-                    {{--
-                    <!-- Small boxes (Stat box) -->
+
+                    <!-- Small boxes (khodim_dkm) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-khodim_dkm">
@@ -153,8 +152,7 @@
                                         {{ $data_khodim_dkm_kondisi['khodim_dkm_tidak_aktif_count'] }}</p>
                                     <p class="info-box-text-lainya">Khodim Lainya:
                                         {{ $data_khodim_dkm_kondisi['khodim_dkm_lainya_count'] }}</p>
-                                    {{-- <small>Data</small> --}}
-                    {{-- </span>
+                                </span>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -162,7 +160,7 @@
                             <a href="/khodim_dkm_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                    </div> --}} --}}
+                    </div>
 
 
 

@@ -103,35 +103,35 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
-        // // Count total records
-        // $data_bidang_khodim_jumlah = bidang_khodim_model::count();
+        // Count total records
+        $data_bidang_khodim_jumlah = bidang_khodim_model::count();
 
-        // // Define an array of variables to pass to the view
-        // $data_bidang_khodim_kondisi = [
-        //     'data_bidang_khodim_jumlah' => $data_bidang_khodim_jumlah,
-        //     // Count 'Aktif' status records
-        //     'bidang_khodim_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'bidang_khodim_tidak_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Tidak_Aktif')->count(),
-        //     // Count 'Lainya' status records
-        //     'bidang_khodim_lainya_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
+        // Define an array of variables to pass to the view
+        $data_bidang_khodim_kondisi = [
+            'data_bidang_khodim_jumlah' => $data_bidang_khodim_jumlah,
+            // Count 'Aktif' status records
+            'bidang_khodim_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'bidang_khodim_tidak_aktif_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'bidang_khodim_lainya_count' => bidang_khodim_model::where('Status_Bidang_Khodim', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
 
-        // // Count total records
-        // $data_khodim_dkm_jumlah = khodim_dkm_model::count();
+        // Count total records
+        $data_khodim_dkm_jumlah = khodim_dkm_model::count();
 
-        // // Define an array of variables to pass to the view
-        // $data_khodim_dkm_kondisi = [
-        //     'data_khodim_dkm_jumlah' => $data_khodim_dkm_jumlah,
-        //     // Count 'Aktif' status records
-        //     'khodim_dkm_aktif_count' => khodim_dkm_model::where('Status_Khodim', 'Aktif')->count(),
-        //     // Count 'Tidak_Aktif' status records
-        //     'khodim_dkm_tidak_aktif_count' => khodim_dkm_model::where('Status_Khodim', 'Tidak_Aktif')->count(),
-        //     // Count 'Lainya' status records
-        //     'khodim_dkm_lainya_count' => khodim_dkm_model::where('Status_Khodim', 'Lainya')->count(),
-        //     // Add more variables here if needed
-        // ];
+        // Define an array of variables to pass to the view
+        $data_khodim_dkm_kondisi = [
+            'data_khodim_dkm_jumlah' => $data_khodim_dkm_jumlah,
+            // Count 'Aktif' status records
+            'khodim_dkm_aktif_count' => khodim_dkm_model::where('Status_Khodim', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'khodim_dkm_tidak_aktif_count' => khodim_dkm_model::where('Status_Khodim', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'khodim_dkm_lainya_count' => khodim_dkm_model::where('Status_Khodim', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
 
 
         // // Count total records
@@ -155,8 +155,8 @@ class Controller extends BaseController
             'data_gedung_kondisi' => $data_gedung_kondisi,
             'data_ruangan_kondisi' => $data_ruangan_kondisi,
             'data_murid_kondisi' => $data_murid_kondisi,
-            // 'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
-            // 'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
+            'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
+            'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
             // 'data_bidang_pengurus_kondisi' => $data_bidang_pengurus_kondisi,
 
         ]);

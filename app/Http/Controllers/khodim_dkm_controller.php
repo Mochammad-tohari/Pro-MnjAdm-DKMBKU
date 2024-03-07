@@ -19,15 +19,6 @@ use Illuminate\View\View;
 //import method export PDF
 use PDF;
 
-// //import method export Excel
-// use App\Exports\export_excel_uji;
-
-// //import method export Excel di folder Exports
-// use App\Imports\uji_excel_import;
-
-// //import method import Excel di folder Imports
-// use Maatwebsite\Excel\Facades\Excel;
-
 //import class Session
 use Illuminate\Support\Facades\Session;
 
@@ -73,6 +64,7 @@ class khodim_dkm_controller extends Controller
         return view('khodim_dkm_data', compact('khodim_dkm_data'));
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function khodim_dkm_create()
     {
@@ -138,7 +130,7 @@ class khodim_dkm_controller extends Controller
 
     }
 
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     public function khodim_dkm_edit($id_khodim)

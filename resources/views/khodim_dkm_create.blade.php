@@ -59,7 +59,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="KHD<?php echo $tgl; ?>" id="" name="Kode_Khodim"
+                                                    value="KHD-<?php echo $tgl; ?>" id="Kode_Khodim" name="Kode_Khodim"
                                                     readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
@@ -74,11 +74,14 @@
                                                     yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table gedung --}}
                                                     {{-- Sort the $Bidang_Khodim_Options array by the values (Jabatan Khodim) in ascending order --}}
                                                     @php
-                                                        $Sorted_Bidang_Khodim_Options = collect($Bidang_Khodim_Options)->sort()->all();
+                                                        $Sorted_Bidang_Khodim_Options = collect($Bidang_Khodim_Options)
+                                                            ->sort()
+                                                            ->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
                                                     @foreach ($Sorted_Bidang_Khodim_Options as $Kode_Bidang_Khodim => $Nama_Bidang_Khodim)
-                                                        <option value="{{ $Kode_Bidang_Khodim }}">
+                                                        <option value="{{ $Kode_Bidang_Khodim }}"
+                                                            {{ old('Jabatan_Khodim') == $Kode_Bidang_Khodim ? 'selected' : '' }}>
                                                             {{ $Nama_Bidang_Khodim }}
                                                         </option>
                                                     @endforeach
@@ -96,7 +99,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Khodim" class="form-label">Nama Khodim</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Khodim"
                                                     name="Nama_Khodim" value="{{ old('Nama_Khodim') }}">
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Nama_Khodim')
@@ -213,9 +216,15 @@
                                                 <select class="custom-select rounded-0" id="Status_Khodim"
                                                     name="Status_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Khodim') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Khodim') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Khodim') == 'Lainya' ? 'selected' : '' }}>Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
                                                 @error('Status_Khodim')

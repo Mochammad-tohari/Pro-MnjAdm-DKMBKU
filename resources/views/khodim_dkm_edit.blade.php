@@ -55,19 +55,15 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Kode Khodim</label>
-                                                <!-- tag php dan echo ?php disini utk membuat primary key secara otomatis menggunakan tanggal-->
-                                                <?php
-                                                $tgl = date('ymdGis');
-                                                ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="{{ $khodim_dkm_data->Kode_Khodim }}" id=""
+                                                    value="{{ $khodim_dkm_data->Kode_Khodim }}" id="Kode_Khodim"
                                                     name="Kode_Khodim" readonly>
                                                 <div name="" class="form-text">Tidak Bisa Diubah</div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Nama Divisi</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Jabatan_Khodim"
                                                     name="Jabatan_Khodim">
                                                     <option selected disabled value>--Pilih--</option>
                                                     {{-- memanggil variable $Bidang_Khodim_Options yang ada di ruangan controller
@@ -75,7 +71,9 @@
                                                     yang akan di tampilkan sebagai {{ $Nama_Bidang_Khodim }} di table Bidang_Khodim --}}
                                                     {{-- Sort the $Bidang_Khodim_Options array by the values (nama Bidang_Khodim) in ascending order --}}
                                                     @php
-                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)->sort()->all();
+                                                        $sortedBidang_Khodim_Options = collect($Bidang_Khodim_Options)
+                                                            ->sort()
+                                                            ->all();
                                                     @endphp
 
                                                     @foreach ($sortedBidang_Khodim_Options as $Jabatan_Khodim => $Nama_Bidang_Khodim)
@@ -91,113 +89,140 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="Nama_Khodim" class="form-label">Nama Khodim</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Nama_Khodim"
                                                     name="Nama_Khodim" value="{{ $khodim_dkm_data->Nama_Khodim }}">
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Kontak_Khodim" class="form-label">Kontak Khodim</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
+                                                <input type="text" class="form-control" placeholder="" id="Kontak_Khodim"
                                                     name="Kontak_Khodim" value="{{ $khodim_dkm_data->Kontak_Khodim }}">
                                             </div>
 
 
                                             <div class="form-group mb-3">
                                                 <label for="Alamat_Khodim" class="form-label">Alamat Khodim</label>
-                                                <textarea class="form-control" name="Alamat_Khodim">{{ $khodim_dkm_data->Alamat_Khodim }}</textarea>
+                                                <textarea class="form-control" name="Alamat_Khodim" id="Alamat_Khodim">{{ $khodim_dkm_data->Alamat_Khodim }}</textarea>
                                             </div>
+
 
                                             {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Foto_Khodim" class="form-label">Foto Khodim</label>
+                                                <label for="Foto_Khodim" class="form-label">Foto Profil</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Foto_Khodim"
-                                                        value="{{ $khodim_dkm_data->Foto_Khodim }}" name="Foto_Khodim">
-                                                    <label class="custom-file-label" for="exampleInputFile">Foto
-                                                        Khodim</label>
-                                                </div>
-                                                <div name="" class="form-text">Kosongkan jika tidak ada foto baru
+                                                        name="Foto_Khodim">
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Profil</label>
+                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada Foto Baru
+                                                    </div>
                                                 </div>
                                                 <!-- Image preview -->
                                                 <div id="Preview_Foto_Khodim" class="mt-3">
-                                                    <img id="muat_Foto_Khodim" src="#" alt=""
-                                                        style="max-width: 150px; max-height: 150px;">
+                                                    @if ($khodim_dkm_data->Foto_Khodim)
+                                                        <img id="Muat_Foto_Khodim"
+                                                            src="{{ asset('Data_Khodim/Foto_Khodim/' . $khodim_dkm_data->Foto_Khodim) }}"
+                                                            alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Foto_Khodim" name="" class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
+                                                    @else
+                                                        <img id="Muat_Foto_Khodim" src="#" alt=""
+                                                            style="max-width: 150px; max-height: 150px; display: none;">
+                                                    @endif
+
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_Khodim').on('change', function() {
-                                                    // Get the file name
-                                                    var fileName = $(this).val();
-                                                    // Remove "C:\fakepath\" from the file path
-                                                    fileName = fileName.replace("C:\\fakepath\\", "");
-                                                    // Replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
+                                                $(document).ready(function() {
+                                                    // Check if there's a file selected
+                                                    $('#Foto_Khodim').on('change', function() {
+                                                        // Get the file name
+                                                        var fileName = $(this).val();
+                                                        // Remove "C:\fakepath\" from the file path
+                                                        fileName = fileName.replace("C:\\fakepath\\", "");
+                                                        // Replace the "Choose a file" label
+                                                        $(this).next('.custom-file-label').html(fileName);
 
-                                                    // Image preview
-                                                    if (this.files && this.files[0]) {
-                                                        var reader = new FileReader();
-                                                        reader.onload = function(e) {
-                                                            $('#muat_Foto_Khodim').attr('src', e.target.result);
+                                                        // Image preview
+                                                        if (this.files && this.files[0]) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(e) {
+                                                                $('#Muat_Foto_Khodim').attr('src', e.target.result).show();
+                                                            }
+                                                            reader.readAsDataURL(this.files[0]);
+                                                            $('#Preview_Foto_Khodim').show(); // Show the image preview container
                                                         }
-                                                        reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_Khodim').show(); // Show the image preview container
-                                                    }
+                                                    });
                                                 });
                                             </script>
                                             {{-- akhir syntax edit gambar --}}
+
 
                                             {{-- syntax edit gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Identitas_Khodim" class="form-label">Identitas Khodim
-                                                    (KTP/SIM)</label>
+                                                <label for="Identitas_Khodim" class="form-label">Foto Profil</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="Identitas_Khodim"
-                                                        value="{{ $khodim_dkm_data->Identitas_Khodim }}"
                                                         name="Identitas_Khodim">
-                                                    <label class="custom-file-label" for="exampleInputFile">Identitas
-                                                        Khodim</label>
+                                                    <label class="custom-file-label" for="exampleInputFile">Pilih Foto
+                                                        Profil</label>
+                                                    <div name="" class="form-text">Kosongkan Jika Tidak Ada Foto
+                                                        Baru
+                                                    </div>
                                                 </div>
-                                                <div name="" class="form-text">
-                                                    Kosongkan jika tidak ada foto baru</div>
-                                            </div>
-                                            <!-- Image preview -->
-                                            <div id="Preview_Identitas_Khodim" class="mt-3">
-                                                <img id="muat_Identitas_Khodim" src="#" alt=""
-                                                    style="max-width: 150px; max-height: 150px;">
+                                                <!-- Image preview -->
+                                                <div id="Preview_Identitas_Khodim" class="mt-3">
+                                                    @if ($khodim_dkm_data->Identitas_Khodim)
+                                                        <img id="Muat_Identitas_Khodim"
+                                                            src="{{ asset('Data_Khodim/Identitas_Khodim/' . $khodim_dkm_data->Identitas_Khodim) }}"
+                                                            alt="" style="max-width: 150px; max-height: 150px;">
+                                                        <label for="Muat_Identitas_Khodim" name=""
+                                                            class="form-text">(Data
+                                                            Foto Sebelumnya)</label>
+                                                    @else
+                                                        <img id="Muat_Identitas_Khodim" src="#" alt=""
+                                                            style="max-width: 150px; max-height: 150px; display: none;">
+                                                    @endif
+
+                                                </div>
                                             </div>
 
                                             <script>
-                                                $('#Identitas_Khodim').on('change', function() {
-                                                    // Get the file name
-                                                    var fileName = $(this).val();
-                                                    // Remove "C:\fakepath\" from the file path
-                                                    fileName = fileName.replace("C:\\fakepath\\", "");
-                                                    // Replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
+                                                $(document).ready(function() {
+                                                    // Check if there's a file selected
+                                                    $('#Identitas_Khodim').on('change', function() {
+                                                        // Get the file name
+                                                        var fileName = $(this).val();
+                                                        // Remove "C:\fakepath\" from the file path
+                                                        fileName = fileName.replace("C:\\fakepath\\", "");
+                                                        // Replace the "Choose a file" label
+                                                        $(this).next('.custom-file-label').html(fileName);
 
-                                                    // Image preview
-                                                    if (this.files && this.files[0]) {
-                                                        var reader = new FileReader();
-                                                        reader.onload = function(e) {
-                                                            $('#muat_Identitas_Khodim').attr('src', e.target.result);
+                                                        // Image preview
+                                                        if (this.files && this.files[0]) {
+                                                            var reader = new FileReader();
+                                                            reader.onload = function(e) {
+                                                                $('#Muat_Identitas_Khodim').attr('src', e.target.result).show();
+                                                            }
+                                                            reader.readAsDataURL(this.files[0]);
+                                                            $('#Preview_Identitas_Khodim').show(); // Show the image preview container
                                                         }
-                                                        reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Identitas_Khodim').show(); // Show the image preview container
-                                                    }
+                                                    });
                                                 });
                                             </script>
                                             {{-- akhir syntax edit gambar --}}
+
 
                                             <div class="form-group mb-3">
                                                 <label for="Keterangan_Khodim" class="form-label">Keterangan
                                                     Khodim</label>
-                                                <textarea class="form-control" name="Keterangan_Khodim">{{ $khodim_dkm_data->Keterangan_Khodim }}</textarea>
+                                                <textarea class="form-control" name="Keterangan_Khodim" id="Keterangan_Khodim">{{ $khodim_dkm_data->Keterangan_Khodim }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="Status_Khodim">Status Khodim</label>
-                                                <select class="custom-select rounded-0" id=""
+                                                <select class="custom-select rounded-0" id="Status_Khodim"
                                                     name="Status_Khodim">
                                                     <option selected disabled value>{{ $khodim_dkm_data->Status_Khodim }}
                                                     </option>

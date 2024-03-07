@@ -1,6 +1,7 @@
 /* background image */
 
-.card-khodim-dkm {
+.khodim-dkm-card {
+    position: fixed;
     background-image: url("../name_tag/khodim_name_tag.jpg");
     background-size: cover;
     width: 100mm;
@@ -12,46 +13,44 @@
 }
 
 .card-body {
+    position: fixed;
     /* Make the card body transparent so that the background image of the card is visible through it */
     background-color: transparent;
 }
 
 /* content */
 
-.Foto_Khodim {
-    /* Adjust the top and bottom margins to move the div up or down */
-    position: fixed;
-    margin-top: -95px; /* Increase this value to move the div down */
-    margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 134px; /* Increase this value to move the div to the right */
-    margin-right: 0px; /* Increase this value to move the div to the left */
-
-    /* Float the .Foto1 div to the left */
-    float: left;
-
-    /* You can also use text-align to control the positioning of the image within the div */
-    text-align: center; /* This will center the image horizontally within the div */
-}
-
 .Foto_Khodim img {
+    position: fixed;
     /* Apply styles to the image if needed */
     width: 110px;
     /* Additional styles for the image */
+
+    margin-top: 33px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 108px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
 }
 
-#name_tag th {
-    text-align: center; /* Center the header "Nama" */
-    font-size: 16px; /* Set the font size for the header */
-    font-weight: bold; /* Make the header bold */
-    padding: 50px 0; /* Add padding to the header cell (top and bottom) */
+#khodim_dkm_table {
+    margin-top: 150px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 0px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#Nama_Khodim th {
     color: #1705b0;
 }
 
-#name_tag {
-    position: fixed;
-    margin-top: -10px; /* Increase this value to move the div down */
-    margin-bottom: 50px; /* Increase this value to move the div up */
-    margin-left: 100px; /* Increase this value to move the div to the right */
-    margin-right: 5px; /* Increase this value to move the div to the left */
+#Kode_Khodim {
     color: #2e2e2e;
+}
+
+#button_download {
+    position: fixed;
+    margin-top: 550px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 160px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
 }

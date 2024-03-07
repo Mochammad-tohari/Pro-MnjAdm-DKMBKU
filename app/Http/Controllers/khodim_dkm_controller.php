@@ -179,6 +179,8 @@ class khodim_dkm_controller extends Controller
         return redirect()->route('khodim_dkm_index')->with('success_edit', 'Data Berhasil Diubah');
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function khodim_dkm_export_pdf()
     {
         $khodim_dkm_data = khodim_dkm_model::orderBy('Nama_Khodim', 'asc')->get();
@@ -187,6 +189,8 @@ class khodim_dkm_controller extends Controller
         $khodim_dkm_pdf = PDF::loadview('khodim_dkm_export-pdf');
         return $khodim_dkm_pdf->download('data_khodim_dkm.pdf');
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function show($kode_khodim)
     {

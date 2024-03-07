@@ -62,7 +62,17 @@
                 <tr>
 
                     <td>{{ $nomor++ }}</td>
-                    <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}</th>
+
+
+                    {{-- memanggil dan mengecek kesediaan data kode_gedung
+                                        yang ditampilkan oleh nama Nama_Bidang dari table gedung --}}
+                    @if ($row->ambil_kode_gedung)
+                        <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}
+                        </th>
+                    @else
+                        <th scope="row">Gedung Tidak Diketahui</th>
+                    @endif
+
                     <th scope="row">{{ $row->Kode_Ruangan }}</th>
                     <td>{{ $row->Nama_Ruangan }}</td>
                     <td>{{ $row->Luas_Ruangan }}</td>

@@ -65,7 +65,16 @@
                     <td>{{ $nomor++ }}</td>
 
                     <th scope="row">{{ $row->Kode_Khodim }}</th>
-                    <td>{{ $row->ambil_kode_bidang_khodim->Nama_Bidang_Khodim }}</td>
+
+                    {{-- memanggil dan mengecek kesediaan data kode_uji_bidang
+                                        yang ditampilkan oleh nama Nama_Bidang dari table uji_bidang --}}
+                    @if ($row->ambil_kode_bidang_khodim)
+                        <th scope="row">{{ $row->ambil_kode_bidang_khodim->Nama_Bidang_Khodim }}
+                        </th>
+                    @else
+                        <th scope="row">Jabatan Tidak Diketahui</th>
+                    @endif
+
                     <td>{{ $row->Nama_Khodim }}</td>
                     <td>{{ $row->Kontak_Khodim }}</td>
                     <td>{{ $row->Alamat_Khodim }}</td>

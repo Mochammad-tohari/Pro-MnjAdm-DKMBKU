@@ -35,7 +35,8 @@
                         konten yang dibatasi
                     @endif --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/bidang_pengurus_create">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/bidang_pengurus_dkm_create">Tambah
+                            Data</button>
                         </a>
                     @endif
 

@@ -60,20 +60,20 @@ class bidang_pengurus_dkm_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function bidang_pengurus_create()
+    public function bidang_pengurus_dkm_create()
     {
 
-        return view('bidang_pengurus_create');
+        return view('bidang_pengurus_dkm_create');
 
     }
 
 
-    public function bidang_pengurus_insert(Request $request)
+    public function bidang_pengurus_dkm_insert(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'Nama_Bidang_Pengurus' => 'required',
-            'Status_Bidang_Pengurus' => 'required',
+            'Nama_Bidang_Pengurus_DKM' => 'required',
+            'Status_Bidang_Pengurus_DKM' => 'required',
         ]);
 
         if ($validator->passes()) {
@@ -81,19 +81,19 @@ class bidang_pengurus_dkm_controller extends Controller
             //dd($request->all());
 
             // Create a new instance of bidang_pengurus
-            $bidang_pengurus_data = new bidang_pengurus_model();
+            $bidang_pengurus_dkm_data = new bidang_pengurus_dkm_model();
             //pengisian model table dengan pengecualian 'updated_by'
-            $bidang_pengurus_data->fill($request->except('updated_by'));
+            $bidang_pengurus_dkm_data->fill($request->except('updated_by'));
 
             // mengatur updated email utk menghindari isi otomatis di fungsi insert
-            $bidang_pengurus_data->updated_by = null;
+            $bidang_pengurus_dkm_data->updated_by = null;
 
 
-            $bidang_pengurus_data = bidang_pengurus_model::create($request->all());
+            $bidang_pengurus_dkm_data = bidang_pengurus_dkm_model::create($request->all());
 
-            $bidang_pengurus_data->save();
+            $bidang_pengurus_dkm_data->save();
 
-            return redirect()->route('bidang_pengurus_index')->with('success', 'Data Berhasil Dimasukan');
+            return redirect()->route('bidang_pengurus_dkm_index')->with('success', 'Data Berhasil Dimasukan');
 
         } else {
 
@@ -104,6 +104,8 @@ class bidang_pengurus_dkm_controller extends Controller
 
 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function bidang_pengurus_edit($id_bidang_pengurus)
     {

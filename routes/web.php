@@ -383,13 +383,13 @@ Route::middleware(['role:Admin'])->group(function () {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //tabel bidang_pengurus
+    //tabel bidang_pengurus_dkm
     //insert data
-    Route::get('/bidang_pengurus_create', [bidang_pengurus_controller::class, 'bidang_pengurus_create'])->name('bidang_pengurus_create');
-    Route::post('/bidang_pengurus_insert', [bidang_pengurus_controller::class, 'bidang_pengurus_insert'])->name('bidang_pengurus_insert');
+    Route::get('/bidang_pengurus_dkm_create', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_dkm_create'])->name('bidang_pengurus_dkm_create');
+    Route::post('/bidang_pengurus_dkm_insert', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_dkm_insert'])->name('bidang_pengurus_dkm_insert');
     //edit data
-    Route::get('/bidang_pengurus_edit/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_edit'])->name('bidang_pengurus_edit');
-    Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');
+    Route::get('/bidang_pengurus_edit/{id_bidang_pengurus}', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_edit'])->name('bidang_pengurus_edit');
+    Route::post('/bidang_pengurus_update/{id_bidang_pengurus}', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_update'])->name('bidang_pengurus_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

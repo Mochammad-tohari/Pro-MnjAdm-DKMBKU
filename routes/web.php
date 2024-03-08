@@ -49,10 +49,10 @@ use App\Http\Controllers\khodim_dkm_controller;
 //memanggil file khodim_dkm_model yg ada di folder Models
 use App\Models\khodim_dkm_model;
 
-//memanggil file bidang_pengurus_controller yg ada di folder Controllers
-use App\Http\Controllers\bidang_pengurus_controller;
-//memanggil file bidang_pengurus_model yg ada di folder Models
-use App\Models\bidang_pengurus_model;
+//memanggil file bidang_pengurus_dkm_controller yg ada di folder Controllers
+use App\Http\Controllers\bidang_pengurus_dkm_controller;
+//memanggil file bidang_pengurus_dkm_model yg ada di folder Models
+use App\Models\bidang_pengurus_dkm_model;
 
 
 //memanggil file pengurus_dkm_controller yg ada di folder Controllers
@@ -209,11 +209,11 @@ Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodi
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//tabel bidang pengurus
+//tabel bidang_pengurus_dkm
 //tampildata
-Route::get('/bidang_pengurus_data', [bidang_pengurus_controller::class, 'bidang_pengurus_index'])->name('bidang_pengurus_index')->middleware('auth');
+Route::get('/bidang_pengurus_dkm_data', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_dkm_index'])->name('bidang_pengurus_dkm_index')->middleware('auth');
 //export PDF
-Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
+Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

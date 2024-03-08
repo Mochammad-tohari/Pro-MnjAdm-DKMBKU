@@ -169,11 +169,11 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="/bidang_pengurus_data"
-                                        class="nav-link{{ Request::is('bidang_pengurus_data') ? ' active' : '' }}">
+                                    <a href="/bidang_pengurus_dkm_data"
+                                        class="nav-link{{ Request::is('bidang_pengurus_dkm_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
-                                            Data Bidang Pengurus
+                                            Data Bidang Pengurus DKM
                                         </p>
                                     </a>
                                 </li>

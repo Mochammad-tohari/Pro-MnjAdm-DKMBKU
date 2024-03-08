@@ -9,12 +9,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Bidang Pengurus</h1>
+                        <h1 class="m-0">Data Bidang Pengurus DKM</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Bidang Pengurus</li>
+                            <li class="breadcrumb-item active"><a href="/bidang_pengurus_dkm_data">Data Bidang Pengurus</a>
+                            </li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,7 +25,7 @@
         <div class="col-auto">
             <div class="card col-auto">
                 <div class="card-header col-auto">
-                    <h3 class="card-title text-center">Daftar Data Bidang Pengurus</h3>
+                    <h3 class="card-title text-center">Daftar Data Bidang Pengurus DKM</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body col-auto">
@@ -42,7 +43,7 @@
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/bidang_pengurus_data" method="GET">
+                            <form action="/bidang_pengurus_dkm_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -60,12 +61,6 @@
                                 <a href="/bidang_pengurus_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
-
-                        {{-- <div class="col-auto">
-            <form action="/data_uji" method="GET">
-              <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
-            </form>
-          </div> --}}
 
                         {{-- css utk design table  --}}
                         <style>
@@ -128,15 +123,16 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($bidang_pengurus_data as $bidang_pengurus_index => $row)
+                                        @foreach ($bidang_pengurus_dkm_data as $bidang_pengurus_dkm_index => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $bidang_pengurus_index + $bidang_pengurus_data->firstItem() }}</td>
+                                        <td>{{ $bidang_pengurus_dkm_index + $bidang_pengurus_dkm_data->firstItem() }}
+                                        </td>
 
-                                        <th scope="row">{{ $row->Kode_Bidang_Pengurus }}</th>
-                                        <td>{{ $row->Nama_Bidang_Pengurus }}</td>
-                                        <td>{{ $row->Keterangan_Bidang_Pengurus }}</td>
-                                        <td>{{ $row->Status_Bidang_Pengurus }}</td>
+                                        <th scope="row">{{ $row->Kode_Bidang_Pengurus_DKM }}</th>
+                                        <td>{{ $row->Nama_Bidang_Pengurus_DKM }}</td>
+                                        <td>{{ $row->Keterangan_Bidang_Pengurus_DKM }}</td>
+                                        <td>{{ $row->Status_Bidang_Pengurus_DKM }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -148,11 +144,10 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/bidang_pengurus_edit/{{ $row->id_bidang_pengurus }}"
+                                                <a href="/bidang_pengurus_dkm_edit/{{ $row->id_bidang_pengurus_dkm }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
-                                            {{-- <a href="/#/{{$row->id_bidang_pengurus}}" target="_blank" class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
-                                            {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
+
                                         </td>
 
                                     </tr>
@@ -167,7 +162,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $bidang_pengurus_data->links() }}
+                        {{ $bidang_pengurus_dkm_data->links() }}
                     </div>
                 </div>
             </div>
@@ -191,33 +186,6 @@
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-            <!-- memberi fungsi delete dengan sweet alert -->
-            <script>
-                $('.delete').click(function() {
-
-                    var ujiid = $(this).attr('data-id');
-                    var ujikode = $(this).attr('data-kode');
-                    var ujinama = $(this).attr('data-nama');
-
-                    swal({
-                            title: "Apakah anda yakin ?",
-                            text: "Data yang akan dihapus kode " + ujikode + " Nama " + ujinama + "  ",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                window.location = "/delete_data_uji/" + ujiid + ""
-                                swal("Data berhasil dihapus", {
-                                    icon: "success_delete",
-                                });
-                            } else {
-                                swal("Data tidak dihapus");
-                            }
-                        });
-                })
-            </script>
 
             <!-- syntax pemberitahuan bahwa data telah dimasukan -->
             <script>

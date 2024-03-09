@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <title>Data Bidang Pengurus</title>
+    <title>Data Bidang Pengurus DKM</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -58,8 +58,8 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/bidang_pengurus_data" method="GET">
-                                <a href="/bidang_pengurus_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+                            <form action="/bidang_pengurus_dkm_data" method="GET">
+                                <a href="/bidang_pengurus_dkm_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 

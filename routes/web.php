@@ -213,7 +213,7 @@ Route::get('/khodim_dkm_view/{id_khodim}', [khodim_dkm_controller::class, 'khodi
 //tampildata
 Route::get('/bidang_pengurus_dkm_data', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_dkm_index'])->name('bidang_pengurus_dkm_index')->middleware('auth');
 //export PDF
-Route::get('/bidang_pengurus_export_pdf', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_export_pdf'])->name('bidang_pengurus_export_pdf')->middleware('auth');
+Route::get('/bidang_pengurus_dkm_export_pdf', [bidang_pengurus_dkm_controller::class, 'bidang_pengurus_dkm_export_pdf'])->name('bidang_pengurus_dkm_export_pdf')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

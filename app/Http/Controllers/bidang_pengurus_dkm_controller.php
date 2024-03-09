@@ -136,13 +136,13 @@ class bidang_pengurus_dkm_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function bidang_pengurus_export_pdf()
+    public function bidang_pengurus_dkm_export_pdf()
     {
-        $bidang_pengurus_data = bidang_pengurus_model::orderBy('Nama_Bidang_Pengurus', 'asc')->get();
+        $bidang_pengurus_dkm_data = bidang_pengurus_dkm_model::orderBy('Nama_Bidang_Pengurus_DKM', 'asc')->get();
 
-        view()->share('bidang_pengurus_data', $bidang_pengurus_data);
-        $bidang_pengurus_pdf = PDF::loadview('bidang_pengurus_export-pdf');
-        return $bidang_pengurus_pdf->download('data_bidang_pengurus.pdf');
+        view()->share('bidang_pengurus_dkm_data', $bidang_pengurus_dkm_data);
+        $bidang_pengurus_dkm_pdf = PDF::loadview('bidang_pengurus_dkm_export-pdf');
+        return $bidang_pengurus_dkm_pdf->download('data_bidang_pengurus_dkm.pdf');
 
 
     }

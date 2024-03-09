@@ -107,32 +107,34 @@ class bidang_pengurus_dkm_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function bidang_pengurus_edit($id_bidang_pengurus)
+    public function bidang_pengurus_dkm_edit($id_bidang_pengurus_dkm)
     {
 
-        $bidang_pengurus_data = bidang_pengurus_model::find($id_bidang_pengurus);
+        $bidang_pengurus_dkm_data = bidang_pengurus_dkm_model::find($id_bidang_pengurus_dkm);
 
-        return view('bidang_pengurus_edit', compact('bidang_pengurus_data'));
+        return view('bidang_pengurus_dkm_edit', compact('bidang_pengurus_dkm_data'));
     }
 
 
-    public function bidang_pengurus_update(Request $request, $id_bidang_pengurus)
+    public function bidang_pengurus_dkm_update(Request $request, $id_bidang_pengurus_dkm)
     {
 
-        $bidang_pengurus_data = bidang_pengurus_model::findOrFail($id_bidang_pengurus); // Assuming you have the ID of the row you want to update
+        $bidang_pengurus_dkm_data = bidang_pengurus_dkm_model::findOrFail($id_bidang_pengurus_dkm); // Assuming you have the ID of the row you want to update
 
-        $bidang_pengurus_data->update($request->all());
+        $bidang_pengurus_dkm_data->update($request->all());
 
-        $bidang_pengurus_data->save();
+        $bidang_pengurus_dkm_data->save();
 
         if (session('page_url')) {
             return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
         }
 
-        return redirect()->route('bidang_pengurus_index')->with('success_edit', 'Data Berhasil Diubah');
+        return redirect()->route('bidang_pengurus_dkm_index')->with('success_edit', 'Data Berhasil Diubah');
 
 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function bidang_pengurus_export_pdf()
     {

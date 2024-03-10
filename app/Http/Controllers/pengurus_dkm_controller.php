@@ -10,23 +10,14 @@ use Illuminate\Support\Facades\Validator;
 //import Model "pengurus_dkm_model" dari folder models
 use App\Models\pengurus_dkm_model;
 
-//import Model "bidang_pengurus_model" dari folder models
-use App\Models\bidang_pengurus_model;
+//import Model "bidang_pengurus_dkm_model" dari folder models
+use App\Models\bidang_pengurus_dkm_model;
 
 //return type View
 use Illuminate\View\View;
 
 //import method export PDF
 use PDF;
-
-// //import method export Excel
-// use App\Exports\export_excel_uji;
-
-// //import method export Excel di folder Exports
-// use App\Imports\uji_excel_import;
-
-// //import method import Excel di folder Imports
-// use Maatwebsite\Excel\Facades\Excel;
 
 //import class Session
 use Illuminate\Support\Facades\Session;
@@ -73,14 +64,16 @@ class pengurus_dkm_controller extends Controller
         return view('pengurus_dkm_data', compact('pengurus_dkm_data'));
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public function pengurus_dkm_create()
     {
 
         // $bidang_pengurus_option
-        // bidang_pengurus_model::pluck('Nama_bidang_pengurus', 'Kode_bidang_pengurus'); = mengambil nama bidang_pengurus berdasarkan kode bidang_pengurus yang ada di table bidang_pengurus
+        // bidang_pengurus_dkm_model::pluck('Nama_bidang_pengurus', 'Kode_bidang_pengurus'); = mengambil nama bidang_pengurus berdasarkan kode bidang_pengurus yang ada di table bidang_pengurus
 
-        $Bidang_Pengurus_Options = bidang_pengurus_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
+        $Bidang_Pengurus_Options = bidang_pengurus_dkm_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
         return view('pengurus_dkm_create', compact('Bidang_Pengurus_Options'));
     }
 
@@ -112,14 +105,14 @@ class pengurus_dkm_controller extends Controller
             // Check if 'Foto_Pengurus' file is present in the request
             if ($request->hasFile('Foto_Pengurus')) {
                 $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus')->getClientOriginalName();
-                $request->file('Foto_Pengurus')->move(public_path('Data_Pengurus/Foto_Pengurus'), $filename1);
+                $request->file('Foto_Pengurus')->move(public_path('Data_Pengurus_DKM/Foto_Pengurus'), $filename1);
                 $pengurus_dkm_data->Foto_Pengurus = $filename1;
             }
 
             // Check if 'Identitas_Pengurus' file is present in the request
             if ($request->hasFile('Identitas_Pengurus')) {
                 $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus')->getClientOriginalName();
-                $request->file('Identitas_Pengurus')->move(public_path('Data_Pengurus/Identitas_Pengurus'), $filename2);
+                $request->file('Identitas_Pengurus')->move(public_path('Data_Pengurus_DKM/Identitas_Pengurus'), $filename2);
                 $pengurus_dkm_data->Identitas_Pengurus = $filename2;
             }
 
@@ -143,10 +136,10 @@ class pengurus_dkm_controller extends Controller
         //dd($id_pengurus);
 
         // $bidang_pengurus_option
-        // bidang_pengurus_model::pluck('Nama_bidang_Pengurus', 'Kode_bidang_Pengurus'); = mengambil nama bidang_Pengurus berdasarkan kode bidang_Pengurus yang ada di table bidang_Pengurus
+        // bidang_pengurus_dkm_model::pluck('Nama_bidang_Pengurus', 'Kode_bidang_Pengurus'); = mengambil nama bidang_Pengurus berdasarkan kode bidang_Pengurus yang ada di table bidang_Pengurus
         $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus);
 
-        $Bidang_Pengurus_Options = bidang_pengurus_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
+        $Bidang_Pengurus_Options = bidang_pengurus_dkm_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
 
         return view('pengurus_dkm_edit', compact('pengurus_dkm_data', 'Bidang_Pengurus_Options'));
     }

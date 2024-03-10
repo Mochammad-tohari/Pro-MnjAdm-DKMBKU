@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-//import Model "bidang_pengurus_model" dari folder models
-use App\Models\bidang_pengurus_model;
+//import Model "bidang_pengurus_dkm_model" dari folder models
+use App\Models\bidang_pengurus_dkm_model;
 
 // import class uuid
 use Illuminate\Support\Str;
@@ -28,7 +28,7 @@ class pengurus_dkm_model extends Model
     */
     public function ambil_kode_bidang_pengurus()
     {
-        return $this->belongsTo(bidang_pengurus_model::class, 'Jabatan_Pengurus', 'Kode_Bidang_Pengurus');
+        return $this->belongsTo(bidang_pengurus_dkm_model::class, 'Jabatan_Pengurus', 'Kode_Bidang_Pengurus');
     }
 
     /*$primaryKey = menegaskan field primary key adalah "id"

@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Pengurus DKM</li>
+                            <li class="breadcrumb-item active"><a href="/pengurus_dkm_data">Data Pengurus DKM</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -154,7 +154,7 @@
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>
                                                 @if ($row->Foto_Pengurus)
-                                                    <img src="{{ asset('Data_Pengurus/Foto_Pengurus/' . $row->Foto_Pengurus) }}"
+                                                    <img src="{{ asset('Data_Pengurus_DKM/Foto_Pengurus/' . $row->Foto_Pengurus) }}"
                                                         alt="Foto_Pengurus" style="width: 40px;">
                                                 @endif
                                             </td>
@@ -162,7 +162,7 @@
 
                                             <td>
                                                 @if ($row->Identitas_Pengurus)
-                                                    <img src="{{ asset('Data_Pengurus/Identitas_Pengurus/' . $row->Identitas_Pengurus) }}"
+                                                    <img src="{{ asset('Data_Pengurus_DKM/Identitas_Pengurus/' . $row->Identitas_Pengurus) }}"
                                                         alt="Identitas_Pengurus" style="width: 40px;">
                                                 @endif
                                             </td>

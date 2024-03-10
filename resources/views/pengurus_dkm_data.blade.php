@@ -102,16 +102,16 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Kode Pengurus</th>
-                                        <th scope="col">NIP Pengurus</th>
-                                        <th scope="col">Jabatan Pengurus</th>
-                                        <th scope="col">Nama Pengurus</th>
-                                        <th scope="col">Kontak Pengurus</th>
-                                        <th scope="col">Alamat Pengurus</th>
-                                        <th scope="col">Foto Pengurus</th>
-                                        <th scope="col">Identitas Pengurus</th>
-                                        <th scope="col">Keterangan Pengurus</th>
-                                        <th scope="col">Status Pengurus</th>
+                                        <th scope="col">Kode Pengurus DKM</th>
+                                        <th scope="col">NIP Pengurus DKM</th>
+                                        <th scope="col">Jabatan Pengurus DKM</th>
+                                        <th scope="col">Nama Pengurus DKM</th>
+                                        <th scope="col">Kontak Pengurus DKM</th>
+                                        <th scope="col">Alamat Pengurus DKM</th>
+                                        <th scope="col">Foto Pengurus DKM</th>
+                                        <th scope="col">Identitas Pengurus DKM</th>
+                                        <th scope="col">Keterangan Pengurus DKM</th>
+                                        <th scope="col">Status Pengurus DKM</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
@@ -132,44 +132,45 @@
                                         <td>{{ $pengurus_dkm_index + $pengurus_dkm_data->firstItem() }}</td>
 
 
-                                        <th scope="row">{{ $row->Kode_Pengurus }}</th>
-                                        <td>{{ $row->NIP_Pengurus }}</td>
+                                        <th scope="row">{{ $row->Kode_Pengurus_DKM }}</th>
+                                        <td>{{ $row->NIP_Pengurus_DKM }}</td>
 
 
                                         {{-- memanggil dan mengecek kesediaan data kode_bidang_pengurus
                                         yang ditampilkan oleh nama bidang_pengurus dari table bidang_pengurus --}}
                                         @if ($row->ambil_kode_bidang_pengurus)
-                                            <th scope="row">{{ $row->ambil_kode_bidang_pengurus->Nama_Bidang_Pengurus }}
+                                            <th scope="row">
+                                                {{ $row->ambil_kode_bidang_pengurus->Nama_Bidang_Pengurus_DKM }}
                                             </th>
                                         @else
                                             <th scope="row">Jabatan Tidak Diketahui</th>
                                         @endif
 
 
-                                        <td>{{ $row->Nama_Pengurus }}</td>
-                                        <td>{{ $row->Kontak_Pengurus }}</td>
-                                        <td>{{ $row->Alamat_Pengurus }}</td>
+                                        <td>{{ $row->Nama_Pengurus_DKM }}</td>
+                                        <td>{{ $row->Kontak_Pengurus_DKM }}</td>
+                                        <td>{{ $row->Alamat_Pengurus_DKM }}</td>
 
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>
-                                                @if ($row->Foto_Pengurus)
-                                                    <img src="{{ asset('Data_Pengurus_DKM/Foto_Pengurus/' . $row->Foto_Pengurus) }}"
-                                                        alt="Foto_Pengurus" style="width: 40px;">
+                                                @if ($row->Foto_Pengurus_DKM)
+                                                    <img src="{{ asset('Data_Pengurus_DKM/Foto_Pengurus_DKM/' . $row->Foto_Pengurus_DKM) }}"
+                                                        alt="Foto_Pengurus_DKM" style="width: 40px;">
                                                 @endif
                                             </td>
 
 
                                             <td>
-                                                @if ($row->Identitas_Pengurus)
-                                                    <img src="{{ asset('Data_Pengurus_DKM/Identitas_Pengurus/' . $row->Identitas_Pengurus) }}"
-                                                        alt="Identitas_Pengurus" style="width: 40px;">
+                                                @if ($row->Identitas_Pengurus_DKM)
+                                                    <img src="{{ asset('Data_Pengurus_DKM/Identitas_Pengurus_DKM/' . $row->Identitas_Pengurus_DKM) }}"
+                                                        alt="Identitas_Pengurus_DKM" style="width: 40px;">
                                                 @endif
                                             </td>
                                         @endif
 
-                                        <td>{{ $row->Keterangan_Pengurus }}</td>
-                                        <td>{{ $row->Status_Pengurus }}</td>
+                                        <td>{{ $row->Keterangan_Pengurus_DKM }}</td>
+                                        <td>{{ $row->Status_Pengurus_DKM }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -181,10 +182,10 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/pengurus_dkm_edit/{{ $row->id_pengurus }}"
+                                                <a href="/pengurus_dkm_edit/{{ $row->id_pengurus_dkm }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i>Edit</a>
                                             @endif
-                                            <a href="/pengurus_dkm_view/{{ $row->id_pengurus }}" target="_blank"
+                                            <a href="/pengurus_dkm_view/{{ $row->id_pengurus_dkm }}" target="_blank"
                                                 class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
                                             {{-- <a href="#" class="btn btn-danger btn-sm delete mt-2" data-id="{{$row->id}}" data-kode="{{$row->Kode}}" data-nama="{{$row->Nama}}"><i class="fas fa-trash-alt"></i>Hapus</a> --}}
                                         </td>

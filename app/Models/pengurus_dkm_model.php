@@ -28,13 +28,13 @@ class pengurus_dkm_model extends Model
     */
     public function ambil_kode_bidang_pengurus()
     {
-        return $this->belongsTo(bidang_pengurus_dkm_model::class, 'Jabatan_Pengurus', 'Kode_Bidang_Pengurus');
+        return $this->belongsTo(bidang_pengurus_dkm_model::class, 'Jabatan_Pengurus_DKM', 'Kode_Bidang_Pengurus_DKM');
     }
 
-    /*$primaryKey = menegaskan field primary key adalah "id"
+    /*$primaryKey = menegaskan field primary key adalah "id_pengurus_dkm"
     $incrementing = mendisable auto increment
     */
-    protected $primaryKey = 'id_pengurus';
+    protected $primaryKey = 'id_pengurus_dkm';
     public $incrementing = false;
 
 
@@ -44,7 +44,7 @@ class pengurus_dkm_model extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->id_pengurus = Str::uuid(); // Generates a UUID
+            $model->id_pengurus_dkm = Str::uuid(); // Generates a UUID
         });
     }
 

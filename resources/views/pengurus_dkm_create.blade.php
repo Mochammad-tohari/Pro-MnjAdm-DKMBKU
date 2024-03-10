@@ -59,98 +59,105 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="PRS<?php echo $tgl; ?>" id="" name="Kode_Pengurus"
-                                                    readonly>
+                                                    value="PRDKM-<?php echo $tgl; ?>" id="Kode_Pengurus_DKM"
+                                                    name="Kode_Pengurus_DKM" readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="NIP_Pengurus" class="form-label">NIP Pengurus</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="NIP_Pengurus" value="{{ old('NIP_Pengurus') }}">
+                                                <label for="NIP_Pengurus_DKM" class="form-label">NIP Pengurus</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="NIP_Pengurus_DKM" name="NIP_Pengurus_DKM"
+                                                    value="{{ old('NIP_Pengurus_DKM') }}">
                                                 <div name="" class="form-text">Jika tidak ada NIP boleh dikosongkan
                                                 </div>
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="id" class="form-label">Jabatan Pengurus</label>
-                                                <select class="custom-select rounded-0" id="Jabatan_Pengurus"
-                                                    name="Jabatan_Pengurus">
+                                                <select class="custom-select rounded-0" id="Jabatan_Pengurus_DKM"
+                                                    name="Jabatan_Pengurus_DKM">
                                                     <option selected disabled value>--Pilih--</option>
                                                     {{-- memanggil variable $Bidang_Pengurus_Options yang ada di ruangan controller
-                                                    mendefinisikan sebagai variable $Kode_Bidang_Pengurus
-                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Pengurus }} di table gedung --}}
+                                                    mendefinisikan sebagai variable $Kode_Bidang_Pengurus_DKM
+                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Pengurus_DKM }} di table gedung --}}
                                                     {{-- Sort the $Bidang_Pengurus_Options array by the values (Jabatan Pengurus) in ascending order --}}
                                                     @php
-                                                        $Sorted_Bidang_Pengurus_Options = collect($Bidang_Pengurus_Options)->sort()->all();
+                                                        $Sorted_Bidang_Pengurus_Options = collect(
+                                                            $Bidang_Pengurus_Options,
+                                                        )
+                                                            ->sort()
+                                                            ->all();
                                                     @endphp
                                                     {{-- Loop through the sorted array --}}
-                                                    @foreach ($Sorted_Bidang_Pengurus_Options as $Kode_Bidang_Pengurus => $Nama_Bidang_Pengurus)
-                                                        <option value="{{ $Kode_Bidang_Pengurus }}">
-                                                            {{ $Nama_Bidang_Pengurus }}
+                                                    @foreach ($Sorted_Bidang_Pengurus_Options as $Kode_Bidang_Pengurus_DKM => $Nama_Bidang_Pengurus_DKM)
+                                                        <option value="{{ $Kode_Bidang_Pengurus_DKM }}"
+                                                            {{ old('Jabatan_Pengurus_DKM') == $Kode_Bidang_Pengurus_DKM ? 'selected' : '' }}>
+                                                            {{ $Nama_Bidang_Pengurus_DKM }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Jabatan_Pengurus')
+                                                @error('Jabatan_Pengurus_DKM')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
 
                                                 <div name="" class="form-text">
                                                     Pilih data yang sesuai, Jika tidak ada isi data ini <a
-                                                        href="/bidang_pengurus_create">Bidang Pengurus</a>
+                                                        href="/bidang_pengurus_dkm_create">Bidang Pengurus DKM</a>
                                                 </div>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="Nama_Pengurus" class="form-label">Nama Pengurus</label>
-                                                <input type="text" class="form-control" placeholder="" id=""
-                                                    name="Nama_Pengurus" value="{{ old('Nama_Pengurus') }}">
-                                                {{-- pemberitahuan validator --}}
-                                                @error('Nama_Pengurus')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label for="Kontak_Pengurus" class="form-label">Kontak Pengurus</label>
+                                                <label for="Nama_Pengurus_DKM" class="form-label">Nama Pengurus</label>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    id="Kontak_Pengurus" name="Kontak_Pengurus"
-                                                    value="{{ old('Kontak_Pengurus') }}">
+                                                    id="Nama_Pengurus_DKM" name="Nama_Pengurus_DKM"
+                                                    value="{{ old('Nama_Pengurus_DKM') }}">
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Kontak_Pengurus')
+                                                @error('Nama_Pengurus_DKM')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="Kontak_Pengurus_DKM" class="form-label">Kontak Pengurus</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Kontak_Pengurus_DKM" name="Kontak_Pengurus_DKM"
+                                                    value="{{ old('Kontak_Pengurus_DKM') }}">
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Kontak_Pengurus_DKM')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
 
                                             <div class="form-group mb-3">
-                                                <label for="Alamat_Pengurus" class="form-label">Alamat Pengurus</label>
-                                                <textarea class="form-control" name="Alamat_Pengurus" id="Alamat_Pengurus">{{ old('Alamat_Pengurus') }}</textarea>
+                                                <label for="Alamat_Pengurus_DKM" class="form-label">Alamat Pengurus</label>
+                                                <textarea class="form-control" name="Alamat_Pengurus_DKM" id="Alamat_Pengurus_DKM">{{ old('Alamat_Pengurus_DKM') }}</textarea>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Alamat_Pengurus')
+                                                @error('Alamat_Pengurus_DKM')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
                                             {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Foto_Pengurus" class="form-label">Foto Pengurus</label>
+                                                <label for="Foto_Pengurus_DKM" class="form-label">Foto Pengurus</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="Foto_Pengurus"
-                                                        name="Foto_Pengurus">
+                                                    <input type="file" class="custom-file-input" id="Foto_Pengurus_DKM"
+                                                        name="Foto_Pengurus_DKM">
                                                     <label class="custom-file-label" for="exampleInputFile">Pilih Foto
                                                         Pengurus</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_Foto_Pengurus" class="mt-3">
-                                                    <img id="Muat_Foto_Pengurus" src="#" alt=""
+                                                <div id="Preview_Foto_Pengurus_DKM" class="mt-3">
+                                                    <img id="Muat_Foto_Pengurus_DKM" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Foto_Pengurus').on('change', function() {
+                                                $('#Foto_Pengurus_DKM').on('change', function() {
                                                     // Get the file name
                                                     var fileName = $(this).val();
                                                     // Remove "C:\fakepath\" from the file path
@@ -162,10 +169,10 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#Muat_Foto_Pengurus').attr('src', e.target.result);
+                                                            $('#Muat_Foto_Pengurus_DKM').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Foto_Pengurus').show(); // Show the image preview container
+                                                        $('#Preview_Foto_Pengurus_DKM').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
@@ -174,23 +181,24 @@
 
                                             {{-- syntax input gambar --}}
                                             <div class="form-group mb-3">
-                                                <label for="Identitas_Pengurus" class="form-label">Foto Identitas (KTP/SIM)
+                                                <label for="Identitas_Pengurus_DKM" class="form-label">Foto Identitas
+                                                    (KTP/SIM)
                                                 </label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input"
-                                                        id="Identitas_Pengurus" name="Identitas_Pengurus">
+                                                        id="Identitas_Pengurus_DKM" name="Identitas_Pengurus_DKM">
                                                     <label class="custom-file-label" for="exampleInputFile">Pilih Foto
                                                         Identitas</label>
                                                 </div>
                                                 <!-- Image preview -->
-                                                <div id="Preview_Identitas_Pengurus" class="mt-3">
-                                                    <img id="Muat_Identitas_Pengurus" src="#" alt=""
+                                                <div id="Preview_Identitas_Pengurus_DKM" class="mt-3">
+                                                    <img id="Muat_Identitas_Pengurus_DKM" src="#" alt=""
                                                         style="max-width: 150px; max-height: 150px;">
                                                 </div>
                                             </div>
 
                                             <script>
-                                                $('#Identitas_Pengurus').on('change', function() {
+                                                $('#Identitas_Pengurus_DKM').on('change', function() {
                                                     // Get the file name
                                                     var fileName = $(this).val();
                                                     // Remove "C:\fakepath\" from the file path
@@ -202,32 +210,39 @@
                                                     if (this.files && this.files[0]) {
                                                         var reader = new FileReader();
                                                         reader.onload = function(e) {
-                                                            $('#Muat_Identitas_Pengurus').attr('src', e.target.result);
+                                                            $('#Muat_Identitas_Pengurus_DKM').attr('src', e.target.result);
                                                         }
                                                         reader.readAsDataURL(this.files[0]);
-                                                        $('#Preview_Identitas_Pengurus').show(); // Show the image preview container
+                                                        $('#Preview_Identitas_Pengurus_DKM').show(); // Show the image preview container
                                                     }
                                                 });
                                             </script>
                                             {{-- akhir syntax input gambar --}}
 
                                             <div class="form-group mb-3">
-                                                <label for="Keterangan_Pengurus" class="form-label">Keterangan
+                                                <label for="Keterangan_Pengurus_DKM" class="form-label">Keterangan
                                                     Pengurus</label>
-                                                <textarea class="form-control" name="Keterangan_Pengurus" id="Keterangan_Pengurus">{{ old('Keterangan_Pengurus') }}</textarea>
+                                                <textarea class="form-control" name="Keterangan_Pengurus_DKM" id="Keterangan_Pengurus_DKM">{{ old('Keterangan_Pengurus_DKM') }}</textarea>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="Status_Pengurus">Status Pengurus</label>
-                                                <select class="custom-select rounded-0" id="Status_Pengurus"
-                                                    name="Status_Pengurus">
+                                                <label for="Status_Pengurus_DKM">Status Pengurus</label>
+                                                <select class="custom-select rounded-0" id="Status_Pengurus_DKM"
+                                                    name="Status_Pengurus_DKM">
                                                     <option selected disabled value>--Pilih--</option>
-                                                    <option value="Aktif">Aktif</option>
-                                                    <option value="Tidak_Aktif">Tidak_Aktif</option>
-                                                    <option value="Lainya">Lainya</option>
+                                                    <option value="Aktif"
+                                                        {{ old('Status_Pengurus_DKM') == 'Aktif' ? 'selected' : '' }}>Aktif
+                                                    </option>
+                                                    <option value="Tidak_Aktif"
+                                                        {{ old('Status_Pengurus_DKM') == 'Tidak_Aktif' ? 'selected' : '' }}>
+                                                        Tidak Aktif</option>
+                                                    <option value="Lainya"
+                                                        {{ old('Status_Pengurus_DKM') == 'Lainya' ? 'selected' : '' }}>
+                                                        Lainya
+                                                    </option>
                                                 </select>
                                                 {{-- pemberitahuan validator --}}
-                                                @error('Status_Pengurus')
+                                                @error('Status_Pengurus_DKM')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>

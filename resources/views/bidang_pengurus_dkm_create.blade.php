@@ -59,7 +59,7 @@
                                                 $tgl = date('ymdGis');
                                                 ?>
                                                 <input type="text" class="form-control" placeholder=""
-                                                    value="BDPS-<?php echo $tgl; ?>" id="Kode_Bidang_Pengurus_DKM"
+                                                    value="BDKM-<?php echo $tgl; ?>" id="Kode_Bidang_Pengurus_DKM"
                                                     name="Kode_Bidang_Pengurus_DKM" readonly>
                                                 <div name="" class="form-text">Otomatis Terisi</div>
                                             </div>

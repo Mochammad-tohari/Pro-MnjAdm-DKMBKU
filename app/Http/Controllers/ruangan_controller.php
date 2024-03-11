@@ -83,7 +83,7 @@ class ruangan_controller extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'Gedung_Kode' => 'required',
+            // 'Gedung_Kode' => 'required',
             'Nama_Ruangan' => 'required',
             'Luas_Ruangan' => 'required',
             'Tanggal_Operasional_Ruangan' => 'required',

@@ -112,7 +112,7 @@ class uji_user_controller extends Controller
          *
          */
         $validator = Validator::make($request->all(), [
-            'Jabatan_Uji_User' => 'required',
+            // 'Jabatan_Uji_User' => 'required',
             'Nama_Uji_User' => 'required',
             'Password_Uji_User' => 'required|min:5',
             'Tanggal_Uji_User' => 'required',

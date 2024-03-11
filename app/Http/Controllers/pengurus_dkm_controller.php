@@ -79,7 +79,7 @@ class pengurus_dkm_controller extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'Jabatan_Pengurus_DKM' => 'required',
+            // 'Jabatan_Pengurus_DKM' => 'required',
             'Nama_Pengurus_DKM' => 'required',
             'Kontak_Pengurus_DKM' => 'required',
             'Alamat_Pengurus_DKM' => 'required',

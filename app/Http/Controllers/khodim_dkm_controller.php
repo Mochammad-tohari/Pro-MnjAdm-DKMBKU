@@ -80,7 +80,7 @@ class khodim_dkm_controller extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'Jabatan_Khodim' => 'required',
+            // 'Jabatan_Khodim' => 'required',
             'Nama_Khodim' => 'required',
             'Kontak_Khodim' => 'required',
             'Alamat_Khodim' => 'required',

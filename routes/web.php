@@ -220,6 +220,8 @@ Route::get('/bidang_pengurus_dkm_export_pdf', [bidang_pengurus_dkm_controller::c
 //tabel pengurus dkm
 //tampildata
 Route::get('/pengurus_dkm_data', [pengurus_dkm_controller::class, 'pengurus_dkm_index'])->name('pengurus_dkm_index')->middleware('auth');
+//export PDF
+Route::get('/pengurus_dkm_export_pdf', [pengurus_dkm_controller::class, 'pengurus_dkm_export_pdf'])->name('pengurus_dkm_export_pdf')->middleware('auth');
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

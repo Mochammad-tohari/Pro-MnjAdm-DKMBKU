@@ -398,8 +398,8 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::get('/pengurus_dkm_create', [pengurus_dkm_controller::class, 'pengurus_dkm_create'])->name('pengurus_dkm_create');
     Route::post('/pengurus_dkm_insert', [pengurus_dkm_controller::class, 'pengurus_dkm_insert'])->name('pengurus_dkm_insert');
     //edit data
-    Route::get('/pengurus_dkm_edit/{id_pengurus}', [pengurus_dkm_controller::class, 'pengurus_dkm_edit'])->name('pengurus_dkm_edit');
-    Route::post('/pengurus_dkm_update/{id_pengurus}', [pengurus_dkm_controller::class, 'pengurus_dkm_update'])->name('pengurus_dkm_update');
+    Route::get('/pengurus_dkm_edit/{id_pengurus_dkm}', [pengurus_dkm_controller::class, 'pengurus_dkm_edit'])->name('pengurus_dkm_edit');
+    Route::post('/pengurus_dkm_update/{id_pengurus_dkm}', [pengurus_dkm_controller::class, 'pengurus_dkm_update'])->name('pengurus_dkm_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

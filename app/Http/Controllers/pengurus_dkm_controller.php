@@ -129,15 +129,17 @@ class pengurus_dkm_controller extends Controller
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function pengurus_dkm_edit($id_pengurus_dkm)
     {
         //dd($id_pengurus_dkm);
 
         // $bidang_pengurus_option
-        // bidang_pengurus_dkm_model::pluck('Nama_bidang_Pengurus', 'Kode_bidang_Pengurus'); = mengambil nama bidang_Pengurus berdasarkan kode bidang_Pengurus yang ada di table bidang_Pengurus
-        $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus_dkm);
 
-        $Bidang_Pengurus_Options = bidang_pengurus_dkm_model::pluck('Nama_Bidang_Pengurus', 'Kode_Bidang_Pengurus');
+        $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus_dkm);
+        // bidang_pengurus_dkm_model::pluck('Nama_Bidang_Pengurus_DKM', 'Kode_Bidang_Pengurus_DKM'); = mengambil nama bidang_Pengurus berdasarkan kode bidang_Pengurus yang ada di table bidang_Pengurus
+        $Bidang_Pengurus_Options = bidang_pengurus_dkm_model::pluck('Nama_Bidang_Pengurus_DKM', 'Kode_Bidang_Pengurus_DKM');
 
         return view('pengurus_dkm_edit', compact('pengurus_dkm_data', 'Bidang_Pengurus_Options'));
     }
@@ -145,23 +147,24 @@ class pengurus_dkm_controller extends Controller
     public function pengurus_dkm_update(Request $request, $id_pengurus_dkm)
     {
         $pengurus_dkm_data = pengurus_dkm_model::findOrFail($id_pengurus_dkm);
-        $pengurus_dkm_data->Jabatan_Pengurus = $request->input('Jabatan_Pengurus');
+
+        $pengurus_dkm_data->Jabatan_Pengurus_DKM = $request->input('Jabatan_Pengurus_DKM');
 
         // Update the data with new values from the request
         $pengurus_dkm_data->fill($request->all());
 
         $pengurus_dkm_data->update($request->all());
 
-        if ($request->hasFile('Foto_Pengurus')) {
-            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus')->getClientOriginalName();
-            $request->file('Foto_Pengurus')->move(public_path('Data_Pengurus/Foto_Pengurus'), $filename1);
-            $pengurus_dkm_data->Foto_Pengurus = $filename1;
+        if ($request->hasFile('Foto_Pengurus_DKM')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus_DKM')->getClientOriginalName();
+            $request->file('Foto_Pengurus_DKM')->move(public_path('Data_Pengurus_DKM/Foto_Pengurus_DKM'), $filename1);
+            $pengurus_dkm_data->Foto_Pengurus_DKM = $filename1;
         }
 
-        if ($request->hasFile('Identitas_Pengurus')) {
-            $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus')->getClientOriginalName();
-            $request->file('Identitas_Pengurus')->move(public_path('Data_Pengurus/Identitas_Pengurus'), $filename2);
-            $pengurus_dkm_data->Identitas_Pengurus = $filename2;
+        if ($request->hasFile('Identitas_Pengurus_DKM')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus_DKM')->getClientOriginalName();
+            $request->file('Identitas_Pengurus_DKM')->move(public_path('Data_Pengurus_DKM/Identitas_Pengurus_DKM'), $filename2);
+            $pengurus_dkm_data->Identitas_Pengurus_DKM = $filename2;
         }
 
         $pengurus_dkm_data->save();
@@ -174,5 +177,7 @@ class pengurus_dkm_controller extends Controller
 
         return redirect()->route('pengurus_dkm_index')->with('success_edit', 'Data Berhasil Diubah');
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

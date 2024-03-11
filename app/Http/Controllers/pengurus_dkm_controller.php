@@ -195,4 +195,29 @@ class pengurus_dkm_controller extends Controller
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function show($kode_pengurus_dkm)
+    {
+        $pengurus_dkm_data = pengurus_dkm_model::where('Kode_Pengurus_DKM', $kode_pengurus_dkm)->first();
+
+        if ($pengurus_dkm_data) {
+            return view('pengurus_dkm.show', ['pengurus_dkm_data' => $pengurus_dkm_data]);
+        } else {
+            return redirect()->route('pengurus_dkm_index')->with('error', 'Data not found.');
+        }
+    }
+
+    // untuk lihat data uji berfungsi untuk melihat 1 data
+    public function pengurus_dkm_view($id_pengurus_dkm)
+    {
+
+        /**
+         * menampilkan halaman pengurus_dkm_view.blade.php
+         * mencari data berdasarkan id_pengurus_dkm
+         */
+        $pengurus_dkm_data = pengurus_dkm_model::find($id_pengurus_dkm);
+        return view('pengurus_dkm_view', compact('pengurus_dkm_data'));
+    }
+
 }

@@ -2,7 +2,7 @@
 
 .pengurus-dkm-card {
     position: fixed;
-    background-image: url("../name_tag/khodim_name_tag.jpg");
+    background-image: url("../name_tag/pengurus_dkm_name_tag.jpg");
     background-size: cover;
     width: 100mm;
     height: 150mm;
@@ -26,16 +26,16 @@
     width: 110px;
     /* Additional styles for the image */
 
-    margin-top: 33px; /* Increase this value to move the div down */
+    margin-top: 38px; /* Increase this value to move the div down */
     margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 108px; /* Increase this value to move the div to the right */
+    margin-left: 122px; /* Increase this value to move the div to the right */
     margin-right: 0px; /* Increase this value to move the div to the left */
 }
 
 #pengurus_dkm_table {
     margin-top: 150px; /* Increase this value to move the div down */
     margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 0px; /* Increase this value to move the div to the right */
+    margin-left: 10px; /* Increase this value to move the div to the right */
     margin-right: 0px; /* Increase this value to move the div to the left */
 }
 

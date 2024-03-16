@@ -133,4 +133,17 @@ class bidang_nawa_controller extends Controller
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function bidang_nawa_export_pdf()
+    {
+        $bidang_nawa_data = bidang_nawa_model::orderBy('Nama_Bidang_Nawa', 'asc')->get();
+
+        view()->share('bidang_nawa_data', $bidang_nawa_data);
+        $bidang_nawa_pdf = PDF::loadview('bidang_nawa_export-pdf');
+        return $bidang_nawa_pdf->download('data_bidang_nawa.pdf');
+
+
+    }
+
 }

@@ -119,6 +119,16 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
+                                    <a href="/bidang_nawa_data"
+                                        class="nav-link{{ Request::is('bidang_nawa_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Bidang NAWA
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a href="/gedung_data"
                                         class="nav-link{{ Request::is('gedung_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>

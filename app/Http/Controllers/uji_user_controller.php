@@ -85,7 +85,11 @@ class uji_user_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //create dan insert data
+    /**
+     *  create dan insert data
+     *  uji_user_create() berfungsi untuk menampilkan halaman uji_user_create.blade.php
+     *
+     * */
     public function uji_user_create()
     {
 
@@ -102,6 +106,11 @@ class uji_user_controller extends Controller
         return view('uji_user_create', compact('Uji_Bidang_Options'));
     }
 
+
+    /**
+     *  uji_user_insert() berfungsi sebagai perintah atau fungsi menyimpan data kedalam tabel didalam database
+     *
+     * */
     public function uji_user_insert(Request $request)
     {
 
@@ -194,7 +203,11 @@ class uji_user_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //fungsi edit dan update
+    /**
+     *  fungsi edit dan update
+     *  uji_user_edit() berfungsi untuk menampilkan halaman uji_user_edit.blade.php
+     *
+     * */
     public function uji_user_edit($id_uji_user)
     {
         /**
@@ -224,7 +237,10 @@ class uji_user_controller extends Controller
         return view('uji_user_edit', compact('uji_user_data', 'Uji_Bidang_Options'));
     }
 
-
+    /**
+     *  uji_user_update() berfungsi sebagai perintah atau fungsi dalam pengubahan data di dalam database
+     *
+     * */
     public function uji_user_update(Request $request, $id_uji_user)
     {
         /**

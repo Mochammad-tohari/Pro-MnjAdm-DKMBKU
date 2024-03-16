@@ -60,4 +60,49 @@ class bidang_nawa_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function bidang_nawa_create()
+    {
+
+        return view('bidang_nawa_create');
+
+    }
+
+
+    public function bidang_nawa_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Nama_Bidang_Nawa' => 'required',
+            'Status_Bidang_Nawa' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            //dd($request->all());
+
+            // Create a new instance of bidang_nawa
+            $bidang_nawa_data = new bidang_nawa_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $bidang_nawa_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $bidang_nawa_data->updated_by = null;
+
+
+            $bidang_nawa_data = bidang_nawa_model::create($request->all());
+
+            $bidang_nawa_data->save();
+
+            return redirect()->route('bidang_nawa_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

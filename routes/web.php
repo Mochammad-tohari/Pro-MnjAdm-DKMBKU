@@ -422,6 +422,9 @@ Route::middleware(['role:Admin'])->group(function () {
     //insert data
     Route::get('/bidang_nawa_create', [bidang_nawa_controller::class, 'bidang_nawa_create'])->name('bidang_nawa_create');
     Route::post('/bidang_nawa_insert', [bidang_nawa_controller::class, 'bidang_nawa_insert'])->name('bidang_nawa_insert');
+    //edit data
+    Route::get('/bidang_nawa_edit/{id_bidang_nawa}', [bidang_nawa_controller::class, 'bidang_nawa_edit'])->name('bidang_nawa_edit');
+    Route::post('/bidang_nawa_update/{id_bidang_nawa}', [bidang_nawa_controller::class, 'bidang_nawa_update'])->name('bidang_nawa_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });

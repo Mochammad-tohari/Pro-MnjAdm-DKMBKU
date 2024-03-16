@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <a href="/register" class="btn btn-primary btn-block">Daftar</a>
+                        <a href="/register" class="btn btn-outline-info btn-block">Daftar</a>
                     </div>
                     <!-- /.col -->
             </div>

@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <a href="/login" class="btn btn-primary btn-block">Masuk</a>
+                        <a href="/login" class="btn btn-outline-info btn-block">← Kembali</a>
                     </div>
 
                     <!-- /.col -->

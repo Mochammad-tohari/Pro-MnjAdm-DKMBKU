@@ -105,4 +105,32 @@ class bidang_nawa_controller extends Controller
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function bidang_nawa_edit($id_bidang_nawa)
+    {
+
+        $bidang_nawa_data = bidang_nawa_model::find($id_bidang_nawa);
+
+        return view('bidang_nawa_edit', compact('bidang_nawa_data'));
+    }
+
+
+    public function bidang_nawa_update(Request $request, $id_bidang_nawa)
+    {
+
+        $bidang_nawa_data = bidang_nawa_model::findOrFail($id_bidang_nawa); // Assuming you have the ID of the row you want to update
+
+        $bidang_nawa_data->update($request->all());
+
+        $bidang_nawa_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('bidang_nawa_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
 }

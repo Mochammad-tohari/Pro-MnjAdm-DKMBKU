@@ -445,6 +445,17 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::post('/bidang_nawa_update/{id_bidang_nawa}', [bidang_nawa_controller::class, 'bidang_nawa_update'])->name('bidang_nawa_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //tabel pengurus_nawa
+    //insert data
+    Route::get('/pengurus_nawa_create', [pengurus_nawa_controller::class, 'pengurus_nawa_create'])->name('pengurus_nawa_create');
+    Route::post('/pengurus_nawa_insert', [pengurus_nawa_controller::class, 'pengurus_nawa_insert'])->name('pengurus_nawa_insert');
+    //edit data
+    Route::get('/pengurus_nawa_edit/{id_pengurus_nawa}', [pengurus_nawa_controller::class, 'pengurus_nawa_edit'])->name('pengurus_nawa_edit');
+    Route::post('/pengurus_nawa_update/{id_pengurus_nawa}', [pengurus_nawa_controller::class, 'pengurus_nawa_update'])->name('pengurus_nawa_update');
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 });
 
 

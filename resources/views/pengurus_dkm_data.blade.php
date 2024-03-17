@@ -133,8 +133,14 @@
 
 
                                         <th scope="row">{{ $row->Kode_Pengurus_DKM }}</th>
-                                        <td>{{ $row->NIP_Pengurus_DKM }}</td>
 
+                                        @if ($row->NIP_Pengurus_DKM)
+                                            <th scope="row">
+                                                {{ $row->NIP_Pengurus_DKM }}
+                                            </th>
+                                        @else
+                                            <td scope="row">Tidak Memiliki NIP</td>
+                                        @endif
 
                                         {{-- memanggil dan mengecek kesediaan data kode_bidang_pengurus
                                         yang ditampilkan oleh nama bidang_pengurus dari table bidang_pengurus --}}
@@ -143,7 +149,7 @@
                                                 {{ $row->ambil_kode_bidang_pengurus->Nama_Bidang_Pengurus_DKM }}
                                             </th>
                                         @else
-                                            <th scope="row">Jabatan Tidak Diketahui</th>
+                                            <td scope="row">Jabatan Tidak Diketahui</td>
                                         @endif
 
 

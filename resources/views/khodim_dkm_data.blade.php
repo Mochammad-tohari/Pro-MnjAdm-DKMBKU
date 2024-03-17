@@ -136,7 +136,7 @@
                                         @if ($row->ambil_kode_bidang_khodim)
                                             <th scope="row">{{ $row->ambil_kode_bidang_khodim->Nama_Bidang_Khodim }}</th>
                                         @else
-                                            <th scope="row">Divisi Tidak Diketahui</th>
+                                            <td scope="row">Divisi Tidak Diketahui</td>
                                         @endif
 
                                         <td>{{ $row->Nama_Khodim }}</td>

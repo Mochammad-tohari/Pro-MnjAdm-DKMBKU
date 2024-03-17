@@ -63,4 +63,72 @@ class pengurus_nawa_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // insert data
+    public function pengurus_nawa_create()
+    {
+
+        // $Bidang_Nawa_Options
+        // bidang_pengurus_nawa_model::pluck('Nama_Bidang_Nawa', 'Kode_Bidang_Nawa'); = mengambil nama bidang_nawa berdasarkan kode bidang yang ada di table bidang_nawa
+
+        $Bidang_Nawa_Options = bidang_nawa_model::pluck('Nama_Bidang_Nawa', 'Kode_Bidang_Nawa');
+        return view('pengurus_nawa_create', compact('Bidang_Nawa_Options'));
+    }
+
+    public function pengurus_nawa_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            // 'Jabatan_Pengurus_Nawa' => 'required',
+            'Nama_Pengurus_Nawa' => 'required',
+            'Kontak_Pengurus_Nawa' => 'required',
+            'Alamat_Pengurus_Nawa' => 'required',
+            'Status_Pengurus_Nawa' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            // Create a new instance of pengurus_nawa_model
+            $pengurus_nawa_data = new pengurus_nawa_model();
+
+            // Fill the model with form data (excluding updated_by)
+            $pengurus_nawa_data->fill($request->except(['updated_by']));
+
+            // Set the updated_by field to null initially
+            $pengurus_nawa_data->updated_by = null;
+
+            // Assign the input 'Jabatan_Pengurus_Nawa' value to the 'Jabatan_Pengurus_Nawa' property
+            $pengurus_nawa_data->Jabatan_Pengurus_Nawa = $request->input('Jabatan_Pengurus_Nawa');
+
+            // Check if 'Foto_Pengurus_Nawa' file is present in the request
+            if ($request->hasFile('Foto_Pengurus_Nawa')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus_Nawa')->getClientOriginalName();
+                $request->file('Foto_Pengurus_Nawa')->move(public_path('Data_Pengurus_Nawa/Foto_Pengurus_Nawa'), $filename1);
+                $pengurus_nawa_data->Foto_Pengurus_Nawa = $filename1;
+            }
+
+            // Check if 'Identitas_Pengurus_Nawa' file is present in the request
+            if ($request->hasFile('Identitas_Pengurus_Nawa')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus_Nawa')->getClientOriginalName();
+                $request->file('Identitas_Pengurus_Nawa')->move(public_path('Data_Pengurus_Nawa/Identitas_Pengurus_Nawa'), $filename2);
+                $pengurus_nawa_data->Identitas_Pengurus_Nawa = $filename2;
+            }
+
+            // Save the updated files
+            $pengurus_nawa_data->save();
+
+            return redirect()->route('pengurus_nawa_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 }

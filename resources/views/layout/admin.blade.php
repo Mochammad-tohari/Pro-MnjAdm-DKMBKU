@@ -123,7 +123,7 @@
                                         class="nav-link{{ Request::is('bidang_nawa_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
-                                            Data Bidang NAWA
+                                            Data Bidang Nawa
                                         </p>
                                     </a>
                                 </li>
@@ -133,7 +133,7 @@
                                         class="nav-link{{ Request::is('pengurus_nawa_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
-                                            Data Pengurus NAWA
+                                            Data Pengurus Nawa
                                         </p>
                                     </a>
                                 </li>

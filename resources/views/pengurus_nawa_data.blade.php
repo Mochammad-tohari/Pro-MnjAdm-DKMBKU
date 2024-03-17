@@ -133,8 +133,13 @@
 
 
                                         <th scope="row">{{ $row->Kode_Pengurus_Nawa }}</th>
-                                        <td>{{ $row->NIP_Pengurus_Nawa }}</td>
 
+
+                                        @if ($row->NIP_Pengurus_Nawa)
+                                            <th scope="row">{{ $row->NIP_Pengurus_Nawa }}</th>
+                                        @else
+                                            <td scope="row">Tidak Memiliki NIP</td>
+                                        @endif
 
                                         {{-- memanggil dan mengecek kesediaan data kode_bidang_nawa
                                         yang ditampilkan oleh nama bidang_nawa dari table bidang_nawa --}}
@@ -143,7 +148,7 @@
                                                 {{ $row->ambil_kode_bidang_nawa->Nama_Bidang_Nawa }}
                                             </th>
                                         @else
-                                            <th scope="row">Jabatan Tidak Diketahui</th>
+                                            <td scope="row">Jabatan Tidak Diketahui</td>
                                         @endif
 
 

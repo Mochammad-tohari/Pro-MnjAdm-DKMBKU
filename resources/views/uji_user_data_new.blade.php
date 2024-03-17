@@ -225,7 +225,7 @@ jadi segala tampilan yang masuk pada section ini akan ditamplkan sebagai bagian 
                                             <th scope="row">{{ $row->ambil_kode_uji_bidang->Nama_Bidang }}
                                             </th>
                                         @else
-                                            <th scope="row">Jabatan Tidak Diketahui</th>
+                                            <td scope="row">Jabatan Tidak Diketahui</td>
                                         @endif
 
                                         <td>{{ $row->Nama_Uji_User }}</td>

@@ -66,6 +66,11 @@ use App\Http\Controllers\bidang_nawa_controller;
 //memanggil file bidang_nawa_model yg ada di folder Models
 use App\Models\bidang_nawa_model;
 
+//memanggil file pengurus_nawa_controller yg ada di folder Controllers
+use App\Http\Controllers\pengurus_nawa_controller;
+//memanggil file pengurus_nawa_model yg ada di folder Models
+use App\Models\pengurus_nawa_model;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -237,6 +242,16 @@ Route::get('/pengurus_dkm_view/{id_pengurus_dkm}', [pengurus_dkm_controller::cla
 Route::get('/bidang_nawa_data', [bidang_nawa_controller::class, 'bidang_nawa_index'])->name('bidang_nawa_index')->middleware('auth');
 //export PDF
 Route::get('/bidang_nawa_export_pdf', [bidang_nawa_controller::class, 'bidang_nawa_export_pdf'])->name('bidang_nawa_export_pdf')->middleware('auth');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//tabel pengurus nawa
+//tampildata
+Route::get('/pengurus_nawa_data', [pengurus_nawa_controller::class, 'pengurus_nawa_index'])->name('pengurus_nawa_index')->middleware('auth');
+//export PDF
+Route::get('/pengurus_nawa_export_pdf', [pengurus_nawa_controller::class, 'pengurus_nawa_export_pdf'])->name('pengurus_nawa_export_pdf')->middleware('auth');
+//lihat 1 data
+Route::get('/pengurus_nawa_view/{id_pengurus_nawa}', [pengurus_nawa_controller::class, 'pengurus_nawa_view'])->name('pengurus_nawa_view')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

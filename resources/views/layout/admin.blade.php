@@ -129,6 +129,18 @@
                                 </li>
 
                                 <li class="nav-item">
+                                    <a href="/pengurus_nawa_data"
+                                        class="nav-link{{ Request::is('pengurus_nawa_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Pengurus NAWA
+                                        </p>
+                                    </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
                                     <a href="/gedung_data"
                                         class="nav-link{{ Request::is('gedung_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
@@ -148,6 +160,8 @@
                                     </a>
                                 </li>
 
+
+
                                 <li class="nav-item">
                                     <a href="/murid_madrasah_data"
                                         class="nav-link{{ Request::is('murid_madrasah_data') ? ' active' : '' }}">
@@ -157,6 +171,8 @@
                                         </p>
                                     </a>
                                 </li>
+
+
 
                                 <li class="nav-item">
                                     <a href="/bidang_khodim_data"
@@ -177,6 +193,8 @@
                                         </p>
                                     </a>
                                 </li>
+
+
 
                                 <li class="nav-item">
                                     <a href="/bidang_pengurus_dkm_data"
@@ -199,6 +217,7 @@
                                 </li>
 
 
+
                                 <li class="nav-item">
                                     <a href="/uji_bidang_data_new"
                                         class="nav-link{{ Request::is('uji_bidang_data_new') ? ' active' : '' }}">
@@ -218,6 +237,7 @@
                                         </p>
                                     </a>
                                 </li>
+
 
                                 {{--
                                 <li class="nav-item">

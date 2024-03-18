@@ -131,4 +131,57 @@ class pengurus_nawa_controller extends Controller
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    // edit data
+    public function pengurus_nawa_edit($id_pengurus_nawa)
+    {
+        //dd($id_pengurus_nawa);
+
+        // $bidang_pengurus_option
+
+        $pengurus_nawa_data = pengurus_nawa_model::findOrFail($id_pengurus_nawa);
+        // $Bidang_Nawa_Options
+        // bidang_pengurus_nawa_model::pluck('Nama_Bidang_Nawa', 'Kode_Bidang_Nawa'); = mengambil nama bidang_nawa berdasarkan kode bidang yang ada di table bidang_nawa
+
+        $Bidang_Nawa_Options = bidang_nawa_model::pluck('Nama_Bidang_Nawa', 'Kode_Bidang_Nawa');
+
+        return view('pengurus_nawa_edit', compact('pengurus_nawa_data', 'Bidang_Nawa_Options'));
+    }
+
+    public function pengurus_nawa_update(Request $request, $id_pengurus_nawa)
+    {
+        $pengurus_nawa_data = pengurus_nawa_model::findOrFail($id_pengurus_nawa);
+
+        $pengurus_nawa_data->Jabatan_Pengurus_Nawa = $request->input('Jabatan_Pengurus_Nawa');
+
+        // Update the data with new values from the request
+        $pengurus_nawa_data->fill($request->all());
+
+        $pengurus_nawa_data->update($request->all());
+
+        if ($request->hasFile('Foto_Pengurus_Nawa')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengurus_Nawa')->getClientOriginalName();
+            $request->file('Foto_Pengurus_Nawa')->move(public_path('Data_Pengurus_Nawa/Foto_Pengurus_Nawa'), $filename1);
+            $pengurus_nawa_data->Foto_Pengurus_Nawa = $filename1;
+        }
+
+        if ($request->hasFile('Identitas_Pengurus_Nawa')) {
+            $filename2 = date('Y-m-d') . '_' . $request->file('Identitas_Pengurus_Nawa')->getClientOriginalName();
+            $request->file('Identitas_Pengurus_Nawa')->move(public_path('Data_Pengurus_Nawa/Identitas_Pengurus_Nawa'), $filename2);
+            $pengurus_nawa_data->Identitas_Pengurus_Nawa = $filename2;
+        }
+
+        $pengurus_nawa_data->save();
+
+
+        // Redirect or return response as needed
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('pengurus_nawa_index')->with('success_edit', 'Data Berhasil Diubah');
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 }

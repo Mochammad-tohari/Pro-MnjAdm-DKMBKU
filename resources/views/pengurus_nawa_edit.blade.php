@@ -77,7 +77,7 @@
                                                     <option selected disabled value>--Pilih--</option>
                                                     {{-- memanggil variable $Bidang_Nawa_Options yang ada di ruangan controller
                                                     mendefinisikan sebagai variable $Kode_Bidang_Pengurus
-                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Pengurus_Nawa }} di table Bidang_Pengurus --}}
+                                                    yang akan di tampilkan sebagai {{ $Nama_Bidang_Nawa }} di table Bidang_Pengurus --}}
                                                     {{-- Sort the $Bidang_Nawa_Options array by the values (nama Bidang_Pengurus) in ascending order --}}
                                                     @php
                                                         $Sorted_Bidang_Nawa_Options = collect($Bidang_Nawa_Options)

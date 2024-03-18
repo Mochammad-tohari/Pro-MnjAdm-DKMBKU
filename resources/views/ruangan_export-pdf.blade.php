@@ -70,7 +70,7 @@
                         <th scope="row">{{ $row->ambil_kode_gedung->Nama_Gedung }}
                         </th>
                     @else
-                        <th scope="row">Gedung Tidak Diketahui</th>
+                        <td scope="row">Gedung Tidak Diketahui</td>
                     @endif
 
                     <th scope="row">{{ $row->Kode_Ruangan }}</th>

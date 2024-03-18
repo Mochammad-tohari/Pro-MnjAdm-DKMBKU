@@ -120,6 +120,17 @@
                                 margin-top: 20px;
                             }
 
+                            table.table-uji_bidang thead {
+                                /* Set the position to sticky */
+                                position: sticky;
+                                top: 0;
+                                /* Position the header at the top of the container */
+                                background-color: #0c613b;
+                                /* Background color of the header */
+                                color: #ffffff;
+                                /* Text color of the header */
+                            }
+
                             table.table-uji_bidang thead tr {
                                 background-color: #0c613b;
                                 /* Header background color */

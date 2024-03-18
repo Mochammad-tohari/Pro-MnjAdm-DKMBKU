@@ -145,6 +145,17 @@ jadi segala tampilan yang masuk pada section ini akan ditamplkan sebagai bagian 
                                 margin-top: 20px;
                             }
 
+                            table.table-uji_user thead {
+                                /* Set the position to sticky */
+                                position: sticky;
+                                top: 0;
+                                /* Position the header at the top of the container */
+                                background-color: #0c613b;
+                                /* Background color of the header */
+                                color: #ffffff;
+                                /* Text color of the header */
+                            }
+
                             table.table-uji_user thead tr {
                                 /* warna header */
                                 background-color: #0c613b;

@@ -199,6 +199,17 @@ Route::get('/murid_madrasah_export_pdf', [murid_madrasah_controller::class, 'mur
 //lihat 1 data
 Route::get('/murid_madrasah_view/{id_murid}', [murid_madrasah_controller::class, 'murid_madrasah_view'])->name('murid_madrasah_view')->middleware('auth');
 
+
+// insert data tanpa role (untuk umum)
+//insert data
+Route::get('/murid_madrasah_create_public', [murid_madrasah_controller::class, 'murid_madrasah_create_public'])->name('murid_madrasah_create_public');
+Route::post('/murid_madrasah_insert_public', [murid_madrasah_controller::class, 'murid_madrasah_insert_public'])->name('murid_madrasah_insert_public');
+//selesai daftar
+Route::get('/murid_madrasah_pendaftaran_selesai', [murid_madrasah_controller::class, 'pendaftaran_murid_selesai'])->name('pendaftaran_murid_selesai');
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel bidang khodim

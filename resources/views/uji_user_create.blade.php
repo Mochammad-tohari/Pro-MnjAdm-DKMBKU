@@ -1,5 +1,11 @@
+{{-- @extends('layout.admin')
+memasukan layout admin.php sebagai tampilan di halaman ini
+--}}
 @extends('layout.admin')
 
+{{-- @section('content')
+memasukan bagian tampilan content dari admin.php sebagai tampilan di halaman ini
+--}}
 @section('content')
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous">

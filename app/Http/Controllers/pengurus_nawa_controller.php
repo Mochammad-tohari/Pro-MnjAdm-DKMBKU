@@ -199,5 +199,16 @@ class pengurus_nawa_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // untuk lihat data uji berfungsi untuk melihat 1 data
+    public function pengurus_nawa_view($id_pengurus_nawa)
+    {
+
+        /**
+         * menampilkan halaman pengurus_nawa_view.blade.php
+         * mencari data berdasarkan id_pengurus_nawa
+         */
+        $pengurus_nawa_data = pengurus_nawa_model::find($id_pengurus_nawa);
+        return view('pengurus_nawa_view', compact('pengurus_nawa_data'));
+    }
 
 }

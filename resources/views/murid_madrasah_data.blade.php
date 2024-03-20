@@ -68,11 +68,15 @@
                                 margin-top: 20px;
                             }
 
-                            table.table-murid-madrasah thead tr {
-                                background-color: #196e3f;
-                                /* Header background color */
+                            table.table-murid-madrasah thead {
+                                /* Set the position to sticky */
+                                position: sticky;
+                                top: 0;
+                                /* Position the header at the top of the container */
+                                background-color: #0c613b;
+                                /* Background color of the header */
                                 color: #ffffff;
-                                /* Header text color */
+                                /* Text color of the header */
                             }
 
                             table.table-murid-madrasah tbody tr:nth-child(odd) {
@@ -109,6 +113,7 @@
                                         <th scope="col">Nama Ayah Murid</th>
                                         <th scope="col">Nama Ibu Murid</th>
                                         <th scope="col">Nama Wali Murid</th>
+                                        <th scope="col">Kontak Murid</th>
                                         <th scope="col">Alamat Murid</th>
 
                                         <th scope="col">Foto Murid</th>
@@ -148,6 +153,7 @@
                                         <td>{{ $row->Nama_Ayah_Murid }}</td>
                                         <td>{{ $row->Nama_Ibu_Murid }}</td>
                                         <td>{{ $row->Nama_Wali_Murid }}</td>
+                                        <td>{{ $row->Kontak_Murid }}</td>
                                         <td>{{ $row->Alamat_Murid }}</td>
 
 

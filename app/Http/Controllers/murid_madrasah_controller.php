@@ -81,6 +81,7 @@ class murid_madrasah_controller extends Controller
             'Tempat_Lahir_Murid' => 'required',
             'Tanggal_Lahir_Murid' => 'required',
             'Asal_Sekolah_Murid' => 'required',
+            'Kontak_Murid' => 'required',
             'Alamat_Murid' => 'required',
             'Tingkat_Murid' => 'required',
             'Status_Murid' => 'required',

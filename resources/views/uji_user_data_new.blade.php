@@ -156,14 +156,6 @@ jadi segala tampilan yang masuk pada section ini akan ditamplkan sebagai bagian 
                                 /* Text color of the header */
                             }
 
-                            table.table-uji_user thead tr {
-                                /* warna header */
-                                background-color: #0c613b;
-
-                                /* warna teks header */
-                                color: #ffffff;
-
-                            }
 
                             table.table-uji_user tbody tr:nth-child(odd) {
                                 /* memberi warna untuk baris ganjil */

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('Nama_Ayah_Murid')->nullable();
             $table->text('Nama_Ibu_Murid')->nullable();
             $table->text('Nama_Wali_Murid')->nullable();
+            $table->text('Kontak_Murid');
             $table->mediumText('Alamat_Murid');
             $table->binary('Foto_Murid')->nullable();
             $table->binary('Foto_Akta_Kelahiran_Murid')->nullable();

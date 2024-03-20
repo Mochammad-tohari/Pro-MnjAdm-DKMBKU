@@ -140,6 +140,18 @@ memasukan bagian tampilan content dari admin.php sebagai tampilan di halaman ini
                                             </div>
 
                                             <div class="form-group mb-3">
+                                                <label for="Kontak_Murid" class="form-label">Kontak Murid</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Kontak_Murid" name="Kontak_Murid"
+                                                    value="{{ old('Kontak_Murid') }}">
+                                                <div name="" class="form-text">Nomor Orang tua/wali murid</div>
+                                                {{-- pemberitahuan validator --}}
+                                                @error('Kontak_Murid')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group mb-3">
                                                 <label for="Alamat_Murid" class="form-label">Alamat Murid</label>
                                                 <textarea class="form-control" name="Alamat_Murid" id="Alamat_Murid">{{ old('Alamat_Murid') }}</textarea>
                                                 {{-- pemberitahuan validator --}}

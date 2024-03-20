@@ -115,6 +115,14 @@
                                             </div>
 
                                             <div class="form-group mb-3">
+                                                <label for="Kontak_Murid" class="form-label">Kontak Murid</label>
+                                                <input type="text" class="form-control" placeholder=""
+                                                    id="Kontak_Murid" value="{{ $murid_madrasah_data->Kontak_Murid }}"
+                                                    name="Kontak_Murid">
+                                                <div name="" class="form-text">Nomor Orang tua/wali murid</div>
+                                            </div>
+
+                                            <div class="form-group mb-3">
                                                 <label for="Alamat_Murid" class="form-label">Alamat Murid</label>
                                                 <textarea class="form-control" name="Alamat_Murid" id="Alamat_Murid">{{ $murid_madrasah_data->Alamat_Murid }}</textarea>
                                             </div>

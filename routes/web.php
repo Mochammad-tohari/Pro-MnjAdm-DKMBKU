@@ -215,8 +215,6 @@ Route::post('/murid_madrasah_insert_public', [murid_madrasah_controller::class, 
 Route::get('/murid_madrasah_pendaftaran_selesai', [murid_madrasah_controller::class, 'pendaftaran_murid_selesai'])->name('pendaftaran_murid_selesai');
 
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel bidang khodim

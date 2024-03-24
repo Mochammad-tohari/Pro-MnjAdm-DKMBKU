@@ -17,9 +17,15 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
+
                     <div class="card-header">
-                        <h3 class="card-title">Pendaftaran Uji User DKMBKU</h3>
+                        <div style="display: inline-flex; align-items: center;">
+                            <img src="{{ asset('box_info_image/Logo_Madrasah_DKMBKU.png') }}" style="width: 50px;"
+                                alt="Madrasah DKMBKU Logo">
+                            <h3 class="card-title" style="margin-left: 10px;">Pendaftaran Uji User</h3>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         <!-- crsf token berfungsi untuk membuat data di laravel -->
                         <form action="/uji_user_insert_public" method="POST" enctype="multipart/form-data">

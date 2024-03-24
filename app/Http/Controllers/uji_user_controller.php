@@ -527,13 +527,13 @@ class uji_user_controller extends Controller
             $uji_user_data->save();
 
             // After saving data, get the saved uji_user_data
-            $save_uji_user = uji_user_model::orderBy('created_at', 'desc')->first();
+            $uji_user_save = uji_user_model::orderBy('created_at', 'desc')->first();
 
             // After saving data, redirect to the registration complete page
             return redirect()->route('pendaftaran_uji_user_selesai')->with([
                 'success' => 'Data Berhasil Dimasukan',
-                'Kode_Uji_User' => $save_uji_user->Kode_Uji_User,
-                'Nama_Uji_User' => $save_uji_user->Nama_Uji_User
+                'Kode_Uji_User' => $uji_user_save->Kode_Uji_User,
+                'Nama_Uji_User' => $uji_user_save->Nama_Uji_User
             ]);
 
 

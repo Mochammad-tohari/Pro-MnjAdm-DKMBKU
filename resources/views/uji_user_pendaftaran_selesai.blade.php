@@ -20,9 +20,15 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card" id="uji-user-pendaftar">
-                    <div class="card-header row justify-content-center">
-                        <h3 class="card-title">Kartu Pendaftar</h3>
+
+                    <div class="card-header">
+                        <div style="display: inline-flex; align-items: center;">
+                            <img src="{{ asset('box_info_image/Logo_Madrasah_DKMBKU.png') }}" style="width: 50px;"
+                                alt="Madrasah DKMBKU Logo">
+                            <h3 class="card-title" style="margin-left: 10px;">Kartu Pendaftar</h3>
+                        </div>
                     </div>
+
                     <div class="card-Body">
                         <ul>
                             <li><strong>Kode Uji User :</strong> {{ $Kode_Uji_User }}</li>

@@ -273,13 +273,22 @@ class murid_madrasah_controller extends Controller
             $murid_madrasah_data->save();
 
             // After saving data, get the saved murid_madrasah_data
-            $savedMurid = murid_madrasah_model::orderBy('created_at', 'desc')->first();
+            $murid_madrasah_save = murid_madrasah_model::orderBy('created_at', 'desc')->first();
 
             // Redirect to the view with necessary variables
-            return view('Murid_Madrasah_Pendaftaran_Selesai', [
-                'Kode_Murid' => $savedMurid->Kode_Murid,
-                'Nama_Murid' => $savedMurid->Nama_Murid
+            return redirect()->route('pendaftaran_murid_selesai')->with([
+                'success' => 'Data Berhasil Dimasukan',
+                'Kode_Murid' => $murid_madrasah_save->Kode_Murid,
+                'Nama_Murid' => $murid_madrasah_save->Nama_Murid
             ]);
+        } else {
+
+            /**
+             * validasi belum terpenuhi maka akan dikirim ke halaman tambah data
+             * dengan mengisi kolom yang kurang
+             */
+            return redirect()->back()->withErrors($validator)->withInput();
+
         }
 
     }
@@ -288,11 +297,13 @@ class murid_madrasah_controller extends Controller
     {
         // Retrieve success message and data from the session
         $successMessage = $request->session()->get('success');
-        $kodeMurid = $request->session()->get('Kode_Murid');
-        $namaMurid = $request->session()->get('Nama_Murid');
+        $Kode_Murid = $request->session()->get('Kode_Murid');
+        $Nama_Murid = $request->session()->get('Nama_Murid');
 
         // Pass the success message and data to the view
-        return view('murid_madrasah_pendaftaran_selesai', compact('successMessage', 'kodeMurid', 'namaMurid'));
+        return view('murid_madrasah_pendaftaran_selesai', compact('successMessage', 'Kode_Murid', 'Nama_Murid'));
+
+
     }
 
 

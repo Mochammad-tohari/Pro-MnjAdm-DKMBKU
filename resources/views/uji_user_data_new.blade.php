@@ -36,9 +36,15 @@ jadi segala tampilan yang masuk pada section ini akan ditamplkan sebagai bagian 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
                         {{-- button di bawah berfungsi sebagai link ke laman tambah data --}}
-                        <a button type="button" class="btn btn-success" href="/uji_user_create">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/uji_user_create"
+                            style="margin-right: 10px;">Tambah Data</button>
                         </a>
                     @endif
+
+                    <a button type="button" class="btn btn-outline-info" href="/uji_user_create_public"
+                        target="_blank">Tambah Data
+                        (Umum)</button>
+                    </a>
 
                     {{-- {{ Session::get('page_url') }} --}}
 

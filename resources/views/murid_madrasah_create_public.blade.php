@@ -293,9 +293,6 @@
                                 <div class="card-footer mb-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <button type="reset" class="btn btn-warning ml-2">Reset</button>
-                                    <a href="/murid_madrasah_data" class="ml-2">
-                                        <button type="button" class="btn btn-danger">Batal</button>
-                                    </a>
                                 </div>
 
                             </form>

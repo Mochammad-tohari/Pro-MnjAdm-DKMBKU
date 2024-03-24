@@ -169,6 +169,13 @@ Route::get('/uji_user_view/{id_uji_user}', [uji_user_controller::class, 'uji_use
 Route::get('/uji_user_excel_export', [uji_user_controller::class, 'uji_user_excel_export'])->name('uji_user_excel_export')->middleware('auth');
 
 
+// insert data tanpa role (untuk umum)
+//insert data
+Route::get('/uji_user_create_public', [uji_user_controller::class, 'uji_user_create_public'])->name('uji_user_create_public');
+Route::post('/uji_user_insert_public', [uji_user_controller::class, 'uji_user_insert_public'])->name('uji_user_insert_public');
+//selesai daftar
+Route::get('/Uji_User_Pendaftaran_Selesai', [uji_user_controller::class, 'pendaftaran_uji_user_selesai'])->name('pendaftaran_uji_user_selesai');
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //tabel gedung

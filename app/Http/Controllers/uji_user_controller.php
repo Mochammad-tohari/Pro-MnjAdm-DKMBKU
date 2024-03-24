@@ -431,5 +431,141 @@ class uji_user_controller extends Controller
 
     }
 
+    // **************************************************************************************************************************/
+
+    /**
+     * insert data untuk public (bisa diakses tanpa login/akun)
+     */
+
+    // untuk create dan insert data uji berfungsi untuk memasukan data
+    public function uji_user_create_public()
+    {
+
+        /**
+         * $Uji_Bidang_Options
+         * import uji_bidang_model di folder models dari tabel uji bidang
+         * uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang'); = mengambil nama Nama_Bidang berdasarkan kode Kode_Bidang yang ada di table uji_bidang
+         */
+        $Uji_Bidang_Options = uji_bidang_model::pluck('Nama_Bidang', 'Kode_Bidang');
+
+        /**
+         * uji_user_create_public berasal dari uji_user_create_public.blade.php
+         */
+        return view('uji_user_create_public', compact('Uji_Bidang_Options'));
+
+    }
+
+
+
+    public function uji_user_insert_public(Request $request)
+    {
+        /**
+         * validator berguna utk memeriksa kebutuhan data yang wajib diisi
+         * serta menentukan kondisi tertentu contohnya field 'Password_Uji_User' => 'required|min:5'
+         * jika data kosong maka akan ada peringatan bahwa data harus diisi
+         *
+         */
+        $validator = Validator::make($request->all(), [
+            // 'Jabatan_Uji_User' => 'required',
+            'Nama_Uji_User' => 'required',
+            'Password_Uji_User' => 'required|min:5',
+            'Tanggal_Uji_User' => 'required',
+            'Status_Uji_User' => 'required',
+        ], [
+            'Password_Uji_User.required' => 'The Password field is required.',
+            'Password_Uji_User.min' => 'Password minimal memiliki :min karakter',
+        ]);
+
+
+        /**
+         * jika validasi berhasil maka data akan disimpan
+         */
+        if ($validator->passes()) {
+
+            // Create a new instance of pengurus_dkm_model
+            $uji_user_data = new uji_user_model();
+
+            // Fill the model with form data (excluding updated_by)
+            $uji_user_data->fill($request->except(['updated_by']));
+
+            // Set the updated_by field to null initially
+            $uji_user_data->updated_by = null;
+
+            // Assign the input 'Jabatan_Uji_User' value to the 'Jabatan_Uji_User' property
+            $uji_user_data->Jabatan_Uji_User = $request->input('Jabatan_Uji_User');
+
+            /**
+             * mengatur field Password_Uji_User supaya terenkripsi di database
+             * jadi teks passowrd aslinya disamarkan
+             */
+            $encryptedPassword = Hash::make($request->input('Password_Uji_User'));
+            // Assign the encrypted password to the 'Password_Uji_User' property
+            $uji_user_data->Password_Uji_User = $encryptedPassword;
+
+            // Check if 'Foto_Profil' file is present in the request
+            /*
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Profil')->getClientOriginalName();
+            memberikan nama foto sesuai dengan nama file dan menambahkan nama tanggal pada file yang diminta
+
+            $request->file('Foto_Profil')->move(public_path('Data_Uji_User/Foto_Profil'), $filename1);
+            menyimpan file foto di folder public->Data_Uji_User->Foto_Profil
+             */
+            if ($request->hasFile('Foto_Profil')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Profil')->getClientOriginalName();
+                $request->file('Foto_Profil')->move(public_path('Data_Uji_User/Foto_Profil'), $filename1);
+                $uji_user_data->Foto_Profil = $filename1;
+            }
+
+            // Check if 'Foto_Identitas' file is present in the request
+            if ($request->hasFile('Foto_Identitas')) {
+                $filename2 = date('Y-m-d') . '_' . $request->file('Foto_Identitas')->getClientOriginalName();
+                $request->file('Foto_Identitas')->move(public_path('Data_Uji_User/Foto_Identitas'), $filename2);
+                $uji_user_data->Foto_Identitas = $filename2;
+            }
+
+            // Save the updated files
+            $uji_user_data->save();
+
+            // After saving data, get the saved uji_user_data
+            $save_uji_user = uji_user_model::orderBy('created_at', 'desc')->first();
+
+            // After saving data, redirect to the registration complete page
+            return redirect()->route('pendaftaran_uji_user_selesai')->with([
+                'success' => 'Data Berhasil Dimasukan',
+                'Kode_Uji_User' => $save_uji_user->Kode_Uji_User,
+                'Nama_Uji_User' => $save_uji_user->Nama_Uji_User
+            ]);
+
+
+        } else {
+
+            /**
+             * validasi belum terpenuhi maka akan dikirim ke halaman tambah data
+             * dengan mengisi kolom yang kurang
+             */
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+    }
+
+    public function pendaftaran_uji_user_selesai(Request $request)
+    {
+
+        // Retrieve success message and data from the session
+        $successMessage = $request->session()->get('success');
+        $Kode_Uji_User = $request->session()->get('Kode_Uji_User');
+        $Nama_Uji_User = $request->session()->get('Nama_Uji_User');
+
+        // Pass the success message and data to the view
+        return view('uji_user_pendaftaran_selesai', compact('successMessage', 'Kode_Uji_User', 'Nama_Uji_User'));
+
+    }
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }

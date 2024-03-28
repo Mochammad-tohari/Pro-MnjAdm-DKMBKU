@@ -1,27 +1,52 @@
 /* box_info_data.css */
 
-.small-box.bg-info.info-box-uji-user {
-    background-image: url("../box_info_image/uji_bg.jpg");
-    background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
-    /* Add additional styles for the first info box if needed */
+/* ////// */
+
+.small-box.bg-info.info-box-bidang_nawa {
+    background-image: url("../box_info_image/bidang_nawa_info.jpg");
+    background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the second info box if needed */
 }
 
-.info-box-uji-user .info-box-text-uji-user {
+.info-box-bidang_nawa .info-box-text-bidang_nawa {
     font-size: 16px; /* You can adjust the value as needed */
 }
 
 /* Add custom styles to create gap after the heading */
-.info-box-uji-user p:first-child {
-    margin-top: 60px;
+.info-box-bidang_nawa p:first-child {
+    margin-top: 30px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
-.info-box-uji-user p {
+.info-box-bidang_nawa p {
     margin: 0;
     line-height: 1.5;
 }
 
-/* ////// */
+/* ??????  */
+
+.small-box.bg-info.info-box-pengurus_nawa {
+    background-image: url("../box_info_image/pengurus_nawa_info.jpg");
+    background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the second info box if needed */
+}
+
+.info-box-pengurus_nawa .info-box-text-pengurus_nawa {
+    font-size: 16px; /* You can adjust the value as needed */
+}
+
+/* Add custom styles to create gap after the heading */
+.info-box-pengurus_nawa p:first-child {
+    margin-top: 30px;
+}
+
+/* Add custom styles to remove gaps between the lines and make the text regular */
+.info-box-pengurus_nawa p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/**************************************************************************************************************************************************************/
 
 .small-box.bg-info.info-box-gedung {
     background-image: url("../box_info_image/masjid_bg.jpg");
@@ -44,7 +69,7 @@
     line-height: 1.5;
 }
 
-/* ////// */
+/* ??????  */
 
 .small-box.bg-info.info-box-ruangan {
     background-image: url("../box_info_image/ruangan_bg.jpg");
@@ -67,7 +92,7 @@
     line-height: 1.5;
 }
 
-/* ////// */
+/**************************************************************************************************************************************************************/
 
 .small-box.bg-info.info-box-madrasah {
     background-image: url("../box_info_image/madrasah_bg.jpg");
@@ -90,7 +115,7 @@
     line-height: 1.5;
 }
 
-/* ////// */
+/**************************************************************************************************************************************************************/
 
 .small-box.bg-info.info-box-bidang_khodim {
     background-image: url("../box_info_image/bidang_khodim_bg.jpg");
@@ -113,7 +138,7 @@
     line-height: 1.5;
 }
 
-/* ////// */
+/* ??????  */
 
 .small-box.bg-info.info-box-khodim_dkm {
     background-image: url("../box_info_image/khodim_dkm_bg.jpg");
@@ -136,7 +161,7 @@
     line-height: 1.5;
 }
 
-/* ////// */
+/**************************************************************************************************************************************************************/
 
 .small-box.bg-info.info-box-bidang_pengurus_dkm {
     background-image: url("../box_info_image/bidang_pengurus_bg.jpg");
@@ -155,6 +180,52 @@
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
 .info-box-bidang_pengurus_dkm p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ??????  */
+
+.small-box.bg-info.info-box-pengurus_dkm {
+    background-image: url("../box_info_image/pengurus_dkm_bg.jpg");
+    background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the second info box if needed */
+}
+
+.info-box-pengurus_dkm .info-box-text-pengurus_dkm {
+    font-size: 16px; /* You can adjust the value as needed */
+}
+
+/* Add custom styles to create gap after the heading */
+.info-box-pengurus_dkm p:first-child {
+    margin-top: 30px;
+}
+
+/* Add custom styles to remove gaps between the lines and make the text regular */
+.info-box-pengurus_dkm p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/**************************************************************************************************************************************************************/
+
+.small-box.bg-info.info-box-uji-user {
+    background-image: url("../box_info_image/uji_bg.jpg");
+    background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the first info box if needed */
+}
+
+.info-box-uji-user .info-box-text-uji-user {
+    font-size: 16px; /* You can adjust the value as needed */
+}
+
+/* Add custom styles to create gap after the heading */
+.info-box-uji-user p:first-child {
+    margin-top: 60px;
+}
+
+/* Add custom styles to remove gaps between the lines and make the text regular */
+.info-box-uji-user p {
     margin: 0;
     line-height: 1.5;
 }

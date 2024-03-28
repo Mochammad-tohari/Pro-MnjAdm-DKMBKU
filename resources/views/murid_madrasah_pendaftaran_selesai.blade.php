@@ -48,7 +48,9 @@
 
 
     <!-- Import html2canvas script -->
-    <script src="{{ asset('js/html2canvas/html2canvas.js') }}"></script>
+    {{-- src="{{ secure_asset('js/html2canvas/html2canvas.js') }}"
+        "secure_asset agar bisa diakses di link "Https" atau di ngrok --}}
+    <script src="{{ secure_asset('js/html2canvas/html2canvas.js') }}"></script>
 
     <script>
         // Prevent closing the page until the user clicks download button

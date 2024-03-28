@@ -33,6 +33,59 @@
             <div class="container-fluid">
 
                 <div class="row">
+
+                    <!-- Small boxes (Bidang Nawa) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-bidang_nawa">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Bidang Nawa</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-bidang_nawa">Jumlah Data Bidang Nawa:
+                                        {{ $data_bidang_nawa_kondisi['data_bidang_nawa_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Bidang Nawa Aktif:
+                                        {{ $data_bidang_nawa_kondisi['bidang_nawa_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Bidang Nawa Tidak Aktif:
+                                        {{ $data_bidang_nawa_kondisi['bidang_nawa_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Bidang Nawa Lainya:
+                                        {{ $data_bidang_nawa_kondisi['bidang_nawa_lainya_count'] }}</p>
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/bidang_nawa_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Small boxes (Pengurus Nawa) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-pengurus_nawa">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Pengurus Nawa</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-pengurus_nawa">Jumlah Data Pengurus Nawa:
+                                        {{ $data_pengurus_nawa_kondisi['data_pengurus_nawa_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Pengurus Nawa Aktif:
+                                        {{ $data_pengurus_nawa_kondisi['pengurus_nawa_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Pengurus Nawa Tidak Aktif:
+                                        {{ $data_pengurus_nawa_kondisi['pengurus_nawa_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Pengurus Nawa Lainya:
+                                        {{ $data_pengurus_nawa_kondisi['pengurus_nawa_lainya_count'] }}</p>
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/pengurus_nawa_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
+
                     <!-- Small boxes (Gedung) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
@@ -84,6 +137,7 @@
                         </div>
                     </div>
 
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Murid Madrasah) -->
                     <div class="col-lg-3 col-6">
@@ -109,6 +163,8 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
 
 
                     <!-- Small boxes (bidang_khodim) -->
@@ -162,6 +218,7 @@
                         </div>
                     </div>
 
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
 
 
                     <!-- Small boxes (bidang_pengurus_dkm) -->
@@ -186,6 +243,32 @@
                                 <i class="ion ion-bag"></i>
                             </div>
                             <a href="/bidang_pengurus_dkm_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Small boxes (pengurus_dkm) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-pengurus_dkm">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Pengurus DKM</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-pengurus_dkm">Jumlah Data Pengurus DKM:
+                                        {{ $data_pengurus_dkm_kondisi['data_pengurus_dkm_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Pengurus Aktif:
+                                        {{ $data_pengurus_dkm_kondisi['pengurus_dkm_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Pengurus Tidak Aktif:
+                                        {{ $data_pengurus_dkm_kondisi['pengurus_dkm_tidak_aktif_count'] }}
+                                    </p>
+                                    <p class="info-box-text-lainya">Pengurus Lainya:
+                                        {{ $data_pengurus_dkm_kondisi['pengurus_dkm_lainya_count'] }}</p>
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/pengurus_dkm_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

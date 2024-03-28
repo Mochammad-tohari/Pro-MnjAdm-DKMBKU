@@ -21,6 +21,10 @@ use App\Models\bidang_khodim_model;
 use App\Models\khodim_dkm_model;
 
 use App\Models\bidang_pengurus_dkm_model;
+use App\Models\pengurus_dkm_model;
+
+use App\Models\bidang_nawa_model;
+use App\Models\pengurus_nawa_model;
 
 class Controller extends BaseController
 {
@@ -133,6 +137,7 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Count total records
         $data_bidang_pengurus_dkm_jumlah = bidang_pengurus_dkm_model::count();
@@ -149,6 +154,53 @@ class Controller extends BaseController
             // Add more variables here if needed
         ];
 
+        // Count total records
+        $data_pengurus_dkm_jumlah = pengurus_dkm_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_pengurus_dkm_kondisi = [
+            'data_pengurus_dkm_jumlah' => $data_pengurus_dkm_jumlah,
+            // Count 'Aktif' status records
+            'pengurus_dkm_aktif_count' => pengurus_dkm_model::where('Status_Pengurus_DKM', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'pengurus_dkm_tidak_aktif_count' => pengurus_dkm_model::where('Status_Pengurus_DKM', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'pengurus_dkm_lainya_count' => pengurus_dkm_model::where('Status_Pengurus_DKM', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Count total records
+        $data_bidang_nawa_jumlah = bidang_nawa_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_bidang_nawa_kondisi = [
+            'data_bidang_nawa_jumlah' => $data_bidang_nawa_jumlah,
+            // Count 'Aktif' status records
+            'bidang_nawa_aktif_count' => bidang_nawa_model::where('Status_Bidang_Nawa', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'bidang_nawa_tidak_aktif_count' => bidang_nawa_model::where('Status_Bidang_Nawa', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'bidang_nawa_lainya_count' => bidang_nawa_model::where('Status_Bidang_Nawa', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
+        // Count total records
+        $data_pengurus_nawa_jumlah = pengurus_nawa_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_pengurus_nawa_kondisi = [
+            'data_pengurus_nawa_jumlah' => $data_pengurus_nawa_jumlah,
+            // Count 'Aktif' status records
+            'pengurus_nawa_aktif_count' => pengurus_nawa_model::where('Status_Pengurus_Nawa', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'pengurus_nawa_tidak_aktif_count' => pengurus_nawa_model::where('Status_Pengurus_Nawa', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'pengurus_nawa_lainya_count' => pengurus_nawa_model::where('Status_Pengurus_Nawa', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
         // Pass all the data variables to the view
         return view('welcome', [
             'uji_user_kondisi' => $uji_user_kondisi,
@@ -158,6 +210,10 @@ class Controller extends BaseController
             'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
             'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
             'data_bidang_pengurus_dkm_kondisi' => $data_bidang_pengurus_dkm_kondisi,
+            'data_pengurus_dkm_kondisi' => $data_pengurus_dkm_kondisi,
+            'data_bidang_nawa_kondisi' => $data_bidang_nawa_kondisi,
+            'data_pengurus_nawa_kondisi' => $data_pengurus_nawa_kondisi,
+
 
         ]);
     }

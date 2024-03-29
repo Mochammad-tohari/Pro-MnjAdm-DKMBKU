@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <title>Data Uji Bidang</title>
+    <title>Data Inventaris</title>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Uji Bidang</h1>
+                        <h1 class="m-0">Data Inventaris</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="/uji_bidang_data_new">Uji Bidang</a> </li>
+                            <li class="breadcrumb-item active"><a href="/inventaris_data">Inventaris</a> </li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -24,14 +24,14 @@
         <div class="col-auto">
             <div class="card col-auto">
                 <div class="card-header col-auto">
-                    <h3 class="card-title text-center">Daftar Data Uji Bidang</h3>
+                    <h3 class="card-title text-center">Daftar Data Inventaris</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body col-auto">
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/uji_bidang_create">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/inventaris_create">Tambah Data</button>
                         </a>
                     @endif
 
@@ -39,7 +39,7 @@
 
                     <div class="row g-3 d-flex flex-row-reverse">
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
+                            <form action="/inventaris_data" method="GET">
                                 <input type="search" value="{{ $searchQuery }}" name="search" placeholder="Cari Data..."
                                     class="form-control text-left">
                             </form>
@@ -53,63 +53,17 @@
         @endif --}}
 
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
-                                <a href="/uji_bidang_export_pdf" class="btn btn-primary">Export PDF</button> </a>
+                            <form action="/inventaris_data" method="GET">
+                                <a href="/inventaris_export_pdf" class="btn btn-primary">Export PDF</button> </a>
                             </form>
                         </div>
 
                         <div class="col-auto">
-                            <form action="/uji_bidang_data_new" method="GET">
+                            <form action="/inventaris_data" method="GET">
                                 <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
                             </form>
                         </div>
 
-                        <!-- Button trigger modal -->
-                        @if (auth()->user()->akses === 'Admin')
-                            <div class="col-auto">
-                                <form action="" method="">
-                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Import Excel
-                                    </button>
-                                </form>
-                            </div>
-                        @endif
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Import Excel Data Bidang Uji
-                                        </h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    {{-- Import Excel --}}
-                                    <form action="uji_bidang_import_excel" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <input type="file" name="file_uji_bidang" required>
-                                                <p>
-                                                    Harap perhatikan file excel dan array field didalamnya
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- end of modal --}}
 
                         {{-- css utk design table  --}}
                         <style>
@@ -121,7 +75,7 @@
                                 margin-top: 20px;
                             }
 
-                            table.table-uji_bidang thead {
+                            table.table-inventaris thead {
                                 /* Set the position to sticky */
                                 position: sticky;
                                 top: 0;
@@ -132,25 +86,25 @@
                                 /* Text color of the header */
                             }
 
-                            table.table-uji_bidang thead tr {
+                            table.table-inventaris thead tr {
                                 background-color: #0c613b;
                                 /* Header background color */
                                 color: #ffffff;
                                 /* Header text color */
                             }
 
-                            table.table-uji_bidang tbody tr:nth-child(odd) {
+                            table.table-inventaris tbody tr:nth-child(odd) {
                                 background-color: #343A40;
                                 /* Lighter color for odd rows */
                             }
 
-                            table.table-uji_bidang tbody tr:nth-child(even) {
+                            table.table-inventaris tbody tr:nth-child(even) {
                                 background-color: #3e454d;
                                 /* Default color for even rows */
                             }
 
-                            table.table-uji_bidang th,
-                            table.table-uji_bidang td {
+                            table.table-inventaris th,
+                            table.table-inventaris td {
                                 color: #ffffff;
                                 /* Set the text color using CSS variable */
                                 padding: 10px;
@@ -161,14 +115,21 @@
 
                         {{-- table dan kontenya --}}
                         <div class="table-container">
-                            <table class="table-uji_bidang table-bordered mt-3">
+                            <table class="table-inventaris table-bordered mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
-                                        <th scope="col">Kode Bidang</th>
-                                        <th scope="col">Nama Bidang</th>
-                                        <th scope="col">Keterangan Bidang</th>
-                                        <th scope="col">Status Bidang</th>
+                                        <th scope="col">Kode Inventaris</th>
+                                        <th scope="col">Nama Inventaris</th>
+                                        <th scope="col">Merk Inventaris</th>
+                                        <th scope="col">Jenis Inventaris</th>
+
+                                        <th scope="col">Foto Inventaris</th>
+                                        <th scope="col">Faktur Inventaris</th>
+
+                                        <th scope="col">Tanggal Operasional Inventaris</th>
+                                        <th scope="col">Keterangan Inventaris</th>
+                                        <th scope="col">Status Inventaris</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Dimasukan Oleh</th>
@@ -185,15 +146,35 @@
 
                                 <tbody>
                                     <tr>
-                                        @foreach ($uji_bidang_data_new as $uji_bidang_index_new => $row)
+                                        @foreach ($inventaris_data as $inventaris_index => $row)
                                     <tr>
                                         <!-- daftar nomor urut -->
-                                        <td>{{ $uji_bidang_index_new + $uji_bidang_data_new->firstItem() }}</td>
+                                        <td>{{ $inventaris_index + $inventaris_data->firstItem() }}</td>
 
-                                        <th scope="row">{{ $row->Kode_Bidang }}</th>
-                                        <td>{{ $row->Nama_Bidang }}</td>
-                                        <td>{{ $row->Keterangan_Bidang }}</td>
-                                        <td>{{ $row->Status_Bidang }}</td>
+                                        <th scope="row">{{ $row->Kode_Inventaris }}</th>
+                                        <td>{{ $row->Nama_Inventaris }}</td>
+                                        <td>{{ $row->Merk_Inventaris }}</td>
+                                        <td>{{ $row->Jenis_Inventaris }}</td>
+
+
+                                        <td>
+                                            {{-- mengambil file gambar yang tersimpan di folder Data_Inventaris/Foto_Inventaris/ --}}
+                                            @if ($row->Foto_Inventaris)
+                                                <img src="{{ asset('Data_Inventaris/Foto_Inventaris/' . $row->Foto_Inventaris) }}"
+                                                    alt="Foto_Inventaris" style="width: 40px;">
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if ($row->Faktur_Inventaris)
+                                                <img src="{{ asset('Data_Inventaris/Faktur_Inventaris/' . $row->Faktur_Inventaris) }}"
+                                                    alt="Faktur_Inventaris" style="width: 40px;">
+                                            @endif
+                                        </td>
+
+                                        <td>{{ $row->Tanggal_Operasional_Inventaris }}</td>
+                                        <td>{{ $row->Keterangan_Inventaris }}</td>
+                                        <td>{{ $row->Status_Inventaris }}</td>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <td>{{ $row->inserted_by }}</td>
@@ -205,21 +186,13 @@
 
                                         <td>
                                             @if (auth()->user()->akses === 'Admin')
-                                                <a href="/uji_bidang_edit/{{ $row->id_uji_bidang }}"
+                                                <a href="/inventaris_edit/{{ $row->id_inventaris }}"
                                                     class="btn btn-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
                                             @endif
 
-                                            {{-- <a href="/lihat_uji_bidang/{{ $row->id_uji_bidang }}" target="_blank"
-                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a> --}}
+                                            <a href="/inventaris_view/{{ $row->id_inventaris }}" target="_blank"
+                                                class="btn btn-secondary btn-sm mt-2"><i class="fas fa-eye"></i>Lihat</a>
 
-                                            @if (auth()->user()->akses === 'Admin')
-                                                <a href="/uji_bidang_delete" class="btn btn-danger btn-sm delete mt-2"
-                                                    data-id-uji-bidang="{{ $row->id_uji_bidang }}"
-                                                    data-kode-bidang="{{ $row->Kode_Bidang }}"
-                                                    data-nama-bidang="{{ $row->Nama_Bidang }}">
-                                                    <i class="fas fa-trash-alt"></i> Hapus
-                                                </a>
-                                            @endif
 
                                         </td>
 
@@ -236,7 +209,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer col-auto">
                         <!-- syntax pembatsan menu pagination -->
-                        {{ $uji_bidang_data_new->links() }}
+                        {{ $inventaris_data->links() }}
                     </div>
                 </div>
             </div>
@@ -258,56 +231,6 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
                 integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-            <!-- memberi fungsi delete dengan sweet alert -->
-            <script>
-                $('.delete').click(function(event) {
-                    event.preventDefault();
-
-                    var uji_id_bidang = $(this).attr('data-id-uji-bidang');
-                    var uji_kode_bidang = $(this).attr('data-kode-bidang');
-                    var uji_nama_bidang = $(this).attr('data-nama-bidang');
-
-                    swal({
-                            title: "Apakah anda yakin ?",
-                            text: "Data yang akan dihapus kode " + uji_kode_bidang + " Nama_Bidang " + uji_nama_bidang,
-                            icon: "warning",
-                            buttons: ["Batal", "Hapus"], // Adjust the button labels
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // Proceed with deletion
-                                window.location = "/uji_bidang_delete/" + uji_id_bidang;
-                            } else {
-                                // Cancelled, do nothing or show a message
-                                swal("Data tidak dihapus", {
-                                    icon: "info",
-                                });
-                            }
-                        });
-                });
-            </script>
-
-            <!-- syntax pemberitahuan bahwa data telah dihapus -->
-            <script>
-                @if (Session::has('success_delete'))
-                    // Set a success toast, with a title
-                    toastr.success('Data Telah Dihapus!', 'Berhasil', {
-                        "progressBar": true,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut",
-                        "iconClass": "toast-success"
-                    });
-                @endif
-            </script>
 
 
             <!-- syntax pemberitahuan bahwa data telah dimasukan -->

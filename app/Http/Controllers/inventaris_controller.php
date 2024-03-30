@@ -112,5 +112,45 @@ class inventaris_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function inventaris_edit($id_inventaris)
+    {
+
+        $inventaris_data = inventaris_model::find($id_inventaris);
+
+        return view('inventaris_edit', compact('inventaris_data'));
+    }
+
+    public function inventaris_update(Request $request, $id_inventaris)
+    {
+
+        $inventaris_data = inventaris_model::findOrFail($id_inventaris); // Assuming you have the ID of the row you want to update
+
+        $inventaris_data->update($request->all());
+
+        if ($request->hasFile('Foto_Inventaris')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Inventaris')->getClientOriginalName();
+            $request->file('Foto_Inventaris')->move(public_path('Data_Inventaris/Foto_Inventaris'), $filename1);
+            $inventaris_data->Foto_Inventaris = $filename1;
+        }
+
+        if ($request->hasFile('Faktur_Inventaris')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Faktur_Inventaris')->getClientOriginalName();
+            $request->file('Faktur_Inventaris')->move(public_path('Data_Inventaris/Faktur_Inventaris'), $filename1);
+            $inventaris_data->Faktur_Inventaris = $filename1;
+        }
+
+        $inventaris_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('inventaris_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }

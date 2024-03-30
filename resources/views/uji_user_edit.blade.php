@@ -23,7 +23,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/pengurus_dkm_data">Data Uji User</a></li>
+                            <li class="breadcrumb-item"><a href="/uji_user_data_new">Data Uji User</a></li>
                             <li class="breadcrumb-item active">Edit Data Uji User</li>
                         </ol>
                     </div><!-- /.col -->

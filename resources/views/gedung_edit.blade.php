@@ -139,7 +139,7 @@
                                             {{-- akhir syntax edit gambar --}}
 
                                             <div class="form-group mb-3">
-                                                <label for="Status_Gedung">Status_Gedung</label>
+                                                <label for="Status_Gedung">Status Gedung</label>
                                                 <select class="custom-select rounded-0" id="Status_Gedung"
                                                     name="Status_Gedung">
                                                     <option selected disabled value>{{ $gedung_data->Status_Gedung }}

@@ -165,6 +165,13 @@ class inventaris_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // untuk lihat data inventaris berfungsi untuk melihat 1 data
+    public function inventaris_view($id_inventaris)
+    {
 
+        $inventaris_data = inventaris_model::find($id_inventaris);
+        return view('inventaris_view', compact('inventaris_data'));
+
+    }
 
 }

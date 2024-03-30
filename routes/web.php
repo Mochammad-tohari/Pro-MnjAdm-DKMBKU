@@ -287,6 +287,8 @@ Route::get('/inventaris_export_pdf', [inventaris_controller::class, 'inventaris_
 Route::get('/inventaris_view/{id_inventaris}', [inventaris_controller::class, 'inventaris_view'])->name('inventaris_view')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????/
 
 //Route::middleware(['role:Admin'])->group(function () {} hak akses untuk admin
@@ -363,13 +365,13 @@ Route::middleware(['role:Admin'])->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //tabel uji user
     /*  memanggil file 'uji_user_controller' yg ada di folder controller
-               /uji_user_create ->file uji_user_create.blade.php & 'uji_user_create' -> fungsi 'uji_user_create' yg ada di file uji_user_controller
-           */
+    /uji_user_create ->file uji_user_create.blade.php & 'uji_user_create' -> fungsi 'uji_user_create' yg ada di file uji_user_controller
+      */
     //Route::get('/uji_user_create', [AdminController::class, 'uji_user_create'])->name('uji_user_create');
     Route::get('/uji_user_create', [uji_user_controller::class, 'uji_user_create'])->name('uji_user_create');
 
     /*  memanggil file 'uji_user_controller' yg ada di folder controller
-                   'uji_user_insert' -> fungsi 'uji_user_insert' yg ada di file uji_user_controller
+                'uji_user_insert' -> fungsi 'uji_user_insert' yg ada di file uji_user_controller
                */
     Route::post('/uji_user_insert', [uji_user_controller::class, 'uji_user_insert'])->name('uji_user_insert');
 
@@ -487,6 +489,17 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::post('/pengurus_nawa_update/{id_pengurus_nawa}', [pengurus_nawa_controller::class, 'pengurus_nawa_update'])->name('pengurus_nawa_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //tabel inventaris
+    //insert data
+    Route::get('/inventaris_create', [inventaris_controller::class, 'inventaris_create'])->name('inventaris_create');
+    Route::post('/inventaris_insert', [inventaris_controller::class, 'inventaris_insert'])->name('inventaris_insert');
+    //edit data
+    Route::get('/inventaris_edit/{id_inventaris}', [inventaris_controller::class, 'inventaris_edit'])->name('inventaris_edit');
+    Route::post('/inventaris_update/{id_inventaris}', [inventaris_controller::class, 'inventaris_update'])->name('inventaris_update');
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 });
 

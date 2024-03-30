@@ -58,12 +58,6 @@
                             </form>
                         </div>
 
-                        <div class="col-auto">
-                            <form action="/inventaris_data" method="GET">
-                                <a href="/export_excel_uji" class="btn btn-success">Export Excel</button> </a>
-                            </form>
-                        </div>
-
 
                         {{-- css utk design table  --}}
                         <style>

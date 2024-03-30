@@ -59,4 +59,58 @@ class inventaris_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function inventaris_create()
+    {
+
+        return view('inventaris_create');
+
+    }
+
+    public function inventaris_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Nama_Inventaris' => 'required',
+            'Status_Inventaris' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            //dd($request->all());
+            // Create a new instance of inventaris
+            $inventaris_data = new inventaris_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $inventaris_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $inventaris_data->updated_by = null;
+
+            if ($request->hasFile('Foto_Inventaris')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Inventaris')->getClientOriginalName();
+                $request->file('Foto_Inventaris')->move(public_path('Data_Inventaris/Foto_Inventaris'), $filename1);
+                $inventaris_data->Foto_Inventaris = $filename1;
+            }
+
+            if ($request->hasFile('Faktur_Inventaris')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Faktur_Inventaris')->getClientOriginalName();
+                $request->file('Faktur_Inventaris')->move(public_path('Data_Inventaris/Faktur_Inventaris'), $filename1);
+                $inventaris_data->Faktur_Inventaris = $filename1;
+            }
+
+            $inventaris_data->save();
+
+            return redirect()->route('inventaris_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 }

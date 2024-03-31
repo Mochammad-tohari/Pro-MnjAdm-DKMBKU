@@ -84,6 +84,11 @@
             /* Text color */
         }
 
+        .email input[type="email"].form-control::placeholder {
+            color: #ffffff;
+            /* Placeholder text color */
+        }
+
         .password {
             width: 100%;
             border-bottom: 1px solid #a7a7a7;
@@ -99,6 +104,11 @@
             outline: none;
             color: #ffffff;
             /* Text color */
+        }
+
+        .password input[type="password"].form-control::placeholder {
+            color: #ffffff;
+            /* Placeholder text color */
         }
 
         /* Styles for select element */

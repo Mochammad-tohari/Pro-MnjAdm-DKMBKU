@@ -28,67 +28,142 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-image: url('box_info_image/masjid_bg.jpg');
+            /* Specify the path to your image */
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+
+        }
+
+        .wrapper {
+            width: 380px;
+            padding: 100px 50px;
+            border: 0px solid rgba(6, 35, 57, 5);
+            background: transparent;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px #24362fa8;
+            border-radius: 20px;
+        }
+
+        .wrapper h1 {
+            font-size: 40px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .email {
+            width: 100%;
+            border-bottom: 1px solid #a7a7a7;
+            /* Underline border */
+            margin-bottom: 20px;
+            /* Add some spacing */
+        }
+
+        .email input[type="email"].form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            /* Text color */
+        }
+
+        .password {
+            width: 100%;
+            border-bottom: 1px solid #a7a7a7;
+            /* Underline border */
+            margin-bottom: 20px;
+            /* Add some spacing */
+        }
+
+        .password input[type="password"].form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            /* Text color */
+        }
+
+        /* Styles for select element */
+        .akses {
+            width: 100%;
+            border-bottom: 1px solid #a7a7a7;
+            /* Underline border */
+            margin-bottom: 20px;
+            /* Add some spacing */
+        }
+
+        .akses select.custom-select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            /* Text color */
+        }
+
+        .akses select.custom-select option {
+            background-color: #a0a0a0;
+            /* Background color for options */
+            color: #ffffff;
+            /* Text color for options */
+        }
+    </style>
+
 </head>
 
-<body class="hold-transition login-page dark-mode">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="#" class="h1">Manajemen DKMBKU</a>
+<body class="hold-transition login-page">
+
+    <div class="wrapper">
+        <form action="/login_user" method="POST">
+            @csrf
+            <h1>Manajemen DKMBKU</h1>
+
+            <div class="email">
+                <input type="email" class="form-control" placeholder="Email" name="email">
             </div>
-            <div class="card-body">
-                <p class="login-box-msg">Login</p>
 
-                <form action="/login_user" method="POST">
-                    @csrf
-
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <select class="custom-select rounded-0" id="akses" name="akses">
-                            <option disabled selected value="">Masuk Sebagai</option>
-                            <option value="Admin">Admin</option>
-                            <option value="Tamu">Tamu</option>
-                        </select>
-                    </div>
-
-                    <!-- /.col -->
-                    <div class="input-group mb-3">
-                        <button type="submit" class="btn btn-success btn-block">Masuk</button>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <a href="/register" class="btn btn-outline-info btn-block">Daftar</a>
-                    </div>
-                    <!-- /.col -->
+            <div class="password">
+                <input type="password" class="form-control" placeholder="Password" name="password">
             </div>
-            </form>
 
-            <!-- Submit Login -->
+            <div class="akses">
+                <select class="custom-select rounded-0" id="akses" name="akses">
+                    <option disabled selected value="">Masuk Sebagai</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Tamu">Tamu</option>
+                </select>
+            </div>
 
-        </div>
-        <!-- /.card-body -->
+            <!-- /.col -->
+            <div class="input-group mb-2">
+                <button type="submit" class="btn btn-success btn-block">Masuk</button>
+            </div>
+
+            <div class="input-group mb-2">
+                <a href="/register" class="btn btn-outline-info btn-block">Daftar</a>
+            </div>
+
+        </form>
     </div>
-    <!-- /.card -->
-    </div>
+
     <!-- /.login-box -->
 
     <!-- jQuery -->

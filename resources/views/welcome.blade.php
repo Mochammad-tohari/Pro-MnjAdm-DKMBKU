@@ -273,6 +273,37 @@
                         </div>
                     </div>
 
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
+
+                    <!-- Small boxes (Inventaris) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 3 -->
+                        <div class="small-box bg-info info-box-inventaris">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Inventaris</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-inventaris">Jumlah Data Inventaris:
+                                        {{ $data_inventaris_kondisi['data_inventaris_jumlah'] }}</p>
+                                    <p class="info-box-text-uji">Inventaris Aktif:
+                                        {{ $data_inventaris_kondisi['inventaris_aktif_count'] }}</p>
+                                    <p class="info-box-text-uji">Inventaris Tidak Aktif:
+                                        {{ $data_inventaris_kondisi['inventaris_tidak_aktif_count'] }}
+                                    </p>
+                                    <p class="info-box-text-uji">Inventaris Lainya:
+                                        {{ $data_inventaris_kondisi['inventaris_lainya_count'] }}
+                                    </p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/inventaris_data" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Uji User) -->
                     <div class="col-lg-3 col-6">
@@ -301,6 +332,10 @@
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
+
+
+
 
 
                 </div>

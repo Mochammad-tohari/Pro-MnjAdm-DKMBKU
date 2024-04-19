@@ -253,7 +253,8 @@
                                 </script>
                                 {{-- akhir syntax input gambar --}}
 
-                                <div class="form-group mb-3">
+                                {{-- style="display: none;" untuk menonaktifkan visible sebuah elemen atau input --}}
+                                <div class="form-group mb-3" style="display: none;">
                                     <label for="Tingkat_Murid">Tingkat Murid</label>
                                     <select class="form-select" id="Tingkat_Murid" name="Tingkat_Murid">
                                         <option value="1_Satu"
@@ -268,7 +269,7 @@
                                 </div>
 
 
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-3" style="display: none;">
                                     <label for="Keterangan_Murid" class="form-label">Keterangan
                                         Murid</label>
                                     <textarea class="form-control" name="Keterangan_Murid" id="Keterangan_Murid" readonly>{{ old('Keterangan_Murid', 'Pending') }}</textarea>
@@ -276,7 +277,7 @@
                                 </div>
 
 
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-3" style="display: none;">
                                     <label for="Status_Murid">Status Murid</label>
                                     <select class="form-select" id="Status_Murid" name="Status_Murid"
                                         @readonly(true)>

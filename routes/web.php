@@ -77,6 +77,13 @@ use App\Http\Controllers\inventaris_controller;
 //memanggil file inventaris_model yg ada di folder Models
 use App\Models\inventaris_model;
 
+
+//memanggil file majlistalim_controller yg ada di folder Controllers
+use App\Http\Controllers\majlistalim_controller;
+//memanggil file majlistalim_model yg ada di folder Models
+use App\Models\majlistalim_model;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -285,6 +292,31 @@ Route::get('/inventaris_data', [inventaris_controller::class, 'inventaris_index'
 Route::get('/inventaris_export_pdf', [inventaris_controller::class, 'inventaris_export_pdf'])->name('inventaris_export_pdf')->middleware('auth');
 //lihat 1 data
 Route::get('/inventaris_view/{id_inventaris}', [inventaris_controller::class, 'inventaris_view'])->name('inventaris_view')->middleware('auth');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//tabel Majlistalim
+//view data
+Route::get('/majlistalim_data', [majlistalim_controller::class, 'majlistalim_index'])->name('majlistalim_index')->middleware('auth');
+
+/*  Pdf Export
+ */
+Route::get('/majlistalim_export_pdf', [majlistalim_controller::class, 'majlistalim_export_pdf'])->name('majlistalim_export_pdf')->middleware('auth');
+
+//lihat 1 data
+Route::get('/majlistalim_view/{id_majlistalim}', [majlistalim_controller::class, 'majlistalim_view'])->name('majlistalim_view')->middleware('auth');
+
+/*  Excel Export
+ */
+Route::get('/majlistalim_excel_export', [majlistalim_controller::class, 'majlistalim_excel_export'])->name('majlistalim_excel_export')->middleware('auth');
+
+
+// insert data tanpa role (untuk umum)
+//insert data
+Route::get('/majlistalim_create_public', [majlistalim_controller::class, 'majlistalim_create_public'])->name('majlistalim_create_public');
+Route::post('/majlistalim_insert_public', [majlistalim_controller::class, 'majlistalim_insert_public'])->name('majlistalim_insert_public');
+//selesai daftar
+Route::get('/majlistalim_Pendaftaran_Selesai', [majlistalim_controller::class, 'pendaftaran_majlistalim_selesai'])->name('pendaftaran_majlistalim_selesai');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

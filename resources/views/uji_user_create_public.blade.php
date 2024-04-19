@@ -100,7 +100,7 @@
                                 </div>
 
 
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-3" style="display: none;">
                                     <label for="Keterangan_Uji_User" class="form-label">Keterangan
                                         Uji User</label>
                                     <textarea class="form-control" name="Keterangan_Uji_User" id="Keterangan_Uji_User" readonly>{{ old('Keterangan_Uji_User', 'Pending') }}</textarea>
@@ -151,8 +151,7 @@
 
                                 {{-- syntax input gambar --}}
                                 <div class="form-group mb-3">
-                                    <label for="Foto_Identitas" class="form-label">Foto Akta Kelahiran
-                                        Murid</label>
+                                    <label for="Foto_Identitas" class="form-label">Foto Identitas</label>
                                     <div class="custom-file">
                                         <input class="form-control" type="file" id="Foto_Identitas"
                                             name="Foto_Identitas">
@@ -193,21 +192,21 @@
                                 {{-- akhir syntax input gambar --}}
 
 
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-3" style="display: none;">
                                     <label for="Status_Uji_User">Status Murid</label>
-                                    <select class="form-select" id="Status_Uji_User" name="Status_Uji_User"
-                                        @readonly(true)>
+                                    <select class="form-select" id="Status_Uji_User" name="Status_Uji_User">
                                         <option value="Lainya"
                                             {{ old('Status_Uji_User', 'Lainya') == 'Lainya' ? 'selected' : '' }}>
-                                            Lainya</option>
+                                            Lainya
+                                        </option>
                                     </select>
-                                    {{-- pemberitahuan validator --}}
+                                    {{-- Validator notification --}}
                                     @error('Status_Uji_User')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <div name="" class="form-text">Tidak bisa diubah
-                                    </div>
+                                    <div name="" class="form-text">Tidak bisa diubah</div>
                                 </div>
+
 
 
 

@@ -217,6 +217,17 @@
                                 </li>
 
 
+                                <li class="nav-item">
+                                    <a href="/majlistalim_data"
+                                        class="nav-link{{ Request::is('majlistalim_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Majlistalim
+                                        </p>
+                                    </a>
+                                </li>
+
+
 
                                 <li class="nav-item">
                                     <a href="/inventaris_data"

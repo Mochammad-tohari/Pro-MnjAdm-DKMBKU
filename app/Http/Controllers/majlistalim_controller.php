@@ -59,4 +59,53 @@ class majlistalim_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function majlistalim_create()
+    {
+
+        return view('majlistalim_create');
+
+    }
+
+    public function majlistalim_insert(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'Nama_Majlistalim' => 'required',
+            'Kontak_Majlistalim' => 'required',
+            'Status_Majlistalim' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            //dd($request->all());
+            // Create a new instance of majlistalim
+            $majlistalim_data = new majlistalim_model();
+            //pengisian model table dengan pengecualian 'updated_by'
+            $majlistalim_data->fill($request->except('updated_by'));
+
+            // mengatur updated email utk menghindari isi otomatis di fungsi insert
+            $majlistalim_data->updated_by = null;
+
+            if ($request->hasFile('Logo_Majlistalim')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Logo_Majlistalim')->getClientOriginalName();
+                $request->file('Logo_Majlistalim')->move(public_path('Data_Majlistalim/Logo_Majlistalim'), $filename1);
+                $majlistalim_data->Logo_Majlistalim = $filename1;
+            }
+
+
+            $majlistalim_data->save();
+
+            return redirect()->route('majlistalim_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }

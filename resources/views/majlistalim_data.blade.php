@@ -150,7 +150,7 @@
 
                                         <td>
                                             @if ($row->Logo_Majlistalim)
-                                                <img src="{{ asset('Data_Inventaris/Logo_Majlistalim/' . $row->Logo_Majlistalim) }}"
+                                                <img src="{{ asset('Data_Majlistalim/Logo_Majlistalim/' . $row->Logo_Majlistalim) }}"
                                                     alt="Logo_Majlistalim" style="width: 40px;">
                                             @endif
                                         </td>

@@ -532,6 +532,16 @@ Route::middleware(['role:Admin'])->group(function () {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //tabel majlistalim
+    //insert data
+    Route::get('/majlistalim_create', [majlistalim_controller::class, 'majlistalim_create'])->name('majlistalim_create');
+    Route::post('/majlistalim_insert', [majlistalim_controller::class, 'majlistalim_insert'])->name('majlistalim_insert');
+    //edit data
+    Route::get('/majlistalim_edit/{id_majlistalim}', [majlistalim_controller::class, 'majlistalim_edit'])->name('majlistalim_edit');
+    Route::post('/majlistalim_update/{id_majlistalim}', [majlistalim_controller::class, 'majlistalim_update'])->name('majlistalim_update');
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 });
 

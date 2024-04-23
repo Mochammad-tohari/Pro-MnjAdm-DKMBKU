@@ -108,4 +108,40 @@ class majlistalim_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function majlistalim_edit($id_majlistalim)
+    {
+
+        $majlistalim_data = majlistalim_model::find($id_majlistalim);
+
+        return view('majlistalim_edit', compact('majlistalim_data'));
+    }
+
+    public function majlistalim_update(Request $request, $id_majlistalim)
+    {
+
+        $majlistalim_data = majlistalim_model::findOrFail($id_majlistalim); // Assuming you have the ID of the row you want to update
+
+        $majlistalim_data->update($request->all());
+
+        if ($request->hasFile('Logo_Majlistalim')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Logo_Majlistalim')->getClientOriginalName();
+            $request->file('Logo_Majlistalim')->move(public_path('Data_Majlistalim/Logo_Majlistalim'), $filename1);
+            $majlistalim_data->Logo_Majlistalim = $filename1;
+        }
+
+        $majlistalim_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('majlistalim_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 }

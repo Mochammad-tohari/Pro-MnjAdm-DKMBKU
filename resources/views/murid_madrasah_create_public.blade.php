@@ -40,7 +40,7 @@
                                     ?>
                                     <input type="text" class="form-control" placeholder=""
                                         value="MRD-<?php echo $tgl; ?>" id="Kode_Murid" name="Kode_Murid" readonly>
-                                    <div name="" class="form-text">Otomatis Terisi</div>
+                                    <div name="" class="form-text">Otomatis Terisi Tidak bisa diubah</div>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -299,7 +299,8 @@
 
                                 <div class="card-footer mb-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-warning ml-2">Reset</button>
+                                    <button type="button" class="btn btn-warning ml-2" name="resetButton"
+                                        id="resetButton">Reset</button>
                                 </div>
 
                             </form>
@@ -311,7 +312,13 @@
     </div>
 
 
-
+    <script>
+        // JavaScript for refreshing the page on button click
+        document.getElementById("resetButton").addEventListener("click", function() {
+            // Reload the current page
+            location.reload();
+        });
+    </script>
 
 
 </body>

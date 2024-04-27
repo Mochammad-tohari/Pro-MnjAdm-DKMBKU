@@ -219,6 +219,10 @@ class murid_madrasah_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * insert data untuk public (bisa diakses tanpa login/akun)
+     */
+
     // untuk create dan insert data uji berfungsi untuk memasukan data
     public function murid_madrasah_create_public()
     {

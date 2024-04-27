@@ -187,7 +187,7 @@ Route::get('/uji_user_excel_export', [uji_user_controller::class, 'uji_user_exce
 Route::get('/uji_user_create_public', [uji_user_controller::class, 'uji_user_create_public'])->name('uji_user_create_public');
 Route::post('/uji_user_insert_public', [uji_user_controller::class, 'uji_user_insert_public'])->name('uji_user_insert_public');
 //selesai daftar
-Route::get('/Uji_User_Pendaftaran_Selesai', [uji_user_controller::class, 'pendaftaran_uji_user_selesai'])->name('pendaftaran_uji_user_selesai');
+Route::get('/uji_user_pendaftaran_selesai', [uji_user_controller::class, 'pendaftaran_uji_user_selesai'])->name('pendaftaran_uji_user_selesai');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -316,7 +316,7 @@ Route::get('/majlistalim_excel_export', [majlistalim_controller::class, 'majlist
 Route::get('/majlistalim_create_public', [majlistalim_controller::class, 'majlistalim_create_public'])->name('majlistalim_create_public');
 Route::post('/majlistalim_insert_public', [majlistalim_controller::class, 'majlistalim_insert_public'])->name('majlistalim_insert_public');
 //selesai daftar
-Route::get('/majlistalim_Pendaftaran_Selesai', [majlistalim_controller::class, 'pendaftaran_majlistalim_selesai'])->name('pendaftaran_majlistalim_selesai');
+Route::get('/majlistalim_pendaftaran_selesai', [majlistalim_controller::class, 'pendaftaran_majlistalim_selesai'])->name('pendaftaran_majlistalim_selesai');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

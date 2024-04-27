@@ -39,7 +39,7 @@
 
                     <a button type="button" class="btn btn-outline-info" href="/murid_madrasah_create_public"
                         target="_blank">Tambah Data
-                        (Umum)</button>
+                        (Untuk Umum)</button>
                     </a>
 
                     {{-- {{ Session::get('page_url') }} --}}

@@ -41,7 +41,7 @@
                                     <input type="text" class="form-control" placeholder=""
                                         value="UJUSR-<?php echo $tgl; ?>" id="Kode_Uji_User" name="Kode_Uji_User"
                                         readonly>
-                                    <div name="" class="form-text">Otomatis Terisi</div>
+                                    <div name="" class="form-text">Otomatis Terisi Tidak bisa diubah</div>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -191,7 +191,7 @@
                                 </script>
                                 {{-- akhir syntax input gambar --}}
 
-
+                                {{-- style="display: none;" untuk menonaktifkan visible sebuah elemen atau input --}}
                                 <div class="form-group mb-3" style="display: none;">
                                     <label for="Status_Uji_User">Status Murid</label>
                                     <select class="form-select" id="Status_Uji_User" name="Status_Uji_User">
@@ -214,7 +214,8 @@
 
                                 <div class="card-footer mb-6">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-warning ml-2">Reset</button>
+                                    <button type="button" class="btn btn-warning ml-2" name="resetButton"
+                                        id="resetButton">Reset</button>
                                 </div>
 
                             </form>
@@ -226,7 +227,13 @@
     </div>
 
 
-
+    <script>
+        // JavaScript for refreshing the page on button click
+        document.getElementById("resetButton").addEventListener("click", function() {
+            // Reload the current page
+            location.reload();
+        });
+    </script>
 
 
 </body>

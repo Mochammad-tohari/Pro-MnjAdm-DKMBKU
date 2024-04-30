@@ -31,7 +31,17 @@
 
                     {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
                     @if (auth()->user()->akses === 'Admin')
-                        <a button type="button" class="btn btn-success" href="/majlistalim_create">Tambah Data</button>
+                        <a button type="button" class="btn btn-success" href="/majlistalim_create"
+                            style="margin-right: 10px;">Tambah Data
+                            (Admin)</button>
+                        </a>
+                    @endif
+
+                    {{-- @if (auth()->user()->akses === 'Admin') hanya bisa diakses Admin --}}
+                    @if (auth()->user()->akses === 'Admin')
+                        <a button type="button" class="btn btn-outline-info" href="/majlistalim_create_public"
+                            target="_blank">Tambah
+                            Data (Untuk Umum)</button>
                         </a>
                     @endif
 

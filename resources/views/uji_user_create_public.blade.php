@@ -110,7 +110,7 @@
 
                                 {{-- syntax input gambar --}}
                                 <div class="form-group mb-3">
-                                    <label for="Foto_Profil" class="form-label">Foto Murid</label>
+                                    <label for="Foto_Profil" class="form-label">Foto Profil</label>
                                     <div class="custom-file">
                                         <input class="form-control" type="file" id="Foto_Profil" name="Foto_Profil">
                                     </div>

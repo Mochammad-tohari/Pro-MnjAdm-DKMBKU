@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <h3 style="color: red;">Harap Klik "Download" Kartu Pendaftar dan Hubungi pengurus madrasah DKMBKU !</h3>
+    <h3 style="color: red;">Harap Klik "Download" Kartu Pendaftar dan Hubungi pengurus DKMBKU !</h3>
 
 
 

@@ -305,6 +305,37 @@
 
                     {{-- //////////////////////////////////////////////////////////////////// --}}
 
+                    <!-- Small boxes (Majlistalim) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 3 -->
+                        <div class="small-box bg-info info-box-majlistalim">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Majlistalim</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-majlistalim">Jumlah Data Majlistalim:
+                                        {{ $data_majlistalim_kondisi['data_majlistalim_jumlah'] }}</p>
+                                    <p class="info-box-text-uji">majlistalim Aktif:
+                                        {{ $data_majlistalim_kondisi['majlistalim_aktif_count'] }}</p>
+                                    <p class="info-box-text-uji">majlistalim Tidak Aktif:
+                                        {{ $data_majlistalim_kondisi['majlistalim_tidak_aktif_count'] }}
+                                    </p>
+                                    <p class="info-box-text-uji">Majlistalim Lainya:
+                                        {{ $data_majlistalim_kondisi['majlistalim_lainya_count'] }}
+                                    </p>
+                                    {{-- <small>Data</small> --}}
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/majlistalim_data" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    {{-- //////////////////////////////////////////////////////////////////// --}}
+
+
                     <!-- Small boxes (Uji User) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 3 -->

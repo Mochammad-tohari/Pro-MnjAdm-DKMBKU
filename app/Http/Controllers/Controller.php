@@ -28,6 +28,8 @@ use App\Models\pengurus_nawa_model;
 
 use App\Models\inventaris_model;
 
+use App\Models\majlistalim_model;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -221,6 +223,24 @@ class Controller extends BaseController
         ];
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Count total records
+        $data_majlistalim_jumlah = majlistalim_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_majlistalim_kondisi = [
+            'data_majlistalim_jumlah' => $data_majlistalim_jumlah,
+            // Count 'Aktif' status records
+            'majlistalim_aktif_count' => majlistalim_model::where('Status_Majlistalim', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'majlistalim_tidak_aktif_count' => majlistalim_model::where('Status_Majlistalim', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'majlistalim_lainya_count' => majlistalim_model::where('Status_Majlistalim', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
+
         // Pass all the data variables to the view
         return view('welcome', [
             'uji_user_kondisi' => $uji_user_kondisi,
@@ -234,6 +254,7 @@ class Controller extends BaseController
             'data_bidang_nawa_kondisi' => $data_bidang_nawa_kondisi,
             'data_pengurus_nawa_kondisi' => $data_pengurus_nawa_kondisi,
             'data_inventaris_kondisi' => $data_inventaris_kondisi,
+            'data_majlistalim_kondisi' => $data_majlistalim_kondisi,
 
         ]);
     }

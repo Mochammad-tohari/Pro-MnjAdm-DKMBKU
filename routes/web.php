@@ -86,6 +86,12 @@ use App\Http\Controllers\majlistalim_controller;
 use App\Models\majlistalim_model;
 
 
+//memanggil file pengajar_madrasah_controller yg ada di folder Controllers
+use App\Http\Controllers\pengajar_madrasah_controller;
+//memanggil file pengajar_madrasah_model yg ada di folder Models
+use App\Models\pengajar_madrasah_model;
+
+
 // ??????? end table list ???????????
 
 
@@ -313,15 +319,13 @@ Route::get('/inventaris_view/{id_inventaris}', [inventaris_controller::class, 'i
 //view data
 Route::get('/majlistalim_data', [majlistalim_controller::class, 'majlistalim_index'])->name('majlistalim_index')->middleware('auth');
 
-/*  Pdf Export
- */
+// Pdf Export
 Route::get('/majlistalim_export_pdf', [majlistalim_controller::class, 'majlistalim_export_pdf'])->name('majlistalim_export_pdf')->middleware('auth');
 
 //lihat 1 data
 Route::get('/majlistalim_view/{id_majlistalim}', [majlistalim_controller::class, 'majlistalim_view'])->name('majlistalim_view')->middleware('auth');
 
-/*  Excel Export
- */
+//  Excel Export
 Route::get('/majlistalim_excel_export', [majlistalim_controller::class, 'majlistalim_excel_export'])->name('majlistalim_excel_export')->middleware('auth');
 
 
@@ -331,6 +335,16 @@ Route::get('/majlistalim_create_public', [majlistalim_controller::class, 'majlis
 Route::post('/majlistalim_insert_public', [majlistalim_controller::class, 'majlistalim_insert_public'])->name('majlistalim_insert_public');
 //selesai daftar
 Route::get('/majlistalim_pendaftaran_selesai', [majlistalim_controller::class, 'pendaftaran_majlistalim_selesai'])->name('pendaftaran_majlistalim_selesai');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//tabel pengajar madrasah
+//tampildata
+Route::get('/pengajar_madrasah_data', [pengajar_madrasah_controller::class, 'pengajar_madrasah_index'])->name('pengajar_madrasah_index')->middleware('auth');
+//export PDF
+Route::get('/pengajar_madrasah_export_pdf', [pengajar_madrasah_controller::class, 'pengajar_madrasah_export_pdf'])->name('pengajar_madrasah_export_pdf')->middleware('auth');
+//lihat 1 data
+Route::get('/pengajar_madrasah_view/{id_pengajar}', [pengajar_madrasah_controller::class, 'pengajar_madrasah_view'])->name('pengajar_madrasah_view')->middleware('auth');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

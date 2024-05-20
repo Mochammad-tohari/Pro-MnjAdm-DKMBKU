@@ -240,6 +240,16 @@
                                 </li>
 
 
+                                <li class="nav-item">
+                                    <a href="/pengajar_madrasah_data"
+                                        class="nav-link{{ Request::is('pengajar_madrasah_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Pengajar Madrasah
+                                        </p>
+                                    </a>
+                                </li>
+
 
                                 <li class="nav-item">
                                     <a href="/uji_bidang_data_new"

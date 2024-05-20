@@ -118,6 +118,8 @@ use App\Models\contact_header_model;
 Route::get('/', [Controller::class, 'welcome'])->middleware('auth');
 
 
+// ******* register & login list ****************
+
 /*  Route Register
  */
 Route::get('/register', [login_controller::class, 'register'])->name('register');
@@ -137,6 +139,11 @@ Route::post('/login_user', [login_controller::class, 'login_user'])->name('login
 /*  Route logout
  */
 Route::get('/logout', [login_controller::class, 'logout'])->name('logout');
+
+// ******* end register & login list ****************
+
+
+// ******* table list ****************
 
 /*
 fungsi table yang berada di luar row bisa di akses oleh "Admin" dan "Tamu"
@@ -348,13 +355,17 @@ Route::get('/pengajar_madrasah_view/{id_pengajar}', [pengajar_madrasah_controlle
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// ******* header list ****************
+// ******* end table list ****************
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ******* header page list ****************
 
 //tabel contact_header
 //tampil data
 Route::get('/contact_header_page', [contact_header_controller::class, 'contact_header_content'])->name('contact_header_content')->middleware('auth');
 
-// ******* end header list ****************
+// ******* end header page list ****************
 
 
 // ???????????????   admin section    ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????/
@@ -577,6 +588,17 @@ Route::middleware(['role:Admin'])->group(function () {
     Route::post('/majlistalim_update/{id_majlistalim}', [majlistalim_controller::class, 'majlistalim_update'])->name('majlistalim_update');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //tabel pengajar madrasah
+    //insert data
+    Route::get('/pengajar_madrasah_create', [pengajar_madrasah_controller::class, 'pengajar_madrasah_create'])->name('pengajar_madrasah_create');
+    Route::post('/pengajar_madrasah_insert', [pengajar_madrasah_controller::class, 'pengajar_madrasah_insert'])->name('pengajar_madrasah_insert');
+    //edit data
+    Route::get('/pengajar_madrasah_edit/{id_pengajar}', [pengajar_madrasah_controller::class, 'pengajar_madrasah_edit'])->name('pengajar_madrasah_edit');
+    Route::post('/pengajar_madrasah_update/{id_pengajar}', [pengajar_madrasah_controller::class, 'pengajar_madrasah_update'])->name('pengajar_madrasah_update');
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 });

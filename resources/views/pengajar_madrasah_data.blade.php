@@ -33,14 +33,10 @@
                     @if (auth()->user()->akses === 'Admin')
                         <a button type="button" class="btn btn-success" href="/pengajar_madrasah_create"
                             style="margin-right: 10px;">Tambah Data
-                            (Admin)</button>
                         </a>
                     @endif
 
-                    <a button type="button" class="btn btn-outline-info" href="/pengajar_madrasah_create_public"
-                        target="_blank">Tambah Data
-                        (Untuk Umum)</button>
-                    </a>
+
 
                     {{-- {{ Session::get('page_url') }} --}}
 
@@ -116,8 +112,6 @@
                                         <th scope="col">Nama Pengajar</th>
                                         <th scope="col">Kontak Pengajar</th>
                                         <th scope="col">Alamat Pengajar</th>
-
-                                        <th scope="col">Foto Murid</th>
 
                                         @if (auth()->user()->akses === 'Admin')
                                             <th scope="col">Foto Pengajar</th>

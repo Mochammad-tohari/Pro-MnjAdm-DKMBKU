@@ -60,4 +60,68 @@ class pengajar_madrasah_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // untuk create dan insert data uji berfungsi untuk memasukan data
+    public function pengajar_madrasah_create()
+    {
+
+        return view('pengajar_madrasah_create');
+
+    }
+
+    public function pengajar_madrasah_insert(Request $request)
+    {
+        /**
+         * validator berguna utk memeriksa kebutuhan data yang wajib diisi
+         * jika data kosong maka akan ada peringatan bahwa data harus diisi
+         *
+         */
+        $validator = Validator::make($request->all(), [
+            'Nama_Pengajar' => 'required',
+            'Kontak_Pengajar' => 'required',
+            'Alamat_Pengajar' => 'required',
+            'Status_Pengajar' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            $pengajar_madrasah_data = new pengajar_madrasah_model();
+
+            //pengisian model table dengan pengecualian 'updated_by'
+            $pengajar_madrasah_data->fill($request->except('updated_by'));
+
+            // mengatur updated email null utk menghindari isi otomatis di fungsi insert
+            $pengajar_madrasah_data->updated_by = null;
+
+            //memasukan gambar tanpa storage link
+
+            if ($request->hasFile('Foto_Pengajar')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengajar')->getClientOriginalName();
+                $request->file('Foto_Pengajar')->move(public_path('Data_Pengajar/Foto_Pengajar'), $filename1);
+                $pengajar_madrasah_data->Foto_Pengajar = $filename1;
+            }
+
+            if ($request->hasFile('Identitas_Pengajar')) {
+                $filename1 = date('Y-m-d') . '_' . $request->file('Identitas_Pengajar')->getClientOriginalName();
+                $request->file('Identitas_Pengajar')->move(public_path('Data_Pengajar/Identitas_Pengajar'), $filename1);
+                $pengajar_madrasah_data->Identitas_Pengajar = $filename1;
+            }
+
+
+            $pengajar_madrasah_data->save();
+
+            return redirect()->route('pengajar_madrasah_index')->with('success', 'Data Berhasil Dimasukan');
+
+        } else {
+
+            // Validation failed, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        }
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 }

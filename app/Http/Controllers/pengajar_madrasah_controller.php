@@ -122,6 +122,51 @@ class pengajar_madrasah_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //edit data
+    public function pengajar_madrasah_edit($id_pengajar)
+    {
+
+        $pengajar_madrasah_data = pengajar_madrasah_model::find($id_pengajar);
+        //dd($data_uji);
+        return view('pengajar_madrasah_edit', compact('pengajar_madrasah_data'));
+    }
+
+    public function pengajar_madrasah_update(Request $request, $id_pengajar)
+    {
+
+        //edit gambar tanpa storage link
+        // Retrieve the existing data to be updated
+        $pengajar_madrasah_data = pengajar_madrasah_model::findOrFail($id_pengajar);
+
+        // Update the data with new values from the request
+        $pengajar_madrasah_data->fill($request->all());
+
+        if ($request->hasFile('Foto_Pengajar')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Foto_Pengajar')->getClientOriginalName();
+            $request->file('Foto_Pengajar')->move(public_path('Data_Pengajar/Foto_Pengajar'), $filename1);
+            $pengajar_madrasah_data->Foto_Pengajar = $filename1;
+        }
+
+        if ($request->hasFile('Identitas_Pengajar')) {
+            $filename1 = date('Y-m-d') . '_' . $request->file('Identitas_Pengajar')->getClientOriginalName();
+            $request->file('Identitas_Pengajar')->move(public_path('Data_Pengajar/Identitas_Pengajar'), $filename1);
+            $pengajar_madrasah_data->Identitas_Pengajar = $filename1;
+        }
+
+
+        $pengajar_madrasah_data->save();
+
+        if (session('page_url')) {
+            return redirect(session('page_url'))->with('success_edit', 'Data Berhasil Diubah');
+        }
+
+        return redirect()->route('pengajar_madrasah_index')->with('success_edit', 'Data Berhasil Diubah');
+
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 }

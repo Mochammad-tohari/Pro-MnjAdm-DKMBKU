@@ -192,17 +192,6 @@ class khodim_dkm_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function show($kode_khodim)
-    {
-        $khodim_dkm_data = khodim_dkm_model::where('Kode_Khodim', $kode_khodim)->first();
-
-        if ($khodim_dkm_data) {
-            return view('khodim_dkm.show', ['khodim_dkm_data' => $khodim_dkm_data]);
-        } else {
-            return redirect()->route('khodim_dkm_index')->with('error', 'Data not found.');
-        }
-    }
-
     // untuk lihat data uji berfungsi untuk melihat 1 data
     public function khodim_dkm_view($id_khodim)
     {
@@ -210,4 +199,6 @@ class khodim_dkm_controller extends Controller
         $khodim_dkm_data = khodim_dkm_model::find($id_khodim);
         return view('khodim_dkm_view', compact('khodim_dkm_data'));
     }
+
+
 }

@@ -363,16 +363,16 @@ class uji_user_controller extends Controller
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    public function show($kode_uji_user)
-    {
-        $uji_user_data = uji_user_model::where('Kode_Uji_User', $kode_uji_user)->first();
+    // public function show($kode_uji_user)
+    // {
+    //     $uji_user_data = uji_user_model::where('Kode_Uji_User', $kode_uji_user)->first();
 
-        if ($uji_user_data) {
-            return view('uji_user.show', ['uji_user_data' => $uji_user_data]);
-        } else {
-            return redirect()->route('uji_user_index_new')->with('error', 'Data not found.');
-        }
-    }
+    //     if ($uji_user_data) {
+    //         return view('uji_user.show', ['uji_user_data' => $uji_user_data]);
+    //     } else {
+    //         return redirect()->route('uji_user_index_new')->with('error', 'Data not found.');
+    //     }
+    // }
 
     // untuk lihat data uji berfungsi untuk melihat 1 data
     public function uji_user_view($id_uji_user)

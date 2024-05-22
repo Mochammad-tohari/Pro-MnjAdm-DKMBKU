@@ -183,17 +183,6 @@ class ruangan_controller extends Controller
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function show($kode_ruangan)
-    {
-        $ruangan_data = ruangan_model::where('Kode_Ruangan', $kode_ruangan)->first();
-
-        if ($ruangan_data) {
-            return view('ruangan.show', ['ruangan_data' => $ruangan_data]);
-        } else {
-            return redirect()->route('ruangan_index')->with('error', 'Data not found.');
-        }
-    }
-
     // untuk lihat data uji berfungsi untuk melihat 1 data
     public function ruangan_view($id_ruangan)
     {

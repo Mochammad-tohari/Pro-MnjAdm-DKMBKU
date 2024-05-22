@@ -3,8 +3,8 @@
 .murid-madrasah-card {
     background-image: url("../name_tag/name_tag_murid.jpg");
     background-size: cover;
-    width: 105mm;
-    height: 148mm;
+    width: 95mm;
+    height: 140mm;
     /* Center the content vertically and horizontally */
     display: flex;
     align-items: center; /* Center vertically */
@@ -25,9 +25,9 @@
     width: 110px;
     /* Additional styles for the image */
 
-    margin-top: -15px; /* Increase this value to move the div down */
+    margin-top: -12px; /* Increase this value to move the div down */
     margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 112px; /* Increase this value to move the div to the right */
+    margin-left: 118px; /* Increase this value to move the div to the right */
     margin-right: 0px; /* Increase this value to move the div to the left */
 }
 
@@ -50,6 +50,6 @@
     position: fixed;
     margin-top: 5px; /* Increase this value to move the div down */
     margin-bottom: 0px; /* Increase this value to move the div up */
-    margin-left: 180px; /* Increase this value to move the div to the right */
+    margin-left: 160px; /* Increase this value to move the div to the right */
     margin-right: 0px; /* Increase this value to move the div to the left */
 }

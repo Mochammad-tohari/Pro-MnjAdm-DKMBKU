@@ -19,8 +19,11 @@
                 <div class="card text-center" id="inventaris-card" data-bs-theme="light">
                     <div class="card-header">
                         <div style="display: inline-flex; align-items: center;">
-                            <img src="{{ asset('icon_web/Logo_Masjid.png') }}" style="width: 50px;" alt="Logo_Masjid">
+                            <img src="{{ asset('icon_web/Logo_Masjid.png') }}" style="width: 50px;  margin-right: 10px;"
+                                alt="Logo_Masjid">
                             <h3 class="card-title" style="margin-left: 10px;">Inventaris DKMBKU</h3>
+                            <img src="{{ asset('icon_web/Logo_Nawa.png') }}" style="width: 40px;  margin-left: 10px;"
+                                alt="Logo_Masjid">
                         </div>
                     </div>
 

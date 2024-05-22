@@ -1,0 +1,55 @@
+/* background image */
+
+.pengajar-madrasah-card {
+    background-image: url("../name_tag/name_tag_murid.jpg");
+    background-size: cover;
+    width: 95mm;
+    height: 140mm;
+    /* Center the content vertically and horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.card-body {
+    position: fixed;
+    /* Make the card body transparent so that the background image of the card is visible through it */
+    background-color: transparent;
+}
+
+/* content */
+
+.Foto_Pengajar img {
+    position: fixed;
+    /* Apply styles to the image if needed */
+    width: 110px;
+    /* Additional styles for the image */
+
+    margin-top: -12px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 118px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#pengajar_madrasah_table {
+    margin-top: 150px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 0px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}
+
+#Nama_Pengajar th {
+    color: #1705b0;
+}
+
+#Kode_Pengajar {
+    color: #2e2e2e;
+}
+
+#button_download {
+    position: fixed;
+    margin-top: 5px; /* Increase this value to move the div down */
+    margin-bottom: 0px; /* Increase this value to move the div up */
+    margin-left: 160px; /* Increase this value to move the div to the right */
+    margin-right: 0px; /* Increase this value to move the div to the left */
+}

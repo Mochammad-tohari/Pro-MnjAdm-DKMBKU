@@ -94,23 +94,44 @@
 
 /**************************************************************************************************************************************************************/
 
-.small-box.bg-info.info-box-madrasah {
+.small-box.bg-info.info-box-murid-madrasah {
     background-image: url("../box_info_image/madrasah_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
     /* Add additional styles for the second info box if needed */
 }
 
-.info-box-madrasah .info-box-text-madrasah {
+.info-box-murid-madrasah .info-box-text-murid-madrasah {
     font-size: 16px; /* You can adjust the value as needed */
 }
 
 /* Add custom styles to create gap after the heading */
-.info-box-madrasah p:first-child {
+.info-box-murid-madrasah p:first-child {
     margin-top: 30px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
-.info-box-madrasah p {
+.info-box-murid-madrasah p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.small-box.bg-info.info-box-pengajar-madrasah {
+    background-image: url("../box_info_image/pengajar_bg.jpg");
+    background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    /* Add additional styles for the second info box if needed */
+}
+
+.info-box-pengajar-madrasah .info-box-text-pengajar-madrasah {
+    font-size: 16px; /* You can adjust the value as needed */
+}
+
+/* Add custom styles to create gap after the heading */
+.info-box-pengajar-madrasah p:first-child {
+    margin-top: 30px;
+}
+
+/* Add custom styles to remove gaps between the lines and make the text regular */
+.info-box-pengajar-madrasah p {
     margin: 0;
     line-height: 1.5;
 }

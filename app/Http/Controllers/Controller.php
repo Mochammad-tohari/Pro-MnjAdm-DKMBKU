@@ -16,6 +16,7 @@ use App\Models\gedung_model;
 use App\Models\ruangan_model;
 
 use App\Models\murid_madrasah_model;
+use App\Models\pengajar_madrasah_model;
 
 use App\Models\bidang_khodim_model;
 use App\Models\khodim_dkm_model;
@@ -110,6 +111,24 @@ class Controller extends BaseController
             'murid_lainya_count' => murid_madrasah_model::where('Status_Murid', 'Lainya')->count(),
             // Add more variables here if needed
         ];
+
+
+        // Count total records
+        $data_pengajar_jumlah = pengajar_madrasah_model::count();
+
+        // Define an array of variables to pass to the view
+        $data_pengajar_kondisi = [
+            'data_pengajar_jumlah' => $data_pengajar_jumlah,
+            // Count 'Aktif' status records
+            'pengajar_aktif_count' => pengajar_madrasah_model::where('Status_Pengajar', 'Aktif')->count(),
+            // Count 'Tidak_Aktif' status records
+            'pengajar_tidak_aktif_count' => pengajar_madrasah_model::where('Status_Pengajar', 'Tidak_Aktif')->count(),
+            // Count 'Lainya' status records
+            'pengajar_lainya_count' => pengajar_madrasah_model::where('Status_Pengajar', 'Lainya')->count(),
+            // Add more variables here if needed
+        ];
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Count total records
         $data_bidang_khodim_jumlah = bidang_khodim_model::count();
@@ -247,6 +266,7 @@ class Controller extends BaseController
             'data_gedung_kondisi' => $data_gedung_kondisi,
             'data_ruangan_kondisi' => $data_ruangan_kondisi,
             'data_murid_kondisi' => $data_murid_kondisi,
+            'data_pengajar_kondisi' => $data_pengajar_kondisi,
             'data_bidang_khodim_kondisi' => $data_bidang_khodim_kondisi,
             'data_khodim_dkm_kondisi' => $data_khodim_dkm_kondisi,
             'data_bidang_pengurus_dkm_kondisi' => $data_bidang_pengurus_dkm_kondisi,

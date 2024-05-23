@@ -142,11 +142,11 @@
                     <!-- Small boxes (Murid Madrasah) -->
                     <div class="col-lg-3 col-6">
                         <!-- small box 1 -->
-                        <div class="small-box bg-info info-box-madrasah">
+                        <div class="small-box bg-info info-box-murid-madrasah">
                             <div class="inner">
                                 <h4><strong>Indeks Data Murid Madrasah</strong></h4>
                                 <span class="info-box-number-1 mb-3">
-                                    <p class="info-box-text-madrasah">Jumlah Data murid:
+                                    <p class="info-box-text-murid-madrasah">Jumlah Data murid:
                                         {{ $data_murid_kondisi['data_murid_jumlah'] }}</p>
                                     <p class="info-box-text-aktif">Murid Aktif:
                                         {{ $data_murid_kondisi['murid_aktif_count'] }}</p>
@@ -160,6 +160,32 @@
                                 <i class="ion ion-bag"></i>
                             </div>
                             <a href="/murid_madrasah_data" class="small-box-footer">Lebih Lanjut <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                    <!-- Small boxes (Pengajar Madrasah) -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box 1 -->
+                        <div class="small-box bg-info info-box-pengajar-madrasah">
+                            <div class="inner">
+                                <h4><strong>Indeks Data Pengajar Madrasah</strong></h4>
+                                <span class="info-box-number-1 mb-3">
+                                    <p class="info-box-text-pengajar-madrasah">Jumlah Data Pengajar:
+                                        {{ $data_pengajar_kondisi['data_pengajar_jumlah'] }}</p>
+                                    <p class="info-box-text-aktif">Pengajar Aktif:
+                                        {{ $data_pengajar_kondisi['pengajar_aktif_count'] }}</p>
+                                    <p class="info-box-text-tidak-aktif">Pengajar Tidak Aktif:
+                                        {{ $data_pengajar_kondisi['pengajar_tidak_aktif_count'] }}</p>
+                                    <p class="info-box-text-lainya">Pengajar Lainya:
+                                        {{ $data_pengajar_kondisi['pengajar_lainya_count'] }}</p>
+                                </span>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="/pengajar_madrasah_data" class="small-box-footer">Lebih Lanjut <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

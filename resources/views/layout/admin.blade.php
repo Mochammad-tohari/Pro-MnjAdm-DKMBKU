@@ -141,6 +141,61 @@
 
 
                                 <li class="nav-item">
+                                    <a href="/bidang_pengurus_dkm_data"
+                                        class="nav-link{{ Request::is('bidang_pengurus_dkm_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Bidang Pengurus DKM
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/pengurus_dkm_data"
+                                        class="nav-link{{ Request::is('pengurus_dkm_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Pengurus DKM
+                                        </p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="/murid_madrasah_data"
+                                        class="nav-link{{ Request::is('murid_madrasah_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Murid Madrasah
+                                        </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/pengajar_madrasah_data"
+                                        class="nav-link{{ Request::is('pengajar_madrasah_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Pengajar Madrasah
+                                        </p>
+                                    </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                    <a href="/majlistalim_data"
+                                        class="nav-link{{ Request::is('majlistalim_data') ? ' active' : '' }}">
+                                        <i class="nav-icon fa fa-columns"></i>
+                                        <p>
+                                            Data Majlistalim
+                                        </p>
+                                    </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
                                     <a href="/gedung_data"
                                         class="nav-link{{ Request::is('gedung_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
@@ -156,18 +211,6 @@
                                         <i class="nav-icon fa fa-columns"></i>
                                         <p>
                                             Data Ruangan
-                                        </p>
-                                    </a>
-                                </li>
-
-
-
-                                <li class="nav-item">
-                                    <a href="/murid_madrasah_data"
-                                        class="nav-link{{ Request::is('murid_madrasah_data') ? ' active' : '' }}">
-                                        <i class="nav-icon fa fa-columns"></i>
-                                        <p>
-                                            Data Murid Madrasah
                                         </p>
                                     </a>
                                 </li>
@@ -197,39 +240,6 @@
 
 
                                 <li class="nav-item">
-                                    <a href="/bidang_pengurus_dkm_data"
-                                        class="nav-link{{ Request::is('bidang_pengurus_dkm_data') ? ' active' : '' }}">
-                                        <i class="nav-icon fa fa-columns"></i>
-                                        <p>
-                                            Data Bidang Pengurus DKM
-                                        </p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/pengurus_dkm_data"
-                                        class="nav-link{{ Request::is('pengurus_dkm_data') ? ' active' : '' }}">
-                                        <i class="nav-icon fa fa-columns"></i>
-                                        <p>
-                                            Data Pengurus DKM
-                                        </p>
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="/majlistalim_data"
-                                        class="nav-link{{ Request::is('majlistalim_data') ? ' active' : '' }}">
-                                        <i class="nav-icon fa fa-columns"></i>
-                                        <p>
-                                            Data Majlistalim
-                                        </p>
-                                    </a>
-                                </li>
-
-
-
-                                <li class="nav-item">
                                     <a href="/inventaris_data"
                                         class="nav-link{{ Request::is('inventaris_data') ? ' active' : '' }}">
                                         <i class="nav-icon fa fa-columns"></i>
@@ -240,15 +250,6 @@
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a href="/pengajar_madrasah_data"
-                                        class="nav-link{{ Request::is('pengajar_madrasah_data') ? ' active' : '' }}">
-                                        <i class="nav-icon fa fa-columns"></i>
-                                        <p>
-                                            Data Pengajar Madrasah
-                                        </p>
-                                    </a>
-                                </li>
 
 
                                 <li class="nav-item">

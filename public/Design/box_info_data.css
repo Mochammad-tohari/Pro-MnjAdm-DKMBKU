@@ -5,6 +5,8 @@
 .small-box.bg-info.info-box-bidang_nawa {
     background-image: url("../box_info_image/bidang_nawa_info.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -14,7 +16,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-bidang_nawa p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -28,6 +30,8 @@
 .small-box.bg-info.info-box-pengurus_nawa {
     background-image: url("../box_info_image/pengurus_nawa_info.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -37,7 +41,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-pengurus_nawa p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -51,6 +55,8 @@
 .small-box.bg-info.info-box-gedung {
     background-image: url("../box_info_image/masjid_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -74,6 +80,8 @@
 .small-box.bg-info.info-box-ruangan {
     background-image: url("../box_info_image/ruangan_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -97,6 +105,8 @@
 .small-box.bg-info.info-box-murid-madrasah {
     background-image: url("../box_info_image/madrasah_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -106,7 +116,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-murid-madrasah p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -118,6 +128,8 @@
 .small-box.bg-info.info-box-pengajar-madrasah {
     background-image: url("../box_info_image/pengajar_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -127,7 +139,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-pengajar-madrasah p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -141,6 +153,8 @@
 .small-box.bg-info.info-box-bidang_khodim {
     background-image: url("../box_info_image/bidang_khodim_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -150,7 +164,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-bidang_khodim p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -164,6 +178,8 @@
 .small-box.bg-info.info-box-khodim_dkm {
     background-image: url("../box_info_image/khodim_dkm_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -173,7 +189,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-khodim_dkm p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -187,6 +203,8 @@
 .small-box.bg-info.info-box-bidang_pengurus_dkm {
     background-image: url("../box_info_image/bidang_pengurus_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -196,7 +214,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-bidang_pengurus_dkm p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -210,6 +228,8 @@
 .small-box.bg-info.info-box-pengurus_dkm {
     background-image: url("../box_info_image/pengurus_dkm_bg.jpg");
     background-size: cover; /* You can adjust the value to 'cover' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the second info box if needed */
 }
 
@@ -219,7 +239,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-pengurus_dkm p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -233,6 +253,8 @@
 .small-box.bg-info.info-box-inventaris {
     background-image: url("../box_info_image/inventaris_bg.jpg");
     background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the first info box if needed */
 }
 
@@ -242,7 +264,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-inventaris p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -255,6 +277,8 @@
 .small-box.bg-info.info-box-majlistalim {
     background-image: url("../box_info_image/majlistalim_bg.jpg");
     background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the first info box if needed */
 }
 
@@ -264,7 +288,7 @@
 
 /* Add custom styles to create gap after the heading */
 .info-box-majlistalim p:first-child {
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 /* Add custom styles to remove gaps between the lines and make the text regular */
@@ -277,6 +301,8 @@
 .small-box.bg-info.info-box-uji-user {
     background-image: url("../box_info_image/uji_bg.jpg");
     background-size: cover; /* You can adjust the value to 'contain' or use specific dimensions like '100px 200px' */
+    height: 234px; /* Adjust this value to make the box taller */
+    width: 510px; /* Adjust this value to make the box wider */
     /* Add additional styles for the first info box if needed */
 }
 

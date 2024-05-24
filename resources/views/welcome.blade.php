@@ -35,7 +35,7 @@
                 <div class="row">
 
                     <!-- Small boxes (Bidang Nawa) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_nawa">
                             <div class="inner">
@@ -60,7 +60,7 @@
                     </div>
 
                     <!-- Small boxes (Pengurus Nawa) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-pengurus_nawa">
                             <div class="inner">
@@ -87,7 +87,7 @@
                     {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Gedung) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-gedung">
                             <div class="inner">
@@ -113,7 +113,7 @@
 
 
                     <!-- Small boxes (Ruangan) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-ruangan">
                             <div class="inner">
@@ -140,7 +140,7 @@
                     {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Murid Madrasah) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-murid-madrasah">
                             <div class="inner">
@@ -166,7 +166,7 @@
 
 
                     <!-- Small boxes (Pengajar Madrasah) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-pengajar-madrasah">
                             <div class="inner">
@@ -194,7 +194,7 @@
 
 
                     <!-- Small boxes (bidang_khodim) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_khodim">
                             <div class="inner">
@@ -220,7 +220,7 @@
 
 
                     <!-- Small boxes (khodim_dkm) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-khodim_dkm">
                             <div class="inner">
@@ -248,7 +248,7 @@
 
 
                     <!-- Small boxes (bidang_pengurus_dkm) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-bidang_pengurus_dkm">
                             <div class="inner">
@@ -274,7 +274,7 @@
                     </div>
 
                     <!-- Small boxes (pengurus_dkm) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 1 -->
                         <div class="small-box bg-info info-box-pengurus_dkm">
                             <div class="inner">
@@ -302,7 +302,7 @@
                     {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Inventaris) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 3 -->
                         <div class="small-box bg-info info-box-inventaris">
                             <div class="inner">
@@ -332,7 +332,7 @@
                     {{-- //////////////////////////////////////////////////////////////////// --}}
 
                     <!-- Small boxes (Majlistalim) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 3 -->
                         <div class="small-box bg-info info-box-majlistalim">
                             <div class="inner">
@@ -363,7 +363,7 @@
 
 
                     <!-- Small boxes (Uji User) -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-6 col-12">
                         <!-- small box 3 -->
                         <div class="small-box bg-info info-box-uji-user">
                             <div class="inner">
